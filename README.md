@@ -1,9 +1,15 @@
 # awesome-ai-engineer
 A curated collection of free resources, roadmaps, books, courses, YouTube channels, projects, research papers, and tools to become an AI Engineer—from Python and Machine Learning to Generative AI, RAG, AI Agents, MCP, LangChain, LangGraph, and MLOps.
 
-🚀 Awesome AI Engineer Resources
+# 🚀 Awesome AI Engineer Resources
 
-A curated collection of FREE resources to become an AI Engineer, covering Python, Data Science, Machine Learning, Deep Learning, Generative AI, RAG, AI Agents, LangChain, LangGraph, MCP, and Production AI.
+> The largest curated collection of **FREE AI learning resources** for **Python**, **Machine Learning**, **Deep Learning**, **Generative AI**, **LLMs**, **RAG**, **AI Agents**, **LangChain**, **LangGraph**, **MCP**, **Vector Databases**, **MLOps**, **Azure AI**, **Google AI**, **OpenAI**, **Hugging Face**, **Anthropic**, **Prompt Engineering**, **AI Engineering**, **AI System Design**, and **Production AI**.
+
+⭐ Learn AI from beginner to advanced using free books, blogs, GitHub repositories, YouTube lectures, university courses, research papers, and hands-on projects.
+Keywords
+
+Python • AI • Artificial Intelligence • Machine Learning • ML • Deep Learning • Data Science • LLM • GPT • ChatGPT • Claude • Gemini • Generative AI • Prompt Engineering • RAG • AI Agents • Agentic AI • LangChain • LangGraph • MCP • Vector Database • Embeddings • Semantic Search • AI Engineering • MLOps • Kubernetes • Docker • Azure AI • AWS AI • Google Cloud • Vertex AI • OpenAI • Hugging Face
+
 
 Table of Contents
 Universities
