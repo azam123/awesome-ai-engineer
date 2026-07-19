@@ -1489,6 +1489,7 @@ Cloud AI
 
 Production AI Systems
 ```
+<img width="508" height="1965" alt="image" src="https://github.com/user-attachments/assets/b7170f60-8fba-4988-b011-5d3e24f86d57" />
 
 ---
 
