@@ -1,117 +1,211 @@
-# awesome-ai-engineer
-A curated collection of free resources, roadmaps, books, courses, YouTube channels, projects, research papers, and tools to become an AI Engineer—from Python and Machine Learning to Generative AI, RAG, AI Agents, MCP, LangChain, LangGraph, and MLOps.
-
 # 🚀 Awesome AI Engineer Resources
 
-> The largest curated collection of **FREE AI learning resources** for **Python**, **Machine Learning**, **Deep Learning**, **Generative AI**, **LLMs**, **RAG**, **AI Agents**, **LangChain**, **LangGraph**, **MCP**, **Vector Databases**, **MLOps**, **Azure AI**, **Google AI**, **OpenAI**, **Hugging Face**, **Anthropic**, **Prompt Engineering**, **AI Engineering**, **AI System Design**, and **Production AI**.
+<div align="center">
 
-⭐ Learn AI from beginner to advanced using free books, blogs, GitHub repositories, YouTube lectures, university courses, research papers, and hands-on projects.
-Keywords
+# 🤖 Awesome AI Engineer
 
-Python • AI • Artificial Intelligence • Machine Learning • ML • Deep Learning • Data Science • LLM • GPT • ChatGPT • Claude • Gemini • Generative AI • Prompt Engineering • RAG • AI Agents • Agentic AI • LangChain • LangGraph • MCP • Vector Database • Embeddings • Semantic Search • AI Engineering • MLOps • Kubernetes • Docker • Azure AI • AWS AI • Google Cloud • Vertex AI • OpenAI • Hugging Face
+### A Curated Collection of **FREE** Resources to Become an **AI Engineer**
 
+From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → **Generative AI** → **RAG** → **AI Agents** → **LangChain** → **LangGraph** → **MCP** → **MLOps** → **Production AI Systems**
 
-Table of Contents
-Universities
-AI Companies
-Learning Platforms
-AI Experts
-YouTube Channels
-Official Documentation
-GitHub Repositories
-Books
-Blogs
-Research Papers
-Learning Roadmaps
-Universities
-MIT OpenCourseWare
+⭐ Learn from the world's best universities, AI companies, researchers, books, blogs, GitHub repositories, YouTube channels, documentation, and research papers.
 
-Website
+</div>
+
+---
+
+## 🔥 Topics Covered
+
+`Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
+
+---
+
+# 📚 Table of Contents
+
+* 🎓 Free University Courses
+* 🏢 AI Companies
+* 🎯 Learning Platforms
+* 👨‍💻 AI Experts
+* 📺 YouTube Channels
+* 📖 Official Documentation
+* 💻 GitHub Repositories
+* 📚 Books
+* ✍️ Blogs
+* 📄 Research Papers
+* 🗺️ AI Engineer Roadmap
+
+---
+
+# 🎓 Free University Courses
+
+Learn Artificial Intelligence, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, Mathematics, Algorithms, and Computer Science from the world's top universities.
+
+---
+
+# 🏛 MIT OpenCourseWare
+
+**Tags**
+
+`Python`
+`Algorithms`
+`Computer Science`
+`Artificial Intelligence`
+`Machine Learning`
+`Linear Algebra`
+`Mathematics`
+`Probability`
+`Statistics`
+
+### 🌐 Website
 
 https://ocw.mit.edu/
 
-YouTube
+### ▶️ YouTube
 
 https://www.youtube.com/@mitocw
 
-Popular Courses
+### 📚 Recommended Courses
 
-Introduction to Computer Science (6.0001)
-Introduction to Algorithms
-Mathematics for Computer Science
-Linear Algebra
-Probability & Statistics
-Artificial Intelligence
-Stanford University
+* Introduction to Computer Science (6.0001)
+* Introduction to Algorithms
+* Mathematics for Computer Science
+* Linear Algebra
+* Probability & Statistics
+* Artificial Intelligence
 
-Website
+---
+
+# 🌲 Stanford University
+
+**Tags**
+
+`Machine Learning`
+`Deep Learning`
+`Computer Vision`
+`NLP`
+`Transformers`
+`LLMs`
+`AI`
+
+### 🌐 Website
 
 https://stanford.edu
 
-YouTube
+### ▶️ YouTube
 
 https://www.youtube.com/@stanford
 
-Popular Courses
+### 📚 Recommended Courses
 
-CS229 Machine Learning
-CS231n Computer Vision
-CS224N NLP
-CS25 Transformers
-CS221 Artificial Intelligence
-Carnegie Mellon University
+* CS229 — Machine Learning
+* CS231n — Deep Learning for Computer Vision
+* CS224N — Natural Language Processing with Deep Learning
+* CS25 — Transformers United
+* CS221 — Artificial Intelligence
 
-Website
+---
+
+# 🧠 Carnegie Mellon University (CMU)
+
+**Tags**
+
+`Artificial Intelligence`
+`Machine Learning`
+`Deep Learning`
+`NLP`
+`Computer Vision`
+`Robotics`
+
+### 🌐 Website
 
 https://www.cmu.edu
 
-YouTube
+### ▶️ YouTube
 
 https://www.youtube.com/@CarnegieMellonUniversity
 
-Courses
+### 📚 Recommended Courses
 
-Machine Learning
-Deep Learning
-NLP
-AI
-UC Berkeley
+* Machine Learning
+* Deep Learning
+* Natural Language Processing
+* Artificial Intelligence
 
-Website
+---
+
+# 🐻 UC Berkeley
+
+**Tags**
+
+`Machine Learning`
+`Deep Learning`
+`Artificial Intelligence`
+`Reinforcement Learning`
+`Data Science`
+
+### 🌐 Website
 
 https://www.berkeley.edu/
 
-YouTube
+### ▶️ YouTube
 
 https://www.youtube.com/@UCBerkeley
 
-Popular Courses
+### 📚 Recommended Courses
 
-CS188 Artificial Intelligence
-CS285 Deep Reinforcement Learning
-Data100
-CS189 Machine Learning
-Harvard University
+* CS188 — Artificial Intelligence
+* CS285 — Deep Reinforcement Learning
+* Data100 — Principles of Data Science
+* CS189 — Machine Learning
 
-Website
+---
+
+# 🎓 Harvard University
+
+**Tags**
+
+`Python`
+`Computer Science`
+`Artificial Intelligence`
+`Machine Learning`
+`Data Science`
+
+### 🌐 Website
 
 https://pll.harvard.edu
 
-YouTube
+### ▶️ YouTube
 
 https://www.youtube.com/@Harvard
 
-Popular Courses
+### 📚 Recommended Courses
 
-CS50
-CS50 AI
-Data Science
-AI Companies
-OpenAI
+* CS50
+* CS50 AI
+* Data Science
 
-Website
+---
 
-https://openai.com/
+## 🎯 Why Learn from Universities?
+
+These universities publish world-class AI and Computer Science courses completely free. They provide strong foundations in:
+
+* ✅ Python Programming
+* ✅ Data Structures & Algorithms
+* ✅ Mathematics for AI
+* ✅ Probability & Statistics
+* ✅ Machine Learning
+* ✅ Deep Learning
+* ✅ Computer Vision
+* ✅ Natural Language Processing
+* ✅ Reinforcement Learning
+* ✅ Large Language Models (LLMs)
+* ✅ Artificial Intelligence Research
+
+---
+
+➡️ **Next:** Part 2 — **AI Companies** (OpenAI, Anthropic, Microsoft AI, Google AI, NVIDIA, Meta AI, Hugging Face) with official websites, documentation, blogs, GitHub repositories, APIs, SDKs, and learning resources.
+
 
 Documentation
 
