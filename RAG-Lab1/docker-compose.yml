@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+
+  rag-chatbot:
+
+    container_name: production-rag-chatbot
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    ports:
+      - "7860:7860"
+
+    env_file:
+      - .env
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+
+    volumes:
+      - ./uploads:/app/uploads
+      - ./chroma_db:/app/chroma_db
+      - ./logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+    networks:
+      - rag-network
+
+networks:
+
+  rag-network:
+    driver: bridge
