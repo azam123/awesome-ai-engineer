@@ -450,103 +450,299 @@ By learning directly from these companies, you'll gain practical experience with
 
 ---
 
-➡️ **Next:** **Part 3 — Learning Platforms & AI Experts** (DeepLearning.AI, fast.ai, Andrew Ng, Andrej Karpathy, Jeremy Howard, Yann LeCun, Sebastian Raschka).
+# 🎯 Learning Platforms & 👨‍💻 AI Experts
 
+Learn Artificial Intelligence, Machine Learning, Deep Learning, Large Language Models (LLMs), Generative AI, Prompt Engineering, RAG, AI Agents, and MLOps from world-renowned educators, researchers, and practitioners.
 
-Microsoft AI
+---
 
-Website
+# 🎓 Learning Platforms
 
-https://www.microsoft.com/ai
+These platforms provide **free courses**, **hands-on projects**, **coding notebooks**, **workshops**, and **industry best practices**.
 
-Azure AI
+---
 
-https://learn.microsoft.com/azure/ai-services/
+# 🧠 DeepLearning.AI
 
-Azure AI Foundry
+> Founded by **Andrew Ng**, DeepLearning.AI offers some of the world's most popular AI and Generative AI courses.
 
-https://learn.microsoft.com/azure/ai-foundry/
+### 🏷️ Tags
 
-GitHub
+`Machine Learning` • `Deep Learning` • `LLMs` • `Generative AI` • `Prompt Engineering` • `RAG` • `AI Agents` • `MLOps`
 
-https://github.com/microsoft
+### 🌐 Official Resources
 
-NVIDIA AI
+| Resource           | Link                                      |
+| ------------------ | ----------------------------------------- |
+| Website            | https://www.deeplearning.ai               |
+| Free Short Courses | https://www.deeplearning.ai/short-courses |
+| YouTube            | https://www.youtube.com/@Deeplearningai   |
+| Newsletter         | https://www.deeplearning.ai/the-batch     |
 
-Website
+### 📖 Recommended Courses
 
-https://developer.nvidia.com/ai
+* AI Python for Beginners
+* ChatGPT Prompt Engineering
+* Building Systems with ChatGPT
+* LangChain for LLM Application Development
+* LangGraph for Agentic AI
+* Building Agentic RAG
+* AI Agents in LangGraph
+* Building AI Products
+* Vector Databases
+* Generative AI with LLMs
 
-Deep Learning Institute
+### 💡 Why Learn Here?
 
-https://www.nvidia.com/en-us/training/
+* Industry-recognized instructors
+* Hands-on notebooks
+* Free short courses
+* Latest Generative AI content
+* Practical LLM applications
 
-GitHub
+---
 
-https://github.com/NVIDIA
+# ⚡ fast.ai
 
-Blog
+> Practical Deep Learning for Coders by **Jeremy Howard**.
 
-https://developer.nvidia.com/blog
+### 🏷️ Tags
 
-Meta AI
+`PyTorch` • `Deep Learning` • `Computer Vision` • `NLP` • `Tabular Data` • `Production AI`
 
-Website
+### 🌐 Official Resources
 
-https://ai.meta.com/
+| Resource    | Link                               |
+| ----------- | ---------------------------------- |
+| Website     | https://www.fast.ai                |
+| Free Course | https://course.fast.ai             |
+| GitHub      | https://github.com/fastai          |
+| YouTube     | https://www.youtube.com/@fastdotai |
 
-GitHub
+### 📖 Recommended Courses
 
-https://github.com/facebookresearch
+* Practical Deep Learning for Coders
+* From Deep Learning Foundations to Stable Diffusion
+* Neural Networks
+* Computer Vision
+* NLP
+* Recommendation Systems
 
-PyTorch
+### 💡 Why Learn Here?
 
-https://pytorch.org/
+* Project-first approach
+* PyTorch focused
+* Production-ready examples
+* Excellent for practitioners
 
-Llama
+---
 
-https://ai.meta.com/llama/
+# 👨‍💻 AI Experts
 
-Hugging Face
+Learn directly from researchers, engineers, and educators who have shaped modern Artificial Intelligence.
 
-Website
+---
 
-https://huggingface.co/
+# 🧑‍🏫 Andrew Ng
 
-Documentation
+> AI Pioneer, Founder of DeepLearning.AI, Co-founder of Coursera, Former Head of Google Brain.
 
-https://huggingface.co/docs
+### 🏷️ Tags
 
-GitHub
+`Machine Learning` • `Deep Learning` • `AI Strategy` • `Generative AI` • `LLMs`
 
-https://github.com/huggingface
+### 🌐 Official Resources
 
-Courses
+| Resource        | Link                                  |
+| --------------- | ------------------------------------- |
+| Website         | https://www.andrewng.org              |
+| DeepLearning.AI | https://www.deeplearning.ai           |
+| YouTube         | https://www.youtube.com/@AndrewNgAI   |
+| LinkedIn        | https://www.linkedin.com/in/andrewyng |
 
-https://huggingface.co/learn
+### 📚 Recommended Learning
 
-Models
+* Machine Learning Specialization
+* AI for Everyone
+* Generative AI for Everyone
+* Deep Learning Specialization
+* AI Leadership
 
-https://huggingface.co/models
+### ⭐ Best For
 
-Datasets
+* Beginners
+* Machine Learning
+* AI Fundamentals
+* AI Career Guidance
 
-https://huggingface.co/datasets
+---
 
-Spaces
+# 🤖 Andrej Karpathy
 
-https://huggingface.co/spaces
+> Former Director of AI at Tesla and Founding Member at OpenAI.
 
-Learning Platforms
-DeepLearning.AI
+### 🏷️ Tags
 
-Website
+`LLMs` • `Transformers` • `GPT` • `Neural Networks` • `Tokenization`
 
-https://www.deeplearning.ai/
+### 🌐 Official Resources
 
-Short Courses
+| Resource    | Link                                    |
+| ----------- | --------------------------------------- |
+| Website     | https://karpathy.ai                     |
+| GitHub      | https://github.com/karpathy             |
+| YouTube     | https://www.youtube.com/@AndrejKarpathy |
+| X (Twitter) | https://x.com/karpathy                  |
 
-https://www.deeplearning.ai/short-courses/
+### 📚 Must-Watch Videos
+
+* Neural Networks: Zero to Hero
+* Let's Build GPT
+* Let's Build GPT Tokenizer
+* Let's Reproduce GPT-2
+* State of GPT
+
+### ⭐ Best For
+
+* Transformers
+* LLM Internals
+* Tokenization
+* Neural Networks
+* Building GPT from Scratch
+
+---
+
+# 🚀 Jeremy Howard
+
+> Founder of fast.ai and one of the world's leading educators in practical Deep Learning.
+
+### 🏷️ Tags
+
+`Deep Learning` • `PyTorch` • `Computer Vision` • `NLP` • `AI`
+
+### 🌐 Official Resources
+
+| Resource | Link                               |
+| -------- | ---------------------------------- |
+| Website  | https://www.fast.ai                |
+| GitHub   | https://github.com/jph00           |
+| YouTube  | https://www.youtube.com/@fastdotai |
+
+### 📚 Recommended Content
+
+* Practical Deep Learning for Coders
+* Stable Diffusion
+* Diffusion Models
+* Deep Learning Foundations
+
+### ⭐ Best For
+
+* Practical AI
+* Deep Learning
+* PyTorch
+* Production ML
+
+---
+
+# 🧠 Yann LeCun
+
+> Chief AI Scientist at Meta and Turing Award Winner.
+
+### 🏷️ Tags
+
+`Deep Learning` • `Computer Vision` • `Self-Supervised Learning` • `AI Research`
+
+### 🌐 Official Resources
+
+| Resource | Link                                |
+| -------- | ----------------------------------- |
+| Website  | https://yann.lecun.com              |
+| Meta AI  | https://ai.meta.com                 |
+| Facebook | https://www.facebook.com/yann.lecun |
+
+### 📚 Recommended Topics
+
+* Deep Learning
+* Self-Supervised Learning
+* Computer Vision
+* AI Research
+* Future of AI
+
+### ⭐ Best For
+
+* AI Research
+* Advanced Deep Learning
+* Computer Vision
+
+---
+
+# 📖 Sebastian Raschka
+
+> AI Researcher, Educator, Author of **LLMs From Scratch**.
+
+### 🏷️ Tags
+
+`LLMs` • `PyTorch` • `Machine Learning` • `Transformers`
+
+### 🌐 Official Resources
+
+| Resource        | Link                                       |
+| --------------- | ------------------------------------------ |
+| Website         | https://sebastianraschka.com               |
+| GitHub          | https://github.com/rasbt                   |
+| YouTube         | https://www.youtube.com/@SebastianRaschka  |
+| Book Repository | https://github.com/rasbt/LLMs-from-scratch |
+
+### 📚 Recommended Content
+
+* LLMs From Scratch
+* Machine Learning Q&A
+* PyTorch Tutorials
+* Transformer Architecture
+* Fine-tuning LLMs
+
+### ⭐ Best For
+
+* LLM Engineering
+* PyTorch
+* Transformers
+* Hands-on AI
+
+---
+
+# 🎯 Learning Strategy
+
+For the best learning experience, follow this order:
+
+1. **Andrew Ng** — Build strong AI and Machine Learning fundamentals.
+2. **fast.ai** — Learn practical Deep Learning with real projects.
+3. **Andrej Karpathy** — Understand how GPTs and Transformers work internally.
+4. **Sebastian Raschka** — Learn to implement and fine-tune LLMs from scratch.
+5. **Yann LeCun** — Explore cutting-edge AI research and future directions.
+
+---
+
+## 🚀 Skills You'll Gain
+
+After completing these resources, you'll have practical knowledge of:
+
+* ✅ Python for AI
+* ✅ Machine Learning
+* ✅ Deep Learning
+* ✅ Neural Networks
+* ✅ Transformers
+* ✅ Large Language Models (LLMs)
+* ✅ Prompt Engineering
+* ✅ Retrieval-Augmented Generation (RAG)
+* ✅ AI Agents
+* ✅ LangChain
+* ✅ LangGraph
+* ✅ Model Fine-tuning
+* ✅ Production AI Applications
+
+---
+
+➡️ **Next:** **Part 4 — YouTube Channels & Official Documentation** (StatQuest, 3Blue1Brown, freeCodeCamp, Corey Schafer, Tech With Tim, LangChain, LangGraph, LlamaIndex, OpenAI SDKs, and more).
 
 YouTube
 
