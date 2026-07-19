@@ -203,65 +203,255 @@ These universities publish world-class AI and Computer Science courses completel
 * ✅ Artificial Intelligence Research
 
 ---
+# 🏢 AI Companies
 
-➡️ **Next:** Part 2 — **AI Companies** (OpenAI, Anthropic, Microsoft AI, Google AI, NVIDIA, Meta AI, Hugging Face) with official websites, documentation, blogs, GitHub repositories, APIs, SDKs, and learning resources.
+Learn directly from the companies building today's most advanced **Large Language Models (LLMs)**, **Generative AI**, **AI Infrastructure**, **Foundation Models**, **Developer Platforms**, and **AI APIs**.
 
+---
 
-Documentation
+# 🤖 OpenAI
 
-https://platform.openai.com/docs
+> Creator of **ChatGPT**, **GPT-4o**, **Codex**, **Embeddings API**, **Assistants API**, and the **OpenAI API**.
 
-Cookbook
+### 🏷️ Tags
 
-https://github.com/openai/openai-cookbook
+`ChatGPT` • `GPT-4o` • `Codex` • `OpenAI API` • `Embeddings` • `Function Calling` • `Structured Outputs` • `Agents SDK` • `Prompt Engineering` • `RAG` • `Fine-tuning`
 
-GitHub
+### 🌐 Official Resources
 
-https://github.com/openai
+| Resource          | Link                                      |
+| ----------------- | ----------------------------------------- |
+| Website           | https://openai.com                        |
+| API Documentation | https://platform.openai.com/docs          |
+| Cookbook          | https://github.com/openai/openai-cookbook |
+| GitHub            | https://github.com/openai                 |
+| Blog              | https://openai.com/news                   |
+| Platform          | https://platform.openai.com               |
 
-Blog
+### 📖 Learn
 
-https://openai.com/news
+* OpenAI API
+* Chat Completions
+* Responses API
+* Function Calling
+* Structured Outputs
+* Embeddings
+* Image Generation
+* Audio APIs
+* Fine-tuning
+* Retrieval-Augmented Generation (RAG)
+* AI Agents
 
-Anthropic
+---
 
-Website
+# 🧠 Anthropic
 
-https://www.anthropic.com/
+> Creator of **Claude**, **Model Context Protocol (MCP)**, and AI systems focused on safety, reasoning, and long-context capabilities.
 
-Documentation
+### 🏷️ Tags
 
-https://docs.anthropic.com/
+`Claude` • `MCP` • `Constitutional AI` • `Long Context` • `Prompt Engineering` • `AI Safety` • `Tool Use` • `Reasoning`
 
-GitHub
+### 🌐 Official Resources
 
-https://github.com/anthropics
+| Resource      | Link                           |
+| ------------- | ------------------------------ |
+| Website       | https://www.anthropic.com      |
+| Documentation | https://docs.anthropic.com     |
+| GitHub        | https://github.com/anthropics  |
+| Blog          | https://www.anthropic.com/news |
 
-Blog
+### 📖 Learn
 
-https://www.anthropic.com/news
+* Claude API
+* Prompt Engineering
+* Tool Use
+* MCP (Model Context Protocol)
+* Long Context Windows
+* AI Safety
+* Reasoning Models
 
-Google AI
+---
 
-Website
+# 🌟 Google AI
 
-https://ai.google/
+> Explore **Gemini**, **Vertex AI**, **Google AI Studio**, **TensorFlow**, and Google's cutting-edge AI research.
 
-Vertex AI
+### 🏷️ Tags
 
-https://cloud.google.com/vertex-ai
+`Gemini` • `Vertex AI` • `Google AI Studio` • `TensorFlow` • `TPU` • `Multimodal AI` • `Agents`
 
-Google AI Blog
+### 🌐 Official Resources
 
-https://blog.google/technology/ai/
+| Resource        | Link                               |
+| --------------- | ---------------------------------- |
+| Website         | https://ai.google                  |
+| Gemini API      | https://ai.google.dev              |
+| Vertex AI       | https://cloud.google.com/vertex-ai |
+| Google AI Blog  | https://blog.google/technology/ai  |
+| Google Research | https://research.google            |
+| GitHub          | https://github.com/google          |
 
-Gemini
+### 📖 Learn
 
-https://ai.google.dev/
+* Gemini API
+* Prompt Design
+* Vertex AI
+* TensorFlow
+* AI Studio
+* Responsible AI
+* Agent Development
 
-GitHub
+---
 
-https://github.com/google
+# ☁️ Microsoft AI
+
+> Build enterprise AI applications with **Azure AI**, **Azure OpenAI Service**, **Copilot**, and **Azure AI Foundry**.
+
+### 🏷️ Tags
+
+`Azure AI` • `Azure OpenAI` • `Copilot` • `Azure AI Foundry` • `Semantic Kernel` • `Azure ML`
+
+### 🌐 Official Resources
+
+| Resource         | Link                                           |
+| ---------------- | ---------------------------------------------- |
+| Microsoft AI     | https://www.microsoft.com/ai                   |
+| Azure AI         | https://learn.microsoft.com/azure/ai-services/ |
+| Azure AI Foundry | https://learn.microsoft.com/azure/ai-foundry/  |
+| Semantic Kernel  | https://learn.microsoft.com/semantic-kernel    |
+| GitHub           | https://github.com/microsoft                   |
+| Microsoft Learn  | https://learn.microsoft.com                    |
+
+### 📖 Learn
+
+* Azure OpenAI
+* Azure AI Search
+* Azure AI Foundry
+* Semantic Kernel
+* Copilot Development
+* Prompt Flow
+* Enterprise AI Solutions
+
+---
+
+# 🚀 NVIDIA AI
+
+> Learn GPU computing, accelerated AI, inference optimization, and production deployment with NVIDIA's AI ecosystem.
+
+### 🏷️ Tags
+
+`CUDA` • `TensorRT` • `NeMo` • `NIM` • `Triton` • `Inference` • `GPU` • `AI Infrastructure`
+
+### 🌐 Official Resources
+
+| Resource    | Link                                   |
+| ----------- | -------------------------------------- |
+| Website     | https://developer.nvidia.com/ai        |
+| NVIDIA DLI  | https://www.nvidia.com/en-us/training/ |
+| NVIDIA Blog | https://developer.nvidia.com/blog      |
+| GitHub      | https://github.com/NVIDIA              |
+| CUDA        | https://developer.nvidia.com/cuda-zone |
+
+### 📖 Learn
+
+* CUDA Programming
+* GPU Computing
+* TensorRT
+* Triton Inference Server
+* NVIDIA NeMo
+* AI Infrastructure
+* Model Optimization
+
+---
+
+# 🔵 Meta AI
+
+> Home of **Llama**, **PyTorch**, **FAIR**, and open research in generative AI and multimodal models.
+
+### 🏷️ Tags
+
+`Llama` • `PyTorch` • `FAIR` • `Computer Vision` • `Open Source AI` • `Multimodal`
+
+### 🌐 Official Resources
+
+| Resource | Link                                |
+| -------- | ----------------------------------- |
+| Meta AI  | https://ai.meta.com                 |
+| Llama    | https://ai.meta.com/llama/          |
+| PyTorch  | https://pytorch.org                 |
+| FAIR     | https://ai.meta.com/research        |
+| GitHub   | https://github.com/facebookresearch |
+
+### 📖 Learn
+
+* Llama Models
+* PyTorch
+* Computer Vision
+* Multimodal AI
+* Open Source Foundation Models
+
+---
+
+# 🤗 Hugging Face
+
+> The largest open-source AI ecosystem for models, datasets, inference, evaluation, and AI collaboration.
+
+### 🏷️ Tags
+
+`Transformers` • `Datasets` • `Spaces` • `Diffusers` • `Inference API` • `Sentence Transformers` • `PEFT` • `TRL`
+
+### 🌐 Official Resources
+
+| Resource      | Link                            |
+| ------------- | ------------------------------- |
+| Website       | https://huggingface.co          |
+| Documentation | https://huggingface.co/docs     |
+| Courses       | https://huggingface.co/learn    |
+| Models        | https://huggingface.co/models   |
+| Datasets      | https://huggingface.co/datasets |
+| Spaces        | https://huggingface.co/spaces   |
+| GitHub        | https://github.com/huggingface  |
+| Blog          | https://huggingface.co/blog     |
+
+### 📖 Learn
+
+* Transformers
+* Tokenizers
+* Diffusers
+* PEFT
+* TRL
+* Sentence Transformers
+* Hugging Face Hub
+* Inference API
+* Model Fine-tuning
+* Dataset Management
+
+---
+
+# 📌 Why Learn from AI Companies?
+
+These organizations are shaping the future of Artificial Intelligence. Their official documentation, SDKs, APIs, open-source projects, blogs, and research papers are some of the best free learning resources available.
+
+By learning directly from these companies, you'll gain practical experience with:
+
+* ✅ Foundation Models (GPT, Claude, Gemini, Llama)
+* ✅ AI APIs & SDKs
+* ✅ Prompt Engineering
+* ✅ Retrieval-Augmented Generation (RAG)
+* ✅ AI Agents & Tool Calling
+* ✅ Model Context Protocol (MCP)
+* ✅ Embeddings & Vector Search
+* ✅ Fine-tuning
+* ✅ Multimodal AI
+* ✅ Production AI Systems
+* ✅ Enterprise AI Architecture
+* ✅ AI Infrastructure & Deployment
+
+---
+
+➡️ **Next:** **Part 3 — Learning Platforms & AI Experts** (DeepLearning.AI, fast.ai, Andrew Ng, Andrej Karpathy, Jeremy Howard, Yann LeCun, Sebastian Raschka).
+
 
 Microsoft AI
 
