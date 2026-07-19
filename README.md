@@ -1141,189 +1141,806 @@ By mastering these channels and official documentation, you'll gain expertise in
 
 ---
 
-➡️ **Next:** **Part 5 — GitHub Repositories, Books, Blogs, Research Papers & Complete AI Engineer Roadmap**.
+# 💻 GitHub Repositories
 
+Discover the best open-source repositories for **Machine Learning**, **Deep Learning**, **Large Language Models (LLMs)**, **Generative AI**, **RAG**, **AI Agents**, **MLOps**, and **Production AI**.
 
-Books
+---
 
-LLMs From Scratch
+# ⭐ Awesome AI Collections
 
-YouTube
+## 🚀 Awesome Machine Learning
 
-https://www.youtube.com/@SebastianRaschka
+**Tags**
 
-YouTube Channels
-StatQuest
+`Machine Learning` • `Deep Learning` • `AI` • `Data Science`
 
-https://www.youtube.com/@statquest
-
-3Blue1Brown
-
-https://www.youtube.com/@3blue1brown
-
-freeCodeCamp
-
-https://www.youtube.com/@freecodecamp
-
-Corey Schafer
-
-https://www.youtube.com/@coreyms
-
-Tech With Tim
-
-https://www.youtube.com/@TechWithTim
-
-Official Documentation
-LangChain
-
-https://python.langchain.com/
-
-GitHub
-
-https://github.com/langchain-ai/langchain
-
-LangGraph
-
-https://langchain-ai.github.io/langgraph/
-
-GitHub
-
-https://github.com/langchain-ai/langgraph
-
-LlamaIndex
-
-https://www.llamaindex.ai/
-
-Documentation
-
-https://docs.llamaindex.ai/
-
-GitHub
-
-https://github.com/run-llama/llama_index
-
-GitHub Repositories
-OpenAI Cookbook
-
-https://github.com/openai/openai-cookbook
-
-Awesome AI Apps
-
-https://github.com/Arindam200/awesome-ai-apps
-
-Awesome Machine Learning
+**Repository**
 
 https://github.com/josephmisiti/awesome-machine-learning
 
-Awesome Generative AI
+---
+
+## 🤖 Awesome Generative AI
+
+**Tags**
+
+`Generative AI` • `LLMs` • `GPT` • `Diffusion Models`
+
+**Repository**
 
 https://github.com/steven2358/awesome-generative-ai
 
-LLMs From Scratch
+---
 
-https://github.com/rasbt/LLMs-from-scratch
+## 💡 Awesome AI Apps
 
-LangChain
+**Tags**
 
-https://github.com/langchain-ai/langchain
+`AI Apps` • `LLM Applications` • `Projects`
 
-LangGraph
+**Repository**
 
-https://github.com/langchain-ai/langgraph
+https://github.com/Arindam200/awesome-ai-apps
 
-Hugging Face Transformers
+---
+
+# 🧠 LLM Development
+
+## OpenAI Cookbook
+
+**Tags**
+
+`GPT` • `Embeddings` • `Function Calling` • `Agents SDK` • `RAG`
+
+https://github.com/openai/openai-cookbook
+
+---
+
+## Hugging Face Transformers
+
+**Tags**
+
+`Transformers` • `BERT` • `GPT` • `Llama`
 
 https://github.com/huggingface/transformers
 
-Ollama
+---
+
+## LLMs From Scratch
+
+**Author:** Sebastian Raschka
+
+**Tags**
+
+`PyTorch` • `Transformers` • `LLMs`
+
+https://github.com/rasbt/LLMs-from-scratch
+
+---
+
+## Ollama
+
+**Tags**
+
+`Local LLMs` • `Inference`
 
 https://github.com/ollama/ollama
 
-vLLM
+---
+
+## vLLM
+
+**Tags**
+
+`Serving` • `Inference` • `GPU`
 
 https://github.com/vllm-project/vllm
 
-Books
-Python Data Science Handbook
-Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow
-Deep Learning (Ian Goodfellow)
-LLMs From Scratch
-Natural Language Processing with Transformers
-Designing Machine Learning Systems
-Building LLM Powered Applications
-Generative AI with LLMs
-AI Engineering
-Practical Deep Learning for Coders
-Blogs
-OpenAI Blog
-Anthropic Blog
-Google AI Blog
-NVIDIA Developer Blog
-Hugging Face Blog
-Microsoft AI Blog
-LangChain Blog
-Sebastian Raschka Blog
-fast.ai Blog
-Research Papers
-Attention Is All You Need
-BERT
-GPT-3
-GPT-4 Technical Report
-LLaMA
-LLaMA 2
-LLaMA 3
-InstructGPT
-Chain of Thought Prompting
-ReAct
-Toolformer
-Self-RAG
-RAG
-GraphRAG
-Learning Roadmap
-Python
-      ↓
-Git & GitHub
-      ↓
-SQL
-      ↓
-Statistics
-      ↓
-Linear Algebra
-      ↓
-Calculus
-      ↓
-Data Science
-      ↓
-Machine Learning
-      ↓
-Deep Learning
-      ↓
-Computer Vision
-      ↓
-Natural Language Processing
-      ↓
-LLMs
-      ↓
-Prompt Engineering
-      ↓
-Embeddings
-      ↓
-Vector Databases
-      ↓
-RAG
-      ↓
-AI Agents
-      ↓
-LangChain
-      ↓
-LangGraph
-      ↓
-MCP
-      ↓
-MLOps
-      ↓
-Cloud AI
-      ↓
-Production AI Systems
+---
 
-⭐ If you find this repository useful, please consider giving it a star!
+# 🔗 AI Frameworks
+
+## LangChain
+
+https://github.com/langchain-ai/langchain
+
+---
+
+## LangGraph
+
+https://github.com/langchain-ai/langgraph
+
+---
+
+## LlamaIndex
+
+https://github.com/run-llama/llama_index
+
+---
+
+# 📚 Books
+
+The following books are highly recommended for AI Engineers.
+
+| Book                                                            | Topics                |
+| --------------------------------------------------------------- | --------------------- |
+| Python Data Science Handbook                                    | Python, NumPy, Pandas |
+| Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow | Machine Learning      |
+| Deep Learning (Ian Goodfellow)                                  | Deep Learning         |
+| Practical Deep Learning for Coders                              | PyTorch               |
+| Natural Language Processing with Transformers                   | NLP, Transformers     |
+| LLMs From Scratch                                               | LLM Architecture      |
+| Designing Machine Learning Systems                              | MLOps                 |
+| AI Engineering                                                  | Production AI         |
+| Building LLM Powered Applications                               | Enterprise AI         |
+| Generative AI with LLMs                                         | LLM Applications      |
+
+---
+
+# ✍️ Blogs
+
+Follow these blogs to stay updated with the latest advancements.
+
+| Blog                   | Website                           |
+| ---------------------- | --------------------------------- |
+| OpenAI Blog            | https://openai.com/news           |
+| Anthropic Blog         | https://www.anthropic.com/news    |
+| Google AI Blog         | https://blog.google/technology/ai |
+| Microsoft AI Blog      | https://blogs.microsoft.com       |
+| NVIDIA Developer Blog  | https://developer.nvidia.com/blog |
+| Hugging Face Blog      | https://huggingface.co/blog       |
+| LangChain Blog         | https://blog.langchain.dev        |
+| Sebastian Raschka Blog | https://sebastianraschka.com/blog |
+| fast.ai Blog           | https://www.fast.ai/posts         |
+
+---
+
+# 📄 Research Papers
+
+Every AI Engineer should read these landmark papers.
+
+## Foundation Models
+
+* Attention Is All You Need
+* BERT
+* GPT
+* GPT-2
+* GPT-3
+* GPT-4 Technical Report
+* InstructGPT
+
+---
+
+## Open Models
+
+* LLaMA
+* LLaMA 2
+* LLaMA 3
+
+---
+
+## Prompt Engineering
+
+* Chain of Thought Prompting
+* Self-Consistency
+* Tree of Thoughts
+* ReAct
+
+---
+
+## Tool Use & Agents
+
+* Toolformer
+* Gorilla
+* Voyager
+* AutoGPT
+* SWE-Agent
+
+---
+
+## Retrieval-Augmented Generation (RAG)
+
+* Retrieval-Augmented Generation
+* Self-RAG
+* Corrective RAG (CRAG)
+* GraphRAG
+* RAPTOR
+* HyDE
+
+---
+
+## Embeddings & Vector Search
+
+* Sentence-BERT (SBERT)
+* Dense Passage Retrieval (DPR)
+* ColBERT
+
+---
+
+# 🗺️ AI Engineer Roadmap
+
+```text
+Programming
+│
+├── Python
+├── Git & GitHub
+├── Linux
+├── SQL
+└── Data Structures
+
+        ↓
+
+Mathematics
+│
+├── Linear Algebra
+├── Probability
+├── Statistics
+└── Calculus
+
+        ↓
+
+Data
+│
+├── NumPy
+├── Pandas
+├── Data Visualization
+└── Feature Engineering
+
+        ↓
+
+Machine Learning
+│
+├── Supervised Learning
+├── Unsupervised Learning
+├── Model Evaluation
+└── Scikit-Learn
+
+        ↓
+
+Deep Learning
+│
+├── Neural Networks
+├── CNN
+├── RNN
+├── LSTM
+├── Attention
+└── Transformers
+
+        ↓
+
+Natural Language Processing
+│
+├── Tokenization
+├── Embeddings
+├── Vector Search
+└── Text Generation
+
+        ↓
+
+Large Language Models
+│
+├── GPT
+├── Claude
+├── Gemini
+├── Llama
+└── Mistral
+
+        ↓
+
+Generative AI
+│
+├── Prompt Engineering
+├── Fine-tuning
+├── Function Calling
+├── Structured Outputs
+└── Multimodal AI
+
+        ↓
+
+RAG
+│
+├── Chunking
+├── Embeddings
+├── Vector Databases
+├── Hybrid Search
+└── Evaluation
+
+        ↓
+
+AI Agents
+│
+├── Tool Calling
+├── Planning
+├── Memory
+├── Multi-Agent Systems
+└── MCP
+
+        ↓
+
+Frameworks
+│
+├── LangChain
+├── LangGraph
+├── LlamaIndex
+├── Semantic Kernel
+└── AutoGen
+
+        ↓
+
+Deployment
+│
+├── FastAPI
+├── Docker
+├── Kubernetes
+├── CI/CD
+└── Monitoring
+
+        ↓
+
+Cloud AI
+│
+├── Azure AI
+├── AWS Bedrock
+├── Vertex AI
+└── Hugging Face
+
+        ↓
+
+Production AI Systems
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+You can contribute by:
+
+* 📚 Adding free AI resources
+* 🎥 Sharing YouTube playlists
+* 📖 Recommending books
+* 📝 Improving documentation
+* 💻 Adding open-source repositories
+* 🔬 Including research papers
+* 🚀 Suggesting AI projects
+* 🐛 Fixing broken links
+
+Please open an Issue or submit a Pull Request.
+
+---
+
+# ⭐ Support
+
+If this repository helped you learn Artificial Intelligence, Machine Learning, Generative AI, or become a better AI Engineer:
+
+⭐ Star this repository
+
+🍴 Fork it
+
+📢 Share it with the community
+
+❤️ Happy Learning!
+
+---
+
+## 🔖 License
+
+This repository is licensed under the **MIT License**.
+
+Feel free to use, modify, and share it with proper attribution.
+
+---
+
+<div align="center">
+
+### 🚀 Keep Learning • Keep Building • Keep Sharing
+
+**Made with ❤️ for the AI Community**
+
+⭐ **If you found this repository useful, don't forget to Star it!**
+
+</div>
+
+# 💻 GitHub Repositories
+
+Discover the best open-source repositories for **Machine Learning**, **Deep Learning**, **Large Language Models (LLMs)**, **Generative AI**, **RAG**, **AI Agents**, **MLOps**, and **Production AI**.
+
+---
+
+# ⭐ Awesome AI Collections
+
+## 🚀 Awesome Machine Learning
+
+**Tags**
+
+`Machine Learning` • `Deep Learning` • `AI` • `Data Science`
+
+**Repository**
+
+https://github.com/josephmisiti/awesome-machine-learning
+
+---
+
+## 🤖 Awesome Generative AI
+
+**Tags**
+
+`Generative AI` • `LLMs` • `GPT` • `Diffusion Models`
+
+**Repository**
+
+https://github.com/steven2358/awesome-generative-ai
+
+---
+
+## 💡 Awesome AI Apps
+
+**Tags**
+
+`AI Apps` • `LLM Applications` • `Projects`
+
+**Repository**
+
+https://github.com/Arindam200/awesome-ai-apps
+
+---
+
+# 🧠 LLM Development
+
+## OpenAI Cookbook
+
+**Tags**
+
+`GPT` • `Embeddings` • `Function Calling` • `Agents SDK` • `RAG`
+
+https://github.com/openai/openai-cookbook
+
+---
+
+## Hugging Face Transformers
+
+**Tags**
+
+`Transformers` • `BERT` • `GPT` • `Llama`
+
+https://github.com/huggingface/transformers
+
+---
+
+## LLMs From Scratch
+
+**Author:** Sebastian Raschka
+
+**Tags**
+
+`PyTorch` • `Transformers` • `LLMs`
+
+https://github.com/rasbt/LLMs-from-scratch
+
+---
+
+## Ollama
+
+**Tags**
+
+`Local LLMs` • `Inference`
+
+https://github.com/ollama/ollama
+
+---
+
+## vLLM
+
+**Tags**
+
+`Serving` • `Inference` • `GPU`
+
+https://github.com/vllm-project/vllm
+
+---
+
+# 🔗 AI Frameworks
+
+## LangChain
+
+https://github.com/langchain-ai/langchain
+
+---
+
+## LangGraph
+
+https://github.com/langchain-ai/langgraph
+
+---
+
+## LlamaIndex
+
+https://github.com/run-llama/llama_index
+
+---
+
+# 📚 Books
+
+The following books are highly recommended for AI Engineers.
+
+| Book                                                            | Topics                |
+| --------------------------------------------------------------- | --------------------- |
+| Python Data Science Handbook                                    | Python, NumPy, Pandas |
+| Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow | Machine Learning      |
+| Deep Learning (Ian Goodfellow)                                  | Deep Learning         |
+| Practical Deep Learning for Coders                              | PyTorch               |
+| Natural Language Processing with Transformers                   | NLP, Transformers     |
+| LLMs From Scratch                                               | LLM Architecture      |
+| Designing Machine Learning Systems                              | MLOps                 |
+| AI Engineering                                                  | Production AI         |
+| Building LLM Powered Applications                               | Enterprise AI         |
+| Generative AI with LLMs                                         | LLM Applications      |
+
+---
+
+# ✍️ Blogs
+
+Follow these blogs to stay updated with the latest advancements.
+
+| Blog                   | Website                           |
+| ---------------------- | --------------------------------- |
+| OpenAI Blog            | https://openai.com/news           |
+| Anthropic Blog         | https://www.anthropic.com/news    |
+| Google AI Blog         | https://blog.google/technology/ai |
+| Microsoft AI Blog      | https://blogs.microsoft.com       |
+| NVIDIA Developer Blog  | https://developer.nvidia.com/blog |
+| Hugging Face Blog      | https://huggingface.co/blog       |
+| LangChain Blog         | https://blog.langchain.dev        |
+| Sebastian Raschka Blog | https://sebastianraschka.com/blog |
+| fast.ai Blog           | https://www.fast.ai/posts         |
+
+---
+
+# 📄 Research Papers
+
+Every AI Engineer should read these landmark papers.
+
+## Foundation Models
+
+* Attention Is All You Need
+* BERT
+* GPT
+* GPT-2
+* GPT-3
+* GPT-4 Technical Report
+* InstructGPT
+
+---
+
+## Open Models
+
+* LLaMA
+* LLaMA 2
+* LLaMA 3
+
+---
+
+## Prompt Engineering
+
+* Chain of Thought Prompting
+* Self-Consistency
+* Tree of Thoughts
+* ReAct
+
+---
+
+## Tool Use & Agents
+
+* Toolformer
+* Gorilla
+* Voyager
+* AutoGPT
+* SWE-Agent
+
+---
+
+## Retrieval-Augmented Generation (RAG)
+
+* Retrieval-Augmented Generation
+* Self-RAG
+* Corrective RAG (CRAG)
+* GraphRAG
+* RAPTOR
+* HyDE
+
+---
+
+## Embeddings & Vector Search
+
+* Sentence-BERT (SBERT)
+* Dense Passage Retrieval (DPR)
+* ColBERT
+
+---
+
+# 🗺️ AI Engineer Roadmap
+
+```text
+Programming
+│
+├── Python
+├── Git & GitHub
+├── Linux
+├── SQL
+└── Data Structures
+
+        ↓
+
+Mathematics
+│
+├── Linear Algebra
+├── Probability
+├── Statistics
+└── Calculus
+
+        ↓
+
+Data
+│
+├── NumPy
+├── Pandas
+├── Data Visualization
+└── Feature Engineering
+
+        ↓
+
+Machine Learning
+│
+├── Supervised Learning
+├── Unsupervised Learning
+├── Model Evaluation
+└── Scikit-Learn
+
+        ↓
+
+Deep Learning
+│
+├── Neural Networks
+├── CNN
+├── RNN
+├── LSTM
+├── Attention
+└── Transformers
+
+        ↓
+
+Natural Language Processing
+│
+├── Tokenization
+├── Embeddings
+├── Vector Search
+└── Text Generation
+
+        ↓
+
+Large Language Models
+│
+├── GPT
+├── Claude
+├── Gemini
+├── Llama
+└── Mistral
+
+        ↓
+
+Generative AI
+│
+├── Prompt Engineering
+├── Fine-tuning
+├── Function Calling
+├── Structured Outputs
+└── Multimodal AI
+
+        ↓
+
+RAG
+│
+├── Chunking
+├── Embeddings
+├── Vector Databases
+├── Hybrid Search
+└── Evaluation
+
+        ↓
+
+AI Agents
+│
+├── Tool Calling
+├── Planning
+├── Memory
+├── Multi-Agent Systems
+└── MCP
+
+        ↓
+
+Frameworks
+│
+├── LangChain
+├── LangGraph
+├── LlamaIndex
+├── Semantic Kernel
+└── AutoGen
+
+        ↓
+
+Deployment
+│
+├── FastAPI
+├── Docker
+├── Kubernetes
+├── CI/CD
+└── Monitoring
+
+        ↓
+
+Cloud AI
+│
+├── Azure AI
+├── AWS Bedrock
+├── Vertex AI
+└── Hugging Face
+
+        ↓
+
+Production AI Systems
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+You can contribute by:
+
+* 📚 Adding free AI resources
+* 🎥 Sharing YouTube playlists
+* 📖 Recommending books
+* 📝 Improving documentation
+* 💻 Adding open-source repositories
+* 🔬 Including research papers
+* 🚀 Suggesting AI projects
+* 🐛 Fixing broken links
+
+Please open an Issue or submit a Pull Request.
+
+---
+
+# ⭐ Support
+
+If this repository helped you learn Artificial Intelligence, Machine Learning, Generative AI, or become a better AI Engineer:
+
+⭐ Star this repository
+
+🍴 Fork it
+
+📢 Share it with the community
+
+❤️ Happy Learning!
+
+---
+
+## 🔖 License
+
+This repository is licensed under the **MIT License**.
+
+Feel free to use, modify, and share it with proper attribution.
+
+---
+
+<div align="center">
+
+### 🚀 Keep Learning • Keep Building • Keep Sharing
+
+**Made with ❤️ for the AI Community**
+
+⭐ **If you found this repository useful, don't forget to Star it!**
+
+</div>
