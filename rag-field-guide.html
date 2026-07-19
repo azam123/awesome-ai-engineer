@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG — A Field Guide to Retrieval Augmented Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0F1A;
+  --bg-panel:#121829;
+  --bg-panel-2:#161d33;
+  --text:#E7E4DC;
+  --text-dim:#8B93A7;
+  --text-faint:#5A6478;
+  --amber:#F2A950;
+  --cyan:#5FD0DE;
+  --green:#71D999;
+  --rose:#E8748A;
+  --border:rgba(255,255,255,0.09);
+  --border-bright:rgba(255,255,255,0.18);
+  --radius:10px;
+  --mono:'JetBrains Mono', monospace;
+  --display:'Space Grotesk', sans-serif;
+  --body:'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+body{
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(95,208,222,0.08), transparent),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+::selection{background:var(--amber); color:#0B0F1A;}
+a{color:inherit;}
+img,svg{display:block; max-width:100%;}
+
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.03; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Layout shell ---------- */
+.shell{ display:grid; grid-template-columns:240px 1fr; min-height:100vh; }
+@media (max-width:900px){ .shell{ grid-template-columns:1fr; } }
+
+/* ---------- Side nav ---------- */
+.sidenav{
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  border-right:1px solid var(--border);
+  padding:28px 20px;
+  z-index:20;
+  background:rgba(11,15,26,0.7);
+  backdrop-filter:blur(10px);
+}
+@media (max-width:900px){
+  .sidenav{ position:fixed; top:0; left:0; width:260px; transform:translateX(-100%); transition:transform 0.3s ease; box-shadow:20px 0 40px rgba(0,0,0,0.4); }
+  .sidenav.open{ transform:translateX(0); }
+}
+.brand{
+  font-family:var(--display); font-weight:700; font-size:15px; letter-spacing:0.02em;
+  display:flex; align-items:center; gap:8px; margin-bottom:6px;
+}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--amber); box-shadow:0 0 12px var(--amber);}
+.brand-sub{ font-family:var(--mono); font-size:10.5px; color:var(--text-faint); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:28px; }
+.navlist{ list-style:none; display:flex; flex-direction:column; gap:2px; }
+.navlist a{
+  display:block; text-decoration:none; font-size:13px; color:var(--text-dim);
+  padding:7px 10px; border-radius:6px; border-left:2px solid transparent;
+  transition:all 0.15s ease;
+}
+.navlist a:hover{ color:var(--text); background:rgba(255,255,255,0.03); }
+.navlist a.active{ color:var(--amber); border-left-color:var(--amber); background:rgba(242,169,80,0.06); }
+.navlist .group-label{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--text-faint); margin:18px 0 6px 10px;
+}
+.navlist .group-label:first-child{margin-top:0;}
+
+.menu-btn{
+  display:none; position:fixed; top:16px; right:16px; z-index:30;
+  width:42px; height:42px; border-radius:50%; background:var(--bg-panel); border:1px solid var(--border-bright);
+  align-items:center; justify-content:center; cursor:pointer;
+}
+@media (max-width:900px){ .menu-btn{ display:flex; } }
+.menu-btn span, .menu-btn span::before, .menu-btn span::after{
+  content:''; display:block; width:16px; height:1.5px; background:var(--text); position:relative; transition:0.2s;
+}
+.menu-btn span::before{ position:absolute; top:-5px; width:16px; height:1.5px; background:var(--text);}
+.menu-btn span::after{ position:absolute; top:5px; width:16px; height:1.5px; background:var(--text);}
+
+/* ---------- Main content ---------- */
+main{ padding:0 clamp(20px,5vw,72px); max-width:1180px; }
+.section{ padding:90px 0; border-bottom:1px solid var(--border); }
+.section:last-of-type{ border-bottom:none; }
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--cyan); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+}
+.eyebrow::before{ content:''; width:22px; height:1px; background:var(--cyan); }
+h1,h2,h3,h4{ font-family:var(--display); font-weight:600; letter-spacing:-0.01em; }
+.section h2{ font-size:clamp(28px,3.6vw,42px); margin-bottom:18px; line-height:1.15; }
+.section .lede{ font-size:16.5px; color:var(--text-dim); max-width:680px; margin-bottom:44px; }
+p{ color:var(--text-dim); font-size:15px; }
+strong{ color:var(--text); font-weight:600; }
+code{ font-family:var(--mono); font-size:0.88em; background:rgba(255,255,255,0.05); padding:1px 6px; border-radius:4px; color:var(--cyan); }
+
+/* ---------- Hero ---------- */
+.hero{ padding:120px 0 90px; border-bottom:1px solid var(--border); position:relative; }
+.hero-tag{
+  font-family:var(--mono); font-size:11.5px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border:1px solid rgba(242,169,80,0.3);
+  border-radius:20px; margin-bottom:28px; background:rgba(242,169,80,0.06);
+}
+.hero h1{ font-size:clamp(38px,6vw,68px); line-height:1.03; max-width:900px; margin-bottom:24px; }
+.hero h1 em{ font-style:normal; color:var(--amber); }
+.hero p.lede{ font-size:18px; max-width:640px; margin-bottom:40px; }
+.hero-stats{ display:flex; gap:44px; flex-wrap:wrap; margin-top:56px; }
+.hero-stat .num{ font-family:var(--display); font-size:30px; color:var(--text); }
+.hero-stat .lbl{ font-family:var(--mono); font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px; }
+
+/* signature: mini live pipeline strip in hero */
+.hero-strip{
+  margin-top:56px; display:flex; align-items:center; gap:0; overflow-x:auto; padding-bottom:6px;
+  font-family:var(--mono); font-size:11.5px;
+}
+.hero-strip .hs-node{
+  flex:0 0 auto; padding:9px 14px; border:1px solid var(--border-bright); border-radius:7px; color:var(--text-dim);
+  background:var(--bg-panel); white-space:nowrap;
+}
+.hero-strip .hs-arrow{ flex:0 0 auto; width:26px; height:1px; background:linear-gradient(90deg,var(--cyan),transparent 90%); position:relative; }
+.hero-strip .hs-arrow::after{ content:'›'; position:absolute; right:-4px; top:-9px; color:var(--cyan); }
+
+/* ---------- Tabs (GenAI vs Agentic) ---------- */
+.tabs{ display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
+.tab-btn{
+  font-family:var(--mono); font-size:12px; letter-spacing:0.03em; padding:10px 18px; border-radius:8px;
+  border:1px solid var(--border-bright); background:transparent; color:var(--text-dim); cursor:pointer; transition:0.2s;
+}
+.tab-btn.active{ background:var(--amber); color:#14100a; border-color:var(--amber); font-weight:600; }
+.tab-btn:hover:not(.active){ border-color:var(--amber); color:var(--text); }
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; animation:fadein 0.35s ease; }
+@keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+.def-card{
+  border:1px solid var(--border); border-radius:var(--radius); padding:28px; background:var(--bg-panel);
+  display:grid; grid-template-columns:1fr 1fr; gap:32px;
+}
+@media (max-width:700px){ .def-card{ grid-template-columns:1fr; } }
+.def-card h3{ font-size:19px; margin-bottom:10px; }
+.def-card .tag{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-faint); margin-bottom:14px; display:block;}
+.chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.chip{ font-family:var(--mono); font-size:11px; padding:5px 10px; border-radius:6px; background:rgba(95,208,222,0.08); color:var(--cyan); border:1px solid rgba(95,208,222,0.2); }
+.chip.a{ background:rgba(242,169,80,0.08); color:var(--amber); border-color:rgba(242,169,80,0.2); }
+
+/* ---------- Compare table ---------- */
+.cmp-table{ width:100%; border-collapse:collapse; margin-top:36px; font-size:14px; }
+.cmp-table th{
+  font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-faint);
+  text-align:left; padding:12px 16px; border-bottom:1px solid var(--border-bright);
+}
+.cmp-table td{ padding:14px 16px; border-bottom:1px solid var(--border); color:var(--text-dim); vertical-align:top; }
+.cmp-table tr:hover td{ background:rgba(255,255,255,0.02); color:var(--text); }
+.cmp-table td.lbl-col{ color:var(--text); font-weight:500; white-space:nowrap; }
+.cmp-table .g{ color:var(--cyan); }
+.cmp-table .a{ color:var(--amber); }
+.table-wrap{ overflow-x:auto; }
+
+/* ---------- Pipeline diagram ---------- */
+.pipeline{
+  display:flex; overflow-x:auto; gap:0; padding:20px 0 30px; margin-top:10px; scrollbar-width:thin;
+}
+.pl-step{
+  flex:0 0 168px; position:relative; padding:18px 16px; margin-right:34px; border:1px solid var(--border-bright);
+  border-radius:var(--radius); background:var(--bg-panel); cursor:pointer; transition:0.2s; scroll-snap-align:start;
+}
+.pl-step:hover, .pl-step.active{ border-color:var(--amber); background:var(--bg-panel-2); transform:translateY(-3px); }
+.pl-step .pl-num{ font-family:var(--mono); font-size:10px; color:var(--text-faint); }
+.pl-step .pl-title{ font-family:var(--display); font-size:15px; margin:8px 0 4px; }
+.pl-step .pl-sub{ font-family:var(--mono); font-size:10.5px; color:var(--text-dim); }
+.pl-step::after{
+  content:''; position:absolute; top:50%; right:-34px; width:34px; height:1px;
+  background:repeating-linear-gradient(90deg, var(--cyan) 0 5px, transparent 5px 9px);
+}
+.pl-step:last-child::after{ display:none; }
+.pl-detail{
+  margin-top:24px; border:1px solid var(--border); border-radius:var(--radius); padding:26px 28px;
+  background:var(--bg-panel); min-height:120px;
+}
+.pl-detail .pl-detail-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:10px; }
+.pl-detail h4{ font-size:18px; color:var(--amber); }
+.pl-detail .pl-detail-tag{ font-family:var(--mono); font-size:10.5px; color:var(--text-faint); }
+
+/* ---------- Step deep-dive cards ---------- */
+.deep-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-top:20px; }
+.deep-card{
+  border:1px solid var(--border); border-radius:var(--radius); padding:24px; background:var(--bg-panel);
+}
+.deep-card .num{ font-family:var(--mono); color:var(--text-faint); font-size:12px; }
+.deep-card h4{ font-size:17px; margin:8px 0 10px; }
+.deep-card ul{ margin:12px 0 0 18px; color:var(--text-dim); font-size:13.5px; }
+.deep-card li{ margin-bottom:6px; }
+
+/* ---------- Chunking visual ---------- */
+.chunk-demo{ margin-top:26px; border:1px solid var(--border); border-radius:var(--radius); padding:24px; background:var(--bg-panel); }
+.chunk-controls{ display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+.chunk-controls button{
+  font-family:var(--mono); font-size:11.5px; padding:8px 14px; border-radius:7px; border:1px solid var(--border-bright);
+  background:transparent; color:var(--text-dim); cursor:pointer;
+}
+.chunk-controls button.active{ background:var(--cyan); color:#08131a; border-color:var(--cyan); font-weight:600; }
+.chunk-text{ font-family:var(--mono); font-size:12.5px; line-height:2; word-break:break-word; }
+.chunk-text span{ padding:2px 1px; border-radius:2px; }
+
+/* ---------- Vector DB comparison cards ---------- */
+.vdb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px; }
+@media (max-width:850px){ .vdb-grid{ grid-template-columns:1fr; } }
+.vdb-card{ border:1px solid var(--border); border-radius:var(--radius); padding:24px; background:var(--bg-panel); position:relative; overflow:hidden;}
+.vdb-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent-c,var(--cyan)); }
+.vdb-card.chroma::before{ background:var(--green); }
+.vdb-card.pinecone::before{ background:var(--amber); }
+.vdb-card.qdrant::before{ background:var(--rose); }
+.vdb-card h4{ font-size:19px; margin-bottom:2px; }
+.vdb-card .vdb-type{ font-family:var(--mono); font-size:10.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px; display:block;}
+.vdb-card .vdb-row{ display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-top:1px solid var(--border); font-size:12.5px; }
+.vdb-card .vdb-row .k{ color:var(--text-faint); font-family:var(--mono); font-size:10.5px; flex:0 0 88px; }
+.vdb-card .vdb-row .v{ color:var(--text-dim); text-align:right; }
+.vdb-card .best-for{ margin-top:16px; padding:12px; border-radius:7px; background:rgba(255,255,255,0.03); font-size:12.5px; color:var(--text); }
+
+.decision-box{
+  margin-top:24px; border:1px dashed var(--border-bright); border-radius:var(--radius); padding:22px 26px; background:rgba(95,208,222,0.03);
+}
+.decision-box .dq{ font-family:var(--mono); font-size:12px; color:var(--cyan); margin-bottom:8px; }
+
+/* ---------- Search types ---------- */
+.search-toggle{ display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap; }
+.search-tab{
+  font-family:var(--mono); font-size:12px; padding:9px 16px; border-radius:8px; border:1px solid var(--border-bright);
+  color:var(--text-dim); cursor:pointer; background:transparent;
+}
+.search-tab.active{ background:var(--green); color:#06210f; border-color:var(--green); font-weight:600; }
+.search-panel{ display:none; border:1px solid var(--border); border-radius:var(--radius); padding:26px; background:var(--bg-panel); }
+.search-panel.active{ display:block; animation:fadein 0.3s ease; }
+
+/* ---------- Cosine similarity interactive ---------- */
+.cos-demo{
+  display:grid; grid-template-columns:340px 1fr; gap:36px; margin-top:30px; align-items:center;
+  border:1px solid var(--border); border-radius:var(--radius); padding:30px; background:var(--bg-panel);
+}
+@media (max-width:750px){ .cos-demo{ grid-template-columns:1fr; } }
+.cos-svg-wrap{ display:flex; justify-content:center; }
+.cos-readout{ font-family:var(--mono); }
+.cos-score{ font-size:44px; color:var(--amber); font-family:var(--display); }
+.cos-formula{ font-size:13px; color:var(--text-dim); margin:14px 0 22px; line-height:1.8; }
+.cos-slider-row{ margin-bottom:16px; }
+.cos-slider-row label{ display:flex; justify-content:space-between; font-size:11.5px; color:var(--text-faint); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em;}
+input[type=range]{ width:100%; accent-color:var(--amber); }
+.cos-interp{ font-size:12.5px; color:var(--text-dim); margin-top:16px; padding:12px; border-radius:7px; background:rgba(242,169,80,0.06); border:1px solid rgba(242,169,80,0.15); }
+
+/* ---------- Rerank visual ---------- */
+.rerank-cols{ display:grid; grid-template-columns:1fr auto 1fr; gap:18px; align-items:start; margin-top:28px; }
+@media (max-width:700px){ .rerank-cols{ grid-template-columns:1fr; } .rerank-cols .rr-arrow-mid{ display:none;} }
+.rr-list{ border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.rr-list .rr-head{ font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-faint); padding:12px 16px; border-bottom:1px solid var(--border); }
+.rr-item{ display:flex; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border); font-size:13px; }
+.rr-item:last-child{border-bottom:none;}
+.rr-item .rr-score{ font-family:var(--mono); font-size:11.5px; color:var(--text-faint); }
+.rr-list.after .rr-item.top{ background:rgba(113,217,153,0.08); }
+.rr-list.after .rr-item.top .rr-score{ color:var(--green); }
+.rr-arrow-mid{ display:flex; align-items:center; justify-content:center; height:100%; font-family:var(--mono); font-size:11px; color:var(--rose); writing-mode:horizontal-tb; }
+
+/* ---------- Benefits ---------- */
+.benefit-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:10px; }
+.benefit-card{ border:1px solid var(--border); border-radius:var(--radius); padding:22px; background:var(--bg-panel); transition:0.2s; }
+.benefit-card:hover{ border-color:var(--green); transform:translateY(-2px); }
+.benefit-card .bnum{ font-family:var(--mono); font-size:22px; color:var(--green); }
+.benefit-card h4{ font-size:15.5px; margin:10px 0 8px; }
+.benefit-card p{ font-size:13px; }
+
+/* ---------- Examples ---------- */
+.example-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:10px; }
+.example-card{ border:1px solid var(--border); border-radius:var(--radius); padding:24px; background:var(--bg-panel); position:relative; }
+.example-card .ex-domain{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--cyan); margin-bottom:10px; }
+.example-card h4{ font-size:16px; margin-bottom:8px; }
+.example-card p{ font-size:13px; }
+
+/* ---------- Footer ---------- */
+footer{ padding:50px 0 90px; }
+footer .foot-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-family:var(--mono); font-size:11.5px; color:var(--text-faint); }
+
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<button class="menu-btn" id="menuBtn" aria-label="Toggle navigation"><span></span></button>
+
+<div class="shell">
+  <nav class="sidenav" id="sidenav">
+    <div class="brand"><span class="dot"></span>RAG // Field Guide</div>
+    <div class="brand-sub">Retrieval Augmented Generation</div>
+    <ul class="navlist">
+      <li class="group-label">Foundations</li>
+      <li><a href="#hero" class="nav-link">Overview</a></li>
+      <li><a href="#genai-agentic" class="nav-link">Gen AI vs Agentic AI</a></li>
+      <li class="group-label">RAG Core</li>
+      <li><a href="#what-is-rag" class="nav-link">What is RAG</a></li>
+      <li><a href="#pipeline" class="nav-link">Pipeline Flow</a></li>
+      <li class="group-label">Deep Dive</li>
+      <li><a href="#chunking" class="nav-link">Chunking</a></li>
+      <li><a href="#embedding" class="nav-link">Embeddings</a></li>
+      <li><a href="#vectordb" class="nav-link">Vector Databases</a></li>
+      <li><a href="#search" class="nav-link">Search Types</a></li>
+      <li><a href="#cosine" class="nav-link">Cosine Similarity</a></li>
+      <li><a href="#rerank" class="nav-link">Re-ranking</a></li>
+      <li class="group-label">Why & Where</li>
+      <li><a href="#benefits" class="nav-link">Benefits</a></li>
+      <li><a href="#examples" class="nav-link">Examples</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-tag">● live reference doc</div>
+      <h1>Retrieval Augmented<br><em>Generation</em>, decoded.</h1>
+      <p class="lede">A working engineer's guide to how modern LLM systems ground their answers in real data — from Gen AI vs Agentic AI, through chunking, embeddings, vector search and re-ranking.</p>
+      <div class="hero-strip" id="heroStrip">
+        <div class="hs-node">Query</div><div class="hs-arrow"></div>
+        <div class="hs-node">Embed</div><div class="hs-arrow"></div>
+        <div class="hs-node">Vector Search</div><div class="hs-arrow"></div>
+        <div class="hs-node">Re-rank</div><div class="hs-arrow"></div>
+        <div class="hs-node">Context</div><div class="hs-arrow"></div>
+        <div class="hs-node">LLM</div><div class="hs-arrow"></div>
+        <div class="hs-node">Answer</div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">8</div><div class="lbl">Pipeline stages</div></div>
+        <div class="hero-stat"><div class="num">3</div><div class="lbl">Vector DBs compared</div></div>
+        <div class="hero-stat"><div class="num">4</div><div class="lbl">Search strategies</div></div>
+      </div>
+    </section>
+
+    <!-- GEN AI VS AGENTIC AI -->
+    <section class="section reveal" id="genai-agentic">
+      <div class="eyebrow">01 · Foundations</div>
+      <h2>Generative AI vs. Agentic AI</h2>
+      <p class="lede">Both are built on the same LLMs — the difference is what happens around the model: a single forward pass that produces content, versus a loop that pursues a goal.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="genai">Generative AI</button>
+        <button class="tab-btn" data-tab="agentic">Agentic AI</button>
+        <button class="tab-btn" data-tab="compare">Side by side</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-genai">
+        <div class="def-card">
+          <div>
+            <span class="tag">Definition</span>
+            <h3>Generative AI</h3>
+            <p>A model that takes a prompt and produces new content — text, code, images, audio — in a single request/response cycle. It reacts; it does not pursue a goal beyond completing the current output.</p>
+            <div class="chip-row">
+              <span class="chip">Single-shot</span><span class="chip">Stateless by default</span><span class="chip">No tool use</span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Typical uses</span>
+            <ul style="margin-left:18px; color:var(--text-dim); font-size:14px;">
+              <li style="margin-bottom:8px;">Drafting an email or a blog post</li>
+              <li style="margin-bottom:8px;">Summarizing a document</li>
+              <li style="margin-bottom:8px;">Generating an image from a description</li>
+              <li style="margin-bottom:8px;">Autocompleting code in an editor</li>
+              <li>Answering a question from what the model already knows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-agentic">
+        <div class="def-card">
+          <div>
+            <span class="tag">Definition</span>
+            <h3>Agentic AI</h3>
+            <p>An LLM used as a reasoning engine inside a loop: it plans, chooses tools, observes results, and decides whether to continue or stop — pursuing a goal across multiple steps rather than answering once.</p>
+            <div class="chip-row">
+              <span class="chip a">Multi-step loop</span><span class="chip a">Tool / function calling</span><span class="chip a">Memory & state</span><span class="chip a">Self-correction</span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Typical uses</span>
+            <ul style="margin-left:18px; color:var(--text-dim); font-size:14px;">
+              <li style="margin-bottom:8px;">A coding agent that writes, runs, and fixes tests</li>
+              <li style="margin-bottom:8px;">A research agent that searches, reads, and synthesizes across sources</li>
+              <li style="margin-bottom:8px;">A support agent that checks order status, issues a refund, and confirms it</li>
+              <li style="margin-bottom:8px;">A DevOps agent that diagnoses an incident and opens a fix</li>
+              <li>An orchestrator that delegates to specialised sub-agents</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-compare">
+        <div class="table-wrap">
+        <table class="cmp-table">
+          <thead><tr><th>Dimension</th><th>Generative AI</th><th>Agentic AI</th></tr></thead>
+          <tbody>
+            <tr><td class="lbl-col">Interaction pattern</td><td>One prompt → one response</td><td class="a">Plan → act → observe → repeat</td></tr>
+            <tr><td class="lbl-col">Autonomy</td><td>None — waits for the next prompt</td><td class="a">Pursues a goal until done or blocked</td></tr>
+            <tr><td class="lbl-col">Tool use</td><td>Usually none</td><td class="a">Calls APIs, runs code, queries databases</td></tr>
+            <tr><td class="lbl-col">Memory</td><td>Context window only</td><td class="a">Working memory + long-term state across steps</td></tr>
+            <tr><td class="lbl-col">Planning</td><td>Implicit, within one response</td><td class="a">Explicit — decomposes tasks into sub-steps</td></tr>
+            <tr><td class="lbl-col">Error handling</td><td>None — output is final</td><td class="a">Can observe failure and retry a different approach</td></tr>
+            <tr><td class="lbl-col">Example architecture</td><td>Prompt → LLM → output</td><td class="a">ReAct / plan-execute loop with tool calls</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS RAG -->
+    <section class="section reveal" id="what-is-rag">
+      <div class="eyebrow">02 · RAG Core</div>
+      <h2>What is RAG?</h2>
+      <p class="lede">Retrieval Augmented Generation pairs an LLM with a retrieval step over your own data, so the model answers using facts it looks up at request time — not just what it memorized during training.</p>
+      <div class="deep-grid">
+        <div class="deep-card">
+          <h4>The problem it solves</h4>
+          <p style="font-size:13.5px;">LLMs are frozen at training time, can't see private or proprietary data, and will confidently hallucinate when they don't know something. Fine-tuning helps with style, not with fast-changing facts.</p>
+        </div>
+        <div class="deep-card">
+          <h4>The core idea</h4>
+          <p style="font-size:13.5px;">Before generating an answer, retrieve the most relevant snippets of external knowledge and insert them into the prompt as context — the model then generates <em style="color:var(--text); font-style:normal;">grounded</em> on that evidence.</p>
+        </div>
+        <div class="deep-card">
+          <h4>Why not just fine-tune?</h4>
+          <p style="font-size:13.5px;">Fine-tuning is expensive to keep current and doesn't reliably teach new facts. RAG keeps knowledge in an updatable index — refresh the data, not the model.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="section reveal" id="pipeline">
+      <div class="eyebrow">03 · RAG Core</div>
+      <h2>The RAG pipeline, stage by stage</h2>
+      <p class="lede">Click any stage to see what happens inside it. The flow splits cleanly into two halves: an offline <strong>indexing</strong> pipeline that runs once (and on updates), and an online <strong>query</strong> pipeline that runs per request.</p>
+
+      <div class="pipeline" id="pipeline-strip">
+        <div class="pl-step active" data-step="0"><div class="pl-num">01 · offline</div><div class="pl-title">Ingest</div><div class="pl-sub">load raw docs</div></div>
+        <div class="pl-step" data-step="1"><div class="pl-num">02 · offline</div><div class="pl-title">Chunk</div><div class="pl-sub">split into pieces</div></div>
+        <div class="pl-step" data-step="2"><div class="pl-num">03 · offline</div><div class="pl-title">Embed</div><div class="pl-sub">text → vector</div></div>
+        <div class="pl-step" data-step="3"><div class="pl-num">04 · offline</div><div class="pl-title">Index</div><div class="pl-sub">store in vector DB</div></div>
+        <div class="pl-step" data-step="4"><div class="pl-num">05 · online</div><div class="pl-title">Query embed</div><div class="pl-sub">user question → vector</div></div>
+        <div class="pl-step" data-step="5"><div class="pl-num">06 · online</div><div class="pl-title">Retrieve</div><div class="pl-sub">top-k ANN search</div></div>
+        <div class="pl-step" data-step="6"><div class="pl-num">07 · online</div><div class="pl-title">Re-rank</div><div class="pl-sub">cross-encoder refine</div></div>
+        <div class="pl-step" data-step="7"><div class="pl-num">08 · online</div><div class="pl-title">Generate</div><div class="pl-sub">LLM + context → answer</div></div>
+      </div>
+
+      <div class="pl-detail" id="pl-detail">
+        <!-- filled by JS -->
+      </div>
+    </section>
+
+    <!-- CHUNKING -->
+    <section class="section reveal" id="chunking">
+      <div class="eyebrow">04 · Deep Dive</div>
+      <h2>Step 1 — Chunking</h2>
+      <p class="lede">Documents are too large to embed whole and too meaningful to slice blindly. Chunking finds the balance between context and precision. Try a strategy below.</p>
+
+      <div class="chunk-demo">
+        <div class="chunk-controls">
+          <button class="active" data-strategy="fixed">Fixed-size</button>
+          <button data-strategy="recursive">Recursive character</button>
+          <button data-strategy="sentence">Sentence-based</button>
+          <button data-strategy="semantic">Semantic</button>
+        </div>
+        <div class="chunk-text" id="chunkText"></div>
+      </div>
+
+      <div class="deep-grid" style="margin-top:24px;">
+        <div class="deep-card"><span class="num">01</span><h4>Fixed-size</h4><p>Split every N characters or tokens, usually with 10–20% overlap so context isn't cut at a boundary. Fast and predictable, but can slice a sentence in half.</p></div>
+        <div class="deep-card"><span class="num">02</span><h4>Recursive character</h4><p>Tries to split on paragraph, then sentence, then word boundaries, falling back only when a chunk is still too large. The most common default (e.g. LangChain's splitter).</p></div>
+        <div class="deep-card"><span class="num">03</span><h4>Sentence-based</h4><p>Groups whole sentences up to a token budget. Keeps grammatical units intact — useful for QA-style retrieval.</p></div>
+        <div class="deep-card"><span class="num">04</span><h4>Semantic chunking</h4><p>Embeds sentences and splits where meaning shifts significantly, rather than at a fixed size. Costs more compute up front, but chunks stay topically coherent.</p></div>
+        <div class="deep-card"><span class="num">05</span><h4>Structure-aware</h4><p>Splits along a document's own structure — markdown headers, HTML tags, code functions — so a chunk maps to one logical section.</p></div>
+        <div class="deep-card"><span class="num">06</span><h4>Overlap</h4><p>A sliding overlap (e.g. 50–100 tokens) between consecutive chunks prevents an answer-bearing sentence from being orphaned at a chunk edge.</p></div>
+      </div>
+    </section>
+
+    <!-- EMBEDDING -->
+    <section class="section reveal" id="embedding">
+      <div class="eyebrow">05 · Deep Dive</div>
+      <h2>Step 2 — Embeddings</h2>
+      <p class="lede">An embedding model turns a chunk of text into a dense vector of floating-point numbers — a point in high-dimensional space — positioned so that semantically similar text ends up nearby.</p>
+      <div class="deep-grid">
+        <div class="deep-card"><h4>What it captures</h4><p style="font-size:13.5px;">Meaning, not just words. <code>"car"</code> and <code>"automobile"</code> land close together even with zero shared characters, because the model learned meaning from context during training.</p></div>
+        <div class="deep-card"><h4>Dimensionality</h4><p style="font-size:13.5px;">Common sizes: 384 (MiniLM), 768 (BERT-family), 1536 (OpenAI text-embedding-3-small), 3072 (text-embedding-3-large). Higher dimensions capture more nuance at higher storage/compute cost.</p></div>
+        <div class="deep-card"><h4>Same model, both sides</h4><p style="font-size:13.5px;">The query and the documents must be embedded with the <strong>same model</strong> — vectors from different embedding models aren't comparable to each other.</p></div>
+        <div class="deep-card"><h4>Common models</h4><p style="font-size:13.5px;">OpenAI <code>text-embedding-3</code>, Azure OpenAI ada-002, Cohere <code>embed-v3</code>, open-source <code>bge</code> / <code>e5</code> / sentence-transformers for self-hosting.</p></div>
+      </div>
+    </section>
+
+    <!-- VECTOR DB -->
+    <section class="section reveal" id="vectordb">
+      <div class="eyebrow">06 · Deep Dive</div>
+      <h2>Step 3 — Vector Databases</h2>
+      <p class="lede">Vectors need an index built for approximate nearest-neighbor (ANN) search — usually HNSW — so retrieval stays fast even across millions of chunks. Here's how three popular options compare.</p>
+
+      <div class="vdb-grid">
+        <div class="vdb-card chroma">
+          <h4>Chroma</h4><span class="vdb-type">Embedded / open-source</span>
+          <div class="vdb-row"><span class="k">Hosting</span><span class="v">Local / in-process, or self-hosted server</span></div>
+          <div class="vdb-row"><span class="k">Setup</span><span class="v">Minutes — pip install and go</span></div>
+          <div class="vdb-row"><span class="k">Scale</span><span class="v">Small–medium (prototyping to mid-size prod)</span></div>
+          <div class="vdb-row"><span class="k">Ops overhead</span><span class="v">Very low</span></div>
+          <div class="best-for">Best for: prototypes, local dev, notebooks, small internal tools.</div>
+        </div>
+        <div class="vdb-card pinecone">
+          <h4>Pinecone</h4><span class="vdb-type">Fully managed / cloud</span>
+          <div class="vdb-row"><span class="k">Hosting</span><span class="v">Serverless, fully managed cloud</span></div>
+          <div class="vdb-row"><span class="k">Setup</span><span class="v">Minutes — no infra to run</span></div>
+          <div class="vdb-row"><span class="k">Scale</span><span class="v">Billions of vectors, production SaaS scale</span></div>
+          <div class="vdb-row"><span class="k">Ops overhead</span><span class="v">Near zero, but usage-based cost</span></div>
+          <div class="best-for">Best for: production apps that want zero infra ops and elastic scale.</div>
+        </div>
+        <div class="vdb-card qdrant">
+          <h4>Qdrant</h4><span class="vdb-type">Open-source / self-host or cloud</span>
+          <div class="vdb-row"><span class="k">Hosting</span><span class="v">Self-hosted (Rust) or Qdrant Cloud</span></div>
+          <div class="vdb-row"><span class="k">Setup</span><span class="v">Docker container or managed cloud tier</span></div>
+          <div class="vdb-row"><span class="k">Scale</span><span class="v">High — built for performance and rich filtering</span></div>
+          <div class="vdb-row"><span class="k">Ops overhead</span><span class="v">Moderate if self-hosted; low on cloud</span></div>
+          <div class="best-for">Best for: data sovereignty, on-prem/regulated environments, heavy metadata filtering.</div>
+        </div>
+      </div>
+
+      <div class="decision-box">
+        <div class="dq">Which one to choose?</div>
+        <p style="font-size:13.5px;">Prototyping or a small internal tool with no infra team → <strong style="color:var(--green);">Chroma</strong>. Shipping a production SaaS feature and want to avoid running infrastructure → <strong style="color:var(--amber);">Pinecone</strong>. Data must stay on-prem or in your own cloud, or you need complex metadata filters and full control → <strong style="color:var(--rose);">Qdrant</strong>. In an enterprise Azure environment, Azure AI Search's vector support is also worth weighing against all three.</p>
+      </div>
+    </section>
+
+    <!-- SEARCH TYPES -->
+    <section class="section reveal" id="search">
+      <div class="eyebrow">07 · Deep Dive</div>
+      <h2>Step 4 — Search strategies</h2>
+      <p class="lede">Retrieval isn't always pure vector search. Production systems usually blend approaches.</p>
+
+      <div class="search-toggle">
+        <button class="search-tab active" data-search="keyword">Keyword (lexical)</button>
+        <button class="search-tab" data-search="semantic">Semantic (vector)</button>
+        <button class="search-tab" data-search="hybrid">Hybrid</button>
+        <button class="search-tab" data-search="metadata">Metadata filtering</button>
+      </div>
+
+      <div class="search-panel active" id="search-keyword">
+        <h4 style="margin-bottom:10px; color:var(--green);">Keyword / lexical search</h4>
+        <p>Matches exact terms using algorithms like <strong>BM25</strong> or TF-IDF. Fast, explainable, and excellent at exact matches — product codes, error strings, names — but blind to synonyms or paraphrasing.</p>
+      </div>
+      <div class="search-panel" id="search-semantic">
+        <h4 style="margin-bottom:10px; color:var(--green);">Semantic / vector search</h4>
+        <p>Embeds the query and finds nearby vectors by <strong>cosine similarity</strong>, dot product, or Euclidean distance, using an ANN index such as HNSW. Understands meaning and paraphrase, but can miss exact rare terms an embedding wasn't trained to weight heavily.</p>
+      </div>
+      <div class="search-panel" id="search-hybrid">
+        <h4 style="margin-bottom:10px; color:var(--green);">Hybrid search</h4>
+        <p>Runs keyword and semantic search in parallel, then merges the two ranked lists — commonly with <strong>Reciprocal Rank Fusion (RRF)</strong>. Gets the recall of semantic search plus the precision of exact keyword matches. The default choice for most production RAG systems.</p>
+      </div>
+      <div class="search-panel" id="search-metadata">
+        <h4 style="margin-bottom:10px; color:var(--green);">Metadata filtering</h4>
+        <p>Narrows the search space by structured fields — <code>date &gt; 2024</code>, <code>department = "finance"</code>, <code>access_level = "public"</code> — before or alongside similarity search. Essential for multi-tenant and access-controlled RAG.</p>
+      </div>
+    </section>
+
+    <!-- COSINE SIMILARITY -->
+    <section class="section reveal" id="cosine">
+      <div class="eyebrow">08 · Deep Dive</div>
+      <h2>Cosine similarity, visually</h2>
+      <p class="lede">Cosine similarity measures the angle between two vectors, ignoring their length — a good match when what matters is direction (meaning), not magnitude. Drag the sliders to see it move.</p>
+
+      <div class="cos-demo">
+        <div class="cos-svg-wrap">
+          <svg id="cosSvg" viewBox="0 0 300 300" width="300" height="300">
+            <line x1="20" y1="150" x2="280" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="150" y1="20" x2="150" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <path id="cosArc" d="" fill="rgba(242,169,80,0.15)" stroke="var(--amber)" stroke-width="1"/>
+            <line id="vecA" x1="150" y1="150" x2="260" y2="150" stroke="#5FD0DE" stroke-width="2.5" marker-end="url(#arrowA)"/>
+            <line id="vecB" x1="150" y1="150" x2="230" y2="70" stroke="#71D999" stroke-width="2.5" marker-end="url(#arrowB)"/>
+            <text x="266" y="148" fill="#5FD0DE" font-family="JetBrains Mono" font-size="12">A</text>
+            <text id="labelB" x="234" y="66" fill="#71D999" font-family="JetBrains Mono" font-size="12">B</text>
+            <defs>
+              <marker id="arrowA" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5FD0DE"/></marker>
+              <marker id="arrowB" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#71D999"/></marker>
+            </defs>
+          </svg>
+        </div>
+        <div class="cos-readout">
+          <div class="cos-slider-row">
+            <label><span>Angle between vectors</span><span id="angleVal">30°</span></label>
+            <input type="range" id="angleSlider" min="0" max="180" value="30">
+          </div>
+          <div class="cos-score" id="cosScoreVal">cos θ = 0.866</div>
+          <div class="cos-formula">similarity(A, B) = (A · B) / (‖A‖ × ‖B‖)<br>Range: −1 (opposite) to 1 (identical direction). Two chunks about the same topic sit at a small angle → a score close to 1.</div>
+          <div class="cos-interp" id="cosInterp">A narrow angle — these two vectors point in nearly the same direction. In embedding space, that means the text they represent is semantically close.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RERANKING -->
+    <section class="section reveal" id="rerank">
+      <div class="eyebrow">09 · Deep Dive</div>
+      <h2>Step 5 — Re-ranking</h2>
+      <p class="lede">Vector search is fast because it compares independently-computed embeddings (a <strong>bi-encoder</strong>). A <strong>cross-encoder</strong> reranker instead reads the query and each candidate together, which is slower but far more accurate — so it's applied only to the top handful of candidates the first pass already found.</p>
+
+      <div class="rerank-cols">
+        <div class="rr-list">
+          <div class="rr-head">Initial retrieval (top-5 by vector search)</div>
+          <div class="rr-item"><span>"Reset your password via email link"</span><span class="rr-score">0.81</span></div>
+          <div class="rr-item"><span>"Two-factor authentication setup guide"</span><span class="rr-score">0.79</span></div>
+          <div class="rr-item"><span>"Account recovery for locked accounts"</span><span class="rr-score">0.77</span></div>
+          <div class="rr-item"><span>"Password policy for enterprise admins"</span><span class="rr-score">0.75</span></div>
+          <div class="rr-item"><span>"How to change your billing email"</span><span class="rr-score">0.73</span></div>
+        </div>
+        <div class="rr-arrow-mid">cross-encoder<br>scores query + doc<br>jointly →</div>
+        <div class="rr-list after">
+          <div class="rr-head">After re-ranking (top-5 reordered)</div>
+          <div class="rr-item top"><span>"Account recovery for locked accounts"</span><span class="rr-score">0.97</span></div>
+          <div class="rr-item top"><span>"Reset your password via email link"</span><span class="rr-score">0.94</span></div>
+          <div class="rr-item"><span>"Two-factor authentication setup guide"</span><span class="rr-score">0.58</span></div>
+          <div class="rr-item"><span>"Password policy for enterprise admins"</span><span class="rr-score">0.41</span></div>
+          <div class="rr-item"><span>"How to change your billing email"</span><span class="rr-score">0.22</span></div>
+        </div>
+      </div>
+      <p style="margin-top:20px; font-size:13.5px;">Common rerankers: <code>Cohere Rerank</code>, open-source <code>bge-reranker</code>, or a cross-encoder from <code>sentence-transformers</code>. Retrieve a wider net (e.g. top-50) then rerank down to the top-5 that actually go into the prompt.</p>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section reveal" id="benefits">
+      <div class="eyebrow">10 · Why & Where</div>
+      <h2>Benefits of using RAG</h2>
+      <div class="benefit-grid">
+        <div class="benefit-card"><div class="bnum">01</div><h4>Fewer hallucinations</h4><p>Answers are grounded in retrieved evidence instead of the model's memorized parameters.</p></div>
+        <div class="benefit-card"><div class="bnum">02</div><h4>Always current</h4><p>Update the index and the system's knowledge updates instantly — no retraining cycle.</p></div>
+        <div class="benefit-card"><div class="bnum">03</div><h4>Private & domain data</h4><p>Ground answers in internal docs, tickets, or codebases the base model never saw.</p></div>
+        <div class="benefit-card"><div class="bnum">04</div><h4>Cheaper than fine-tuning</h4><p>Indexing text is far less costly than training runs, and iterates in minutes, not days.</p></div>
+        <div class="benefit-card"><div class="bnum">05</div><h4>Traceable answers</h4><p>Retrieved chunks double as citations, so a user can verify where an answer came from.</p></div>
+        <div class="benefit-card"><div class="bnum">06</div><h4>Smaller models go further</h4><p>Good retrieval can let a smaller, cheaper LLM match a larger one on knowledge-heavy tasks.</p></div>
+      </div>
+    </section>
+
+    <!-- EXAMPLES -->
+    <section class="section reveal" id="examples">
+      <div class="eyebrow">11 · Why & Where</div>
+      <h2>Where RAG shows up in production</h2>
+      <div class="example-grid">
+        <div class="example-card"><div class="ex-domain">Enterprise</div><h4>Internal knowledge assistant</h4><p>Answers HR, IT, and policy questions grounded in the company wiki and handbooks, instead of generic web knowledge.</p></div>
+        <div class="example-card"><div class="ex-domain">Customer Support</div><h4>Support copilot</h4><p>Retrieves the exact help-center article or past ticket resolution before drafting a reply, cutting escalations.</p></div>
+        <div class="example-card"><div class="ex-domain">Legal</div><h4>Contract & case search</h4><p>Finds relevant clauses across thousands of contracts and cites the source paragraph for review.</p></div>
+        <div class="example-card"><div class="ex-domain">Engineering</div><h4>Codebase & docs assistant</h4><p>Answers "how does X work here" by retrieving the actual internal repo and architecture docs, not generic patterns.</p></div>
+        <div class="example-card"><div class="ex-domain">Finance</div><h4>Research & filings QA</h4><p>Grounds answers in earnings reports and filings with page-level citations analysts can verify.</p></div>
+        <div class="example-card"><div class="ex-domain">Healthcare</div><h4>Clinical reference lookup</h4><p>Surfaces relevant guidelines or literature for a clinician to review — always with a human in the loop.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-inner">
+        <span>RAG // Field Guide — built for engineers shipping retrieval systems</span>
+        <span>Query → Embed → Retrieve → Re-rank → Generate</span>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+// ---------- Mobile nav ----------
+const menuBtn = document.getElementById('menuBtn');
+const sidenav = document.getElementById('sidenav');
+menuBtn.addEventListener('click', () => sidenav.classList.toggle('open'));
+document.querySelectorAll('.navlist a').forEach(a=>{
+  a.addEventListener('click', ()=> sidenav.classList.remove('open'));
+});
+
+// ---------- Scroll spy ----------
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('main section[id]');
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+},{ rootMargin:'-30% 0px -60% 0px' });
+sections.forEach(s=>spy.observe(s));
+
+// ---------- Reveal on scroll ----------
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+},{ threshold:0.1 });
+revealEls.forEach(el=>revealObs.observe(el));
+
+// ---------- Tabs: GenAI vs Agentic ----------
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ---------- Pipeline detail content ----------
+const pipelineDetails = [
+  { title:'Ingest', tag:'offline · stage 01', body:'Pull raw content from its sources — PDFs, Word docs, Confluence, databases, APIs — and normalize it into plain text with source metadata (title, URL, timestamp, access level) attached, since that metadata gets used later for filtering and citations.' },
+  { title:'Chunk', tag:'offline · stage 02', body:'Split each document into smaller pieces sized to fit meaningfully inside an embedding model\'s context, typically a few hundred tokens with a small overlap between neighboring chunks so no answer-bearing sentence gets orphaned at a boundary.' },
+  { title:'Embed', tag:'offline · stage 03', body:'Run every chunk through an embedding model to produce a dense vector — a numeric fingerprint of its meaning. This happens once per chunk and is cached; it only reruns when the source content changes.' },
+  { title:'Index', tag:'offline · stage 04', body:'Store each vector plus its metadata and original text in a vector database, which builds an approximate nearest-neighbor index (commonly HNSW) so that similarity search stays fast even over millions of chunks.' },
+  { title:'Query embed', tag:'online · stage 05', body:'When a user asks a question, embed the question itself with the exact same embedding model used for the documents, so the two vector spaces line up and are directly comparable.' },
+  { title:'Retrieve', tag:'online · stage 06', body:'Search the vector index for the top-k chunks closest to the query vector (commonly by cosine similarity), often widened with keyword search in a hybrid setup and narrowed by metadata filters like access control or date range.' },
+  { title:'Re-rank', tag:'online · stage 07', body:'Pass the retrieved candidates through a cross-encoder reranker that scores the query against each candidate jointly, reordering for true relevance and trimming down to the handful of chunks that will actually enter the prompt.' },
+  { title:'Generate', tag:'online · stage 08', body:'Assemble a prompt from the top re-ranked chunks plus the original question, and send it to the LLM, which generates an answer grounded in that retrieved context — typically with citations back to the source chunks.' },
+];
+const plSteps = document.querySelectorAll('.pl-step');
+const plDetail = document.getElementById('pl-detail');
+function renderPlDetail(i){
+  const d = pipelineDetails[i];
+  plDetail.innerHTML = `<div class="pl-detail-head"><h4>${d.title}</h4><span class="pl-detail-tag">${d.tag}</span></div><p style="font-size:14px; color:var(--text-dim);">${d.body}</p>`;
+}
+plSteps.forEach(step=>{
+  step.addEventListener('click', ()=>{
+    plSteps.forEach(s=>s.classList.remove('active'));
+    step.classList.add('active');
+    renderPlDetail(parseInt(step.dataset.step));
+  });
+});
+renderPlDetail(0);
+
+// ---------- Chunking demo ----------
+const sampleText = "Retrieval Augmented Generation combines a search step with a generation step. First the system retrieves relevant passages from a knowledge base. Then it feeds those passages to a language model along with the user's question. The model uses this retrieved context to produce a grounded, accurate answer instead of relying only on what it memorized during training. This approach keeps knowledge current without retraining.";
+const strategies = {
+  fixed: () => {
+    const size = 60; const chunks = [];
+    for(let i=0;i<sampleText.length;i+=size){ chunks.push(sampleText.slice(i,i+size)); }
+    return chunks;
+  },
+  recursive: () => sampleText.split(/(?<=\. )/).reduce((acc,s)=>{
+    if(acc.length===0) return [s];
+    const last = acc[acc.length-1];
+    if((last+s).length < 130){ acc[acc.length-1] = last+s; } else { acc.push(s); }
+    return acc;
+  },[]),
+  sentence: () => sampleText.split(/(?<=\. )/).filter(Boolean),
+  semantic: () => {
+    // simulate topic-shift grouping
+    const sents = sampleText.split(/(?<=\. )/).filter(Boolean);
+    return [ sents.slice(0,2).join(''), sents.slice(2,4).join(''), sents.slice(4).join('') ];
+  }
+};
+const chunkColors = ['#5FD0DE','#F2A950','#71D999','#E8748A','#B98CE8','#6FA8DC'];
+function renderChunks(strategy){
+  const chunks = strategies[strategy]();
+  const wrap = document.getElementById('chunkText');
+  wrap.innerHTML = chunks.map((c,i)=>`<span style="background:${chunkColors[i%chunkColors.length]}22; border:1px solid ${chunkColors[i%chunkColors.length]}55; color:var(--text);">${c}</span>`).join(' ');
+}
+document.querySelectorAll('.chunk-controls button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.chunk-controls button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderChunks(btn.dataset.strategy);
+  });
+});
+renderChunks('fixed');
+
+// ---------- Search tabs ----------
+document.querySelectorAll('.search-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.search-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.search-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('search-'+tab.dataset.search).classList.add('active');
+  });
+});
+
+// ---------- Cosine similarity demo ----------
+const angleSlider = document.getElementById('angleSlider');
+const angleVal = document.getElementById('angleVal');
+const cosScoreVal = document.getElementById('cosScoreVal');
+const vecB = document.getElementById('vecB');
+const labelB = document.getElementById('labelB');
+const cosArc = document.getElementById('cosArc');
+const cosInterp = document.getElementById('cosInterp');
+const R = 110, cx=150, cy=150;
+function updateCosine(){
+  const angleDeg = parseInt(angleSlider.value);
+  angleVal.textContent = angleDeg + '°';
+  const rad = angleDeg * Math.PI/180;
+  const bx = cx + R*Math.cos(rad);
+  const by = cy - R*Math.sin(rad);
+  vecB.setAttribute('x2', bx); vecB.setAttribute('y2', by);
+  labelB.setAttribute('x', bx + (bx>cx?6:-20)); labelB.setAttribute('y', by - 6);
+  const cosVal = Math.cos(rad);
+  cosScoreVal.textContent = 'cos θ = ' + cosVal.toFixed(3);
+  // arc path
+  const arcR = 32;
+  const startX = cx + arcR, startY = cy;
+  const endX = cx + arcR*Math.cos(rad), endY = cy - arcR*Math.sin(rad);
+  const largeArc = angleDeg > 180 ? 1 : 0;
+  cosArc.setAttribute('d', `M ${cx} ${cy} L ${startX} ${startY} A ${arcR} ${arcR} 0 ${largeArc} 0 ${endX} ${endY} Z`);
+  if(cosVal > 0.85){ cosInterp.textContent = 'A narrow angle — these vectors point in nearly the same direction. In embedding space that means the underlying text is highly similar in meaning.'; }
+  else if(cosVal > 0.4){ cosInterp.textContent = 'A moderate angle — some shared meaning, but the two pieces of text are only loosely related.'; }
+  else if(cosVal > -0.1){ cosInterp.textContent = 'Close to a right angle — cosine similarity near zero means the vectors share almost no directional relationship; the texts are largely unrelated.'; }
+  else{ cosInterp.textContent = 'A wide angle approaching 180° — the vectors point in near-opposite directions, indicating dissimilar or contrasting meaning.'; }
+}
+angleSlider.addEventListener('input', updateCosine);
+updateCosine();
+</script>
+</body>
+</html>
