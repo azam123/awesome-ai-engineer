@@ -3,6 +3,7 @@
 **Keywords:** `AI Guardrails` `LLM Security` `RAG` `Prompt Injection` `Jailbreak Detection` `Enterprise AI` `Responsible AI` `AI Governance` `PII Detection` `Hallucination Detection` `Azure AI` `AWS Bedrock` `AI Compliance` `AI Agents` `Data Privacy`
 
 ---
+# Previous Article : RAG explained https://github.com/azam123/awesome-ai-engineer/blob/main/RAG-Explained-1.md#8-hands-on-chunking-explained-with-code
 
 ## Introduction
 
