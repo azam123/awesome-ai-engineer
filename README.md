@@ -10,6 +10,16 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 ⭐ Learn from the world's best universities, AI companies, researchers, books, blogs, GitHub repositories, YouTube channels, documentation, and research papers.
 
+
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-Agents-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-Workflows-1C3C3C?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Production-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-Enabled-FF6F00?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-production--ready-brightgreen?style=for-the-badge)
+
+
 </div>
 
 ---
