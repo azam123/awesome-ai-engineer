@@ -1,138 +1,83 @@
-🚀 Python AI/ML & Data Science Libraries → C#/.NET Equivalents
-
-🎯 A practical guide for Python AI/ML developers moving to C#/.NET
-
-Learn the .NET equivalent, understand the use case, and see Python vs C# examples side by side.
-
-
-
-
-
-
-🧭 Quick Navigation
-
-📊 Python → .NET Cheat Sheet
-
-🌐 FastAPI → ASP.NET Core
-
-🔢 NumPy → Math.NET Numerics
-
-🗃️ Pandas → Microsoft.Data.Analysis / Deedle
-
-🤖 Scikit-learn → ML.NET
-
-🌳 XGBoost → XGBoost.NET
-
-🌲 LightGBM → LightGBM.NET
-
-🧠 PyTorch → TorchSharp
-
-🧬 TensorFlow → TensorFlow.NET
-
-👁️ OpenCV → OpenCvSharp
-
-⚡ ONNX → ONNX Runtime
-
-📈 Matplotlib / Seaborn → ScottPlot
-
-📓 Jupyter → .NET Interactive
-
-🏗️ Putting the Stack Together
-
-🛣️ Migration Strategy
-
-🎓 Learning Path
-
-📊 Python → .NET Cheat Sheet
-
-🐍 Python
-
-🔷 C#/.NET
-
-🎯 Primary Use
-
-FastAPI
-
-ASP.NET Core
-
-REST APIs / ML serving
-
-NumPy
-
-Math.NET Numerics
-
-Numerical computing
-
-Pandas
-
-Microsoft.Data.Analysis / Deedle
-
-DataFrames
-
-Scikit-learn
-
-ML.NET
-
-Classical ML
-
-XGBoost
-
-XGBoost.NET
-
-Gradient boosting
-
-LightGBM
-
-LightGBM.NET
-
-Gradient boosting
-
-PyTorch
-
-TorchSharp
-
-Deep learning
-
-TensorFlow
-
-TensorFlow.NET
-
-Deep learning
-
-OpenCV
-
-OpenCvSharp
-
-Computer vision
-
-ONNX
-
-ONNX Runtime
-
-Model inference
-
-Matplotlib / Seaborn
-
-ScottPlot
-
-Visualization
-
-Jupyter
-
-.NET Interactive
-
-Interactive notebooks
-
-💡 Important: These are practical equivalents, not always 1:1 replacements. Some .NET libraries are wrappers/bindings around native engines, while others provide an idiomatic .NET implementation.
-
-1. 🌐 FastAPI → ASP.NET Core
-
-FastAPI is commonly used to expose machine learning models through REST APIs.
-
-In .NET, the natural equivalent is ASP.NET Core Web API.
-
-🐍 Python — FastAPI
-
+# 🚀 Python AI/ML & Data Science → C#/.NET Equivalents
+
+<p align="center">
+  <b>A practical migration guide for Python AI/ML developers moving to the C#/.NET ecosystem</b>
+</p>
+
+<p align="center">
+  <img alt="C#" src="https://img.shields.io/badge/C%23-.NET-512BD4?style=for-the-badge&logo=csharp&logoColor=white">
+  <img alt="Python" src="https://img.shields.io/badge/Python-AI%2FML-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="ML.NET" src="https://img.shields.io/badge/ML.NET-Machine%20Learning-blueviolet?style=for-the-badge">
+  <img alt="ONNX" src="https://img.shields.io/badge/ONNX-Runtime-black?style=for-the-badge&logo=onnx&logoColor=white">
+</p>
+
+<p align="center">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green.svg">
+  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  <img alt="Made with love" src="https://img.shields.io/badge/made%20with-%E2%9D%A4%EF%B8%8F-red">
+  <img alt="Stars" src="https://img.shields.io/github/stars/your-username/python-to-dotnet-ai-ml?style=social">
+</p>
+
+> 🎯 **Goal**: Help Python AI/ML engineers understand the .NET equivalent for every major library, see side-by-side code, and learn how to architect production AI systems using C#/.NET — without giving up Python where it shines.
+
+---
+
+## 🧭 Table of Contents
+
+- [📊 Quick Cheat Sheet](#-quick-cheat-sheet)
+- [🌐 FastAPI → ASP.NET Core](#-1-fastapi--aspnet-core)
+- [🔢 NumPy → Math.NET Numerics](#-2-numpy--mathnet-numerics)
+- [🗃️ Pandas → Microsoft.Data.Analysis / Deedle](#️-3-pandas--microsoftdataanalysis--deedle)
+- [🤖 Scikit-learn → ML.NET](#-4-scikit-learn--mlnet)
+- [🌳 XGBoost → XGBoost.NET](#-5-xgboost--xgboostnet)
+- [🌲 LightGBM → LightGBM.NET](#-6-lightgbm--lightgbmnet)
+- [🧠 PyTorch → TorchSharp](#-7-pytorch--torchsharp)
+- [🧬 TensorFlow → TensorFlow.NET](#-8-tensorflow--tensorflownet)
+- [👁️ OpenCV → OpenCvSharp](#️-9-opencv--opencvsharp)
+- [⚡ ONNX → ONNX Runtime](#-10-onnx--onnx-runtime)
+- [📈 Matplotlib/Seaborn → ScottPlot](#-11-matplotlibseaborn--scottplot)
+- [📓 Jupyter → .NET Interactive](#-12-jupyter--net-interactive)
+- [🏗️ Putting the Stack Together](#️-putting-the-stack-together)
+- [🔄 Migration Strategy](#-migration-strategy)
+- [🎓 Learning Path](#-learning-path)
+- [🆚 Python vs .NET: The Bigger Picture](#-python-vs-net-the-bigger-picture)
+- [🔥 Final Cheat Sheet](#-final-cheat-sheet)
+- [🏷️ Tags & Keywords](#️-tags--keywords)
+- [🤝 Contributing](#-contributing)
+
+---
+
+## 📊 Quick Cheat Sheet
+
+| 🐍 Python | 🔷 .NET | 🎯 Primary Use |
+|---|---|---|
+| FastAPI | ASP.NET Core | REST APIs / ML serving |
+| NumPy | Math.NET Numerics | Numerical computing |
+| Pandas | Microsoft.Data.Analysis / Deedle | DataFrames |
+| Scikit-learn | ML.NET | Classical ML |
+| XGBoost | XGBoost.NET | Gradient boosting |
+| LightGBM | LightGBM.NET | Gradient boosting |
+| PyTorch | TorchSharp | Deep learning |
+| TensorFlow | TensorFlow.NET | Deep learning |
+| OpenCV | OpenCvSharp | Computer vision |
+| ONNX | ONNX Runtime | Model inference |
+| Matplotlib / Seaborn | ScottPlot | Visualization |
+| Jupyter | .NET Interactive | Interactive notebooks |
+
+> 💡 **Note:** These are *practical* equivalents, not always 1:1 replacements. Some .NET libraries are wrappers/bindings around native engines; others are idiomatic .NET implementations.
+
+---
+
+## 🌐 1. FastAPI → ASP.NET Core
+
+FastAPI is commonly used to expose machine learning models through REST APIs. In .NET, the natural equivalent is **ASP.NET Core Web API**.
+
+<table>
+<tr><th>🐍 Python — FastAPI</th><th>🔷 C# — ASP.NET Core</th></tr>
+<tr>
+<td>
+
+```python
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -140,121 +85,112 @@ app = FastAPI()
 @app.get("/predict")
 def predict(x: float):
     return {"prediction": x * 2}
+```
 
-🔷 C# — ASP.NET Core
+</td>
+<td>
 
+```csharp
 var builder = WebApplication.CreateBuilder(args);
-
 var app = builder.Build();
 
 app.MapGet("/predict", (double x) =>
 {
-    return Results.Ok(new
-    {
-        prediction = x * 2
-    });
+    return Results.Ok(new { prediction = x * 2 });
 });
 
 app.Run();
+```
 
-⭐ Why ASP.NET Core?
+</td>
+</tr>
+</table>
 
-🚀 High-performance APIs
+**⭐ Why ASP.NET Core?**
+- 🚀 High-performance APIs
+- 🔐 Authentication & authorization
+- 💉 Dependency injection
+- 📋 Logging and observability
+- ☁️ Azure integration
+- 🧩 Enterprise application integration
+- 🏗️ Microservice architecture
 
-🔐 Authentication & authorization
+---
 
-💉 Dependency injection
+## 🔢 2. NumPy → Math.NET Numerics
 
-📋 Logging and observability
+NumPy provides arrays, linear algebra, statistics, and numerical operations. **Math.NET Numerics** is the strongest general-purpose numerical computing option for .NET.
 
-☁️ Azure integration
+<table>
+<tr><th>🐍 Python — NumPy</th><th>🔷 C# — Math.NET Numerics</th></tr>
+<tr>
+<td>
 
-🧩 Enterprise application integration
-
-🏗️ Microservice architecture
-
-2. 🔢 NumPy → Math.NET Numerics
-
-NumPy provides arrays, linear algebra, statistics, and numerical operations.
-
-Math.NET Numerics is a strong general-purpose numerical computing option for .NET.
-
-🐍 Python — NumPy
-
+```python
 import numpy as np
 
 x = np.array([1, 2, 3, 4, 5])
-
 print(np.mean(x))
 print(np.std(x))
+```
 
-🔷 C# — Math.NET Numerics
+</td>
+<td>
 
+```csharp
 using MathNet.Numerics.Statistics;
 
 double[] x = { 1, 2, 3, 4, 5 };
-
 Console.WriteLine(x.Mean());
 Console.WriteLine(x.StandardDeviation());
+```
 
-🧮 Matrix Operations
+</td>
+</tr>
+</table>
 
-Python:
+**🧮 Matrix Operations**
 
-A = np.array([
-    [1, 2],
-    [3, 4]
-])
+<table>
+<tr><th>🐍 Python</th><th>🔷 C#</th></tr>
+<tr>
+<td>
 
-B = np.array([
-    [5, 6],
-    [7, 8]
-])
-
+```python
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
 C = A @ B
+```
 
-C#:
+</td>
+<td>
 
+```csharp
 using MathNet.Numerics.LinearAlgebra;
 
-var A = Matrix<double>.Build.DenseOfArray(new double[,]
-{
-    { 1, 2 },
-    { 3, 4 }
-});
-
-var B = Matrix<double>.Build.DenseOfArray(new double[,]
-{
-    { 5, 6 },
-    { 7, 8 }
-});
-
+var A = Matrix<double>.Build.DenseOfArray(new double[,] { { 1, 2 }, { 3, 4 } });
+var B = Matrix<double>.Build.DenseOfArray(new double[,] { { 5, 6 }, { 7, 8 } });
 var C = A * B;
+```
 
-🎯 Best for
+</td>
+</tr>
+</table>
 
-Linear Algebra • Statistics • Matrices • Numerical Algorithms
+**🎯 Best for:** Linear Algebra • Statistics • Matrices • Numerical Algorithms
 
-3. 🗃️ Pandas → Microsoft.Data.Analysis / Deedle
+---
 
-Pandas is one of the most important tools in Python data science.
+## 🗃️ 3. Pandas → Microsoft.Data.Analysis / Deedle
 
-It provides:
+Pandas provides 📊 DataFrames, 🔎 filtering, 🧮 grouping/aggregation, 🧹 missing-value handling, 📥 CSV loading, and 🔄 data transformation.
 
-📊 DataFrames
+<table>
+<tr><th>🐍 Python — Pandas</th><th>🔷 C# — Microsoft.Data.Analysis</th></tr>
+<tr>
+<td>
 
-🔎 Filtering
-
-🧮 Grouping and aggregation
-
-🧹 Missing-value handling
-
-📥 CSV/data loading
-
-🔄 Data transformation
-
-🐍 Python — Pandas
-
+```python
 import pandas as pd
 
 df = pd.DataFrame({
@@ -264,81 +200,59 @@ df = pd.DataFrame({
 })
 
 print(df[df["Age"] > 25])
+```
 
-🔷 C# — Microsoft.Data.Analysis
+</td>
+<td>
 
+```csharp
 using Microsoft.Data.Analysis;
 
 var df = new DataFrame(
-    new StringDataFrameColumn(
-        "Name",
-        new[] { "A", "B", "C" }
-    ),
-    new Int32DataFrameColumn(
-        "Age",
-        new[] { 20, 30, 40 }
-    ),
-    new Int32DataFrameColumn(
-        "Salary",
-        new[] { 50000, 70000, 90000 }
-    )
+    new StringDataFrameColumn("Name", new[] { "A", "B", "C" }),
+    new Int32DataFrameColumn("Age", new[] { 20, 30, 40 }),
+    new Int32DataFrameColumn("Salary", new[] { 50000, 70000, 90000 })
 );
 
 Console.WriteLine(df);
+```
 
-🔷 Deedle
+</td>
+</tr>
+</table>
 
-Deedle is another option for working with:
+**🔷 Deedle** is another option, covering DataFrames, Series, time series, data transformation, and statistical analysis.
 
-DataFrames
+> 💡 Think of Pandas → Microsoft.Data.Analysis / Deedle as the closest *conceptual* mapping rather than an exact API translation.
 
-Series
+---
 
-Time series
+## 🤖 4. Scikit-learn → ML.NET
 
-Data transformation
+Scikit-learn is widely used for classical ML: 📈 regression, 🏷️ classification, 🌳 decision trees, 🌲 random forests, 🎯 clustering, 🧰 feature engineering. **ML.NET** is Microsoft's machine learning framework for .NET.
 
-Statistical analysis
+<table>
+<tr><th>🐍 Python — Scikit-learn</th><th>🔷 C# — ML.NET</th></tr>
+<tr>
+<td>
 
-💡 Think of Pandas → Microsoft.Data.Analysis / Deedle as the closest conceptual mapping rather than an exact API translation.
-
-4. 🤖 Scikit-learn → ML.NET
-
-Scikit-learn is widely used for classical machine learning.
-
-Typical algorithms include:
-
-📈 Regression
-
-🏷️ Classification
-
-🌳 Decision trees
-
-🌲 Random forests
-
-🎯 Clustering
-
-🧰 Feature engineering
-
-ML.NET is Microsoft's machine learning framework for .NET.
-
-🐍 Python — Scikit-learn
-
+```python
 from sklearn.linear_model import LinearRegression
 
 X = [[1], [2], [3], [4]]
 y = [2, 4, 6, 8]
 
 model = LinearRegression()
-
 model.fit(X, y)
 
 prediction = model.predict([[5]])
-
 print(prediction)
+```
 
-🔷 C# — ML.NET
+</td>
+<td>
 
+```csharp
 using Microsoft.ML;
 
 var mlContext = new MLContext();
@@ -351,17 +265,11 @@ var data = new[]
     new ModelInput { Feature = 4, Label = 8 }
 };
 
-var trainingData =
-    mlContext.Data.LoadFromEnumerable(data);
+var trainingData = mlContext.Data.LoadFromEnumerable(data);
 
 var pipeline = mlContext.Transforms
-    .Concatenate(
-        "Features",
-        nameof(ModelInput.Feature)
-    )
-    .Append(
-        mlContext.Regression.Trainers.Sdca()
-    );
+    .Concatenate("Features", nameof(ModelInput.Feature))
+    .Append(mlContext.Regression.Trainers.Sdca());
 
 var model = pipeline.Fit(trainingData);
 
@@ -370,17 +278,26 @@ public class ModelInput
     public float Feature { get; set; }
     public float Label { get; set; }
 }
+```
 
-⭐ ML.NET is especially useful when:
+</td>
+</tr>
+</table>
 
-You want ML functionality directly inside an existing C#/.NET application without introducing a separate Python service.
+**⭐ ML.NET shines when** you want ML functionality directly inside an existing C#/.NET application without introducing a separate Python service.
 
-5. 🌳 XGBoost → XGBoost.NET
+---
 
-XGBoost is a highly popular gradient-boosting framework, especially for structured/tabular data.
+## 🌳 5. XGBoost → XGBoost.NET
 
-🐍 Python
+XGBoost is a popular gradient-boosting framework, especially for structured/tabular data.
 
+<table>
+<tr><th>🐍 Python</th><th>🔷 C# — XGBoost.NET</th></tr>
+<tr>
+<td>
+
+```python
 from xgboost import XGBRegressor
 
 model = XGBRegressor(
@@ -390,59 +307,46 @@ model = XGBRegressor(
 )
 
 model.fit(X_train, y_train)
-
 predictions = model.predict(X_test)
+```
 
-🔷 C# — XGBoost.NET
+</td>
+<td>
 
-.NET bindings such as XGBoost.NET allow XGBoost models to be used from C#.
+.NET bindings such as `XGBoost.NET` allow XGBoost models to be used from C#. The workflow remains:
 
-The workflow remains:
+```
+Load Data → Configure XGBoost → Train Model → Evaluate → Predict
+```
 
-Load Data
-    ↓
-Configure XGBoost
-    ↓
-Train Model
-    ↓
-Evaluate
-    ↓
-Predict
+</td>
+</tr>
+</table>
 
-Common parameters:
+**Common parameters**
 
-Parameter
+| Parameter | Meaning |
+|---|---|
+| `n_estimators` | Number of trees / boosting rounds |
+| `max_depth` | Maximum tree depth |
+| `learning_rate` | Learning step size |
+| `subsample` | Training sample ratio |
+| `colsample_bytree` | Feature sampling ratio |
 
-Meaning
+> ⚠️ The exact .NET API depends on the XGBoost binding/package version. Always check package docs before copying production code.
 
-n_estimators
+---
 
-Number of trees / boosting rounds
+## 🌲 6. LightGBM → LightGBM.NET
 
-max_depth
+Another high-performance gradient-boosting framework.
 
-Maximum tree depth
+<table>
+<tr><th>🐍 Python</th><th>🔷 C# — Conceptual Flow</th></tr>
+<tr>
+<td>
 
-learning_rate
-
-Learning step size
-
-subsample
-
-Training sample ratio
-
-colsample_bytree
-
-Feature sampling ratio
-
-⚠️ The exact .NET API depends on the XGBoost binding/package version. Always check the package documentation before copying production code.
-
-6. 🌲 LightGBM → LightGBM.NET
-
-LightGBM is another high-performance gradient-boosting framework.
-
-🐍 Python
-
+```python
 import lightgbm as lgb
 
 model = lgb.LGBMClassifier(
@@ -452,70 +356,69 @@ model = lgb.LGBMClassifier(
 )
 
 model.fit(X_train, y_train)
-
 predictions = model.predict(X_test)
+```
 
-🔷 .NET
+</td>
+<td>
+
+```
+Training Data → LightGBM → Gradient Boosting Trees → Trained Model → Prediction
+```
 
 .NET bindings provide access to the LightGBM engine.
 
-Conceptually:
+</td>
+</tr>
+</table>
 
-Training Data
-     ↓
-LightGBM
-     ↓
-Gradient Boosting Trees
-     ↓
-Trained Model
-     ↓
-Prediction
+**🎯 Excellent for:** Large tabular datasets • Classification • Regression • Ranking • High-dimensional features
 
-🎯 Excellent for
+---
 
-Large tabular datasets
+## 🧠 7. PyTorch → TorchSharp
 
-Classification
+**TorchSharp** provides official .NET bindings for PyTorch.
 
-Regression
+<table>
+<tr><th>🐍 Python — PyTorch</th><th>🔷 C# — TorchSharp</th></tr>
+<tr>
+<td>
 
-Ranking
-
-High-dimensional features
-
-7. 🧠 PyTorch → TorchSharp
-
-PyTorch is one of the leading deep learning frameworks.
-
-TorchSharp provides .NET bindings for PyTorch.
-
-🐍 Python
-
+```python
 import torch
 
 x = torch.tensor([1.0, 2.0, 3.0])
-
 y = x * 2
 
 print(y)
+```
 
-🔷 C# — TorchSharp
+</td>
+<td>
 
+```csharp
 using TorchSharp;
 using static TorchSharp.torch;
 
-var x = tensor(
-    new float[] { 1.0f, 2.0f, 3.0f }
-);
-
+var x = tensor(new float[] { 1.0f, 2.0f, 3.0f });
 var y = x * 2;
 
 Console.WriteLine(y);
+```
 
-🧠 Neural Network
+</td>
+</tr>
+</table>
 
-Python:
+**🧠 Neural Network**
 
+<table>
+<tr><th>🐍 Python</th><th>🔷 C#</th></tr>
+<tr>
+<td>
+
+```python
 import torch.nn as nn
 
 model = nn.Sequential(
@@ -523,9 +426,12 @@ model = nn.Sequential(
     nn.ReLU(),
     nn.Linear(32, 1)
 )
+```
 
-C#:
+</td>
+<td>
 
+```csharp
 using static TorchSharp.torch.nn;
 
 var model = Sequential(
@@ -533,558 +439,290 @@ var model = Sequential(
     ReLU(),
     Linear(32, 1)
 );
+```
 
-🚀 Useful for
+</td>
+</tr>
+</table>
 
-Deep Learning • Computer Vision • NLP • Custom Neural Networks
+**🚀 Useful for:** Deep Learning • Computer Vision • NLP • Custom Neural Networks
 
-8. 🧬 TensorFlow → TensorFlow.NET
+---
 
-TensorFlow.NET provides .NET bindings for TensorFlow.
+## 🧬 8. TensorFlow → TensorFlow.NET
 
-🐍 Python
+**TensorFlow.NET** provides .NET bindings for TensorFlow.
 
+<table>
+<tr><th>🐍 Python</th><th>🔷 C#</th></tr>
+<tr>
+<td>
+
+```python
 import tensorflow as tf
 
 x = tf.constant([1, 2, 3])
-
 y = x * 2
 
 print(y)
+```
 
-🔷 C#
+</td>
+<td>
 
+```csharp
 using Tensorflow;
 using static Tensorflow.Binding;
 
-var x = tf.constant(
-    new[] { 1, 2, 3 }
-);
-
+var x = tf.constant(new[] { 1, 2, 3 });
 var y = x * 2;
 
 Console.WriteLine(y);
+```
 
-💡 For many production inference scenarios, also consider ONNX Runtime, particularly when your model was trained in Python and needs to run inside a .NET service.
+</td>
+</tr>
+</table>
 
-9. 👁️ OpenCV → OpenCvSharp
+> 💡 For many production inference scenarios, also consider **ONNX Runtime**, particularly when your model was trained in Python and needs to run inside a .NET service.
 
-OpenCV is one of the most widely used computer vision libraries.
+---
 
-OpenCvSharp provides a .NET wrapper around OpenCV.
+## 👁️ 9. OpenCV → OpenCvSharp
 
-🐍 Python
+**OpenCvSharp** provides a .NET wrapper around OpenCV.
 
+<table>
+<tr><th>🐍 Python</th><th>🔷 C# — OpenCvSharp</th></tr>
+<tr>
+<td>
+
+```python
 import cv2
 
 image = cv2.imread("image.jpg")
-
-gray = cv2.cvtColor(
-    image,
-    cv2.COLOR_BGR2GRAY
-)
-
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("gray.jpg", gray)
+```
 
-🔷 C# — OpenCvSharp
+</td>
+<td>
 
+```csharp
 using OpenCvSharp;
 
-using var image =
-    Cv2.ImRead("image.jpg");
-
+using var image = Cv2.ImRead("image.jpg");
 using var gray = new Mat();
 
-Cv2.CvtColor(
-    image,
-    gray,
-    ColorConversionCodes.BGR2GRAY
-);
+Cv2.CvtColor(image, gray, ColorConversionCodes.BGR2GRAY);
+Cv2.ImWrite("gray.jpg", gray);
+```
 
-Cv2.ImWrite(
-    "gray.jpg",
-    gray
-);
+</td>
+</tr>
+</table>
 
-🎯 Common applications
+**🎯 Common applications:** 📷 Image processing • 🎥 Video processing • 👤 Face detection • 🔍 Object detection pipelines • 🧹 Image preprocessing • 🖼️ Computer vision
 
-📷 Image processing
+---
 
-🎥 Video processing
+## ⚡ 10. ONNX → ONNX Runtime
 
-👤 Face detection
+> 🔑 **One of the most important bridges between Python AI and .NET production systems**
 
-🔍 Object detection pipelines
+ONNX is primarily a model interchange format. **ONNX Runtime** is the inference engine.
 
-🧹 Image preprocessing
+```mermaid
+flowchart TB
+    A["🐍 Python Environment<br/>PyTorch / TensorFlow / XGBoost / Scikit-learn"] -->|Export| B["📦 model.onnx"]
+    B -->|Deploy| C["🔷 C# / .NET<br/>ONNX Runtime"]
+    C --> D["🚀 Production API"]
+```
 
-🖼️ Computer vision
+<table>
+<tr><th>🐍 Python — Export</th><th>🔷 C# — Load Model</th></tr>
+<tr>
+<td>
 
-10. ⚡ ONNX → ONNX Runtime
-
-🔑 One of the most important bridges between Python AI and .NET production systems
-
-ONNX is primarily a model interchange format.
-
-ONNX Runtime is the inference engine.
-
-A common architecture is:
-
-┌──────────────────────────────┐
-│       Python Environment     │
-│                              │
-│ PyTorch / TensorFlow /       │
-│ XGBoost / Scikit-learn       │
-└──────────────┬───────────────┘
-               │
-               │ Export
-               ▼
-        ┌──────────────┐
-        │  model.onnx  │
-        └──────┬───────┘
-               │
-               │ Deploy
-               ▼
-┌──────────────────────────────┐
-│       C# / .NET              │
-│                              │
-│      ONNX Runtime            │
-└──────────────┬───────────────┘
-               │
-               ▼
-          Production API
-
-🐍 Python — Export
-
+```python
 torch.onnx.export(
     model,
     sample_input,
     "model.onnx"
 )
+```
 
-🔷 C# — Load Model
+</td>
+<td>
 
+```csharp
 using Microsoft.ML.OnnxRuntime;
 
-using var session =
-    new InferenceSession("model.onnx");
+using var session = new InferenceSession("model.onnx");
+using var results = session.Run(inputs);
+```
 
-Then provide tensor inputs and execute inference:
+</td>
+</tr>
+</table>
 
-using var results =
-    session.Run(inputs);
+**⭐ Why this matters:** 🐍 Train in Python → 📦 Export to ONNX → 🔷 Deploy using C# → ⚡ Run inference using ONNX Runtime → 🚀 Serve through ASP.NET Core — avoiding the need for a Python runtime in many production deployments.
 
-⭐ Why this matters
+---
 
-You can:
+## 📈 11. Matplotlib/Seaborn → ScottPlot
 
-🐍 Train in Python
+**ScottPlot** is a popular plotting library for .NET.
 
-📦 Export to ONNX
+<table>
+<tr><th>🐍 Python — Matplotlib</th><th>🔷 C# — ScottPlot</th></tr>
+<tr>
+<td>
 
-🔷 Deploy using C#
-
-⚡ Run inference using ONNX Runtime
-
-🚀 Serve through ASP.NET Core
-
-This avoids requiring a Python runtime in many production deployment scenarios.
-
-11. 📈 Matplotlib / Seaborn → ScottPlot
-
-Python developers commonly use Matplotlib and Seaborn for visualization.
-
-ScottPlot is a popular plotting library for .NET.
-
-🐍 Python — Matplotlib
-
+```python
 import matplotlib.pyplot as plt
 
 x = [1, 2, 3, 4]
 y = [10, 20, 15, 30]
 
 plt.plot(x, y)
-
 plt.show()
+```
 
-🔷 C# — ScottPlot
+</td>
+<td>
 
+```csharp
 using ScottPlot;
 
 double[] x = { 1, 2, 3, 4 };
 double[] y = { 10, 20, 15, 30 };
 
 var plot = new Plot();
-
 plot.Add.Scatter(x, y);
+plot.SavePng("chart.png", 800, 600);
+```
 
-plot.SavePng(
-    "chart.png",
-    800,
-    600
-);
+</td>
+</tr>
+</table>
 
-📊 Useful for
+**📊 Useful for:** Line charts • Scatter plots • Histograms • Signal plots • Scientific visualization • Statistical visualization
 
-Line charts
+---
 
-Scatter plots
+## 📓 12. Jupyter → .NET Interactive
 
-Histograms
+**.NET Interactive** provides a notebook-style environment for C#, F#, and PowerShell.
 
-Signal plots
-
-Scientific visualization
-
-Statistical visualization
-
-12. 📓 Jupyter → .NET Interactive
-
-Jupyter notebooks are extremely popular for data science experimentation.
-
-.NET Interactive provides a notebook-style environment for languages such as:
-
-C#
-
-F#
-
-PowerShell
-
-🔷 C# Example
-
-var numbers =
-    new[] { 1, 2, 3, 4, 5 };
-
-var average =
-    numbers.Average();
-
+```csharp
+var numbers = new[] { 1, 2, 3, 4, 5 };
+var average = numbers.Average();
 average
+```
+
+**🎯 Useful for:** Data Exploration • ML Experiments • Learning • Prototyping • Documentation
 
-🎯 Useful for
+---
 
-Data Exploration • ML Experiments • Learning • Prototyping • Documentation
+## 🏗️ Putting the Stack Together
 
-🏗️ Putting the Stack Together
+A production-oriented .NET AI/ML architecture:
 
-A production-oriented .NET AI/ML architecture could look like this:
+```mermaid
+flowchart TB
+    A["🌐 ASP.NET Core<br/>Web API"] --> B["🤖 AI/ML Inference<br/>ML.NET · ONNX Runtime · TorchSharp"]
+    B --> C1["🔢 Math.NET Numerics"]
+    B --> C2["🗃️ Data.Analysis"]
+    B --> C3["👁️ OpenCvSharp"]
+    C2 --> D["📈 ScottPlot"]
+```
 
-                    ┌───────────────────┐
-                    │   ASP.NET Core    │
-                    │      Web API      │
-                    └─────────┬─────────┘
-                              │
-                              ▼
-                    ┌───────────────────┐
-                    │ AI/ML Inference   │
-                    │                   │
-                    │ ML.NET            │
-                    │ ONNX Runtime      │
-                    │ TorchSharp        │
-                    └─────────┬─────────┘
-                              │
-                ┌─────────────┼─────────────┐
-                ▼             ▼             ▼
-          ┌──────────┐  ┌────────────┐ ┌────────────┐
-          │ Math.NET │  │ Data       │ │ OpenCvSharp│
-          │ Numerics │  │ Analysis   │ │            │
-          └──────────┘  └────────────┘ └────────────┘
-                              │
-                              ▼
-                         ┌──────────┐
-                         │ ScottPlot│
-                         └──────────┘
+---
 
-🔄 A Practical Python → .NET Migration Strategy
+## 🔄 Migration Strategy
 
-You do not always need to rewrite an entire Python AI system in C#.
+You do **not** always need to rewrite an entire Python AI system in C#. A **hybrid architecture** is often more practical:
 
-A hybrid architecture can often be more practical:
+```mermaid
+flowchart TB
+    A["🐍 Python<br/>Research / Training"] --> B["PyTorch / TensorFlow / XGBoost"]
+    B -->|Export| C["📦 ONNX"]
+    C --> D["🔷 C#/.NET<br/>ONNX Runtime"]
+    D --> E["🌐 ASP.NET Core"]
+    E --> F["🚀 Production API"]
+```
 
-                🐍 Python
-                   │
-          Research / Training
-                   │
-                   ▼
-        PyTorch / TensorFlow
-             / XGBoost
-                   │
-                   │ Export
-                   ▼
-              ┌─────────┐
-              │  ONNX   │
-              └────┬────┘
-                   │
-                   ▼
-            🔷 C# / .NET
-                   │
-             ONNX Runtime
-                   │
-                   ▼
-            ASP.NET Core
-                   │
-                   ▼
-            Production API
+**💡 Why use this architecture?**
 
-💡 Why use this architecture?
+| Keep in 🐍 Python | Move to 🔷 .NET |
+|---|---|
+| Research | Enterprise integration |
+| Experimentation | Production APIs |
+| Model training | Cloud deployment |
 
-It allows teams to keep:
+---
 
-🐍 Python for research
+## 🎓 Learning Path
 
-🧪 Python for experimentation
+If your goal is to become a **.NET AI/ML Engineer**, a practical order is:
 
-🧠 Python for model training
+| Order | Library | Focus Areas |
+|---|---|---|
+| 🥇 1 | **Math.NET Numerics** | Vectors, matrices, statistics, numerical operations |
+| 🥈 2 | **Microsoft.Data.Analysis** | DataFrames, data cleaning, feature engineering, transformation |
+| 🥉 3 | **ML.NET** | Classification, regression, clustering, model evaluation, pipelines |
+| 4️⃣ | **ONNX Runtime** | Model loading, tensor inputs, inference, production serving |
+| 5️⃣ | **TorchSharp** | Tensors, neural networks, deep learning, GPU inference/training |
+| 6️⃣ | **ASP.NET Core** | REST APIs, dependency injection, auth, model-serving, deployment |
 
-🔷 .NET for enterprise integration
+---
 
-🚀 .NET for production APIs
+## 🆚 Python vs .NET: The Bigger Picture
 
-☁️ .NET for cloud deployment
+| Area | 🐍 Python | 🔷 .NET |
+|---|:---:|:---:|
+| AI Research | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Latest ML Libraries | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Data Science | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Classical ML | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Enterprise Integration | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| ASP.NET APIs | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Microsoft/Azure Ecosystem | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Existing C# Systems | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Production Inference | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Deep Learning | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Model Interoperability | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-🛣️ Which .NET Library Should You Learn First?
+> 🧠 **The key point:** Python and .NET don't have to compete. They can work together.
 
-If your goal is to become a .NET AI/ML Engineer, a practical order is:
+---
 
-🥇 1. Math.NET Numerics
+## 🔥 Final Cheat Sheet
 
-Learn:
+| 🐍 Python | 🔷 .NET | 🎯 Use Case |
+|---|---|---|
+| FastAPI | ASP.NET Core | 🌐 API / Model Serving |
+| NumPy | Math.NET Numerics | 🔢 Numerical Computing |
+| Pandas | Microsoft.Data.Analysis / Deedle | 🗃️ DataFrames |
+| Scikit-learn | ML.NET | 🤖 Classical ML |
+| XGBoost | XGBoost.NET | 🌳 Gradient Boosting |
+| LightGBM | LightGBM.NET | 🌲 Gradient Boosting |
+| PyTorch | TorchSharp | 🧠 Deep Learning |
+| TensorFlow | TensorFlow.NET | 🧬 Deep Learning |
+| OpenCV | OpenCvSharp | 👁️ Computer Vision |
+| ONNX | ONNX Runtime | ⚡ Model Inference |
+| Matplotlib / Seaborn | ScottPlot | 📈 Visualization |
+| Jupyter | .NET Interactive | 📓 Interactive Data Science |
 
-Vectors
+### 🎯 Bottom Line
 
-Matrices
+> 🚀 **You don't need Python to build production AI systems in a .NET environment.**
 
-Statistics
+A strong C#/.NET AI stack combines:
 
-Numerical operations
-
-🥈 2. Microsoft.Data.Analysis
-
-Learn:
-
-DataFrames
-
-Data cleaning
-
-Feature engineering
-
-Data transformation
-
-🥉 3. ML.NET
-
-Learn:
-
-Classification
-
-Regression
-
-Clustering
-
-Model evaluation
-
-ML pipelines
-
-4️⃣ ONNX Runtime
-
-Learn:
-
-Model loading
-
-Tensor inputs
-
-Model inference
-
-Production serving
-
-5️⃣ TorchSharp
-
-Learn:
-
-Tensors
-
-Neural networks
-
-Deep learning
-
-GPU inference/training
-
-6️⃣ ASP.NET Core
-
-Learn:
-
-REST APIs
-
-Dependency injection
-
-Authentication
-
-Model-serving APIs
-
-Production deployment
-
-🆚 Python vs .NET: The Bigger Picture
-
-Area
-
-🐍 Python
-
-🔷 .NET
-
-AI Research
-
-⭐⭐⭐⭐⭐
-
-⭐⭐⭐
-
-Latest ML Libraries
-
-⭐⭐⭐⭐⭐
-
-⭐⭐⭐
-
-Data Science
-
-⭐⭐⭐⭐⭐
-
-⭐⭐⭐
-
-Classical ML
-
-⭐⭐⭐⭐⭐
-
-⭐⭐⭐⭐
-
-Enterprise Integration
-
-⭐⭐⭐
-
-⭐⭐⭐⭐⭐
-
-ASP.NET APIs
-
-⭐⭐
-
-⭐⭐⭐⭐⭐
-
-Microsoft/Azure Ecosystem
-
-⭐⭐⭐⭐
-
-⭐⭐⭐⭐⭐
-
-Existing C# Systems
-
-⭐⭐
-
-⭐⭐⭐⭐⭐
-
-Production Inference
-
-⭐⭐⭐⭐
-
-⭐⭐⭐⭐⭐
-
-Deep Learning
-
-⭐⭐⭐⭐⭐
-
-⭐⭐⭐
-
-Model Interoperability
-
-⭐⭐⭐⭐
-
-⭐⭐⭐⭐⭐
-
-🧠 The key point: Python and .NET don't have to compete. They can work together.
-
-🔥 Final Cheat Sheet
-
-🐍 Python
-
-🔷 .NET
-
-🎯 Use Case
-
-FastAPI
-
-ASP.NET Core
-
-🌐 API / Model Serving
-
-NumPy
-
-Math.NET Numerics
-
-🔢 Numerical Computing
-
-Pandas
-
-Microsoft.Data.Analysis / Deedle
-
-🗃️ DataFrames
-
-Scikit-learn
-
-ML.NET
-
-🤖 Classical ML
-
-XGBoost
-
-XGBoost.NET
-
-🌳 Gradient Boosting
-
-LightGBM
-
-LightGBM.NET
-
-🌲 Gradient Boosting
-
-PyTorch
-
-TorchSharp
-
-🧠 Deep Learning
-
-TensorFlow
-
-TensorFlow.NET
-
-🧬 Deep Learning
-
-OpenCV
-
-OpenCvSharp
-
-👁️ Computer Vision
-
-ONNX
-
-ONNX Runtime
-
-⚡ Model Inference
-
-Matplotlib / Seaborn
-
-ScottPlot
-
-📈 Visualization
-
-Jupyter
-
-.NET Interactive
-
-📓 Interactive Data Science
-
-🎯 Bottom Line
-
-🚀 You don't need Python to build production AI systems in a .NET environment.
-
-A strong C#/.NET AI stack can combine:
-
+```
 C#
- │
  ├── ASP.NET Core       → APIs
  ├── ML.NET             → Classical ML
  ├── Math.NET           → Numerical Computing
@@ -1093,12 +731,33 @@ C#
  ├── ONNX Runtime       → Model Inference
  ├── OpenCvSharp        → Computer Vision
  └── ScottPlot          → Visualization
+```
 
 For many enterprise systems, one of the most powerful patterns is:
 
-🐍 Python for model development + ⚡ ONNX for portability + 🔷 .NET for production integration.
+**🐍 Python for model development + ⚡ ONNX for portability + 🔷 .NET for production integration.**
 
-⭐ If you found this useful
+---
 
-Consider ⭐ starring the repository and sharing the guide with other Python developers learning .NET AI/ML.
+## 🏷️ Tags & Keywords
 
+`#dotnet` `#csharp` `#python` `#machinelearning` `#deeplearning` `#mlnet` `#onnx` `#onnxruntime` `#torchsharp` `#tensorflownet` `#opencvsharp` `#scottplot` `#aspnetcore` `#mathnet` `#dataanalysis` `#ai` `#artificialintelligence` `#datascience` `#xgboost` `#lightgbm` `#enterprisearchitecture` `#cloudnative` `#azure` `#modelinference` `#mlops` `#developerguide` `#cheatsheet` `#migrationguide` `#dotnetai` `#pythonvsdotnet`
+
+**Topics:** `python` · `dotnet` · `csharp` · `machine-learning` · `deep-learning` · `ml-net` · `onnx-runtime` · `torchsharp` · `tensorflow-net` · `opencvsharp` · `data-science` · `aspnet-core` · `ai-engineering` · `cheat-sheet` · `developer-guide`
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you know of a better .NET equivalent, a newer library version, or want to add more side-by-side examples (NLP, LLMs, vector databases, etc.), feel free to open a PR or issue.
+
+1. 🍴 Fork the repo
+2. 🌿 Create a feature branch
+3. ✍️ Add your section following the existing format
+4. 📬 Open a pull request
+
+---
+
+<p align="center">
+  ⭐ If you found this useful, consider starring the repo and sharing it with other Python developers exploring .NET AI/ML! ⭐
+</p>
