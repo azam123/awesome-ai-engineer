@@ -4504,29 +4504,228 @@ flowchart TD
 
 ## 🧠 Final mental model
 
-> **GenAI** generates content.
->
-> **Tokenization** converts text into model-readable pieces.
->
-> **Embeddings** represent semantic meaning numerically.
->
-> **Chunking** creates retrievable knowledge units.
->
-> **Vector / hybrid search** finds relevant information.
->
-> **RAG** gives the model grounded external context.
->
-> **Agentic AI** lets the system reason about goals and take controlled actions.
->
-> **Multi-Agent Systems** divide complex work among specialized agents.
->
-> **MCP** standardizes how AI applications connect to external tools, resources and prompts.
->
-> **Guardrails** constrain unsafe, invalid or unauthorized behavior.
->
-> **Agent Harness** coordinates state, policies, tools, observability and execution.
->
-> **Production AI** combines all of these with deterministic software engineering, security, testing and monitoring.
+The easiest way to remember the entire AI engineering stack is to follow the data and control flow:
+
+```mermaid
+flowchart LR
+    A["🟨 GenAI<br/>Generate"] --> B["🟨 Tokenization<br/>Text → Tokens"]
+    B --> C["🟨 Embeddings<br/>Meaning → Vector"]
+    C --> D["🟨 Chunking<br/>Knowledge Units"]
+    D --> E["🟨 Vector / Hybrid Search<br/>Find Relevant Data"]
+    E --> F["🟨 RAG<br/>Add Trusted Context"]
+    F --> G["🟨 Agentic AI<br/>Reason + Act"]
+    G --> H["🟨 Multi-Agent<br/>Specialized Collaboration"]
+    H --> I["🟨 MCP<br/>Connect Tools + Data"]
+    I --> J["🟨 Guardrails<br/>Validate + Authorize"]
+    J --> K["🟨 Agent Harness<br/>Control + Observe"]
+    K --> L["🟨 Production AI<br/>Reliable System"]
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E,F,G,H,I,J,K,L yellow;
+```
+
+### 🧠 Remember it as one sentence
+
+> **Generate → Tokenize → Embed → Chunk → Search → Retrieve → Reason → Collaborate → Connect → Protect → Orchestrate → Ship**
+
+---
+
+## 🟨 Embedding flow — the simplest mental model
+
+An **embedding** converts text, an image, or another supported input into a numerical vector so that semantically similar items can be compared mathematically.
+
+### Step 1 — Start with text
+
+```text
+"How many vacation days do employees get?"
+```
+
+### Step 2 — Send it to an embedding model
+
+```text
+Question
+   ↓
+Embedding Model
+```
+
+### Step 3 — Receive a vector
+
+```text
+[0.12, -0.87, 0.34, 0.51, ...]
+```
+
+The numbers are not individual words or database IDs. Together, they represent a location in a high-dimensional semantic space.
+
+### Step 4 — Store the vector
+
+```text
+Text
+  ↓
+Embedding
+  ↓
+Vector
+  ↓
+Vector Database / Index
+```
+
+### 🟨 Complete embedding flow
+
+```mermaid
+flowchart LR
+    A["🟨 Text<br/>What is the leave policy?"]
+    B["🟨 Embedding Model<br/>Understand meaning"]
+    C["🟨 Vector<br/>[0.12, -0.87, 0.34, ...]"]
+    D["🟨 Vector Store<br/>Save + Index"]
+    E["🟨 Similarity Search<br/>Compare meaning"]
+    F["🟨 Relevant Results<br/>Top-K chunks"]
+
+    A --> B --> C --> D --> E --> F
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E,F yellow;
+```
+
+### 🔎 Query-time embedding flow
+
+When a user asks a question, **the same semantic representation process happens for the query**:
+
+```mermaid
+flowchart LR
+    A["🟨 User Question"] --> B["🟨 Query Embedding"]
+    B --> C["🟨 Query Vector"]
+    C --> D["🟨 Compare with Stored Vectors"]
+    D --> E["🟨 Rank by Similarity"]
+    E --> F["🟨 Top-K Relevant Chunks"]
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E,F yellow;
+```
+
+### 📚 Real-world analogy
+
+Think of a **library map**.
+
+Each book is placed at a location based on its topic:
+
+```text
+🟨 AI books       → one area
+🟨 Finance books  → another area
+🟨 HR books       → another area
+🟨 Travel books   → another area
+```
+
+If you ask:
+
+> "How many vacation days can I take?"
+
+the system converts the question into a vector and looks for nearby vectors representing similar meaning.
+
+It does **not** need the document to contain exactly the same words.
+
+For example:
+
+```text
+Query:
+"How many vacation days can I take?"
+
+Document:
+"Employees are entitled to 24 days of annual leave."
+
+        ↓
+
+🟨 Similar meaning
+        ↓
+
+High similarity
+        ↓
+
+Retrieve the chunk
+```
+
+### ⚠️ Important distinction
+
+**Embedding ≠ search.**
+
+Embedding creates the numerical representation.
+
+Search uses those representations to find relevant items.
+
+```mermaid
+flowchart LR
+    A["🟨 Text"] --> B["🟨 Embedding"]
+    B --> C["🟨 Vector"]
+    C --> D["🟨 Search / Similarity"]
+    D --> E["🟨 Relevant Content"]
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E yellow;
+```
+
+### 🎯 Embedding + RAG mental model
+
+```mermaid
+flowchart TD
+    A["🟨 Enterprise Documents"]
+    B["🟨 Chunk Documents"]
+    C["🟨 Create Embeddings"]
+    D["🟨 Store Vectors + Metadata"]
+    E["🟨 User Question"]
+    F["🟨 Embed Question"]
+    G["🟨 Similarity / Hybrid Search"]
+    H["🟨 Retrieve Top-K Chunks"]
+    I["🟨 Add Context to Prompt"]
+    J["🟨 LLM"]
+    K["🟨 Grounded Answer"]
+
+    A --> B --> C --> D
+    E --> F --> G
+    D --> G
+    G --> H --> I --> J --> K
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E,F,G,H,I,J,K yellow;
+```
+
+### 🧩 Final stack in one picture
+
+```mermaid
+flowchart TD
+    A["🟨 User"] --> B["🟨 Agent Harness"]
+    B --> C["🟨 Agentic AI"]
+
+    C --> D["🟨 RAG"]
+    D --> E["🟨 Embedding"]
+    E --> F["🟨 Vector Search"]
+    F --> G["🟨 Enterprise Knowledge"]
+
+    C --> H["🟨 MCP"]
+    H --> I["🟨 Tools + APIs + Data"]
+
+    C --> J["🟨 Multi-Agent System"]
+    J --> K["🟨 Specialized Agents"]
+
+    B --> L["🟨 Guardrails"]
+    B --> M["🟨 State + Memory"]
+    B --> N["🟨 Observability"]
+
+    C --> O["🟨 LLM / GenAI"]
+    O --> P["🟨 Final Response / Action"]
+
+    classDef yellow fill:#FFD93D,color:#000,stroke:#000,stroke-width:3px;
+    class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P yellow;
+```
+
+### 🎮 Final checkpoint
+
+If you remember only **five ideas**, remember these:
+
+1. **LLM / GenAI** → generates.
+2. **Embedding** → represents meaning as numbers.
+3. **RAG** → retrieves trusted external knowledge.
+4. **Agent** → reasons and takes controlled actions.
+5. **Harness + Guardrails + MCP** → make those actions connected, controlled and observable.
+
+> 🏆 **The goal is not to build a smarter chatbot. The goal is to build a reliable AI system.**
 
 ---
 
