@@ -121,9 +121,9 @@ G --> V[Citations + Guardrails]
 V --> U
 class A yellow
 class U blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -228,9 +228,9 @@ K --> L[Guardrails]
 L --> M[Answer + Citations]
 class A yellow
 class F blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 | Component | Responsibility |
@@ -319,9 +319,9 @@ E --> H
 F --> H
 G --> H
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -404,9 +404,9 @@ D --> G[Similarity Search]
 G --> H[Top-K Chunks]
 class A yellow
 class E blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -476,9 +476,9 @@ R --> F[Top 5 Relevant Chunks]
 F --> L[LLM]
 class Q yellow
 class D blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -529,9 +529,9 @@ C --> H[Reranking]
 C --> I[Metadata Filters]
 C --> J[Better Chunking]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -585,9 +585,9 @@ P --> E[Embedding Workers]
 E --> S
 class U yellow
 class D blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -631,9 +631,9 @@ G --> H
 H --> I[Chunk + Metadata]
 I --> J[Embedding / Index]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -683,9 +683,9 @@ F --> G[Re-embed]
 G --> H[Upsert]
 H --> I[Retire Old Version]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -732,9 +732,9 @@ B -->|Knowledge| C[RAG]
 B -->|Behavior / Style| D[Fine-Tuning]
 B -->|Both| E[RAG + Fine-Tuning]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 | Requirement | Typical approach |
@@ -776,9 +776,9 @@ H[Candidate Document] --> G
 G --> I[Relevance Score]
 class A,F yellow
 class C,H blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 | Characteristic | Bi-encoder | Cross-encoder |
@@ -826,9 +826,9 @@ C --> D[Compress to 8]
 D --> E[Token Budget]
 E --> F[LLM]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Too much context can increase:
@@ -868,9 +868,9 @@ T --> O
 O --> F[Final Result]
 class Q yellow
 class G blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Example:
@@ -914,9 +914,9 @@ P --> G[Guardrails]
 G --> O
 O --> F[Final Response]
 class U yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
@@ -985,9 +985,9 @@ S --> D[(Durable Store)]
 S --> R[(Knowledge Store)]
 class A,C yellow
 class B blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Do not let every agent freely modify every piece of state.
@@ -1023,9 +1023,9 @@ D --> E[Tool Result]
 E --> B
 C -->|No| F[Final Answer]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Example:
@@ -1062,9 +1062,9 @@ F --> H[Answer Relevance]
 F --> I[Groundedness]
 F --> J[Citation Correctness]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ### Retrieval metrics
@@ -1124,9 +1124,9 @@ G --> H{Supported?}
 H -->|Yes| I[Answer + Citations]
 H -->|No| J[Abstain / Clarify]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Techniques
@@ -1165,9 +1165,9 @@ E --> F[Prompt Construction]
 F --> G[LLM]
 G --> H[Post Processing]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Techniques
@@ -1208,9 +1208,9 @@ D -->|No| R[RAG + LLM]
 R --> U[Store Result]
 U --> A
 class Q yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Example:
@@ -1251,9 +1251,9 @@ G --> H[LLM]
 H --> I[Output Validation]
 I --> J[Audit]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Controls
@@ -1295,9 +1295,9 @@ E --> H
 F --> H
 H --> I[Observability Platform]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 Track:
@@ -1352,9 +1352,9 @@ E --> F[LLM]
 D --> G[Cache]
 D --> H[Observability]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ### Python example
@@ -1459,9 +1459,9 @@ E -->|Yes| F[Exponential Backoff]
 F --> B
 E -->|No / Exhausted| G[Dead Letter Queue]
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ### Timeout
@@ -1532,9 +1532,9 @@ B --> D[Recall]
 C --> E[F1]
 D --> E
 class A yellow
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ---
@@ -1598,9 +1598,9 @@ U1->>DB: Conditional Update
 U2->>DB: Conditional Update
 DB-->>U1: Success
 DB-->>U2: 0 rows changed
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 A strong solution is a conditional update:
