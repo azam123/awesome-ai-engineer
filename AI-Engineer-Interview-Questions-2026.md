@@ -766,7 +766,7 @@ A **cross-encoder** evaluates query and document together.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Query] --> B[Query Encoder]
 C[Document] --> D[Document Encoder]
 B --> E[Vector Similarity]
@@ -1525,7 +1525,7 @@ If precision is 0.80 and recall is 0.60, F1 is approximately 0.686.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Predictions] --> B[Confusion Matrix]
 B --> C[Precision]
 B --> D[Recall]
