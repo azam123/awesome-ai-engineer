@@ -1,698 +1,1780 @@
-# 🔎 RAG Explained — From Zero to Production (Beginner Friendly Guide)
+# 🔎 RAG Explained — From Zero to Production
+### 🟨 A Visual, Beginner-Friendly Guide with a Real-World Document Intelligence Project
 
-> **A complete, beginner-friendly guide to Retrieval-Augmented Generation (RAG) — with diagrams, Python code, and .NET code.**
+> **Retrieval-Augmented Generation (RAG) = Search the right knowledge + give it to the LLM + generate a grounded answer.**
 >
-> Written in simple Indian English, so that even if you are a fresher or a working professional switching to GenAI, you will understand each concept without any confusion.
+> This guide explains RAG step by step using simple language, visual diagrams, real-world analogies, practical code, and an **Enterprise Document Intelligence** example.
 
 <div align="center">
 
-![Stars](https://img.shields.io/github/stars/your-repo/rag-explained?style=social)
-![Forks](https://img.shields.io/github/forks/your-repo/rag-explained?style=social)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Made with](https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F%20and%20GenAI-orange)
+![RAG](https://img.shields.io/badge/RAG-Retrieval--Augmented%20Generation-2563EB?style=for-the-badge)
+![Document Intelligence](https://img.shields.io/badge/Project-Document%20Intelligence-16A34A?style=for-the-badge)
+![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-FACC15?style=for-the-badge)
+![AI Engineering](https://img.shields.io/badge/AI%20Engineering-Production%20Patterns-7C3AED?style=for-the-badge)
 
-**If this guide helped you, please ⭐ star this repo — it motivates me to write more such guides!**
+**Learn the concept → visualize the pipeline → build the pieces → understand production RAG.**
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+## 🧭 Table of Contents
 
-1. [What is RAG? (In Simple Words)](#1-what-is-rag-in-simple-words)
-2. [Why do LLMs Need RAG?](#2-why-do-llms-need-rag)
-3. [Problems Solved by RAG](#3-problems-solved-by-rag)
-4. [Why AI Engineers Should Learn RAG](#4-why-ai-engineers-should-learn-rag)
-5. [RAG Architecture (High Level Design)](#5-rag-architecture-high-level-design)
-6. [Core Components of RAG (Explained One by One)](#6-core-components-of-rag-explained-one-by-one)
-7. [Hands-On: Tokenization Explained with Code](#7-hands-on-tokenization-explained-with-code)
-8. [Hands-On: Chunking Explained with Code](#8-hands-on-chunking-explained-with-code)
-9. [Hands-On: Embeddings Explained with Code](#9-hands-on-embeddings-explained-with-code)
-10. [Hands-On: Vector Database Explained with Code](#10-hands-on-vector-database-explained-with-code)
-11. [Hands-On: Retrieval Explained with Code](#11-hands-on-retrieval-explained-with-code)
-12. [Putting It All Together — Full RAG Pipeline](#12-putting-it-all-together--full-rag-pipeline)
-13. [.NET Example — RAG with Semantic Kernel](#13-net-example--rag-with-semantic-kernel)
-14. [Types of RAG](#14-types-of-rag)
-15. [Python & .NET Libraries for RAG](#15-python--net-libraries-for-rag)
-16. [LangChain, LangGraph, LangSmith & Hugging Face](#16-langchain-langgraph-langsmith--hugging-face)
-17. [Popular Tools & Vector Databases](#17-popular-tools--vector-databases)
-18. [Where RAG Fits in System Design](#18-where-rag-fits-in-system-design)
-19. [Common Challenges in RAG](#19-common-challenges-in-rag)
-20. [Is RAG Dead? (Agentic RAG)](#20-is-rag-dead-agentic-rag)
-21. [Securing AI Applications](#21-securing-ai-applications)
-22. [Next Reading & Keywords](#22-next-reading--keywords)
+1. [What is RAG?](#1-what-is-rag)
+2. [The Document Intelligence Project](#2-the-document-intelligence-project)
+3. [Why Do We Need RAG?](#3-why-do-we-need-rag)
+4. [RAG in One Picture](#4-rag-in-one-picture)
+5. [The Two Pipelines: Ingestion and Query](#5-the-two-pipelines-ingestion-and-query)
+6. [Step 1 — Documents and Document Intelligence](#6-step-1--documents-and-document-intelligence)
+7. [Step 2 — Document Parsing and OCR](#7-step-2--document-parsing-and-ocr)
+8. [Step 3 — Cleaning and Normalization](#8-step-3--cleaning-and-normalization)
+9. [Step 4 — Chunking](#9-step-4--chunking)
+10. [Step 5 — Embeddings](#10-step-5--embeddings)
+11. [Step 6 — Vector Database](#11-step-6--vector-database)
+12. [Step 7 — Metadata and Security Filters](#12-step-7--metadata-and-security-filters)
+13. [Step 8 — User Query](#13-step-8--user-query)
+14. [Step 9 — Query Understanding](#14-step-9--query-understanding)
+15. [Step 10 — Retrieval](#15-step-10--retrieval)
+16. [Step 11 — Hybrid Search](#16-step-11--hybrid-search)
+17. [Step 12 — Re-ranking](#17-step-12--re-ranking)
+18. [Step 13 — Prompt Augmentation](#18-step-13--prompt-augmentation)
+19. [Step 14 — Generation](#19-step-14--generation)
+20. [Step 15 — Citations and Grounding](#20-step-15--citations-and-grounding)
+21. [Complete Document Intelligence RAG Flow](#21-complete-document-intelligence-rag-flow)
+22. [Hands-On: Tokenization](#22-hands-on-tokenization)
+23. [Hands-On: Chunking](#23-hands-on-chunking)
+24. [Hands-On: Embeddings](#24-hands-on-embeddings)
+25. [Hands-On: Vector Search](#25-hands-on-vector-search)
+26. [Minimal End-to-End RAG](#26-minimal-end-to-end-rag)
+27. [.NET / Azure Implementation](#27-net--azure-implementation)
+28. [RAG Types](#28-rag-types)
+29. [Common RAG Failures](#29-common-rag-failures)
+30. [RAG Evaluation](#30-rag-evaluation)
+31. [Security](#31-security)
+32. [Production Architecture](#32-production-architecture)
+33. [Agentic RAG](#33-agentic-rag)
+34. [RAG Mental Model](#34-the-final-rag-mental-model)
 
 ---
 
-## 1. What is RAG? (In Simple Words)
+# 1. What is RAG?
 
-Suppose you ask a very intelligent friend a question, but that friend read his last book 2 years back. He is very smart, but he does not know what happened yesterday, and he definitely does not know the private data of your company.
+Imagine you have a **very intelligent employee**.
 
-Now imagine, before answering, this friend quickly opens Google, searches your company's internal documents, reads the relevant pages, and *then* answers you using both his own intelligence and the fresh information he just read.
+That employee knows how to read, reason, summarize and explain things.
 
-**That is exactly what RAG (Retrieval-Augmented Generation) does for an LLM.**
+But now you ask:
 
-> **RAG = Retrieval (finding relevant information) + Augmented (adding that information to the prompt) + Generation (LLM writing the final answer)**
+> "According to our company's 2026 travel policy, how much can a Principal Engineer claim for a hotel in Singapore?"
 
-Instead of the LLM answering only from what it "remembers" from training, RAG fetches relevant chunks of text from an external knowledge source (PDFs, websites, databases, SharePoint, etc.) and feeds it to the LLM **at the time of asking the question**. This way, the answer is grounded, current, and specific to your data.
+The employee may be very intelligent, but intelligence alone is not enough.
 
-**Simple Flow:**
+The employee needs to **look up the latest company policy**.
 
-```mermaid
+That is the basic idea behind RAG.
+
+> 🟨 **RAG gives an LLM the right information at the time it needs to answer.**
+
+### The simple formula
+
+~~~
+RAG
+│
+├── Retrieval     → Find relevant information
+├── Augmentation  → Add that information to the prompt
+└── Generation    → LLM generates the answer
+~~~
+
+### 🟨 Real-world analogy
+
+Think about a doctor.
+
+A doctor has years of knowledge, but for a specific patient the doctor may still:
+
+- open the patient's medical record
+- check recent test results
+- look at previous prescriptions
+- review clinical guidelines
+
+Then the doctor makes a decision.
+
+The LLM is similar:
+
+**LLM = reasoning and language capability**
+
+**RAG = giving the LLM the relevant evidence**
+
+---
+
+# 2. The Document Intelligence Project
+
+Throughout this article, imagine we are building:
+
+## 📚 Enterprise Document Intelligence
+
+A company uploads:
+
+- PDF contracts
+- invoices
+- HR policies
+- product manuals
+- insurance documents
+- Word documents
+- scanned documents
+- presentations
+- compliance documents
+
+Employees can then ask:
+
+> "What is the termination notice period in the Acme supplier contract?"
+
+or:
+
+> "What is our work-from-home policy?"
+
+or:
+
+> "Which invoice has an amount greater than ₹10 lakh?"
+
+The system should:
+
+1. understand the documents
+2. extract their content
+3. split them into useful chunks
+4. create embeddings
+5. store them for search
+6. retrieve relevant evidence
+7. give that evidence to the LLM
+8. generate an answer
+9. show citations back to the user
+
+### 🟩 Our project
+
+~~~mermaid
 flowchart LR
-    A[👤 User Question] --> B[🔍 Retriever]
-    B --> C[(🗄️ Vector DB)]
-    C --> D[📄 Relevant Documents]
-    D --> E[🤖 LLM]
-    E --> F[✅ Final Answer]
-```
+    A["📄 Enterprise Documents"] --> B["🧠 Document Intelligence"]
+    B --> C["✂️ Chunks"]
+    C --> D["🔢 Embeddings"]
+    D --> E[("🗄️ Search / Vector Store")]
+    E --> F["🔍 RAG Retrieval"]
+    F --> G["🤖 LLM"]
+    G --> H["💬 Grounded Answer"]
+    H --> I["📌 Citations"]
+    
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+    
+    class A,C yellow;
+    class B,D green;
+    class E,F blue;
+    class G,H,I purple;
+~~~
 
 ---
 
-## 2. Why do LLMs Need RAG?
+# 3. Why Do We Need RAG?
 
-LLMs (like GPT, Claude, Gemini, Llama) are trained on a huge amount of internet data, but they have some genuine limitations:
+LLMs are powerful, but they are **not enterprise databases**.
 
-| Limitation | Explanation |
-|---|---|
-| 📅 **Knowledge cutoff** | The model only knows data up to its training date. It doesn't know today's news. |
-| 🔒 **No access to private data** | It has never seen your company's internal HR policy or product manual. |
-| 🤥 **Hallucination** | When the model doesn't know the answer, sometimes it confidently makes up a wrong answer. |
-| 🔄 **Static knowledge** | It cannot know that your company changed a policy last week. |
+An LLM does not automatically know:
 
-RAG solves all of the above by **grounding** the model's answer with real, current, and trusted documents at query time — without having to retrain the whole model (which is very costly).
+- your company's latest policy
+- today's internal sales report
+- a document uploaded five minutes ago
+- confidential customer information
+- a newly signed contract
+
+### Without RAG
+
+~~~
+User Question
+     ↓
+    LLM
+     ↓
+"Based on what I know..."
+~~~
+
+### With RAG
+
+~~~
+User Question
+     ↓
+Search enterprise knowledge
+     ↓
+Retrieve relevant evidence
+     ↓
+LLM + Evidence
+     ↓
+Grounded Answer
+~~~
+
+> 🔵 **Important:** RAG does not magically eliminate hallucinations. It improves grounding by giving the model relevant evidence, but retrieval quality, prompt design, model behaviour and security still matter.
 
 ---
 
-## 3. Problems Solved by RAG
+# 4. RAG in One Picture
 
-- ✅ Reduces hallucinations by giving the model actual facts to work with
-- ✅ Answers questions from your own enterprise documents
-- ✅ Always uses the latest, up-to-date information (no retraining needed)
-- ✅ Improves factual accuracy and trustworthiness of answers
-- ✅ Enables document-aware chatbots (e.g., "Ask your PDF" type apps)
-- ✅ Cheaper than fine-tuning the whole model for new knowledge
+## 🧩 The simplest possible RAG diagram
+
+~~~mermaid
+flowchart LR
+    U["👤 User<br/>What is the leave policy?"] --> Q["📝 Query"]
+    Q --> R["🔍 Retrieve"]
+    R --> C["📄 Relevant Chunks"]
+    C --> P["🧩 Build Context"]
+    P --> L["🤖 LLM"]
+    L --> A["✅ Answer"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class U,Q yellow;
+    class R,C blue;
+    class P green;
+    class L,A purple;
+~~~
+
+### Remember this sentence
+
+> 🟨 **RAG is basically Search + Context + LLM.**
+
+Everything else is about making those three parts **accurate, secure, fast and scalable**.
 
 ---
 
-## 4. Why AI Engineers Should Learn RAG
+# 5. The Two Pipelines: Ingestion and Query
 
-RAG is one of the most in-demand, foundational skills in GenAI today. It powers:
+A production RAG system is easier to understand when you split it into **two pipelines**.
 
-- 🏢 Enterprise chatbots and internal knowledge assistants
-- 🎧 Customer support automation
-- ⚖️ Legal AI (contract search, case law lookup)
-- 🏥 Healthcare AI (clinical guideline lookup)
-- 🏦 Banking assistants (policy, compliance Q&A)
-- 👨‍💻 Developer copilots (codebase-aware assistants)
+## Pipeline A — Ingestion
 
-If you are preparing for GenAI/AI Engineer interviews, RAG is almost always asked — from theory to hands-on system design.
+This happens when documents enter the system.
+
+~~~mermaid
+flowchart LR
+    D["📄 Document"] --> P["🧠 Parse"]
+    P --> C["✂️ Chunk"]
+    C --> E["🔢 Embed"]
+    E --> S[("🗄️ Store")]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+
+    class D,P yellow;
+    class C,E green;
+    class S blue;
+~~~
+
+## Pipeline B — Query
+
+This happens when a user asks a question.
+
+~~~mermaid
+flowchart LR
+    Q["👤 Question"] --> E["🔢 Query Embedding"]
+    E --> R["🔍 Retrieve"]
+    R --> RR["📊 Re-rank"]
+    RR --> P["🧩 Prompt"]
+    P --> L["🤖 LLM"]
+    L --> A["💬 Answer"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class Q,E yellow;
+    class R,RR blue;
+    class P green;
+    class L,A purple;
+~~~
+
+### 🟩 The most important distinction
+
+**Ingestion prepares knowledge.**
+
+**Query-time RAG finds knowledge.**
 
 ---
 
-## 5. RAG Architecture (High Level Design)
+# 6. Step 1 — Documents and Document Intelligence
 
-```mermaid
+Our Document Intelligence application may receive:
+
+~~~
+📄 contract.pdf
+📄 invoice_10482.pdf
+📄 employee_handbook.docx
+📄 scanned_policy.pdf
+📄 product_manual.pdf
+~~~
+
+A simple PDF loader may work for digitally generated PDFs.
+
+But enterprise documents can contain:
+
+- tables
+- images
+- scanned pages
+- handwriting
+- headers and footers
+- multi-column layouts
+- signatures
+- forms
+
+This is where **Document Intelligence / OCR / layout analysis** becomes important.
+
+### 🟨 Analogy
+
+A PDF is like a **photograph of a book**.
+
+Before RAG can search the book, the system needs to understand:
+
+> "What text is on this page, where is it located, which text belongs to the table, and which page did it come from?"
+
+---
+
+# 7. Step 2 — Document Parsing and OCR
+
+### Example
+
+Suppose a scanned invoice contains:
+
+~~~
+-------------------------------------
+ACME INDUSTRIES
+Invoice: INV-10082
+
+Customer: Contoso Ltd.
+Amount: ₹12,45,000
+Due Date: 30-Sep-2026
+-------------------------------------
+~~~
+
+Document Intelligence extracts structured information.
+
+### 🟩 Extraction flow
+
+~~~mermaid
 flowchart TD
-    U[👤 User] -->|Query| Q[📝 Query]
-    Q --> EMB[🧠 Embedding Model]
-    EMB -->|Query Vector| VS[🔍 Vector Search]
-    VS -->|Top-K Matches| RC[📄 Relevant Chunks]
-    RC --> PB[🛠️ Prompt Builder]
+    PDF["📄 Scanned PDF"] --> OCR["👁️ OCR"]
+    OCR --> TEXT["📝 Extracted Text"]
+    OCR --> TABLE["📊 Tables"]
+    OCR --> META["🏷️ Layout / Metadata"]
+    TEXT --> NORMAL["🧹 Normalized Document"]
+    TABLE --> NORMAL
+    META --> NORMAL
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+
+    class PDF yellow;
+    class OCR green;
+    class TEXT,TABLE,META blue;
+    class NORMAL green;
+~~~
+
+### Why page metadata matters
+
+Do not store only:
+
+~~~
+"Termination notice is 90 days."
+~~~
+
+Prefer:
+
+~~~json
+{
+  "text": "Termination notice is 90 days.",
+  "documentId": "contract-1042",
+  "fileName": "Acme-Supplier-Contract.pdf",
+  "pageNumber": 18,
+  "section": "Termination",
+  "tenantId": "contoso",
+  "department": "Legal"
+}
+~~~
+
+That metadata later enables:
+
+- citations
+- filtering
+- authorization
+- debugging
+- document tracing
+
+---
+
+# 8. Step 3 — Cleaning and Normalization
+
+Raw extracted text is often messy.
+
+For example:
+
+~~~
+TERMI-
+NATION
+
+The agreement may be termi-
+nated by either party...
+~~~
+
+The ingestion pipeline may normalize it into:
+
+~~~
+TERMINATION
+
+The agreement may be terminated by either party...
+~~~
+
+Typical processing includes:
+
+- removing repeated headers
+- removing page numbers where appropriate
+- fixing broken words
+- preserving headings
+- normalizing whitespace
+- preserving table meaning
+- attaching metadata
+
+> 🟨 **Do not blindly clean documents.** Some headers, footers, page numbers and table structures are meaningful for retrieval and citations.
+
+---
+
+# 9. Step 4 — Chunking
+
+This is one of the most important RAG steps.
+
+A 200-page contract is too large and too broad to treat as one retrieval unit.
+
+So we split it into **chunks**.
+
+### 🟨 Real-world analogy
+
+Imagine giving a student an entire 500-page textbook and saying:
+
+> "Find the answer."
+
+Now imagine giving the student the relevant **two paragraphs**.
+
+The second approach is much easier.
+
+### Chunking
+
+~~~mermaid
+flowchart TD
+    DOC["📕 200-page Contract"] --> C1["Chunk 1<br/>Definitions"]
+    DOC --> C2["Chunk 2<br/>Payment Terms"]
+    DOC --> C3["Chunk 3<br/>Termination"]
+    DOC --> C4["Chunk 4<br/>Liability"]
+    DOC --> C5["Chunk 5<br/>Confidentiality"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+
+    class DOC yellow;
+    class C1,C2,C3,C4,C5 green;
+~~~
+
+### The goal of chunking
+
+A good chunk should contain enough context to answer a question.
+
+Bad:
+
+~~~
+"The notice period is..."
+~~~
+
+Better:
+
+~~~
+Section 14 — Termination
+
+Either party may terminate this agreement by providing
+90 days written notice to the other party.
+~~~
+
+### Chunking strategies
+
+| Strategy | Idea | Useful for |
+|---|---|---|
+| Fixed-size | Split every N tokens | Simple text |
+| Recursive | Prefer paragraphs/sentences | General RAG |
+| Semantic | Split when meaning changes | High-quality retrieval |
+| Structure-aware | Respect headings/tables/pages | Enterprise documents |
+| Parent-child | Retrieve small chunk but retain parent context | Complex documents |
+
+### A good enterprise rule
+
+> 🟩 **Chunk by meaning first, token count second.**
+
+---
+
+# 10. Step 5 — Embeddings
+
+Now we convert each chunk into numbers.
+
+For example:
+
+~~~
+"Termination notice is 90 days."
+                 ↓
+        Embedding Model
+                 ↓
+[0.021, -0.193, 0.774, ...]
+~~~
+
+This vector represents the **semantic meaning** of the text.
+
+### 🟨 Analogy: GPS for meaning
+
+Imagine every sentence has a location on a huge **meaning map**.
+
+These two sentences may be close:
+
+~~~
+"The contract can be terminated with 90 days notice."
+
+"Either party must provide 90 days written notice to terminate."
+~~~
+
+Even though the words differ, their meanings are similar.
+
+### Embedding flow
+
+~~~mermaid
+flowchart LR
+    T["📝 Chunk Text"] --> M["🧠 Embedding Model"]
+    M --> V["🔢 Vector"]
+    V --> S[("🗄️ Vector Store")]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+
+    class T yellow;
+    class M green;
+    class V,S blue;
+~~~
+
+---
+
+# 11. Step 6 — Vector Database
+
+Now we need somewhere to store:
+
+- chunk text
+- embedding
+- metadata
+
+Example:
+
+~~~
+Chunk ID: contract-1042-page-18-chunk-03
+
+Text:
+"Either party may terminate the agreement with 90 days notice."
+
+Vector:
+[0.12, -0.41, 0.83, ...]
+
+Metadata:
+documentId = contract-1042
+page = 18
+section = Termination
+tenant = Contoso
+~~~
+
+### 🟦 Vector search
+
+When a user asks:
+
+> "How much notice is required to cancel the contract?"
+
+The query also becomes a vector.
+
+The system searches for vectors that are close to the query vector.
+
+~~~mermaid
+flowchart TD
+    Q["❓ How much notice to cancel?"] --> QE["🔢 Query Vector"]
+    QE --> VS["🔍 Similarity Search"]
+    VS --> C1["🥇 Termination — 90 days"]
+    VS --> C2["🥈 Renewal — annual"]
+    VS --> C3["🥉 Payment — 30 days"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+
+    class Q yellow;
+    class QE,VS blue;
+    class C1,C2,C3 green;
+~~~
+
+---
+
+# 12. Step 7 — Metadata and Security Filters
+
+Enterprise RAG cannot be:
+
+> "Search everything."
+
+Suppose the company has:
+
+~~~
+Finance documents
+HR documents
+Legal documents
+Engineering documents
+Customer documents
+~~~
+
+An employee should not retrieve documents they are not authorized to access.
+
+### 🔐 Retrieval should respect authorization
+
+~~~mermaid
+flowchart LR
+    U["👤 User"] --> A["🔐 Identity / Claims"]
+    A --> F["🛡️ Security Filter"]
+    F --> R["🔍 Retrieval"]
+    R --> C["📄 Authorized Chunks"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+
+    class U,A yellow;
+    class F green;
+    class R,C blue;
+~~~
+
+Example filter:
+
+~~~
+tenantId = "contoso"
+AND userDepartment = "legal"
+AND documentClassification IN ("internal", "confidential")
+~~~
+
+> 🔴 **Security must be enforced during retrieval, not only after the LLM generates an answer.**
+
+---
+
+# 13. Step 8 — User Query
+
+Now the user asks:
+
+> **"What is the termination notice period in the Acme supplier contract?"**
+
+This is not simply text.
+
+The system can identify:
+
+- intent: retrieve contract information
+- entity: Acme supplier contract
+- topic: termination
+- requested fact: notice period
+
+This query may be rewritten or expanded before retrieval.
+
+---
+
+# 14. Step 9 — Query Understanding
+
+Sometimes the user's wording does not match the document wording.
+
+User:
+
+> "How long before I can cancel it?"
+
+Document:
+
+> "Either party may terminate this agreement by providing 90 days written notice."
+
+A query transformation step can make retrieval stronger:
+
+~~~
+Original Query:
+"How long before I can cancel it?"
+
+Expanded Query:
+"contract termination cancellation notice period
+required written notice"
+~~~
+
+Possible techniques:
+
+- query rewriting
+- query expansion
+- multi-query retrieval
+- HyDE
+- intent classification
+- metadata extraction
+
+---
+
+# 15. Step 10 — Retrieval
+
+Retrieval means:
+
+> **Find candidate chunks that may contain the answer.**
+
+Suppose we retrieve 10 candidates.
+
+~~~
+1. Termination — 90 days
+2. Contract renewal — annual
+3. Payment terms — 30 days
+4. Liability — $1M
+5. Confidentiality — 5 years
+...
+~~~
+
+The first retrieval stage should focus on **recall**.
+
+In simple words:
+
+> "Don't miss the correct answer."
+
+---
+
+# 16. Step 11 — Hybrid Search
+
+Vector search is powerful, but semantic similarity is not always enough.
+
+Suppose the user asks:
+
+> "Find invoice INV-10082."
+
+A keyword search can be excellent because **INV-10082** is an exact identifier.
+
+For semantic questions:
+
+> "What are the termination conditions?"
+
+Vector search can be useful.
+
+### 🟦 Hybrid search
+
+~~~mermaid
+flowchart TD
+    Q["❓ User Query"] --> K["🔤 Keyword / BM25"]
+    Q --> V["🧠 Vector Search"]
+    K --> M["🔀 Merge Results"]
+    V --> M
+    M --> R["📊 Re-ranker"]
+    R --> C["📄 Best Context"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+
+    class Q yellow;
+    class K,V blue;
+    class M,R green;
+    class C blue;
+~~~
+
+### Think of it this way
+
+**Keyword search asks:**
+
+> "Which documents contain these words?"
+
+**Vector search asks:**
+
+> "Which documents mean something similar?"
+
+**Hybrid search asks both.**
+
+---
+
+# 17. Step 12 — Re-ranking
+
+Initial retrieval may return 20 candidates.
+
+A re-ranker can inspect the query and candidate text more carefully and reorder them.
+
+~~~
+Initial retrieval
+
+1. Payment terms
+2. Renewal
+3. Termination — 90 days
+4. Liability
+5. Confidentiality
+
+             ↓ Re-ranker
+
+1. Termination — 90 days  ⭐
+2. Renewal
+3. Payment terms
+...
+~~~
+
+### 🟩 Why re-ranking helps
+
+Vector search is designed to retrieve candidates efficiently.
+
+A re-ranker can spend more computation deciding:
+
+> "Which of these candidates actually answers this particular question?"
+
+A common production pattern is:
+
+~~~
+Retrieve Top 50
+      ↓
+Re-rank Top 50
+      ↓
+Keep Top 5
+      ↓
+Send to LLM
+~~~
+
+---
+
+# 18. Step 13 — Prompt Augmentation
+
+Now we have:
+
+**Question**
+
+~~~
+What is the termination notice period?
+~~~
+
+**Retrieved context**
+
+~~~
+Document: Acme-Supplier-Contract.pdf
+Page: 18
+Section: Termination
+
+Either party may terminate this agreement by providing
+90 days written notice to the other party.
+~~~
+
+We combine them.
+
+### 🟨 Augmented prompt
+
+~~~
+SYSTEM:
+Answer using only the supplied context.
+If the context does not contain the answer, say that
+the information was not found.
+
+CONTEXT:
+[Acme Contract — Page 18]
+Either party may terminate this agreement by providing
+90 days written notice...
+
+QUESTION:
+What is the termination notice period?
+~~~
+
+This is the **A in RAG — Augmented**.
+
+---
+
+# 19. Step 14 — Generation
+
+The LLM receives:
+
+~~~
+Question
+   +
+Retrieved Context
+   +
+Instructions
+   ↓
+LLM
+   ↓
+Answer
+~~~
+
+Possible answer:
+
+> "The Acme supplier contract requires **90 days' written notice** for termination."
+
+The LLM is not expected to remember this private contract.
+
+It is reading the retrieved evidence and producing a useful response.
+
+---
+
+# 20. Step 15 — Citations and Grounding
+
+A production Document Intelligence application should ideally show:
+
+> **The termination notice period is 90 days.**
+>
+> 📄 *Acme-Supplier-Contract.pdf — Page 18 — Section: Termination*
+
+This is much more useful than:
+
+> "The answer is 90 days."
+
+### Why citations matter
+
+Citations help users:
+
+- verify the answer
+- open the source
+- trust the system
+- detect retrieval errors
+- audit decisions
+
+### 🟩 Grounded answer flow
+
+~~~mermaid
+flowchart LR
+    Q["Question"] --> R["Retrieve"]
+    R --> C["Evidence"]
+    C --> L["LLM"]
+    L --> A["Answer"]
+    C --> S["📌 Source"]
+    A --> S
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+
+    class Q yellow;
+    class R,C blue;
+    class L,A green;
+    class S yellow;
+~~~
+
+---
+
+# 21. Complete Document Intelligence RAG Flow
+
+Now let's connect everything.
+
+~~~mermaid
+flowchart TD
+    D["📄 Enterprise Documents"] --> DI["🧠 Document Intelligence / OCR"]
+    DI --> N["🧹 Normalize + Structure"]
+    N --> C["✂️ Structure-aware Chunking"]
+    C --> E["🔢 Embeddings"]
+    E --> VS[("🗄️ Vector / Search Index")]
+
+    U["👤 User"] --> Q["❓ Query"]
+    Q --> QE["🧠 Query Understanding"]
+    QE --> F["🔐 ACL + Metadata Filters"]
+    F --> RS["🔍 Hybrid Retrieval"]
+    RS --> RR["📊 Re-ranking"]
+    RR --> PB["🧩 Prompt Builder"]
     Q --> PB
-    PB -->|Query + Context| LLM[🤖 LLM]
-    LLM --> ANS[✅ Answer]
-```
+    PB --> LLM["🤖 LLM"]
+    LLM --> G["🛡️ Guardrails"]
+    G --> A["💬 Answer + 📌 Citations"]
 
-**Step by step, in plain words:**
+    VS --> RS
 
-1. User asks a question.
-2. That question is converted into a vector (a list of numbers) using an embedding model.
-3. This vector is used to search a Vector Database for the most semantically similar chunks of text.
-4. The top matching chunks are picked up (this is called "retrieval").
-5. A prompt is built by combining the user's question + the retrieved chunks + instructions.
-6. This combined prompt is sent to the LLM.
-7. The LLM generates the final answer, grounded in the retrieved data.
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
 
----
+    class D,U,Q yellow;
+    class DI,N,C,E green;
+    class VS,F,RS,RR blue;
+    class QE,PB,LLM,G,A purple;
+~~~
 
-## 6. Core Components of RAG (Explained One by One)
+## 🧠 One-line explanation of every stage
 
-```mermaid
-flowchart LR
-    DS[📁 Data Source] --> DL[📥 Document Loader]
-    DL --> CH[✂️ Chunking]
-    CH --> EM[🧠 Embeddings]
-    EM --> VDB[(🗄️ Vector DB)]
-    VDB --> RT[🔍 Retriever]
-    RT --> RR[📊 Re-ranker]
-    RR --> PB[🛠️ Prompt Builder]
-    PB --> LLM[🤖 LLM]
-```
-
-### 1️⃣ Data Source
-The raw material — PDFs, Word files, websites, SharePoint, databases, Confluence, etc.
-
-### 2️⃣ Document Loader
-Reads the raw documents into your pipeline so they can be processed further.
-
-```python
-from langchain_community.document_loaders import PyPDFLoader
-
-docs = PyPDFLoader("policy.pdf").load()
-print(f"Loaded {len(docs)} pages")
-```
-
-### 3️⃣ Chunking
-Big documents are broken into small, digestible pieces (chunks) so the LLM and vector DB can handle them efficiently. Covered in detail in [Section 8](#8-hands-on-chunking-explained-with-code).
-
-### 4️⃣ Embeddings
-Each chunk of text is converted into a vector (list of numbers) that captures its *meaning*. Covered in detail in [Section 9](#9-hands-on-embeddings-explained-with-code).
-
-### 5️⃣ Vector Database
-Stores these embeddings so that similarity search can be done fast, even across millions of chunks. Covered in [Section 10](#10-hands-on-vector-database-explained-with-code).
-
-### 6️⃣ Retriever
-Given a query, finds the most relevant chunks from the vector DB. Types: Similarity Search, Hybrid Search, MMR (Maximal Marginal Relevance), Metadata Filtering.
-
-### 7️⃣ Re-ranker (Optional but Powerful)
-After initial retrieval, a re-ranker model (like Cohere Rerank or BGE Reranker) re-scores the chunks for better precision, since the first-pass similarity search is not always perfect.
-
-### 8️⃣ Prompt Builder
-Combines the user's query + retrieved context + system instructions into one final prompt for the LLM.
-
-### 9️⃣ LLM
-The final brain that reads everything and generates a fluent, grounded answer — GPT, Claude, Gemini, Llama, etc.
+| Stage | Simple explanation |
+|---|---|
+| Document | The knowledge entering the system |
+| Document Intelligence | Understand text, layout, tables and OCR |
+| Normalize | Clean and structure extracted content |
+| Chunk | Break documents into useful retrieval units |
+| Embedding | Convert meaning into vectors |
+| Search Index | Store searchable chunks + metadata |
+| Query | User's question |
+| Query Understanding | Improve/interpret the question |
+| ACL Filter | Remove unauthorized knowledge |
+| Retrieval | Find candidate evidence |
+| Hybrid Search | Combine lexical + semantic retrieval |
+| Re-ranking | Put the best evidence first |
+| Prompt Builder | Combine question + evidence + instructions |
+| LLM | Generate the answer |
+| Guardrails | Apply safety and policy controls |
+| Citation | Show where the answer came from |
 
 ---
 
-## 7. Hands-On: Tokenization Explained with Code
+# 22. Hands-On: Tokenization
 
-Before any text can be embedded or fed to an LLM, it must be broken into **tokens** — the smallest units a model understands (this could be a word, sub-word, or even a single character).
+LLMs process tokens rather than simply reading characters as humans do.
 
-> Think of tokenization like cutting a roti into small pieces before eating — the LLM "eats" text in these small token pieces, not the whole sentence at once.
+### 🟨 Analogy
 
-```mermaid
+Think of a sentence as a LEGO structure.
+
+The tokenizer breaks the sentence into smaller pieces that the model can process.
+
+~~~mermaid
 flowchart LR
-    A["'RAG improves LLM accuracy'"] --> B[Tokenizer]
-    B --> C["['RAG', ' improves', ' LLM', ' accuracy']"]
-    C --> D["[8480, 34477, 27140, 13708]"]
-```
+    T["RAG improves document search"] --> TK["Tokenizer"]
+    TK --> P["Tokens"]
+    P --> ID["Token IDs"]
 
-### Python Example (using `tiktoken` — the tokenizer used by OpenAI models)
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
 
-```python
-# pip install tiktoken
+    class T yellow;
+    class TK blue;
+    class P,ID green;
+~~~
+
+### Python example
+
+~~~python
 import tiktoken
 
-# Load the tokenizer used by GPT-4 / GPT-3.5 family
-encoding = tiktoken.encoding_for_model("gpt-4")
+encoding = tiktoken.encoding_for_model("gpt-4o-mini")
 
-text = "RAG improves LLM accuracy by retrieving relevant documents."
+text = "RAG improves document search."
 
-# Convert text -> token IDs
 token_ids = encoding.encode(text)
+
 print("Token IDs:", token_ids)
-print("Number of tokens:", len(token_ids))
+print("Token count:", len(token_ids))
+~~~
 
-# Convert token IDs back -> text (to see how it was split)
-tokens_as_text = [encoding.decode([tid]) for tid in token_ids]
-print("Tokens:", tokens_as_text)
-```
+### Why tokens matter in RAG
 
-**Sample Output:**
-```
-Token IDs: [49, 1929, 18142, 445, 11237, 13708, 555, 100191, 9959, 9477, 13]
-Number of tokens: 11
-Tokens: ['R', 'AG', ' improves', ' LL', 'M', ' accuracy', ' by', ' retrieving', ' relevant', ' documents', '.']
-```
+Token counts influence:
 
-**Why tokenization matters in RAG:**
-- LLMs have a **context window limit** measured in tokens (e.g., 128K tokens), not words.
-- Chunk sizes are usually decided in terms of tokens, not characters — so you must count tokens correctly to avoid exceeding limits.
-- API cost is billed per token, so knowing token count helps you estimate cost.
+- chunk size
+- context window usage
+- LLM cost
+- latency
+- prompt size
+
+> 🟨 **Do not choose chunk sizes blindly. Measure them with the tokenizer used by your model.**
 
 ---
 
-## 8. Hands-On: Chunking Explained with Code
+# 23. Hands-On: Chunking
 
-A 200-page PDF cannot be sent to an LLM directly (context window limit + poor retrieval accuracy). So we break it into small, meaningful **chunks** — usually 200 to 1000 tokens each, often with some **overlap** so that context is not lost at chunk boundaries.
+### Python example
 
-```mermaid
-flowchart TD
-    DOC[📄 Full Document - 5000 words] --> C1[Chunk 1: words 1-500]
-    DOC --> C2[Chunk 2: words 450-950]
-    DOC --> C3[Chunk 3: words 900-1400]
-    C1 -.overlap.-> C2
-    C2 -.overlap.-> C3
-```
-
-### Python Example — Recursive Character Chunking
-
-```python
-# pip install langchain-text-splitters
+~~~python
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 text = """
-Retrieval-Augmented Generation (RAG) is a technique that combines a
-retrieval system with a generative language model. Instead of relying
-purely on the parameters learned during training, RAG fetches relevant
-documents from an external knowledge base at inference time.
+Termination
 
-This helps in reducing hallucinations, since the model has real
-context to base its answer on. It also allows the system to stay
-up-to-date without expensive retraining, because you only need to
-update the knowledge base, not the model itself.
+Either party may terminate this agreement by providing
+90 days written notice to the other party.
+
+Payment
+
+Invoices must be paid within 30 days.
 """
 
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size=150,      # max characters per chunk
-    chunk_overlap=30,    # overlap so context isn't lost at the boundary
+    chunk_size=300,
+    chunk_overlap=50,
     separators=["\n\n", "\n", ". ", " ", ""]
 )
 
 chunks = splitter.split_text(text)
 
-for i, chunk in enumerate(chunks, 1):
-    print(f"--- Chunk {i} ({len(chunk)} chars) ---")
-    print(chunk.strip())
-    print()
-```
+for index, chunk in enumerate(chunks, start=1):
+    print(f"--- Chunk {index} ---")
+    print(chunk)
+~~~
 
-**Chunking strategies comparison:**
+### Important production improvement
 
-| Strategy | How it works | Best for |
-|---|---|---|
-| **Fixed-size** | Splits by a fixed number of characters/tokens | Simple, fast, generic text |
-| **Recursive** | Tries to split at natural boundaries (paragraph → sentence → word) | Most general-purpose use cases |
-| **Semantic** | Splits based on meaning shift (using embeddings) | High-precision RAG apps |
-| **Token-based** | Splits based on token count (using tiktoken) | When you must respect LLM token limits exactly |
+For enterprise documents, consider preserving:
+
+~~~
+Document
+ ├── Page
+ │    ├── Section
+ │    │    ├── Paragraph
+ │    │    └── Table
+ │    └── Metadata
+~~~
+
+This is usually more useful than blindly splitting every N characters.
 
 ---
 
-## 9. Hands-On: Embeddings Explained with Code
+# 24. Hands-On: Embeddings
 
-An embedding is a way to convert text into a list of numbers (a vector) such that texts with **similar meaning** end up **close together** in that number-space — even if they don't share the same words.
-
-> Example: "I love cricket" and "Cricket is my favourite sport" will have vectors that are close to each other, even though the words are different — because the *meaning* is similar.
-
-```mermaid
-flowchart LR
-    T1["'I love cricket'"] --> E[Embedding Model]
-    T2["'Cricket is my favourite sport'"] --> E
-    T3["'The stock market crashed today'"] --> E
-    E --> V1["[0.12, -0.45, 0.88, ...]"]
-    E --> V2["[0.14, -0.42, 0.85, ...]"]
-    E --> V3["[-0.90, 0.33, -0.10, ...]"]
-```
-
-### Python Example (using `sentence-transformers` — free, open-source, runs locally)
-
-```python
-# pip install sentence-transformers scikit-learn
+~~~python
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 
-# Load a small, fast, open-source embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-sentences = [
-    "I love watching cricket on weekends.",
-    "Cricket is my favourite sport to watch.",
-    "The stock market crashed heavily today."
+texts = [
+    "The contract can be terminated with 90 days notice.",
+    "Either party must provide 90 days written notice.",
+    "The invoice must be paid within 30 days."
 ]
 
-# Convert sentences into embedding vectors
-embeddings = model.encode(sentences)
-print("Embedding shape:", embeddings.shape)   # e.g. (3, 384)
+embeddings = model.encode(texts)
 
-# Compare similarity between sentence 1 and 2, and 1 and 3
-sim_1_2 = cosine_similarity([embeddings[0]], [embeddings[1]])[0][0]
-sim_1_3 = cosine_similarity([embeddings[0]], [embeddings[2]])[0][0]
+print(embeddings.shape)
+~~~
 
-print(f"Similarity (cricket vs cricket): {sim_1_2:.4f}")
-print(f"Similarity (cricket vs stock market): {sim_1_3:.4f}")
-```
+The embedding model transforms text into vectors.
 
-**Expected Output:**
-```
-Embedding shape: (3, 384)
-Similarity (cricket vs cricket): 0.7621
-Similarity (cricket vs stock market): 0.0563
-```
+~~~
+Text
+ ↓
+Embedding Model
+ ↓
+Vector
+ ↓
+Similarity Search
+~~~
 
-Notice how the two cricket-related sentences score much higher similarity (closer to 1.0) than the unrelated stock market sentence (closer to 0.0). **This is the core magic that makes RAG retrieval work.**
+> 🟩 **Embeddings are not the answer. They are a representation used to find potentially relevant information.**
 
 ---
 
-## 10. Hands-On: Vector Database Explained with Code
+# 25. Hands-On: Vector Search
 
-Once you have embeddings for thousands (or millions) of chunks, you need a place to **store** them and **search** them fast. A normal SQL database is not built for "find me the most similar vector" queries — that's exactly what a **Vector Database** is optimized for.
+FAISS is useful for learning and local experimentation.
 
-```mermaid
-flowchart TD
-    subgraph VDB[🗄️ Vector Database]
-        V1["Chunk 1 → [0.12, -0.45, ...]"]
-        V2["Chunk 2 → [0.51, 0.22, ...]"]
-        V3["Chunk 3 → [-0.33, 0.87, ...]"]
-    end
-    Q["Query Vector → [0.14, -0.42, ...]"] -->|Nearest Neighbor Search| VDB
-    VDB --> R["Top-K Most Similar Chunks"]
-```
-
-### Python Example (using FAISS — a free, local, in-memory vector DB by Meta)
-
-```python
-# pip install faiss-cpu sentence-transformers numpy
+~~~python
 import faiss
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# Our small "knowledge base" of chunks
 chunks = [
-    "RAG combines retrieval with generation to reduce hallucinations.",
-    "Chunking breaks large documents into smaller pieces for processing.",
-    "Cricket is a popular sport played in India, Australia, and England.",
-    "Vector databases store embeddings for fast similarity search.",
+    "Termination requires 90 days written notice.",
+    "Invoices must be paid within 30 days.",
+    "The annual renewal period is 12 months.",
 ]
 
-# Step 1: Convert all chunks into embeddings
-chunk_embeddings = model.encode(chunks).astype("float32")
+vectors = model.encode(chunks).astype("float32")
 
-# Step 2: Create a FAISS index and add our vectors to it
-dimension = chunk_embeddings.shape[1]
-index = faiss.IndexFlatL2(dimension)   # L2 = Euclidean distance
-index.add(chunk_embeddings)
+index = faiss.IndexFlatL2(vectors.shape[1])
+index.add(vectors)
 
-print(f"Total vectors stored in index: {index.ntotal}")
-
-# Step 3: Save index to disk (optional, for persistence)
-faiss.write_index(index, "knowledge_base.index")
-```
-
----
-
-## 11. Hands-On: Retrieval Explained with Code
-
-Retrieval is the step where, given a user's query, we search the vector DB and pull out the **top-K most relevant chunks**.
-
-```python
-# Continuing from the FAISS example above
-
-query = "How does RAG help in reducing wrong answers from LLMs?"
-
-# Step 1: Convert the query into a vector using the SAME embedding model
+query = "How much notice is needed to terminate?"
 query_vector = model.encode([query]).astype("float32")
 
-# Step 2: Search the FAISS index for the top 2 most similar chunks
-top_k = 2
-distances, indices = index.search(query_vector, top_k)
+distances, indices = index.search(query_vector, k=2)
 
-print(f"Query: {query}\n")
-print("Top matching chunks:")
-for rank, idx in enumerate(indices[0], 1):
-    print(f"{rank}. {chunks[idx]}  (distance: {distances[0][rank-1]:.4f})")
-```
+for rank, index_value in enumerate(indices[0], start=1):
+    print(rank, chunks[index_value], distances[0][rank - 1])
+~~~
 
-**Sample Output:**
-```
-Query: How does RAG help in reducing wrong answers from LLMs?
+### Remember
 
-Top matching chunks:
-1. RAG combines retrieval with generation to reduce hallucinations.  (distance: 0.8123)
-2. Vector databases store embeddings for fast similarity search.  (distance: 1.4521)
-```
-
-Notice that even though the query doesn't use the exact words "hallucination" or "RAG combines" — the retriever still finds the most semantically related chunk, thanks to embeddings. **Lower distance = more similar.**
+~~~
+Query
+  ↓
+Query Embedding
+  ↓
+Nearest-neighbour search
+  ↓
+Candidate chunks
+~~~
 
 ---
 
-## 12. Putting It All Together — Full RAG Pipeline
+# 26. Minimal End-to-End RAG
 
-```python
-# pip install sentence-transformers faiss-cpu openai
+Here is the smallest useful mental model in code.
 
+~~~python
 from sentence_transformers import SentenceTransformer
 import faiss
-import numpy as np
-from openai import OpenAI
 
-# ---------- 1. Setup ----------
-embed_model = SentenceTransformer("all-MiniLM-L6-v2")
-client = OpenAI()  # requires OPENAI_API_KEY env variable
-
-knowledge_base = [
-    "Our company's leave policy allows 18 paid leaves per year.",
-    "Employees can work from home twice a week as per WFH policy.",
-    "The notice period for resignation is 60 days for all full-time employees.",
+documents = [
+    "Employees receive 18 paid leaves per year.",
+    "Employees can work from home twice per week.",
+    "The standard notice period is 60 days."
 ]
 
-# ---------- 2. Index the knowledge base ----------
-kb_embeddings = embed_model.encode(knowledge_base).astype("float32")
-index = faiss.IndexFlatL2(kb_embeddings.shape[1])
-index.add(kb_embeddings)
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
-# ---------- 3. RAG function ----------
-def rag_answer(user_query: str, top_k: int = 2) -> str:
-    # Retrieve
-    query_vec = embed_model.encode([user_query]).astype("float32")
-    _, indices = index.search(query_vec, top_k)
-    retrieved_chunks = [knowledge_base[i] for i in indices[0]]
-    context = "\n".join(retrieved_chunks)
+document_vectors = embedder.encode(documents).astype("float32")
 
-    # Augment + Generate
-    prompt = f"""Answer the question using ONLY the context below.
-If the answer is not in the context, say "I don't know."
+index = faiss.IndexFlatL2(document_vectors.shape[1])
+index.add(document_vectors)
 
-Context:
-{context}
+def retrieve(query: str, top_k: int = 2):
+    query_vector = embedder.encode([query]).astype("float32")
+    distances, indices = index.search(query_vector, top_k)
 
-Question: {user_query}
-Answer:"""
+    return [documents[i] for i in indices[0]]
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return response.choices[0].message.content
+question = "How many paid leaves do employees get?"
 
-# ---------- 4. Try it ----------
-print(rag_answer("How many paid leaves do I get in a year?"))
-```
+context = retrieve(question)
 
----
+print("Retrieved context:")
+for item in context:
+    print("-", item)
+~~~
 
-## 13. .NET Example — RAG with Semantic Kernel
+The missing final step is:
 
-For .NET / C# developers, Microsoft's **Semantic Kernel** is the most popular framework to build RAG applications.
+~~~
+Retrieved Context
+       +
+User Question
+       ↓
+      LLM
+       ↓
+Final Answer
+~~~
 
-```csharp
-// dotnet add package Microsoft.SemanticKernel
-// dotnet add package Microsoft.SemanticKernel.Connectors.OpenAI
-
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Embeddings;
-using Microsoft.SemanticKernel.Memory;
-
-var kernelBuilder = Kernel.CreateBuilder();
-
-kernelBuilder.AddOpenAIChatCompletion(
-    modelId: "gpt-4o-mini",
-    apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY")!);
-
-var kernel = kernelBuilder.Build();
-
-// Build an in-memory vector store for our knowledge base
-var memoryBuilder = new MemoryBuilder();
-memoryBuilder.WithOpenAITextEmbeddingGeneration(
-    "text-embedding-3-small",
-    Environment.GetEnvironmentVariable("OPENAI_API_KEY")!);
-memoryBuilder.WithMemoryStore(new VolatileMemoryStore());
-var memory = memoryBuilder.Build();
-
-// Step 1: Save chunks into memory (embeds + stores them)
-await memory.SaveInformationAsync(
-    collection: "company-policy",
-    text: "Our company's leave policy allows 18 paid leaves per year.",
-    id: "chunk-1");
-
-await memory.SaveInformationAsync(
-    collection: "company-policy",
-    text: "The notice period for resignation is 60 days.",
-    id: "chunk-2");
-
-// Step 2: Retrieve the most relevant chunk for a user query
-var query = "How many leaves do employees get?";
-var results = memory.SearchAsync(
-    collection: "company-policy",
-    query: query,
-    limit: 1,
-    minRelevanceScore: 0.5);
-
-string context = "";
-await foreach (var result in results)
-{
-    context += result.Metadata.Text + "\n";
-}
-
-// Step 3: Augment + Generate final answer
-var prompt = $"""
-Answer using only the context below.
-Context: {context}
-Question: {query}
-""";
-
-var response = await kernel.InvokePromptAsync(prompt);
-Console.WriteLine(response);
-```
+That is RAG.
 
 ---
 
-## 14. Types of RAG
+# 27. .NET / Azure Implementation
 
-```mermaid
+For an enterprise .NET implementation, the architecture can look like:
+
+~~~mermaid
 flowchart TD
-    RAG[RAG Types] --> Naive[Naive RAG<br/>Simple retrieve + generate]
-    RAG --> Advanced[Advanced RAG<br/>Re-ranking, query rewriting]
-    RAG --> Modular[Modular RAG<br/>Pluggable components]
-    RAG --> Agentic[Agentic RAG<br/>RAG as one tool among many]
-    RAG --> Graph[GraphRAG<br/>Knowledge-graph based retrieval]
-```
+    API["🌐 ASP.NET Core API"] --> AUTH["🔐 Entra ID / OAuth"]
+    AUTH --> ORCH["🧭 RAG Orchestrator"]
+
+    DOC["📄 Document Upload"] --> BLOB["☁️ Azure Blob Storage"]
+    BLOB --> DI["🧠 Azure AI Document Intelligence"]
+    DI --> CH["✂️ Chunking Service"]
+    CH --> EMB["🔢 Embedding Service"]
+    EMB --> SEARCH["🔎 Azure AI Search"]
+
+    ORCH --> SEARCH
+    ORCH --> PROMPT["🧩 Prompt Builder"]
+    PROMPT --> LLM["🤖 Azure OpenAI / LLM"]
+    LLM --> SAFE["🛡️ Guardrails"]
+    SAFE --> API
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class API,DOC yellow;
+    class BLOB,DI,CH,EMB green;
+    class SEARCH,ORCH blue;
+    class AUTH,PROMPT,LLM,SAFE purple;
+~~~
+
+### Example C# retrieval model
+
+~~~csharp
+/// <summary>
+/// Represents a piece of document content returned by the retrieval layer.
+/// </summary>
+public sealed class RetrievedDocumentChunk
+{
+    /// <summary>
+    /// Gets the unique document identifier.
+    /// </summary>
+    public required string DocumentId { get; init; }
+
+    /// <summary>
+    /// Gets the extracted chunk text.
+    /// </summary>
+    public required string Content { get; init; }
+
+    /// <summary>
+    /// Gets the source page number.
+    /// </summary>
+    public int PageNumber { get; init; }
+
+    /// <summary>
+    /// Gets the relevance score assigned by the search layer.
+    /// </summary>
+    public double Score { get; init; }
+}
+~~~
+
+### Example service contract
+
+~~~csharp
+/// <summary>
+/// Retrieves relevant document chunks for a natural-language query.
+/// </summary>
+public interface IDocumentRetriever
+{
+    /// <summary>
+    /// Retrieves the most relevant chunks that the current user is authorized to access.
+    /// </summary>
+    /// <param name="query">The user's natural-language question.</param>
+    /// <param name="cancellationToken">Cancellation token for the request.</param>
+    /// <returns>A collection of ranked document chunks.</returns>
+    Task<IReadOnlyList<RetrievedDocumentChunk>> RetrieveAsync(
+        string query,
+        CancellationToken cancellationToken = default);
+}
+~~~
+
+### A production API should expose documentation
+
+For ASP.NET Core:
+
+- OpenAPI / Swagger
+- XML documentation
+- request/response schemas
+- authentication requirements
+- error responses
+- correlation IDs
+
+The RAG API should be observable like any other production API.
+
+---
+
+# 28. RAG Types
+
+~~~mermaid
+flowchart TD
+    R["RAG"] --> N["Naive RAG"]
+    R --> A["Advanced RAG"]
+    R --> M["Modular RAG"]
+    R --> AG["Agentic RAG"]
+    R --> G["Graph-based RAG"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class R yellow;
+    class N,A green;
+    class M,AG blue;
+    class G purple;
+~~~
 
 | Type | Description |
 |---|---|
-| **Naive RAG** | Simple retrieve → generate. Good for prototypes and learning. |
-| **Advanced RAG** | Adds query rewriting, re-ranking, and hybrid search for better accuracy. |
-| **Modular RAG** | Components (retriever, ranker, generator) are swappable and independently improvable. |
-| **Agentic RAG** | An AI agent decides *when* and *whether* to retrieve, and can combine RAG with SQL, APIs, web search, etc. |
-| **GraphRAG** | Uses a knowledge graph instead of (or along with) plain vector search — great for relationship-heavy data. |
+| **Naive RAG** | Retrieve → prompt → generate |
+| **Advanced RAG** | Adds query transformation, hybrid search, filters and re-ranking |
+| **Modular RAG** | Retrieval components can be independently replaced |
+| **Agentic RAG** | An agent decides which retrieval/tool action is needed |
+| **Graph-based RAG** | Uses relationships and graph structures for retrieval |
 
 ---
 
-## 15. Python & .NET Libraries for RAG
+# 29. Common RAG Failures
 
-**Python:**
+A RAG system can fail at many different points.
+
+## Failure 1 — Wrong chunk
+
+The answer exists, but chunking split the important context.
+
+**Fix:** improve structure-aware chunking.
+
+## Failure 2 — Wrong embedding
+
+The query and answer are semantically difficult for the embedding model.
+
+**Fix:** evaluate domain-appropriate embedding models.
+
+## Failure 3 — Search misses the answer
+
+The correct chunk is not in Top-K.
+
+**Fix:** improve retrieval, hybrid search, query rewriting or index configuration.
+
+## Failure 4 — Correct chunk but wrong ranking
+
+The answer is retrieved but appears too low.
+
+**Fix:** re-ranking.
+
+## Failure 5 — Correct context but wrong answer
+
+The LLM misunderstands or ignores the evidence.
+
+**Fix:** improve prompt instructions, context formatting, model selection and evaluation.
+
+## Failure 6 — Unauthorized context
+
+A user receives information they should not access.
+
+**Fix:** enforce ACL/tenant filters before retrieval results reach the model.
+
+### 🟥 The debugging ladder
+
+~~~
+Wrong Answer
+    ↓
+Was the correct document indexed?
+    ↓
+Was it chunked correctly?
+    ↓
+Was it retrieved?
+    ↓
+Was it ranked highly enough?
+    ↓
+Was it passed to the LLM?
+    ↓
+Did the LLM use it correctly?
+    ↓
+Was the response properly cited?
+~~~
+
+> 🟨 **Do not immediately change the LLM when the real problem is retrieval.**
+
+---
+
+# 30. RAG Evaluation
+
+A production RAG system needs measurement.
+
+### Retrieval metrics
+
+| Metric | Meaning |
+|---|---|
+| Recall@K | Did we retrieve the relevant chunk? |
+| Precision@K | How much of retrieved content was relevant? |
+| MRR | How high was the first relevant result? |
+| nDCG | How good was the ranking overall? |
+
+### Generation metrics
+
+| Metric | Meaning |
+|---|---|
+| Faithfulness | Is the answer supported by the retrieved context? |
+| Answer relevance | Does the answer address the question? |
+| Citation correctness | Do citations actually support the answer? |
+| Completeness | Did the answer cover the important information? |
+
+### The golden dataset
+
+Create questions such as:
+
+~~~
+Question:
+What is the termination notice period?
+
+Expected source:
+Acme-Supplier-Contract.pdf, Page 18
+
+Expected answer:
+90 days
+
+Expected citation:
+Page 18 / Termination
+~~~
+
+Then test every pipeline change against the same dataset.
+
+---
+
+# 31. Security
+
+Enterprise RAG introduces security risks.
+
+### 🔐 Protect against
+
+- prompt injection
+- malicious documents
+- cross-tenant data leakage
+- unauthorized retrieval
+- sensitive information exposure
+- PII leakage
+- unsafe tool calls
+
+### Security architecture
+
+~~~mermaid
+flowchart LR
+    U["👤 User"] --> AUTH["🔐 Authenticate"]
+    AUTH --> ACL["🛡️ Authorize"]
+    ACL --> RET["🔍 Secure Retrieval"]
+    RET --> SAN["🧹 Sanitize / Validate"]
+    SAN --> LLM["🤖 LLM"]
+    LLM --> G["🛡️ Output Guardrails"]
+    G --> R["✅ Response"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class U yellow;
+    class AUTH,ACL green;
+    class RET,SAN blue;
+    class LLM,G,R purple;
+~~~
+
+---
+
+# 32. Production Architecture
+
+A larger enterprise Document Intelligence platform may look like this:
+
+~~~mermaid
+flowchart TD
+    UP["📤 Upload API"] --> BLOB["☁️ Object Storage"]
+    BLOB --> BUS["📨 Event Bus"]
+    BUS --> ING["⚙️ Ingestion Worker"]
+    ING --> DI["🧠 Document Intelligence"]
+    DI --> PARSE["📄 Parser"]
+    PARSE --> CHUNK["✂️ Chunking"]
+    CHUNK --> EMB["🔢 Embeddings"]
+    EMB --> IDX[("🔎 Search Index")]
+
+    USER["👤 User"] --> API["🌐 RAG API"]
+    API --> ID["🔐 Identity"]
+    ID --> QRY["🧭 Query Orchestrator"]
+    QRY --> FILTER["🛡️ ACL Filter"]
+    FILTER --> SEARCH["🔍 Hybrid Search"]
+    SEARCH --> RANK["📊 Re-ranker"]
+    RANK --> CONTEXT["📚 Context Builder"]
+    CONTEXT --> MODEL["🤖 LLM"]
+    MODEL --> GUARD["🛡️ Guardrails"]
+    GUARD --> RESP["💬 Answer + Citations"]
+
+    IDX --> SEARCH
+
+    OBS["📊 Observability / Evaluation"] -.-> ING
+    OBS -.-> API
+    OBS -.-> SEARCH
+    OBS -.-> MODEL
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class UP,USER yellow;
+    class BLOB,BUS,ING,DI,PARSE,CHUNK,EMB green;
+    class IDX,API,QRY,FILTER,SEARCH,RANK,CONTEXT blue;
+    class ID,MODEL,GUARD,RESP,OBS purple;
+~~~
+
+### Production concerns
+
+A real enterprise implementation also needs:
+
+- retries
+- idempotency
+- dead-letter queues
+- document versioning
+- incremental indexing
+- tenant isolation
+- caching
+- rate limiting
+- monitoring
+- tracing
+- evaluation
+- cost controls
+- disaster recovery
+
+---
+
+# 33. Agentic RAG
+
+Traditional RAG follows a relatively predictable path.
+
+Agentic RAG adds decision-making.
+
+For example:
+
+> "Compare the termination clauses in the Acme and Contoso contracts and tell me which one has the longer notice period."
+
+An agent may decide:
+
+~~~
+Question
+   ↓
+Need two contracts
+   ↓
+Retrieve Acme
+   ↓
+Retrieve Contoso
+   ↓
+Extract termination clauses
+   ↓
+Compare
+   ↓
+Generate answer
+   ↓
+Cite both documents
+~~~
+
+### 🟪 Agentic RAG
+
+~~~mermaid
+flowchart TD
+    Q["👤 Complex Question"] --> AG["🤖 Agent / Orchestrator"]
+    AG --> R1["🔍 Document Search"]
+    AG --> R2["🗃️ SQL"]
+    AG --> R3["🌐 External API"]
+    AG --> R4["📚 Knowledge Base"]
+    R1 --> AG
+    R2 --> AG
+    R3 --> AG
+    R4 --> AG
+    AG --> A["💬 Final Grounded Answer"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+
+    class Q yellow;
+    class AG,A purple;
+    class R1,R4 blue;
+    class R2,R3 green;
+~~~
+
+RAG is therefore not disappearing.
+
+It is increasingly becoming a **retrieval capability inside larger AI systems**.
+
+---
+
+# 34. The Final RAG Mental Model
+
+If you remember only one diagram from this article, remember this:
+
+~~~mermaid
+flowchart TD
+    D["📄 YOUR KNOWLEDGE"] --> P["🧠 PREPARE"]
+    P --> C["✂️ CHUNK"]
+    C --> E["🔢 EMBED"]
+    E --> S[("🗄️ SEARCHABLE STORE")]
+
+    U["👤 USER QUESTION"] --> Q["🧭 UNDERSTAND QUERY"]
+    Q --> F["🔐 FILTER"]
+    F --> R["🔍 RETRIEVE"]
+    R --> RR["📊 RE-RANK"]
+    RR --> CTX["📚 CONTEXT"]
+    CTX --> L["🤖 LLM"]
+    L --> G["🛡️ GROUND + GUARD"]
+    G --> A["💬 ANSWER + 📌 CITATIONS"]
+
+    S --> R
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class D,U yellow;
+    class P,C,E green;
+    class S,Q,F,R,RR,CTX blue;
+    class L,G,A purple;
+~~~
+
+## 🧠 In one sentence
+
+> **RAG is the engineering pattern of retrieving the right external knowledge at query time, giving that evidence to a language model as context, and generating a grounded response.**
+
+## 🏗️ For our Document Intelligence project
+
+Think:
+
+~~~
+Documents
+   ↓
+Document Intelligence
+   ↓
+Clean + Structure
+   ↓
+Chunk
+   ↓
+Embed
+   ↓
+Index
+   ↓
+User Question
+   ↓
+Secure Retrieval
+   ↓
+Hybrid Search
+   ↓
+Re-rank
+   ↓
+Context
+   ↓
+LLM
+   ↓
+Guardrails
+   ↓
+Answer + Citations
+~~~
+
+### ⭐ The most important lesson
+
+> 🟨 **A RAG system is not just an LLM connected to a vector database.**
+>
+> A production RAG system is an end-to-end information retrieval system involving **document understanding, chunking, embeddings, indexing, retrieval, ranking, security, prompt construction, generation, citations, evaluation and observability.**
+
+---
+
+## 📚 Useful Technologies to Explore
+
+### Python
+
 - LangChain
 - LlamaIndex
 - Haystack
-- ChromaDB
-- FAISS
 - sentence-transformers
-- transformers
-- openai
-- qdrant-client
+- FAISS
+- Qdrant
+- Chroma
+- Transformers
 
-**.NET:**
+### .NET / Azure
+
+- ASP.NET Core
 - Microsoft.Extensions.AI
-- Microsoft Semantic Kernel
-- Azure.AI.OpenAI
-- Azure.Search.Documents
-- OpenAI .NET SDK
-- Qdrant.Client
-- Pinecone SDK
+- Semantic Kernel
+- Azure AI Search
+- Azure AI Document Intelligence
+- Azure OpenAI
+- Azure Blob Storage
+- Azure Service Bus
 
----
+### Search concepts
 
-## 16. LangChain, LangGraph, LangSmith & Hugging Face
-
-| Framework | Purpose |
-|---|---|
-| **LangChain** | Build RAG pipelines — prompt templates, chains, retrievers |
-| **LangGraph** | Multi-step workflows, AI agents, state management |
-| **LangSmith** | Debugging, evaluation, observability for LLM apps |
-| **Hugging Face** | Open-source models, embedding models, transformers, datasets |
-
----
-
-## 17. Popular Tools & Vector Databases
-
-| Tool | Purpose | Benefit |
-|---|---|---|
-| Azure AI Search | Enterprise Retrieval | Fully managed search |
-| Pinecone | Vector DB | Serverless, easy to scale |
-| Qdrant | Vector DB | Open source, fast |
-| Chroma | Local DB | Great for quick development |
-| FAISS | Local similarity search | Extremely fast, free |
-| Weaviate | Vector DB | Built-in hybrid search |
-| OpenSearch | Search | Scalable, open source |
-| Cohere | Re-ranking | Improves final accuracy |
-
----
-
-## 18. Where RAG Fits in System Design
-
-```mermaid
-flowchart TD
-    U[👤 User] --> GW[🚪 API Gateway]
-    GW --> AUTH[🔐 Authentication]
-    AUTH --> AG[🧭 Agent / Orchestrator]
-    AG --> RAG[📚 RAG]
-    AG --> SQL[🗃️ SQL]
-    AG --> API[🌐 APIs]
-    AG --> WEB[🔍 Web Search]
-    RAG --> LLM[🤖 LLM]
-    SQL --> LLM
-    API --> LLM
-    WEB --> LLM
-    LLM --> GR[🛡️ Guardrails]
-    GR --> RESP[✅ Response]
-```
-
----
-
-## 19. Common Challenges in RAG
-
-- 🤥 Hallucinations (still possible even with retrieval)
-- ✂️ Poor chunking → loss of context
-- 🧠 Wrong choice of embedding model for domain
-- 📉 Low-quality or irrelevant retrieval
-- ⏱️ Latency (multiple steps = slower response)
-- 💰 Cost (embedding + LLM calls add up)
-- 💉 Prompt injection through retrieved documents
-- 🔑 Access control (users should only retrieve what they're allowed to see)
-- 🕐 Freshness (keeping the vector DB updated with latest docs)
-
----
-
-## 20. Is RAG Dead? (Agentic RAG)
-
-**Short answer: No, not at all.**
-
-Classic RAG is evolving into **Agentic RAG**, where an AI agent intelligently decides:
-- Whether retrieval is even needed for this query
-- Which knowledge source to retrieve from (RAG, SQL, APIs, web search, memory)
-- How many retrieval rounds are needed to properly answer
-
-RAG remains an essential building block for enterprise knowledge retrieval — it has just become one smart tool in a bigger AI agent's toolbox, rather than being the entire system.
-
----
-
-## 21. Securing AI Applications
-
-RAG alone is not enough for a production-grade application. You also need:
-
-- 🔐 Authentication & Authorization
-- 🛡️ Guardrails & Content Safety
-- 💉 Prompt Injection Protection
-- 🕵️ PII Masking
-- 📊 Monitoring & Logging
-
-➡️ **Read the companion guide: *AI Guardrails Explained***
-
----
-
-## 22. Next Reading & Keywords
-
-**Keywords:** RAG, Retrieval-Augmented Generation, GenAI, AI Engineer, LLM, Vector Database, Embeddings, Chunking, Tokenization, Pinecone, ChromaDB, FAISS, Qdrant, Azure AI Search, LangChain, LangGraph, LangSmith, Semantic Kernel, Hugging Face, Prompt Engineering, Agentic AI, AI Architecture, Semantic Search, Hybrid Search.
+- Dense retrieval
+- BM25
+- Hybrid search
+- Metadata filtering
+- MMR
+- Re-ranking
+- Query rewriting
+- Semantic search
+- Vector indexing
+- Retrieval evaluation
 
 ---
 
 <div align="center">
 
-### ⭐ If this guide helped you, please star this repository and share it with your network!
+# 🚀 Build It. Measure It. Improve It.
 
-**Found an error or want to contribute? PRs are welcome! 🙌**
+**RAG becomes much easier once you stop thinking of it as "LLM magic" and start thinking of it as an information retrieval pipeline.**
+
+⭐ If this guide helped you understand RAG, consider starring the repository.
 
 </div>
