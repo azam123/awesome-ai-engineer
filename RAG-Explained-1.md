@@ -1728,6 +1728,461 @@ Answer + Citations
 >
 > A production RAG system is an end-to-end information retrieval system involving **document understanding, chunking, embeddings, indexing, retrieval, ranking, security, prompt construction, generation, citations, evaluation and observability.**
 
+
+---
+
+# 35. Top 10 Frequently Asked RAG / GenAI Interview Questions
+
+> 🎯 **Interview preparation note:** The questions below focus on practical RAG and GenAI engineering topics that recur across public interview-preparation material and reported interview discussions. Company names indicate where similar topics/questions have been publicly reported; they should **not** be interpreted as a guarantee that the exact wording is used in every interview. citeturn0search0turn0search1turn0youtube12
+
+These questions are especially useful for **Senior Software Engineer, Staff Engineer, Principal Engineer, AI Engineer and ML Engineer** interviews.
+
+---
+
+## Q1. What is RAG, and why would you use it instead of fine-tuning an LLM?
+
+**Asked in / reported for:** Google, Microsoft, Amazon and other AI-focused companies. citeturn0youtube12turn0search2
+
+### What the interviewer is testing
+
+Whether you understand the architectural reason for using RAG rather than simply memorizing the definition.
+
+### Strong answer
+
+**RAG (Retrieval-Augmented Generation)** retrieves relevant external information at query time and provides it to an LLM as context before generating the response.
+
+RAG is useful when:
+
+- knowledge changes frequently
+- information is private or enterprise-specific
+- answers need source citations
+- documents need to be updated without retraining the model
+- retrieval quality can be independently improved
+
+Fine-tuning is more appropriate when the goal is to change the model's **behavior, style, task performance or domain adaptation**, rather than simply inject frequently changing factual knowledge.
+
+### Simple example
+
+> **RAG:** "What does our latest HR policy say about parental leave?" → retrieve the current policy → answer with citation.
+
+> **Fine-tuning:** "Always respond to customer-support requests in our company's desired style and format."
+
+---
+
+## Q2. Your RAG system retrieves the wrong documents. How would you debug and improve retrieval quality?
+
+**Asked in / reported for:** Google, Microsoft and senior AI-engineering interviews. citeturn0search0turn0search4
+
+### What the interviewer is testing
+
+Whether you can diagnose RAG as an **information-retrieval system**, rather than immediately changing the LLM.
+
+### Strong answer
+
+I would debug retrieval in layers:
+
+1. Verify the correct document was ingested.
+2. Verify parsing and OCR quality.
+3. Inspect chunk boundaries.
+4. Evaluate the embedding model.
+5. Measure **Recall@K / Precision@K**.
+6. Inspect metadata filters.
+7. Test keyword/BM25 retrieval.
+8. Compare dense vs hybrid retrieval.
+9. Add query rewriting where appropriate.
+10. Add a re-ranker.
+11. Build a golden evaluation dataset.
+12. Compare every change against the same benchmark.
+
+> 🟨 **Key principle:** If the correct chunk never reaches the LLM, changing the LLM will not solve the retrieval problem.
+
+---
+
+## Q3. How would you choose the right chunk size and chunking strategy?
+
+**Asked in / reported for:** Google, Anthropic, Microsoft and other AI engineering interviews. citeturn0search0turn0youtube12
+
+### What the interviewer is testing
+
+Whether you understand that chunking directly affects retrieval quality.
+
+### Strong answer
+
+There is no universal chunk size.
+
+I would consider:
+
+- document structure
+- semantic boundaries
+- average section size
+- model context window
+- query patterns
+- retrieval metrics
+- overlap requirements
+- table and heading relationships
+
+For enterprise documents, I would prefer **structure-aware or semantic chunking** over blindly splitting every N characters.
+
+For example:
+
+~~~
+Contract
+ ├── Definitions
+ ├── Payment Terms
+ ├── Termination
+ │    ├── Notice Period
+ │    └── Early Termination
+ └── Liability
+~~~
+
+A chunk should ideally contain enough context to answer a question without bringing a large amount of unrelated information.
+
+---
+
+## Q4. What is the difference between vector search, keyword search and hybrid search?
+
+**Asked in / reported for:** Amazon, Microsoft, Google and RAG-focused interviews. citeturn0youtube12turn0search6
+
+### Strong answer
+
+**Keyword search** is excellent for exact terms such as:
+
+~~~
+INV-10082
+ERR_CONNECTION_RESET
+Contract-2026-001
+~~~
+
+**Vector search** is useful when semantic meaning matters:
+
+~~~
+"How can I cancel the agreement?"
+~~~
+
+may retrieve:
+
+~~~
+"Either party may terminate the contract with 90 days written notice."
+~~~
+
+**Hybrid search** combines lexical and semantic retrieval.
+
+A typical production flow is:
+
+~~~mermaid
+flowchart LR
+    Q["👤 Query"] --> BM["🔤 BM25 / Keyword Search"]
+    Q --> V["🧠 Vector Search"]
+    BM --> M["🔀 Merge / Fusion"]
+    V --> M
+    M --> RR["📊 Re-ranker"]
+    RR --> C["📚 Best Context"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    class Q yellow;
+    class BM,V blue;
+    class M,RR green;
+    class C yellow;
+~~~
+
+> 🟩 In enterprise RAG, hybrid retrieval is often useful because real queries contain both **semantic questions and exact identifiers**.
+
+---
+
+## Q5. What is re-ranking, and why do we need it if vector search already returns Top-K results?
+
+**Asked in / reported for:** Anthropic, Google, Microsoft and RAG engineering interviews. citeturn0search0turn0youtube12
+
+### Strong answer
+
+The first-stage retriever is optimized for **speed and recall**.
+
+A re-ranker performs a more expensive relevance assessment on a smaller candidate set.
+
+For example:
+
+~~~
+1,000,000 documents
+        ↓
+Vector / hybrid retrieval
+        ↓
+Top 50 candidates
+        ↓
+Re-ranker
+        ↓
+Top 5 highly relevant chunks
+        ↓
+LLM
+~~~
+
+This can improve precision without running an expensive ranking model over the entire corpus.
+
+---
+
+## Q6. What would you do if the correct document is retrieved but the LLM still gives the wrong answer?
+
+**Asked in / reported for:** senior RAG/GenAI engineering interviews. citeturn0search4turn0search6
+
+### Strong answer
+
+I would separate **retrieval failure** from **generation failure**.
+
+First verify:
+
+- Was the correct evidence retrieved?
+- Is the evidence complete?
+- Is it ranked highly enough?
+- Is it actually included in the final prompt?
+- Is context truncated?
+- Are there conflicting chunks?
+- Does the prompt clearly instruct the model how to use evidence?
+- Is the model following the evidence?
+- Are citations generated from the retrieved source?
+
+Possible improvements include:
+
+- better context ordering
+- removing irrelevant chunks
+- contextual compression
+- stronger prompt instructions
+- structured context
+- citation-aware generation
+- a different model
+- answer verification / groundedness checks
+
+> 🟨 **Important:** "The LLM hallucinated" is not a complete diagnosis. First determine exactly where the pipeline failed.
+
+---
+
+## Q7. How do you evaluate a production RAG system?
+
+**Asked in / reported for:** Google, Microsoft, Anthropic and other AI/ML engineering interviews. citeturn0search0turn0search1
+
+### Strong answer
+
+I would evaluate both **retrieval** and **generation**.
+
+### Retrieval metrics
+
+| Metric | Question |
+|---|---|
+| Recall@K | Did the relevant document appear in the retrieved set? |
+| Precision@K | How much of the retrieved content was relevant? |
+| MRR | How high was the first relevant result? |
+| nDCG | How good was the overall ranking? |
+
+### Generation metrics
+
+| Metric | Question |
+|---|---|
+| Faithfulness | Is the answer supported by retrieved evidence? |
+| Answer Relevance | Does the answer address the user's question? |
+| Citation Correctness | Do citations actually support the answer? |
+| Completeness | Did the answer include the important information? |
+
+I would maintain a **golden dataset** containing representative production questions, expected sources and expected answers, then run it whenever retrieval, prompts, embedding models or LLMs change.
+
+---
+
+## Q8. What is the "Lost in the Middle" problem, and how can you reduce it?
+
+**Asked in / reported for:** Anthropic and other senior RAG/LLM interviews. citeturn0search0
+
+### Strong answer
+
+Even when an LLM receives a large amount of context, information placed in the middle of a long context can receive less effective attention than information near the beginning or end.
+
+In RAG, simply retrieving more documents is therefore not always better.
+
+Possible mitigations include:
+
+- retrieve fewer but higher-quality chunks
+- re-rank aggressively
+- remove redundant context
+- use contextual compression
+- place the most relevant evidence strategically
+- summarize or organize long evidence
+- test answer quality at different context sizes
+
+> 🟩 **More retrieved context does not automatically mean a better answer.**
+
+---
+
+## Q9. How would you design secure multi-tenant RAG?
+
+**Asked in / reported for:** enterprise AI and senior software engineering interviews. citeturn0search3turn0search6
+
+### Strong answer
+
+Security must be enforced **before unauthorized content reaches the LLM**.
+
+A production design could be:
+
+~~~mermaid
+flowchart LR
+    U["👤 User"] --> ID["🔐 Identity / Claims"]
+    ID --> ACL["🛡️ Authorization Filter"]
+    ACL --> RET["🔍 Secure Retrieval"]
+    RET --> CTX["📚 Authorized Context"]
+    CTX --> LLM["🤖 LLM"]
+    LLM --> OUT["💬 Response"]
+
+    classDef yellow fill:#FEF3C7,stroke:#D97706,color:#111827,stroke-width:2px;
+    classDef green fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:2px;
+    classDef blue fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:2px;
+    classDef purple fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:2px;
+
+    class U yellow;
+    class ID,ACL green;
+    class RET,CTX blue;
+    class LLM,OUT purple;
+~~~
+
+I would typically use metadata such as:
+
+~~~
+tenantId
+documentId
+department
+classification
+allowedUsers
+allowedGroups
+~~~
+
+The retrieval query should apply authorization constraints so that unauthorized chunks are never supplied to the model.
+
+---
+
+## Q10. What is Agentic RAG, and when would you use it instead of traditional RAG?
+
+**Asked in / reported for:** Microsoft, Google and modern AI-engineering interviews. citeturn0search0turn0youtube12
+
+### Strong answer
+
+Traditional RAG generally follows:
+
+~~~
+Question
+   ↓
+Retrieve
+   ↓
+Context
+   ↓
+LLM
+   ↓
+Answer
+~~~
+
+Agentic RAG allows an agent/orchestrator to decide:
+
+- whether retrieval is needed
+- which knowledge source to use
+- whether to call SQL
+- whether to call an API
+- whether another retrieval round is necessary
+- whether the evidence is sufficient
+- how multiple sources should be combined
+
+Example:
+
+> "Compare revenue from the database with the explanation in the quarterly business report."
+
+The agent may use:
+
+~~~
+User Question
+      ↓
+Agent
+ ┌────┼─────────┐
+ ↓    ↓         ↓
+RAG  SQL      API
+ └────┼─────────┘
+      ↓
+  Reason / Compare
+      ↓
+Answer + Citations
+~~~
+
+Agentic RAG is useful when a question requires **multiple tools, iterative retrieval, planning or multi-step reasoning**. It also introduces additional concerns such as latency, cost, tool authorization, reliability and evaluation.
+
+---
+
+## 🏢 Company / Topic Map
+
+The following map is intended as an **interview-preparation guide**, not as a claim that each company asks these exact questions in every interview.
+
+| Topic | Companies publicly reported in interview-prep sources |
+|---|---|
+| RAG fundamentals | Google, Microsoft, Amazon and other AI companies |
+| Retrieval debugging | Google, Microsoft, Anthropic |
+| Chunking | Google, Anthropic, Microsoft |
+| Hybrid search | Amazon, Microsoft, Google |
+| Re-ranking | Anthropic, Google, Microsoft |
+| RAG evaluation | Google, Microsoft, Anthropic |
+| Lost in the Middle | Anthropic, Google-related interview reports |
+| Secure enterprise RAG | Microsoft and enterprise AI roles |
+| Agentic RAG | Microsoft, Google and modern AI roles |
+
+Public interview reports vary in reliability, and exact questions can differ by team, role and interview loop. Treat the company names as **signals for topics to prepare**, not guarantees. citeturn0search0turn0search1turn0youtube12
+
+---
+
+## 🎯 Senior/Principal Engineer Interview Tip
+
+For senior-level interviews, do not stop at:
+
+> "RAG retrieves documents and sends them to an LLM."
+
+A stronger answer connects the complete system:
+
+~~~
+Documents
+   ↓
+Parsing / OCR
+   ↓
+Structure-aware Chunking
+   ↓
+Embeddings
+   ↓
+Indexing
+   ↓
+Metadata + ACL
+   ↓
+Query Understanding
+   ↓
+Hybrid Retrieval
+   ↓
+Re-ranking
+   ↓
+Context Construction
+   ↓
+LLM
+   ↓
+Grounded Answer
+   ↓
+Citations
+   ↓
+Evaluation + Observability
+~~~
+
+Then discuss the engineering trade-offs:
+
+- accuracy vs latency
+- recall vs precision
+- context size vs cost
+- model quality vs inference cost
+- freshness vs indexing cost
+- security vs retrieval flexibility
+- simple RAG vs Agentic RAG
+- managed services vs self-hosted infrastructure
+
+> 🟨 **This is the level of thinking that turns a RAG answer from a definition into a system-design answer.**
+
+---
+
+
 ---
 
 ## 📚 Useful Technologies to Explore
