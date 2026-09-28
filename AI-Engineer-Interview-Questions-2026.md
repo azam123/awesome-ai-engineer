@@ -105,11 +105,11 @@ You should cover:
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Documents] --> B[Parse]
 B --> C[Chunk]
 C --> D[Embeddings]
-D --> E[(Vector / Hybrid Index)]
+D --> E[(Search Index)]
 U[User Question] --> Q[Query Understanding]
 Q --> R[Retrieve Top-K]
 E --> R
@@ -307,13 +307,13 @@ Chunking divides a document into smaller retrieval units that can independently 
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Large Document] --> B[Parse Structure]
 B --> C{Content Type}
 C -->|Prose| D[Semantic Chunk]
-C -->|Table| E[Table-Aware Chunk]
-C -->|Code| F[Code-Aware Chunk]
-C -->|Scanned/Image| G[OCR / Vision]
+C -->|Table| E[Table Chunk]
+C -->|Code| F[Code Chunk]
+C -->|Scan/Image| G[OCR / Vision]
 D --> H[Embed]
 E --> H
 F --> H
@@ -394,10 +394,10 @@ An **embedding** is a numerical representation of content in a vector space wher
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Document Chunk] --> B[Embedding Model]
 B --> C[Vector]
-C --> D[(Vector Database)]
+C --> D[(Vector DB)]
 E[User Query] --> F[Query Embedding]
 F --> D
 D --> G[Similarity Search]
@@ -467,12 +467,12 @@ Vector search is optimized for candidate retrieval. The first result is not alwa
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 Q[Query] --> V[Vector / Hybrid Search]
 D[(Large Corpus)] --> V
 V --> C[Top 50 Candidates]
-C --> R[Cross Encoder / Reranker]
-R --> F[Top 5 Relevant Chunks]
+C --> R[Cross-Encoder / Reranker]
+R --> F[Top 5 Chunks]
 F --> L[LLM]
 class Q yellow
 class D blue
@@ -673,7 +673,7 @@ The index must remain aligned with the source of truth.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Source Repository] --> B[Change Detector]
 B --> C{Changed?}
 C -->|No| D[Ignore]
@@ -819,7 +819,7 @@ A context window is the amount of tokenized context a model can process for a re
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Question] --> B[Retrieve 50]
 B --> C[Rerank]
 C --> D[Compress to 8]
@@ -857,7 +857,7 @@ An agent answers:
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 Q[Question] --> R[RAG]
 R --> A[Retrieved Context]
 A --> L[LLM]
@@ -977,7 +977,7 @@ Agent memory can be divided into:
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Agent 1] --> S[(Shared State)]
 B[Agent 2] --> S
 C[Agent 3] --> S
@@ -1156,7 +1156,7 @@ Decompose end-to-end latency rather than blaming the LLM.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Request] --> B[Auth]
 B --> C[Query Processing]
 C --> D[Retrieval]
@@ -1199,7 +1199,7 @@ A semantic cache can identify meaningfully similar queries.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 Q[New Query] --> E[Query Embedding]
 E --> C[(Semantic Cache)]
 C --> D{Similar Query?}
@@ -1343,7 +1343,7 @@ The interviewer wants to know whether you can turn a prototype into a reliable A
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Client] --> B[FastAPI]
 B --> C[Pydantic Validation]
 C --> D[Application Service]
@@ -1450,7 +1450,7 @@ Production AI workflows fail. Design for failure.
 ## Flow Diagram
 
 ```mermaid
-flowchart LR
+flowchart TD
 A[Message] --> B[Worker]
 B --> C{Success?}
 C -->|Yes| D[Ack]
@@ -1598,9 +1598,6 @@ U1->>DB: Conditional Update
 U2->>DB: Conditional Update
 DB-->>U1: Success
 DB-->>U2: 0 rows changed
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 A strong solution is a conditional update:
