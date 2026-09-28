@@ -60,6 +60,15 @@
 
 # 1. Design a RAG solution for a business problem
 
+## 🧩 Points covered
+
+- Business objective\n- data sources\n- ingestion\n- parsing\n- chunking\n- embeddings\n- retrieval\n- reranking\n- prompting\n- citations\n- security\n- evaluation\n- observability\n- scalability and cost.
+
+## 🎤 Sample interview answer
+
+> For a production RAG solution, I would start with the business requirement and the characteristics of the source data rather than choosing a vector database first. I would build an ingestion pipeline that parses documents, preserves structure, creates retrieval-friendly chunks, attaches metadata and permissions, and generates embeddings for indexing. At query time, I would authenticate the user, apply authorization filters, use hybrid or vector retrieval, rerank the candidates, build a compact grounded context, and call the LLM. I would return citations and explicitly allow the system to abstain when evidence is insufficient. Finally, I would evaluate retrieval and generation separately and monitor latency, cost, security, quality and failure rates in production.
+
+
 **Reported in:** Siemens Healthineers, Teradata and related GenAI system-design interviews.
 
 ## Understand the question
@@ -196,6 +205,15 @@ Do not answer "RAG is embeddings + vector database + LLM." Explain the complete 
 
 # 2. RAG architecture and components
 
+## 🧩 Points covered
+
+- Indexing pipeline\n- query pipeline\n- parser\n- chunker\n- embeddings\n- search index\n- metadata\n- retriever\n- reranker\n- context builder\n- LLM\n- guardrails\n- evaluation and observability.
+
+## 🎤 Sample interview answer
+
+> I would explain production RAG as two connected pipelines: an offline indexing pipeline and an online query pipeline. The indexing side parses source documents, chunks the content, creates embeddings, and stores vectors together with metadata, versions and access-control information. The query side authenticates the user, processes the question, retrieves candidates using vector, keyword or hybrid search, reranks them, builds the context and sends it to the LLM. Guardrails validate the request and response, while evaluation and observability measure quality and production behavior. The important point is that every component has a specific responsibility and can become a source of failure or latency.
+
+
 **Answer:**
 
 ## Understand the question
@@ -288,6 +306,15 @@ public sealed class DocumentChunk
 ---
 
 # 3. Parsing and chunking strategies
+
+## 🧩 Points covered
+
+- Document structure\n- content types\n- fixed-size\n- recursive\n- semantic and structure-aware chunking\n- overlap\n- token limits and retrieval-quality validation.
+
+## 🎤 Sample interview answer
+
+> I treat chunking as a retrieval-quality decision rather than a simple text-splitting operation. I first identify whether the document contains prose, tables, code, scanned pages or mixed content, and preserve headings and document hierarchy where possible. For normal prose I can use recursive or semantic chunking, while tables and code often need specialized handling. I also use token-aware limits and controlled overlap when context continuity matters. I validate the strategy using retrieval metrics because the right chunk size depends on the document type and the questions users actually ask.
+
 
 **Answer:**
 
@@ -383,6 +410,15 @@ def chunk_text(
 
 # 4. Embeddings, vector databases and similarity search
 
+## 🧩 Points covered
+
+- Embedding generation\n- vector storage\n- metadata\n- query embedding\n- nearest-neighbor search\n- similarity metrics\n- filtering and top-K retrieval.
+
+## 🎤 Sample interview answer
+
+> Embeddings convert text into numerical vectors so that semantically related content can be retrieved even when the query does not use the same words as the document. During indexing, I embed each chunk and store the vector with metadata such as document ID, tenant, page, section and permissions. At query time, I embed the user's question and perform nearest-neighbor search, often combining semantic retrieval with keyword search and metadata filters. The similarity metric and index configuration should be compatible with the embedding model. I then pass the strongest candidates to reranking and ultimately to the LLM rather than assuming the nearest vector is automatically the best final context.
+
+
 **Answer:**
 
 ## Understand the question
@@ -456,6 +492,15 @@ def cosine_similarity(
 
 # 5. Reranking
 
+## 🧩 Points covered
+
+- First-stage retrieval\n- recall\n- candidate generation\n- cross-encoder/reranker\n- precision\n- context compression\n- top-K tuning and latency trade-offs.
+
+## 🎤 Sample interview answer
+
+> I use reranking as a second-stage relevance step after broad candidate retrieval. The first-stage vector or hybrid search is optimized for recall, so I may retrieve dozens of candidates rather than only the final few chunks. A reranker then evaluates the relationship between the query and each candidate more precisely and orders them by relevance. I can keep the top five to ten results after reranking and optionally compress their content before sending it to the LLM. This gives me a practical recall-first, precision-second architecture while controlling context size and latency.
+
+
 **Answer:**
 
 ## Understand the question
@@ -502,6 +547,15 @@ This gives a good balance between retrieval recall and generation efficiency.
 ---
 
 # 6. Improving retrieval quality
+
+## 🧩 Points covered
+
+- Retrieval troubleshooting\n- source validation\n- chunk inspection\n- recall@K\n- metadata filters\n- query rewriting\n- hybrid search\n- reranking and context compression.
+
+## 🎤 Sample interview answer
+
+> When RAG answers are poor, I first determine whether the failure is in ingestion, retrieval or generation. I inspect the source documents and chunks, measure recall at K, verify metadata and authorization filters, and check whether the question requires exact keywords or multiple reasoning steps. I then consider query rewriting, hybrid search, better chunking, candidate-K tuning, reranking and context compression. I only consider changing or fine-tuning the embedding model after establishing a measured baseline. This prevents expensive model changes from hiding a simpler data or retrieval problem.
+
 
 **Answer:**
 
@@ -554,6 +608,15 @@ Investigate in this order:
 ---
 
 # 7. Scaling RAG
+
+## 🧩 Points covered
+
+- Asynchronous ingestion\n- queues\n- batching\n- ANN indexes\n- sharding\n- tenant isolation\n- caching\n- autoscaling\n- rate limiting\n- latency and cost.
+
+## 🎤 Sample interview answer
+
+> To scale RAG, I separate the ingestion workload from the online query workload so they can scale independently. Document processing should normally be asynchronous and use queues, worker pools and batched embedding operations. The query path should use efficient search indexes, metadata filtering, caching, rate limiting and controlled context sizes, with separate scaling for retrieval and generation where appropriate. For large multi-tenant systems I would consider partitioning or sharding and strict tenant isolation. I would measure p50, p95 and p99 latency, throughput, error rates, token usage and cost before deciding where to scale.
+
 
 **Answer:**
 
@@ -612,6 +675,15 @@ Use:
 
 # 8. PDFs with images, tables and scanned pages
 
+## 🧩 Points covered
+
+- PDF classification\n- native text extraction\n- OCR\n- table extraction\n- image/vision processing\n- normalization\n- page metadata\n- citations and multimodal retrieval.
+
+## 🎤 Sample interview answer
+
+> I would not assume that every PDF contains usable text because PDFs can contain native text, scanned pages, tables and images. I would classify the content and use native extraction when possible, OCR for scanned pages, table-aware extraction for structured data and vision capabilities when images contain important meaning. During normalization I would preserve page numbers, sections, content types and source references so that answers can be cited accurately. The original document should remain available as the source of truth. I would then chunk and index the normalized content using strategies appropriate to each content type.
+
+
 **Answer:**
 
 A PDF is a container, not necessarily plain text.
@@ -666,6 +738,15 @@ Example metadata:
 
 # 9. Stale documents and document updates
 
+## 🧩 Points covered
+
+- Source of truth\n- change detection\n- document versions\n- incremental reindexing\n- deletion handling\n- version metadata and safe index rollout.
+
+## 🎤 Sample interview answer
+
+> I would treat the source repository as the source of truth and make document versioning part of the indexing design. A change detector can identify additions, updates and deletions, after which the system creates a new version and reprocesses only the affected content. The index should carry document version, timestamp and status metadata so old chunks cannot accidentally remain authoritative. For deletions, I would remove or deactivate corresponding indexed records. I would also use blue-green or versioned indexes when a large reindex is required so users do not see partially updated knowledge.
+
+
 **Answer:**
 
 ## Understand the question
@@ -717,6 +798,15 @@ This prevents answers from mixing different policy versions.
 
 # 10. RAG vs Fine-Tuning
 
+## 🧩 Points covered
+
+- RAG knowledge freshness\n- private data\n- fine-tuning behavior\n- task specialization\n- hybrid approaches\n- evaluation\n- cost and operational complexity.
+
+## 🎤 Sample interview answer
+
+> RAG and fine-tuning solve different problems. I would use RAG when the model needs current, private or frequently changing external knowledge because the knowledge can be updated in the retrieval layer without retraining the model. I would consider fine-tuning when I need to change model behavior, style, task specialization or output patterns that are difficult to achieve reliably through prompting. In many enterprise systems the two can coexist: RAG supplies factual context while fine-tuning improves behavior. I would choose based on the required knowledge freshness, data volume, evaluation results, cost and operational complexity.
+
+
 **Answer:**
 
 ## Definition
@@ -757,6 +847,15 @@ If company policies change every week, I would update the index instead of retra
 
 # 11. Bi-encoder vs Cross-encoder
 
+## 🧩 Points covered
+
+- Bi-encoder retrieval\n- precomputed embeddings\n- cross-encoder scoring\n- recall\n- precision\n- scalability\n- latency and two-stage retrieval.
+
+## 🎤 Sample interview answer
+
+> A bi-encoder independently converts the query and document into embeddings, which makes large-scale retrieval efficient because document embeddings can be precomputed. A cross-encoder evaluates the query and candidate document together, allowing more detailed interaction between the two inputs but at higher computational cost. Therefore I would normally use a bi-encoder or hybrid search for first-stage retrieval and a cross-encoder-style reranker for a much smaller candidate set. This two-stage design balances scalability with relevance. The right choice depends on corpus size, latency requirements and the quality improvement demonstrated by evaluation.
+
+
 **Answer:**
 
 ## Definition
@@ -795,6 +894,15 @@ classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-s
 
 # 12. LLM decoding: temperature, top-k, top-p and beam search
 
+## 🧩 Points covered
+
+- Temperature\n- top-k\n- top-p\n- beam search\n- randomness\n- deterministic behavior\n- factual consistency and evaluation-driven tuning.
+
+## 🎤 Sample interview answer
+
+> LLM decoding controls how the model selects its next tokens. Temperature changes the randomness of the probability distribution, while top-k limits sampling to the k highest-probability candidates and top-p limits sampling to the smallest probability mass above a threshold. Beam search is a different decoding strategy that explores multiple likely sequences and is more common in traditional sequence-generation tasks than open-ended chat. For enterprise RAG I generally prefer relatively controlled sampling when factual consistency matters, and I tune parameters using representative evaluation data rather than assuming one setting works for every workload.
+
+
 **Answer:**
 
 - **Temperature:** changes the sharpness/randomness of token sampling.
@@ -809,6 +917,15 @@ For creative generation, more sampling diversity can be appropriate.
 ---
 
 # 13. Tokenization and context windows
+
+## 🧩 Points covered
+
+- Tokenization\n- context windows\n- token budgets\n- chunk sizing\n- retrieval count\n- prompt compression\n- truncation\n- reliability and cost.
+
+## 🎤 Sample interview answer
+
+> Tokenization converts text into the tokens that the model actually processes, so token count rather than character count determines much of the context and cost behavior. A context window defines how much input and output the model can handle in a request, and exceeding it can cause truncation or failure. In RAG I therefore control chunk size, retrieval count and prompt structure to stay within a safe token budget. I also remove redundant context and use compression when appropriate. Token-aware design improves reliability, latency and cost while preserving the evidence needed by the model.
+
 
 **Answer:**
 
@@ -845,6 +962,15 @@ A senior answer should always mention **token budgeting**.
 ---
 
 # 14. RAG vs AI Agent
+
+## 🧩 Points covered
+
+- RAG as retrieval\n- agents as action-oriented systems\n- tool use\n- planning\n- multi-step execution\n- agentic RAG and when not to add agent complexity.
+
+## 🎤 Sample interview answer
+
+> RAG is primarily a knowledge-retrieval pattern, while an AI agent is a system that can reason through a task, select actions or tools, observe results and continue until the task reaches a stopping condition. A RAG pipeline may retrieve documents and generate an answer in a mostly fixed flow. An agent can use RAG as one of its tools and may also call APIs, databases or other services. I would use a simple RAG pipeline for straightforward knowledge questions and introduce agentic behavior only when the business problem genuinely requires planning, tool use or multi-step execution.
+
 
 **Answer:**
 
@@ -886,6 +1012,15 @@ An agent can use RAG as one of its tools.
 ---
 
 # 15. Design an Agentic AI system
+
+## 🧩 Points covered
+
+- Agent orchestration\n- tools\n- planning\n- memory\n- authorization\n- guardrails\n- step limits\n- approvals\n- observability and evaluation.
+
+## 🎤 Sample interview answer
+
+> For an agentic AI system, I would begin by defining the task, available tools, authorization boundaries and stopping conditions. The architecture would typically include an orchestrator or agent loop, an LLM for planning and decision making, a tool registry, short-term state, optional long-term memory, and observability around every action. Each tool should have a strict schema and least-privilege access, and high-impact actions should require additional validation or approval. The agent should have limits on steps, time, retries and cost. I would evaluate both final task success and intermediate tool-selection behavior because an apparently successful answer can still hide unsafe or inefficient execution.
+
 
 **Answer:**
 
@@ -965,6 +1100,15 @@ public interface IAgentTool
 
 # 16. Agent memory and shared state
 
+## 🧩 Points covered
+
+- Short-term state\n- long-term memory\n- shared state\n- persistence\n- concurrency\n- retention\n- authorization and treating memory as untrusted data.
+
+## 🎤 Sample interview answer
+
+> I separate agent memory into short-term execution state and longer-lived memory. Short-term state contains the current conversation, tool results and workflow context required to complete the task. Long-term memory should only retain information that is useful across sessions and should have clear retention, authorization and deletion semantics. Shared state becomes important when multiple agents collaborate, so I would use a durable store with explicit ownership and concurrency controls rather than relying on model context alone. I would also avoid treating retrieved or remembered text as trusted instructions; memory is data and must respect security boundaries.
+
+
 **Answer:**
 
 ## Definition
@@ -1006,6 +1150,15 @@ Prefer:
 
 # 17. ReAct and tool calling
 
+## 🧩 Points covered
+
+- ReAct loop\n- structured tool calling\n- tool schemas\n- authorization\n- timeouts\n- step limits\n- stopping conditions and auditability.
+
+## 🎤 Sample interview answer
+
+> ReAct combines reasoning and action by allowing a model to decide which tool to call, observe the result and continue the task based on that observation. In modern production systems I would implement this through structured tool calls rather than allowing arbitrary text to execute actions. Each tool should define a strict input schema, authorization policy, timeout and error behavior. The agent loop should have a maximum number of steps and should stop when the task is complete or when the evidence is insufficient. I would log tool calls and outcomes so that incorrect plans, unsafe actions and unnecessary loops can be diagnosed.
+
+
 **Answer:**
 
 ReAct is a reasoning/action pattern where an agent alternates between deciding what to do and observing tool results.
@@ -1043,6 +1196,15 @@ Constrain the loop with maximum steps, timeouts and authorization.
 ---
 
 # 18. RAG evaluation
+
+## 🧩 Points covered
+
+- Retrieval metrics\n- generation metrics\n- golden datasets\n- groundedness\n- faithfulness\n- citation correctness\n- latency\n- cost and user feedback.
+
+## 🎤 Sample interview answer
+
+> I evaluate RAG in separate layers because a good final answer can hide a weak retriever and vice versa. For retrieval I measure metrics such as Recall@K, Precision@K, MRR and NDCG against a representative golden dataset. For generation I evaluate faithfulness, groundedness, answer relevance and citation correctness. In production I also track latency, token usage, cost, errors and user feedback. I use these measurements to identify whether a problem is caused by missing evidence, poor ranking or incorrect generation instead of relying on one overall accuracy number.
+
 
 **Answer:**
 
@@ -1108,6 +1270,15 @@ evaluation_result = {
 
 # 19. Hallucination mitigation
 
+## 🧩 Points covered
+
+- Retrieval quality\n- grounding\n- citations\n- structured outputs\n- claim validation\n- abstention\n- source versions and failure diagnosis.
+
+## 🎤 Sample interview answer
+
+> I mitigate hallucination through multiple controls rather than a single prompt instruction. First, I improve retrieval and authorization so the model receives the right evidence. Then I use grounded prompts, citations, structured outputs and post-generation validation for important claims. The system should be allowed to abstain or ask for clarification when the evidence is insufficient. I also maintain document versions and an evaluation dataset so changes can be measured over time. The key diagnostic is whether the model hallucinated despite having correct evidence or whether the retrieval layer never supplied the required evidence.
+
+
 **Answer:**
 
 Hallucination is not solved by one prompt.
@@ -1148,6 +1319,15 @@ A strong senior answer distinguishes **retrieval failure** from **generation fai
 ---
 
 # 20. Latency optimization
+
+## 🧩 Points covered
+
+- Latency decomposition\n- authentication\n- query processing\n- retrieval\n- reranking\n- LLM latency\n- caching\n- parallelism\n- streaming and p50/p95/p99.
+
+## 🎤 Sample interview answer
+
+> I optimize AI latency by measuring every stage of the request instead of assuming the LLM is always the bottleneck. I would capture timing for authentication, query processing, retrieval, reranking, prompt construction, model inference and post-processing. Typical optimizations include caching, parallel independent I/O calls, efficient ANN search, smaller candidate sets, batched embeddings, context compression and streaming responses. I would also reuse connections and apply appropriate timeouts. Decisions should be based on p50, p95 and p99 measurements because average latency can hide poor tail behavior.
+
 
 **Answer:**
 
@@ -1192,6 +1372,15 @@ Measure p50/p95/p99 at every stage.
 
 # 21. Semantic caching
 
+## 🧩 Points covered
+
+- Exact caching versus semantic caching\n- similarity thresholds\n- authorization\n- tenant isolation\n- document versions\n- cache correctness and cost.
+
+## 🎤 Sample interview answer
+
+> A traditional cache generally requires an exact key, whereas a semantic cache compares the meaning of a new query with previously processed queries. For example, questions about annual leave and vacation entitlement may be semantically similar and potentially share a cached response. However, semantic caching must not bypass authorization, tenant isolation or document-version checks. I would include the relevant security and knowledge-version context in the cache key or validation process. The cache threshold should be evaluated carefully because an overly permissive similarity threshold can return an answer that is related but not correct.
+
+
 **Answer:**
 
 A normal cache usually requires an exact key.
@@ -1228,6 +1417,15 @@ A semantic cache may identify them as similar.
 ---
 
 # 22. Prompt injection and RAG security
+
+## 🧩 Points covered
+
+- Prompt injection\n- untrusted retrieved content\n- authentication\n- authorization\n- ACLs\n- tool security\n- least privilege\n- output validation and audit.
+
+## 🎤 Sample interview answer
+
+> Prompt injection is a security problem where untrusted input attempts to influence model instructions or cause unauthorized behavior. In RAG, retrieved documents are untrusted data even when they come from an internal source, so instructions contained inside them must not override system or application policies. I would enforce authentication and authorization outside the model, apply document-level ACL filters, isolate untrusted context, restrict tools with least privilege and validate outputs. The LLM should never be the final authority for whether a user is allowed to access data or perform an action.
+
 
 **Answer:**
 
@@ -1276,6 +1474,15 @@ classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-s
 ---
 
 # 23. Production observability
+
+## 🧩 Points covered
+
+- Distributed tracing\n- infrastructure metrics\n- retrieval telemetry\n- LLM metrics\n- tokens\n- cost\n- quality signals\n- user feedback and root-cause analysis.
+
+## 🎤 Sample interview answer
+
+> AI observability needs to cover traditional infrastructure signals plus retrieval, model and quality signals. I would propagate a trace ID through the API, retrieval, reranking, model and guardrail stages and capture latency, errors, token usage and cost at each step. Retrieval telemetry should include candidate counts and score distributions, while model telemetry should include model version and token consumption. Quality signals such as groundedness, citation correctness and user feedback should be monitored separately from infrastructure health. This makes it possible to determine whether a production issue is caused by infrastructure, retrieval, model behavior or data quality.
+
 
 **Answer:**
 
@@ -1337,6 +1544,15 @@ Track:
 ---
 
 # 24. FastAPI production service
+
+## 🧩 Points covered
+
+- API/application separation\n- validation\n- authentication\n- RAG orchestration\n- error handling\n- timeouts\n- tracing\n- health checks\n- OpenAPI and horizontal scaling.
+
+## 🎤 Sample interview answer
+
+> For a production FastAPI service, I would separate the API layer from the application and infrastructure layers rather than putting the entire RAG workflow inside the route handler. Pydantic models validate requests and responses, while the application service orchestrates authorization, retrieval, reranking, model calls and validation. I would add authentication, structured logging, tracing, timeouts, exception handling, health checks and dependency management. FastAPI's OpenAPI support provides interactive API documentation, which is useful for both development and operational integration. The service should be designed to scale horizontally and should not keep critical state only in process memory.
+
 
 **Answer:**
 
@@ -1407,6 +1623,15 @@ FastAPI automatically exposes OpenAPI documentation, which is useful for product
 
 # 25. Concurrency vs Parallelism
 
+## 🧩 Points covered
+
+- Concurrency\n- parallelism\n- I/O-bound workloads\n- asynchronous execution\n- CPU-bound workloads\n- asyncio and workload-based design.
+
+## 🎤 Sample interview answer
+
+> Concurrency means multiple tasks can make progress during overlapping time, while parallelism means tasks execute simultaneously. AI services frequently spend time waiting for network I/O such as model APIs, search services and databases, so asynchronous concurrency can significantly improve throughput without requiring a thread per request. Independent calls can be scheduled together using asynchronous primitives such as asyncio.gather. CPU-heavy work is different and may require multiprocessing or distributed workers for true parallel execution. I choose the approach based on whether the workload is primarily I/O-bound or CPU-bound.
+
+
 **Answer:**
 
 **Concurrency** means multiple tasks make progress during overlapping time periods.
@@ -1444,6 +1669,15 @@ Choose concurrency or parallelism based on the actual workload.
 ---
 
 # 26. Retries, timeouts, idempotency and DLQs
+
+## 🧩 Points covered
+
+- Timeouts\n- transient failures\n- bounded retries\n- exponential backoff\n- idempotency\n- dead-letter queues\n- replay and failure classification.
+
+## 🎤 Sample interview answer
+
+> Production workflows should assume that downstream services will fail intermittently. I use timeouts so a dependency cannot block a worker indefinitely, and I retry only transient failures with bounded exponential backoff and jitter. Operations that can be repeated must be idempotent so a retry cannot create duplicate business effects. After the retry budget is exhausted, the message should move to a dead-letter queue for investigation and controlled replay. I also distinguish retryable failures such as transient network or rate-limit errors from permanent validation or authorization failures.
+
 
 **Answer:**
 
@@ -1495,6 +1729,15 @@ Messages that repeatedly fail should be isolated for inspection and replay.
 
 # 27. Imbalanced datasets and F1
 
+## 🧩 Points covered
+
+- Class imbalance\n- accuracy limitations\n- confusion matrix\n- precision\n- recall\n- F1\n- PR-AUC\n- threshold selection and business costs.
+
+## 🎤 Sample interview answer
+
+> For an imbalanced classification problem, accuracy can be misleading because a model may predict the majority class almost all the time and still achieve a high accuracy value. I would inspect the confusion matrix and choose metrics based on the business cost of false positives and false negatives. Precision measures how many predicted positives are correct, while recall measures how many actual positives were found. F1 combines precision and recall through their harmonic mean. For heavily imbalanced problems I would also consider PR-AUC and threshold tuning rather than relying on accuracy alone.
+
+
 **Answer:**
 
 ## Imbalanced dataset
@@ -1543,6 +1786,15 @@ classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-s
 
 # 28. Efficient duplicate database updates
 
+## 🧩 Points covered
+
+- Deduplication\n- batching\n- unique constraints\n- upsert\n- idempotency keys\n- distributed processing and database consistency.
+
+## 🎤 Sample interview answer
+
+> If a batch contains duplicate identifiers, I would avoid sending repeated database updates because that increases load and can create unnecessary contention. At the application layer I can deduplicate the input and batch the remaining operations. At the database layer I would use appropriate unique constraints, upserts and idempotency keys so correctness does not depend on one service instance's memory. In a distributed system, two instances may still receive the same logical operation, so the database or durable idempotency mechanism must provide the final consistency guarantee.
+
+
 **Answer:**
 
 Suppose a batch contains the same customer ID many times.
@@ -1578,6 +1830,15 @@ An in-memory HashSet alone is not enough when multiple service instances process
 ---
 
 # 29. Concurrency: two users booking one seat
+
+## 🧩 Points covered
+
+- Race conditions\n- atomic conditional updates\n- affected-row checks\n- optimistic concurrency\n- transactions\n- row versions and locking.
+
+## 🎤 Sample interview answer
+
+> The seat-booking problem is a classic race condition. If two users read the seat as available before either writes the booking, both may attempt to reserve it. I would make the state transition atomic, for example by updating the row only when its current status is Available and checking the number of affected rows. One request changes one row and succeeds; the other changes zero rows and must report that the seat is no longer available. Depending on the workload, optimistic concurrency, transactions, row versions or appropriate locking can also be used.
+
 
 **Answer:**
 
@@ -1621,6 +1882,15 @@ Other options include optimistic concurrency, row versions, transactions and pes
 ---
 
 # 30. Prime and even/odd coding question
+
+## 🧩 Points covered
+
+- Input constraints\n- even/odd modulo logic\n- prime edge cases\n- square-root optimization\n- time complexity and constant-space reasoning.
+
+## 🎤 Sample interview answer
+
+> For a basic coding question, I would first clarify input constraints and expected output, then explain the approach before writing code. For even and odd classification, checking number modulo two is constant time. For primality, I handle values below two, the special case of two, even numbers and then test only odd divisors up to the square root of the number. That reduces the prime check to O(sqrt(n)) time with O(1) extra space. I would also mention edge cases and explain why checking beyond the square root is unnecessary.
+
 
 **Answer:**
 
