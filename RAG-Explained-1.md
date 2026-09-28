@@ -1733,7 +1733,7 @@ Answer + Citations
 
 # 35. Top 10 Frequently Asked RAG / GenAI Interview Questions
 
-> 🎯 **Interview preparation note:** The questions below focus on practical RAG and GenAI engineering topics that recur across public interview-preparation material and reported interview discussions. Company names indicate where similar topics/questions have been publicly reported; they should **not** be interpreted as a guarantee that the exact wording is used in every interview. citeturn0search0turn0search1turn0youtube12
+> 🎯 **Interview preparation note:** The questions below focus on practical RAG and GenAI engineering topics that recur across public interview-preparation material and reported interview discussions. Company names indicate where similar topics have been publicly reported; they should **not** be interpreted as a guarantee that the exact wording is used in every interview.
 
 These questions are especially useful for **Senior Software Engineer, Staff Engineer, Principal Engineer, AI Engineer and ML Engineer** interviews.
 
@@ -1741,7 +1741,7 @@ These questions are especially useful for **Senior Software Engineer, Staff Engi
 
 ## Q1. What is RAG, and why would you use it instead of fine-tuning an LLM?
 
-**Asked in / reported for:** Google, Microsoft, Amazon and other AI-focused companies. citeturn0youtube12turn0search2
+**Asked in / publicly reported for:** Google, Microsoft, Amazon and other AI-focused companies.
 
 ### What the interviewer is testing
 
@@ -1771,7 +1771,7 @@ Fine-tuning is more appropriate when the goal is to change the model's **behavio
 
 ## Q2. Your RAG system retrieves the wrong documents. How would you debug and improve retrieval quality?
 
-**Asked in / reported for:** Google, Microsoft and senior AI-engineering interviews. citeturn0search0turn0search4
+**Asked in / publicly reported for:** Google, Microsoft and senior AI-engineering interviews.
 
 ### What the interviewer is testing
 
@@ -1800,7 +1800,7 @@ I would debug retrieval in layers:
 
 ## Q3. How would you choose the right chunk size and chunking strategy?
 
-**Asked in / reported for:** Google, Anthropic, Microsoft and other AI engineering interviews. citeturn0search0turn0youtube12
+**Asked in / publicly reported for:** Google, Anthropic, Microsoft and other AI engineering interviews.
 
 ### What the interviewer is testing
 
@@ -1841,7 +1841,7 @@ A chunk should ideally contain enough context to answer a question without bring
 
 ## Q4. What is the difference between vector search, keyword search and hybrid search?
 
-**Asked in / reported for:** Amazon, Microsoft, Google and RAG-focused interviews. citeturn0youtube12turn0search6
+**Asked in / publicly reported for:** Amazon, Microsoft, Google and RAG-focused interviews.
 
 ### Strong answer
 
@@ -1893,7 +1893,7 @@ flowchart LR
 
 ## Q5. What is re-ranking, and why do we need it if vector search already returns Top-K results?
 
-**Asked in / reported for:** Anthropic, Google, Microsoft and RAG engineering interviews. citeturn0search0turn0youtube12
+**Asked in / publicly reported for:** Anthropic, Google, Microsoft and RAG engineering interviews.
 
 ### Strong answer
 
@@ -1923,7 +1923,7 @@ This can improve precision without running an expensive ranking model over the e
 
 ## Q6. What would you do if the correct document is retrieved but the LLM still gives the wrong answer?
 
-**Asked in / reported for:** senior RAG/GenAI engineering interviews. citeturn0search4turn0search6
+**Asked in / publicly reported for:** senior RAG/GenAI engineering interviews.
 
 ### Strong answer
 
@@ -1958,7 +1958,7 @@ Possible improvements include:
 
 ## Q7. How do you evaluate a production RAG system?
 
-**Asked in / reported for:** Google, Microsoft, Anthropic and other AI/ML engineering interviews. citeturn0search0turn0search1
+**Asked in / publicly reported for:** Google, Microsoft, Anthropic and other AI/ML engineering interviews.
 
 ### Strong answer
 
@@ -1988,7 +1988,7 @@ I would maintain a **golden dataset** containing representative production quest
 
 ## Q8. What is the "Lost in the Middle" problem, and how can you reduce it?
 
-**Asked in / reported for:** Anthropic and other senior RAG/LLM interviews. citeturn0search0
+**Asked in / publicly reported for:** Anthropic and other senior RAG/LLM interviews.
 
 ### Strong answer
 
@@ -2012,7 +2012,7 @@ Possible mitigations include:
 
 ## Q9. How would you design secure multi-tenant RAG?
 
-**Asked in / reported for:** enterprise AI and senior software engineering interviews. citeturn0search3turn0search6
+**Asked in / publicly reported for:** enterprise AI and senior software engineering interviews.
 
 ### Strong answer
 
@@ -2057,7 +2057,7 @@ The retrieval query should apply authorization constraints so that unauthorized 
 
 ## Q10. What is Agentic RAG, and when would you use it instead of traditional RAG?
 
-**Asked in / reported for:** Microsoft, Google and modern AI-engineering interviews. citeturn0search0turn0youtube12
+**Asked in / publicly reported for:** Microsoft, Google and modern AI-engineering interviews.
 
 ### Strong answer
 
@@ -2125,7 +2125,7 @@ The following map is intended as an **interview-preparation guide**, not as a cl
 | Secure enterprise RAG | Microsoft and enterprise AI roles |
 | Agentic RAG | Microsoft, Google and modern AI roles |
 
-Public interview reports vary in reliability, and exact questions can differ by team, role and interview loop. Treat the company names as **signals for topics to prepare**, not guarantees. citeturn0search0turn0search1turn0youtube12
+Public interview reports vary in reliability, and exact questions can differ by team, role and interview loop. Treat the company names as **signals for topics to prepare**, not guarantees.
 
 ---
 
