@@ -4,6 +4,18 @@
 >
 > **Answer format:** Understand the question → Clarifying questions → Definition → Flow Diagram → Detailed Answer → C#/Python example → Interview takeaway.
 
+[![AI Engineer](https://img.shields.io/badge/AI%20Engineer-Interview%20Guide-6f42c1?style=for-the-badge)](https://github.com/azam123/awesome-ai-engineer)
+[![RAG](https://img.shields.io/badge/RAG-Production%20AI-fff2cc?style=for-the-badge&labelColor=f4b183)](https://github.com/azam123/awesome-ai-engineer)
+[![GenAI](https://img.shields.io/badge/GenAI-LLMs-9dc3e6?style=for-the-badge&labelColor=5b9bd5)](https://github.com/azam123/awesome-ai-engineer)
+[![Agentic AI](https://img.shields.io/badge/Agentic%20AI-Agents-fff2cc?style=for-the-badge&labelColor=f4b183)](https://github.com/azam123/awesome-ai-engineer)
+[![Python](https://img.shields.io/badge/Python-Examples-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://github.com/azam123/awesome-ai-engineer)
+[![C%23](https://img.shields.io/badge/C%23-Examples-239120?style=for-the-badge&logo=csharp&logoColor=white)](https://github.com/azam123/awesome-ai-engineer)
+
+**Tags:** `AI Engineer` `GenAI` `RAG` `LLM` `Agentic AI` `Vector Database` `Embeddings` `Reranking` `Prompt Engineering` `AI Security` `FastAPI` `Azure AI` `System Design` `Interview Preparation`
+
+> 🎨 **Diagram convention:** Flow diagrams use **yellow** and **light-blue** boxes for quick visual navigation. Yellow highlights decisions/actions; light blue highlights data/services.
+
+
 ## 📚 Table of Contents
 
 ### RAG & Retrieval
@@ -93,6 +105,9 @@ You should cover:
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Documents] --> B[Parse]
     B --> C[Chunk]
@@ -108,6 +123,8 @@ flowchart LR
     L --> G[Grounded Answer]
     G --> V[Citations + Guardrails]
     V --> U
+    class A yellow;
+    class U blue;
 ```
 
 ## Detailed answer
@@ -197,6 +214,9 @@ A production RAG system has two major pipelines: **indexing** and **query-time r
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Source Documents] --> B[Parser]
     B --> C[Chunker]
@@ -211,6 +231,8 @@ flowchart TD
     J --> K[LLM]
     K --> L[Guardrails]
     L --> M[Answer + Citations]
+    class A yellow;
+    class F blue;
 ```
 
 | Component | Responsibility |
@@ -287,6 +309,9 @@ Chunking divides a document into smaller retrieval units that can independently 
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Large Document] --> B[Parse Structure]
     B --> C{Content Type}
@@ -298,6 +323,7 @@ flowchart LR
     E --> H
     F --> H
     G --> H
+    class A yellow;
 ```
 
 ## Detailed answer
@@ -370,6 +396,9 @@ An **embedding** is a numerical representation of content in a vector space wher
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Document Chunk] --> B[Embedding Model]
     B --> C[Vector]
@@ -378,6 +407,8 @@ flowchart LR
     F --> D
     D --> G[Similarity Search]
     G --> H[Top-K Chunks]
+    class A yellow;
+    class E blue;
 ```
 
 ## Detailed answer
@@ -438,6 +469,9 @@ Vector search is optimized for candidate retrieval. The first result is not alwa
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     Q[Query] --> V[Vector / Hybrid Search]
     D[(Large Corpus)] --> V
@@ -445,6 +479,8 @@ flowchart LR
     C --> R[Cross Encoder / Reranker]
     R --> F[Top 5 Relevant Chunks]
     F --> L[LLM]
+    class Q yellow;
+    class D blue;
 ```
 
 ## Detailed answer
@@ -484,6 +520,9 @@ This is a troubleshooting question. Do not immediately replace the embedding mod
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Poor Answer] --> B{Where is the Failure?}
     B -->|Wrong Chunks| C[Improve Retrieval]
@@ -494,6 +533,7 @@ flowchart TD
     C --> H[Reranking]
     C --> I[Metadata Filters]
     C --> J[Better Chunking]
+    class A yellow;
 ```
 
 ## Detailed answer
@@ -532,6 +572,9 @@ This tests horizontal scaling, workload separation and multi-tenant design.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TB
     U[Users] --> G[API Gateway]
     G --> Q[Query Service]
@@ -546,6 +589,8 @@ flowchart TB
     I --> P[Parser Workers]
     P --> E[Embedding Workers]
     E --> S
+    class U yellow;
+    class D blue;
 ```
 
 ## Detailed answer
@@ -575,6 +620,9 @@ A PDF is a container, not necessarily plain text.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[PDF] --> B[Document Classifier]
     B --> C{Content}
@@ -588,6 +636,7 @@ flowchart TD
     G --> H
     H --> I[Chunk + Metadata]
     I --> J[Embedding / Index]
+    class A yellow;
 ```
 
 ## Detailed answer
@@ -627,6 +676,9 @@ The index must remain aligned with the source of truth.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Source Repository] --> B[Change Detector]
     B --> C{Changed?}
@@ -636,6 +688,7 @@ flowchart LR
     F --> G[Re-embed]
     G --> H[Upsert]
     H --> I[Retire Old Version]
+    class A yellow;
 ```
 
 ## Detailed answer
@@ -676,11 +729,15 @@ This prevents answers from mixing different policy versions.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Requirement] --> B{What Needs to Change?}
     B -->|Knowledge| C[RAG]
     B -->|Behavior / Style| D[Fine-Tuning]
     B -->|Both| E[RAG + Fine-Tuning]
+    class A yellow;
 ```
 
 | Requirement | Typical approach |
@@ -712,6 +769,9 @@ A **cross-encoder** evaluates query and document together.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Query] --> B[Query Encoder]
     C[Document] --> D[Document Encoder]
@@ -721,6 +781,8 @@ flowchart LR
     F[Query] --> G[Cross Encoder]
     H[Candidate Document] --> G
     G --> I[Relevance Score]
+    class A,F yellow;
+    class C,H blue;
 ```
 
 | Characteristic | Bi-encoder | Cross-encoder |
@@ -761,12 +823,16 @@ A context window is the amount of tokenized context a model can process for a re
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Question] --> B[Retrieve 50]
     B --> C[Rerank]
     C --> D[Compress to 8]
     D --> E[Token Budget]
     E --> F[LLM]
+    class A yellow;
 ```
 
 Too much context can increase:
@@ -795,6 +861,9 @@ An agent answers:
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     Q[Question] --> R[RAG]
     R --> A[Retrieved Context]
@@ -805,6 +874,8 @@ flowchart LR
     O --> T[Tool / RAG / API]
     T --> O
     O --> F[Final Result]
+    class Q yellow;
+    class G blue;
 ```
 
 Example:
@@ -833,6 +904,9 @@ An agent can use RAG as one of its tools.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     U[User] --> A[API]
     A --> O[Agent Orchestrator]
@@ -847,6 +921,7 @@ flowchart TD
     P --> G[Guardrails]
     G --> O
     O --> F[Final Response]
+    class U yellow;
 ```
 
 ## Detailed answer
@@ -907,12 +982,17 @@ Agent memory can be divided into:
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Agent 1] --> S[(Shared State)]
     B[Agent 2] --> S
     C[Agent 3] --> S
     S --> D[(Durable Store)]
     S --> R[(Knowledge Store)]
+    class A,C yellow;
+    class B blue;
 ```
 
 Do not let every agent freely modify every piece of state.
@@ -940,6 +1020,9 @@ Conceptually:
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Goal] --> B[Agent]
     B --> C{Need Tool?}
@@ -947,6 +1030,7 @@ flowchart TD
     D --> E[Tool Result]
     E --> B
     C -->|No| F[Final Answer]
+    class A yellow;
 ```
 
 Example:
@@ -972,6 +1056,9 @@ Evaluate retrieval and generation separately.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Golden Questions] --> B[Retrieval Evaluation]
     B --> C[Recall@K]
@@ -983,6 +1070,7 @@ flowchart TD
     F --> H[Answer Relevance]
     F --> I[Groundedness]
     F --> J[Citation Correctness]
+    class A yellow;
 ```
 
 ### Retrieval metrics
@@ -1031,6 +1119,9 @@ Hallucination is not solved by one prompt.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[Question] --> B[Input Guardrail]
     B --> C[Retrieve Evidence]
@@ -1041,6 +1132,7 @@ flowchart TD
     G --> H{Supported?}
     H -->|Yes| I[Answer + Citations]
     H -->|No| J[Abstain / Clarify]
+    class A yellow;
 ```
 
 ## Techniques
@@ -1070,6 +1162,9 @@ Decompose end-to-end latency rather than blaming the LLM.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Request] --> B[Auth]
     B --> C[Query Processing]
@@ -1078,6 +1173,7 @@ flowchart LR
     E --> F[Prompt Construction]
     F --> G[LLM]
     G --> H[Post Processing]
+    class A yellow;
 ```
 
 ## Techniques
@@ -1109,6 +1205,9 @@ A semantic cache can identify meaningfully similar queries.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     Q[New Query] --> E[Query Embedding]
     E --> C[(Semantic Cache)]
@@ -1117,6 +1216,7 @@ flowchart LR
     D -->|No| R[RAG + LLM]
     R --> U[Store Result]
     U --> A
+    class Q yellow;
 ```
 
 Example:
@@ -1146,6 +1246,9 @@ If that text exists inside a retrieved document, it must be treated as **untrust
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[User] --> B[Authentication]
     B --> C[Authorization]
@@ -1156,6 +1259,7 @@ flowchart TD
     G --> H[LLM]
     H --> I[Output Validation]
     I --> J[Audit]
+    class A yellow;
 ```
 
 ## Controls
@@ -1184,6 +1288,9 @@ Traditional API monitoring is not enough. AI systems need infrastructure, qualit
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart TD
     A[User Request] --> B[Trace ID]
     B --> C[RAG]
@@ -1196,6 +1303,7 @@ flowchart TD
     E --> H
     F --> H
     H --> I[Observability Platform]
+    class A yellow;
 ```
 
 Track:
@@ -1241,6 +1349,9 @@ The interviewer wants to know whether you can turn a prototype into a reliable A
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Client] --> B[FastAPI]
     B --> C[Pydantic Validation]
@@ -1249,6 +1360,7 @@ flowchart LR
     E --> F[LLM]
     D --> G[Cache]
     D --> H[Observability]
+    class A yellow;
 ```
 
 ### Python example
@@ -1344,6 +1456,9 @@ Production AI workflows fail. Design for failure.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Message] --> B[Worker]
     B --> C{Success?}
@@ -1352,6 +1467,7 @@ flowchart LR
     E -->|Yes| F[Exponential Backoff]
     F --> B
     E -->|No / Exhausted| G[Dead Letter Queue]
+    class A yellow;
 ```
 
 ### Timeout
@@ -1415,12 +1531,16 @@ If precision is 0.80 and recall is 0.60, F1 is approximately 0.686.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
+    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
 flowchart LR
     A[Predictions] --> B[Confusion Matrix]
     B --> C[Precision]
     B --> D[Recall]
     C --> E[F1]
     D --> E
+    class A yellow;
 ```
 
 ---
@@ -1474,6 +1594,7 @@ Both then try to reserve it.
 ## Flow Diagram
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
 sequenceDiagram
     participant U1 as User 1
     participant U2 as User 2
