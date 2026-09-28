@@ -105,25 +105,27 @@ You should cover:
 ## Flow Diagram
 
 ```mermaid
-flowchart TD
-A[Documents] --> B[Parse]
-B --> C[Chunk]
-C --> D[Embeddings]
-D --> E[(Search Index)]
-U[User Question] --> Q[Query Understanding]
-Q --> R[Retrieve Top-K]
-E --> R
-R --> RR[Reranker]
-RR --> P[Prompt + Context]
-P --> L[LLM]
-L --> G[Grounded Answer]
-G --> V[Citations + Guardrails]
-V --> U
-class A yellow
-class U blue
-classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
-classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
-classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+flowchart TB
+    U[User Question] --> Q[Understand Query]
+    Q --> R[Retrieve]
+    R --> RR[Rerank]
+    RR --> P[Build Context]
+    P --> L[LLM]
+    L --> A[Grounded Answer]
+    A --> G[Citations + Guardrails]
+
+    D[Documents] --> X[Parse + Chunk]
+    X --> E[Create Embeddings]
+    E --> S[(Search Index)]
+    S --> R
+
+    class U,D yellow
+    class Q,R,RR,P,E,X blue
+    class L,A,G,S green
+
+    classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+    classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
+    classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:3px,color:#111827,font-size:18px,font-weight:bold;
 ```
 
 ## Detailed answer
