@@ -188,34 +188,21 @@ A production RAG system normally has two major pipelines:
 
 ~~~mermaid
 flowchart LR
-    A["📄 Documents"] --> B["🧠 Parse / OCR"]
-    B --> C["🧹 Clean & Normalize"]
-    C --> D["✂️ Chunk"]
-    D --> E["🔤 Tokenize"]
-    E --> F["🧮 Embedding / Vectorization"]
-    F --> G[("🗄️ Search Index")]
+    A["📄 Documents"] --> B["🧠 Parse / OCR"] --> C["🧹 Clean"] --> D["✂️ Chunk"] --> E["🔢 Embed"] --> F["🗄️ Search Index"]
+    U["👤 User Question"] --> Q["🧠 Query Understanding"] --> S["🔍 Search"]
+    F --> S
+    S --> G["🔐 Security Filter"] --> R["📊 Re-rank"] --> C2["📚 Context"] --> P["🧩 Prompt"] --> L["🤖 LLM"] --> V["🛡️ Guardrails"] --> A2["💬 Answer + Citations"]
 
-    U["👤 User Question"] --> Q["🔤 Query Tokenization"]
-    Q --> QE["🧮 Query Embedding"]
-    QE --> S["🔍 Search"]
-    G --> S
-    S --> F1["🔐 Security / Metadata Filters"]
-    F1 --> R["📊 Re-rank"]
-    R --> C2["📚 Context Builder"]
-    C2 --> P["🧩 RAG Prompt"]
-    P --> L["🤖 LLM"]
-    L --> V["🛡️ Guardrails"]
-    V --> A2["💬 Answer + Citations"]
-
-    classDef yellow fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
-    classDef green fill:#DCFCE7,stroke:#22C55E,color:#111827,stroke-width:3px;
-    classDef blue fill:#DBEAFE,stroke:#3B82F6,color:#111827,stroke-width:3px;
-    classDef purple fill:#EDE9FE,stroke:#8B5CF6,color:#111827,stroke-width:3px;
-
-    class A,U yellow;
-    class B,C,D,E green;
-    class F,G,Q,QE,S,F1,R,C2 blue;
-    class P,L,V,A2 purple;
+    classDef source fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
+    classDef prep fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:3px;
+    classDef retrieve fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:3px;
+    classDef generate fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:3px;
+    classDef result fill:#FCE7F3,stroke:#DB2777,color:#111827,stroke-width:3px;
+    class A,U source;
+    class B,C,D,E prep;
+    class F,Q,S,G,R,C2 retrieve;
+    class P,L,V generate;
+    class A2 result;
 ~~~
 
 > 🟨 **The most important idea:** RAG is not "LLM + vector database". It is an end-to-end information retrieval and generation system.
@@ -422,18 +409,14 @@ A RAG system that retrieves too much context can waste tokens and reduce answer 
 
 ~~~mermaid
 flowchart LR
-    A["📝 Text"] --> B["🔤 Tokenizer"]
-    B --> C["🔢 Token IDs"]
-    C --> D["📏 Token Count"]
-    D --> E["📦 Chunk / Prompt Budget"]
+    A["📝 Text"] --> B["🔤 Tokenizer"] --> C["🔢 Token IDs"] --> D["📏 Token Count"] --> E["📦 Chunk / Prompt Budget"]
 
-    classDef yellow fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
-    classDef blue fill:#DBEAFE,stroke:#3B82F6,color:#111827,stroke-width:3px;
-    classDef green fill:#DCFCE7,stroke:#22C55E,color:#111827,stroke-width:3px;
-
-    class A yellow;
-    class B,C blue;
-    class D,E green;
+    classDef input fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
+    classDef process fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:3px;
+    classDef output fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:3px;
+    class A input;
+    class B,C process;
+    class D,E output;
 ~~~
 
 ## 5.3 Python example
@@ -1263,22 +1246,19 @@ The words are different, but the intent is related.
 **Hybrid search combines lexical and vector retrieval.**
 
 ~~~mermaid
-flowchart TD
-    Q["❓ User Query"] --> K["🔤 Keyword / BM25"]
-    Q --> V["🧠 Vector Search"]
-    K --> M["🔀 Merge / Fusion"]
-    V --> M
-    M --> R["📊 Rank / Re-rank"]
-    R --> C["📚 Final Context"]
+flowchart LR
+    U["👤 User"] --> I["🛡️ Input Guardrail"] --> ID["🔐 Identity & Authorization"] --> R["🔍 Secure Retrieval"] --> C["🧹 Context Guardrail"] --> P["🧩 Prompt"] --> L["🤖 LLM"] --> O["🛡️ Output Guardrail"] --> CV["📌 Citation Validation"] --> A["✅ Grounded Response"]
 
-    classDef yellow fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
-    classDef green fill:#DCFCE7,stroke:#22C55E,color:#111827,stroke-width:3px;
-    classDef blue fill:#DBEAFE,stroke:#3B82F6,color:#111827,stroke-width:3px;
-
-    class Q yellow;
-    class K,V green;
-    class M,R blue;
-    class C yellow;
+    classDef user fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
+    classDef security fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:3px;
+    classDef retrieval fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:3px;
+    classDef ai fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:3px;
+    classDef result fill:#FCE7F3,stroke:#DB2777,color:#111827,stroke-width:3px;
+    class U user;
+    class I,ID,C,O security;
+    class R retrieval;
+    class P,L,CV ai;
+    class A result;
 ~~~
 
 ### Why hybrid search matters
@@ -1850,26 +1830,27 @@ Validate:
 
 ~~~mermaid
 flowchart TD
-    U["👤 User"] --> IG["🛡️ Input Guardrail"]
-    IG --> ID["🔐 Identity / Authorization"]
-    ID --> R["🔍 Secure Retrieval"]
-    R --> CG["🧹 Context Guardrail"]
-    CG --> P["🧩 Prompt"]
-    P --> L["🤖 LLM"]
-    L --> OG["🛡️ Output Guardrail"]
-    OG --> C["📌 Citation Validation"]
-    C --> A["✅ Response"]
+    DOC["📄 Enterprise Documents"] --> ING["⚙️ Ingestion"] --> PARSE["🧠 Parse / OCR"] --> CLEAN["🧹 Normalize"] --> CHUNK["✂️ Chunk"] --> EMB["🔢 Embeddings"] --> INDEX["🔎 Search Index"]
 
-    classDef yellow fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
-    classDef green fill:#DCFCE7,stroke:#22C55E,color:#111827,stroke-width:3px;
-    classDef blue fill:#DBEAFE,stroke:#3B82F6,color:#111827,stroke-width:3px;
-    classDef purple fill:#EDE9FE,stroke:#8B5CF6,color:#111827,stroke-width:3px;
+    USER["👤 User"] --> API["🌐 API"] --> AUTH["🔐 Identity"] --> ROUTER["🧭 Query Router"] --> QE["🧠 Query Understanding"] --> RET["🔍 Hybrid Retrieval"]
+    INDEX --> RET
+    RET --> ACL["🛡️ ACL / Metadata Filter"] --> RANK["📊 Re-ranker"] --> CTX["📚 Context Builder"] --> PROMPT["🧩 Prompt Builder"] --> LLM["🤖 LLM"] --> GUARD["🛡️ Guardrails"] --> CITE["📌 Citation Validation"] --> RESP["💬 Grounded Response"]
 
-    class U yellow;
-    class IG,CG,OG,C purple;
-    class ID,R green;
-    class P,L blue;
-    class A yellow;
+    OBS["📊 Evaluation & Observability"] -. monitors .-> ING
+    OBS -. monitors .-> RET
+    OBS -. monitors .-> LLM
+    OBS -. monitors .-> RESP
+
+    classDef source fill:#FEF3C7,stroke:#F59E0B,color:#111827,stroke-width:3px;
+    classDef prep fill:#DCFCE7,stroke:#16A34A,color:#111827,stroke-width:3px;
+    classDef retrieve fill:#DBEAFE,stroke:#2563EB,color:#111827,stroke-width:3px;
+    classDef generate fill:#EDE9FE,stroke:#7C3AED,color:#111827,stroke-width:3px;
+    classDef result fill:#FCE7F3,stroke:#DB2777,color:#111827,stroke-width:3px;
+    class DOC,USER source;
+    class ING,PARSE,CLEAN,CHUNK,EMB prep;
+    class INDEX,API,ROUTER,QE,RET,ACL,RANK,CTX retrieve;
+    class AUTH,PROMPT,LLM,GUARD,CITE,OBS generate;
+    class RESP result;
 ~~~
 
 ---
