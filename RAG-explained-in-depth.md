@@ -34,6 +34,91 @@ You will understand:
 - Practical C# / .NET examples
 - Production design considerations
 
+
+## 🧭 Table of Contents
+
+> Use this index to jump directly to any topic. The guide moves from the basic RAG pipeline to retrieval, prompting, guardrails, evaluation, and production architecture.
+
+### 🚀 Start Here
+- [1. RAG — The Simplest Explanation](#1-rag--the-simplest-explanation)
+- [2. Overall RAG Pipeline — Start Here](#2-overall-rag-pipeline--start-here)
+- [3. The Two RAG Pipelines](#3-the-two-rag-pipelines)
+
+### 📚 Data Preparation
+- [4. Documents and Document Understanding](#4-documents-and-document-understanding)
+- [5. Tokenization — What Is a Token?](#5-tokenization-what-is-a-token)
+- [6. Chunking — The Most Important RAG Data Preparation Step](#6-chunking-the-most-important-rag-data-preparation-step)
+- [7. Why Chunking Matters](#7-why-chunking-matters)
+- [8. Chunking Strategies](#8-chunking-strategies)
+- [9. Chunk Size — How Big Should a Chunk Be?](#9-chunk-size-how-big-should-a-chunk-be)
+- [10. Chunk Overlap](#10-chunk-overlap)
+- [11. Chunk Metadata](#11-chunk-metadata)
+- [12. Vectorization](#12-vectorization)
+- [13. Embeddings](#13-embeddings)
+- [14. Why the Same Embedding Space Matters](#14-why-the-same-embedding-space-matters)
+- [15. Dense vs Sparse Vector Representations](#15-dense-vs-sparse-vector-representations)
+
+### 🔍 Retrieval & Ranking
+- [16. Cosine Similarity](#16-cosine-similarity)
+- [17. Cosine Similarity Example in Python](#17-cosine-similarity-example-in-python)
+- [18. Dot Product vs Cosine Similarity vs Euclidean Distance](#18-dot-product-vs-cosine-similarity-vs-euclidean-distance)
+- [19. Vector Search](#19-vector-search)
+- [20. K-Nearest Neighbors](#20-k-nearest-neighbors)
+- [21. Exact Search vs Approximate Nearest Neighbor Search](#21-exact-search-vs-approximate-nearest-neighbor-search)
+- [22. HNSW — High-Level Explanation](#22-hnsw-high-level-explanation)
+- [23. Keyword Search](#23-keyword-search)
+- [24. BM25](#24-bm25)
+- [25. Semantic Search](#25-semantic-search)
+- [26. Hybrid Search](#26-hybrid-search)
+- [27. Reciprocal Rank Fusion — RRF](#27-reciprocal-rank-fusion-rrf)
+- [28. Metadata Filtering](#28-metadata-filtering)
+- [29. Security Filtering — Critical Enterprise Requirement](#29-security-filtering-critical-enterprise-requirement)
+- [30. Query Understanding](#30-query-understanding)
+- [31. Query Rewriting](#31-query-rewriting)
+- [32. Multi-Query Retrieval](#32-multi-query-retrieval)
+- [33. Re-ranking](#33-re-ranking)
+- [34. Context Construction](#34-context-construction)
+- [35. Prompt Engineering for RAG](#35-prompt-engineering-for-rag)
+- [36. Basic RAG Prompt](#36-basic-rag-prompt)
+- [37. Prompt Sections](#37-prompt-sections)
+- [38. Prompt Engineering Patterns for RAG](#38-prompt-engineering-patterns-for-rag)
+- [39. Prompt Injection in RAG](#39-prompt-injection-in-rag)
+
+### 🛡️ Prompting, Grounding & Guardrails
+- [40. Guardrails](#40-guardrails)
+- [41. Types of Guardrails](#41-types-of-guardrails)
+- [42. Guardrail Architecture](#42-guardrail-architecture)
+- [43. Grounding](#43-grounding)
+- [44. Citations](#44-citations)
+- [45. Conflicting Sources](#45-conflicting-sources)
+- [46. Retrieval Failure vs Generation Failure](#46-retrieval-failure-vs-generation-failure)
+
+### 📊 Evaluation & Production Engineering
+- [47. RAG Evaluation](#47-rag-evaluation)
+- [48. Generation Metrics](#48-generation-metrics)
+- [49. Golden Dataset](#49-golden-dataset)
+- [50. Observability](#50-observability)
+- [51. Caching](#51-caching)
+- [52. RAG Latency](#52-rag-latency)
+- [53. Context Compression](#53-context-compression)
+- [54. Advanced RAG Patterns](#54-advanced-rag-patterns)
+
+### 🤖 Advanced RAG & Implementation
+- [55. Agentic RAG](#55-agentic-rag)
+- [56. Graph RAG — High-Level Concept](#56-graph-rag-high-level-concept)
+- [57. RAG with Structured Data](#57-rag-with-structured-data)
+- [58. RAG Router](#58-rag-router)
+- [59. RAG in .NET](#59-rag-in-net)
+- [60. Python — Minimal RAG Retrieval Example](#60-python-minimal-rag-retrieval-example)
+- [61. End-to-End Production Architecture](#61-end-to-end-production-architecture)
+- [62. Production Checklist](#62-production-checklist)
+- [63. Common RAG Mistakes](#63-common-rag-mistakes)
+- [64. The RAG Mental Model](#64-the-rag-mental-model)
+- [65. Final Takeaway](#65-final-takeaway)
+- [66. One-Sentence Definition](#66-one-sentence-definition)
+
+---
+
 ---
 
 # 1. RAG — The Simplest Explanation
@@ -2649,6 +2734,8 @@ User Question ──→ Query Understanding
 ~~~
 
 ---
+
+> 🧭 **Navigation:** [⬆️ Table of Contents](#-table-of-contents) · [🔍 Retrieval](#16-cosine-similarity) · [🛡️ Guardrails](#40-guardrails) · [📊 Evaluation](#47-rag-evaluation) · [🤖 Advanced RAG](#55-agentic-rag)
 
 # 65. Final Takeaway
 
