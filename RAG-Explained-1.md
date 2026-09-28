@@ -54,6 +54,7 @@
 32. [Production Architecture](#32-production-architecture)
 33. [Agentic RAG](#33-agentic-rag)
 34. [RAG Mental Model](#34-the-final-rag-mental-model)
+35. [Top 10 Frequently Asked RAG / GenAI Interview Questions](#35-top-10-frequently-asked-rag--genai-interview-questions)
 
 ---
 
