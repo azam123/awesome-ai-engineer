@@ -1055,8 +1055,8 @@ Evaluate retrieval and generation separately.
 ```mermaid
 flowchart TD
 A[Golden Questions] --> B[Retrieval Evaluation]
-B --> C[Recall@K]
-B --> D[Precision@K]
+B --> C[Recall at K]
+B --> D[Precision at K]
 B --> E[MRR / NDCG]
 A --> F[Generation Evaluation]
 F --> G[Faithfulness]
