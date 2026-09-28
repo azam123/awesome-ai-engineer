@@ -106,14 +106,14 @@ You should cover:
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Documents] --> B[Parse]
     B --> C[Chunk]
     C --> D[Embeddings]
     D --> E[(Vector / Hybrid Index)]
-
     U[User Question] --> Q[Query Understanding]
     Q --> R[Retrieve Top-K]
     E --> R
@@ -123,9 +123,9 @@ flowchart LR
     L --> G[Grounded Answer]
     G --> V[Citations + Guardrails]
     V --> U
-
     class A yellow;
-    class U blue;```
+    class U blue;
+```
 
 ## Detailed answer
 
@@ -215,14 +215,14 @@ A production RAG system has two major pipelines: **indexing** and **query-time r
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Source Documents] --> B[Parser]
     B --> C[Chunker]
     C --> D[Embedding Model]
     D --> E[(Vector / Search Index)]
-
     F[User Query] --> G[Query Processor]
     G --> H[Retriever]
     E --> H
@@ -231,9 +231,9 @@ flowchart TD
     J --> K[LLM]
     K --> L[Guardrails]
     L --> M[Answer + Citations]
-
     class A yellow;
-    class F blue;```
+    class F blue;
+```
 
 | Component | Responsibility |
 |---|---|
@@ -310,9 +310,10 @@ Chunking divides a document into smaller retrieval units that can independently 
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Large Document] --> B[Parse Structure]
     B --> C{Content Type}
     C -->|Prose| D[Semantic Chunk]
@@ -323,8 +324,8 @@ flowchart LR
     E --> H
     F --> H
     G --> H
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Detailed answer
 
@@ -397,9 +398,10 @@ An **embedding** is a numerical representation of content in a vector space wher
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Document Chunk] --> B[Embedding Model]
     B --> C[Vector]
     C --> D[(Vector Database)]
@@ -407,9 +409,9 @@ flowchart LR
     F --> D
     D --> G[Similarity Search]
     G --> H[Top-K Chunks]
-
     class A yellow;
-    class E blue;```
+    class E blue;
+```
 
 ## Detailed answer
 
@@ -470,18 +472,19 @@ Vector search is optimized for candidate retrieval. The first result is not alwa
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     Q[Query] --> V[Vector / Hybrid Search]
     D[(Large Corpus)] --> V
     V --> C[Top 50 Candidates]
     C --> R[Cross Encoder / Reranker]
     R --> F[Top 5 Relevant Chunks]
     F --> L[LLM]
-
     class Q yellow;
-    class D blue;```
+    class D blue;
+```
 
 ## Detailed answer
 
@@ -521,9 +524,10 @@ This is a troubleshooting question. Do not immediately replace the embedding mod
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Poor Answer] --> B{Where is the Failure?}
     B -->|Wrong Chunks| C[Improve Retrieval]
     B -->|Right Chunks, Wrong Answer| D[Improve Prompt / Model]
@@ -533,8 +537,8 @@ flowchart TD
     C --> H[Reranking]
     C --> I[Metadata Filters]
     C --> J[Better Chunking]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Detailed answer
 
@@ -573,9 +577,10 @@ This tests horizontal scaling, workload separation and multi-tenant design.
 
 ```mermaid
 flowchart TB
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     U[Users] --> G[API Gateway]
     G --> Q[Query Service]
     Q --> C[(Semantic Cache)]
@@ -584,14 +589,13 @@ flowchart TB
     R --> M[(Metadata / ACL Store)]
     R --> RR[Reranker]
     RR --> L[LLM Gateway]
-
     D[Document Upload] --> I[Ingestion Queue]
     I --> P[Parser Workers]
     P --> E[Embedding Workers]
     E --> S
-
     class U yellow;
-    class D blue;```
+    class D blue;
+```
 
 ## Detailed answer
 
@@ -621,9 +625,10 @@ A PDF is a container, not necessarily plain text.
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[PDF] --> B[Document Classifier]
     B --> C{Content}
     C -->|Text| D[Text Extraction]
@@ -636,8 +641,8 @@ flowchart TD
     G --> H
     H --> I[Chunk + Metadata]
     I --> J[Embedding / Index]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Detailed answer
 
@@ -677,9 +682,10 @@ The index must remain aligned with the source of truth.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Source Repository] --> B[Change Detector]
     B --> C{Changed?}
     C -->|No| D[Ignore]
@@ -688,8 +694,8 @@ flowchart LR
     F --> G[Re-embed]
     G --> H[Upsert]
     H --> I[Retire Old Version]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Detailed answer
 
@@ -730,15 +736,16 @@ This prevents answers from mixing different policy versions.
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Requirement] --> B{What Needs to Change?}
     B -->|Knowledge| C[RAG]
     B -->|Behavior / Style| D[Fine-Tuning]
     B -->|Both| E[RAG + Fine-Tuning]
-
-    class A yellow;```
+    class A yellow;
+```
 
 | Requirement | Typical approach |
 |---|---|
@@ -770,20 +777,20 @@ A **cross-encoder** evaluates query and document together.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Query] --> B[Query Encoder]
     C[Document] --> D[Document Encoder]
     B --> E[Vector Similarity]
     D --> E
-
     F[Query] --> G[Cross Encoder]
     H[Candidate Document] --> G
     G --> I[Relevance Score]
-
     class A,F yellow;
-    class C,H blue;```
+    class C,H blue;
+```
 
 | Characteristic | Bi-encoder | Cross-encoder |
 |---|---|---|
@@ -824,16 +831,17 @@ A context window is the amount of tokenized context a model can process for a re
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Question] --> B[Retrieve 50]
     B --> C[Rerank]
     C --> D[Compress to 8]
     D --> E[Token Budget]
     E --> F[LLM]
-
-    class A yellow;```
+    class A yellow;
+```
 
 Too much context can increase:
 
@@ -862,21 +870,21 @@ An agent answers:
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     Q[Question] --> R[RAG]
     R --> A[Retrieved Context]
     A --> L[LLM]
     L --> X[Answer]
-
     G[Goal] --> O[Agent]
     O --> T[Tool / RAG / API]
     T --> O
     O --> F[Final Result]
-
     class Q yellow;
-    class G blue;```
+    class G blue;
+```
 
 Example:
 
@@ -905,9 +913,10 @@ An agent can use RAG as one of its tools.
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     U[User] --> A[API]
     A --> O[Agent Orchestrator]
     O --> P[Planner / Router]
@@ -921,8 +930,8 @@ flowchart TD
     P --> G[Guardrails]
     G --> O
     O --> F[Final Response]
-
-    class U yellow;```
+    class U yellow;
+```
 
 ## Detailed answer
 
@@ -983,17 +992,18 @@ Agent memory can be divided into:
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Agent 1] --> S[(Shared State)]
     B[Agent 2] --> S
     C[Agent 3] --> S
     S --> D[(Durable Store)]
     S --> R[(Knowledge Store)]
-
     class A,C yellow;
-    class B blue;```
+    class B blue;
+```
 
 Do not let every agent freely modify every piece of state.
 
@@ -1021,17 +1031,18 @@ Conceptually:
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Goal] --> B[Agent]
     B --> C{Need Tool?}
     C -->|Yes| D[Tool Call]
     D --> E[Tool Result]
     E --> B
     C -->|No| F[Final Answer]
-
-    class A yellow;```
+    class A yellow;
+```
 
 Example:
 
@@ -1057,21 +1068,21 @@ Evaluate retrieval and generation separately.
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Golden Questions] --> B[Retrieval Evaluation]
     B --> C[Recall@K]
     B --> D[Precision@K]
     B --> E[MRR / NDCG]
-
     A --> F[Generation Evaluation]
     F --> G[Faithfulness]
     F --> H[Answer Relevance]
     F --> I[Groundedness]
     F --> J[Citation Correctness]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ### Retrieval metrics
 
@@ -1120,9 +1131,10 @@ Hallucination is not solved by one prompt.
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Question] --> B[Input Guardrail]
     B --> C[Retrieve Evidence]
     C --> D[Rerank]
@@ -1132,8 +1144,8 @@ flowchart TD
     G --> H{Supported?}
     H -->|Yes| I[Answer + Citations]
     H -->|No| J[Abstain / Clarify]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Techniques
 
@@ -1163,9 +1175,10 @@ Decompose end-to-end latency rather than blaming the LLM.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Request] --> B[Auth]
     B --> C[Query Processing]
     C --> D[Retrieval]
@@ -1173,8 +1186,8 @@ flowchart LR
     E --> F[Prompt Construction]
     F --> G[LLM]
     G --> H[Post Processing]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Techniques
 
@@ -1206,9 +1219,10 @@ A semantic cache can identify meaningfully similar queries.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     Q[New Query] --> E[Query Embedding]
     E --> C[(Semantic Cache)]
     C --> D{Similar Query?}
@@ -1216,8 +1230,8 @@ flowchart LR
     D -->|No| R[RAG + LLM]
     R --> U[Store Result]
     U --> A
-
-    class Q yellow;```
+    class Q yellow;
+```
 
 Example:
 
@@ -1247,9 +1261,10 @@ If that text exists inside a retrieved document, it must be treated as **untrust
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[User] --> B[Authentication]
     B --> C[Authorization]
     C --> D[Input Guardrail]
@@ -1259,8 +1274,8 @@ flowchart TD
     G --> H[LLM]
     H --> I[Output Validation]
     I --> J[Audit]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ## Controls
 
@@ -1289,9 +1304,10 @@ Traditional API monitoring is not enough. AI systems need infrastructure, qualit
 
 ```mermaid
 flowchart TD
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[User Request] --> B[Trace ID]
     B --> C[RAG]
     C --> D[Retriever]
@@ -1303,8 +1319,8 @@ flowchart TD
     E --> H
     F --> H
     H --> I[Observability Platform]
-
-    class A yellow;```
+    class A yellow;
+```
 
 Track:
 
@@ -1350,9 +1366,10 @@ The interviewer wants to know whether you can turn a prototype into a reliable A
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Client] --> B[FastAPI]
     B --> C[Pydantic Validation]
     C --> D[Application Service]
@@ -1360,8 +1377,8 @@ flowchart LR
     E --> F[LLM]
     D --> G[Cache]
     D --> H[Observability]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ### Python example
 
@@ -1457,9 +1474,10 @@ Production AI workflows fail. Design for failure.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Message] --> B[Worker]
     B --> C{Success?}
     C -->|Yes| D[Ack]
@@ -1467,8 +1485,8 @@ flowchart LR
     E -->|Yes| F[Exponential Backoff]
     F --> B
     E -->|No / Exhausted| G[Dead Letter Queue]
-
-    class A yellow;```
+    class A yellow;
+```
 
 ### Timeout
 
@@ -1532,16 +1550,17 @@ If precision is 0.80 and recall is 0.60, F1 is approximately 0.686.
 
 ```mermaid
 flowchart LR
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
-    classDef yellow fill:#FFF2CC,stroke:#F4B183,stroke-width:2px,color:#1F2937;
-    classDef blue fill:#DDEBF7,stroke:#5B9BD5,stroke-width:2px,color:#1F2937;
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     A[Predictions] --> B[Confusion Matrix]
     B --> C[Precision]
     B --> D[Recall]
     C --> E[F1]
     D --> E
-
-    class A yellow;```
+    class A yellow;
+```
 
 ---
 
@@ -1595,11 +1614,13 @@ Both then try to reserve it.
 
 ```mermaid
 sequenceDiagram
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#FFF2CC","primaryTextColor":"#1F2937","primaryBorderColor":"#F4B183","lineColor":"#4B5563","secondaryColor":"#DDEBF7","tertiaryColor":"#E2F0D9"}}}%%
+%%{init: {"theme":"base","themeVariables":{"background":"#111827","primaryColor":"#FFF2CC","primaryTextColor":"#111827","primaryBorderColor":"#D97706","lineColor":"#CBD5E1","secondaryColor":"#DDEBF7","secondaryTextColor":"#111827","secondaryBorderColor":"#2563EB","tertiaryColor":"#E2F0D9","tertiaryTextColor":"#111827","tertiaryBorderColor":"#15803D","noteBkgColor":"#FFF2CC","noteTextColor":"#111827","noteBorderColor":"#D97706","actorBkg":"#DDEBF7","actorBorder":"#2563EB","actorTextColor":"#111827","signalColor":"#E5E7EB","signalTextColor":"#111827","labelBoxBkgColor":"#FFF2CC","labelBoxBorderColor":"#D97706","labelTextColor":"#111827"}}}%%
+classDef yellow fill:#FFF2CC,stroke:#D97706,stroke-width:2px,color:#111827;
+classDef blue fill:#DDEBF7,stroke:#2563EB,stroke-width:2px,color:#111827;
+classDef green fill:#E2F0D9,stroke:#15803D,stroke-width:2px,color:#111827;
     participant U1 as User 1
     participant U2 as User 2
     participant DB as Database
-
     U1->>DB: Read A1 = Available
     U2->>DB: Read A1 = Available
     U1->>DB: Conditional Update
