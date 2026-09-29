@@ -1377,6 +1377,14 @@ Every AI Engineer should read these landmark papers.
 
 ---
 
+# 🎯 Featured AI Engineering Guides
+
+- [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md) — beginner-friendly guide to agent frameworks, MCP, A2A, orchestration and interview Q&A.
+- [Embeddings Deep Dive](./Embeddings-Deep-Dive.md) — beginner-to-production guide to embeddings, vector search, RAG, evaluation and interview Q&A.
+- [Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) — beginner-to-production guide to prompting, evaluation, prompt injection, RAG security, agent security and interview Q&A.
+
+---
+
 # 🗺️ AI Engineer Roadmap
 
 ```text
