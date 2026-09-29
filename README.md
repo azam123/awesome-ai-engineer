@@ -26,7 +26,7 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 ## 🔥 Topics Covered
 
-`Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
+`Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `A2A` • `Agent Frameworks` • `Agent Protocols` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
 
 ---
 
@@ -43,6 +43,7 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 * ✍️ Blogs
 * 📄 Research Papers
 * 🗺️ AI Engineer Roadmap
+* 🤖 [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md)
 
 ---
 
@@ -1366,6 +1367,12 @@ Every AI Engineer should read these landmark papers.
 * Sentence-BERT (SBERT)
 * Dense Passage Retrieval (DPR)
 * ColBERT
+
+---
+
+# 🤖 Featured Agent Engineering Guides
+
+- [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md) — beginner-friendly guide to agent frameworks, MCP, A2A, orchestration and interview Q&A.
 
 ---
 
