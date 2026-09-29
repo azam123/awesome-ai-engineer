@@ -369,6 +369,7 @@ Learn directly from the companies building today's most advanced **Large Languag
 * GPU Computing
 * TensorRT
 * Triton Inference Server
+* [NVIDIA AI Engineer & Solutions Architect Skillset](./NVIDIA-AI-ENGINEER-SKILLSET.md)
 * NVIDIA NeMo
 * AI Infrastructure
 * Model Optimization
