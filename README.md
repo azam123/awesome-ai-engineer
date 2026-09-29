@@ -44,6 +44,7 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 * 📄 Research Papers
 * 🗺️ AI Engineer Roadmap
 * 🤖 [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md)
+* 🧠 [Embeddings Deep Dive](./Embeddings-Deep-Dive.md)
 
 ---
 
