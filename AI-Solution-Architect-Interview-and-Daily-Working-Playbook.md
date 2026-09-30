@@ -17,6 +17,8 @@
 </div>
 
 > **One-line definition:** An **AI Solution Architect** turns a business problem into a secure, scalable, measurable and production-ready AI solution.
+>
+> 🎨 **Diagram style:** GitHub-rendered Mermaid diagrams use high-contrast colors, compact layouts and clear role-based visual grouping. Mermaid animations are not used because GitHub Markdown does not reliably support animated diagrams.
 
 > **Core idea:** Do not start with “Which AI model should we use?” Start with “What problem are we solving, how will we measure success, and what is the simplest safe architecture that can solve it?”
 
@@ -196,34 +198,20 @@ Better response:
 
 ### Decision loop
 
-```text
-┌────────────────────┐
-│  Business Problem  │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Ask "Why?" 5 Times │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Define Success KPI │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Explore Solutions  │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Compare Trade-offs │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Prove Risky Parts  │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Build for Prod     │
-└────────────────────┘
+```mermaid
+flowchart TD
+    A["🎯 Business Problem"] --> B["❓ Ask Why?"]
+    B --> C["📏 Define Success KPI"]
+    C --> D["💡 Explore Solutions"]
+    D --> E["⚖️ Compare Trade-offs"]
+    E --> F["🧪 Prove Risky Parts"]
+    F --> G["🚀 Build for Production"]
+    classDef business fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+    classDef decision fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+    classDef validation fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+    class A business
+    class B,C,D,E decision
+    class F,G validation
 ```
 
 **Trade-off** means choosing one benefit while accepting another downside.
