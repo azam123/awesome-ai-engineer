@@ -18,7 +18,7 @@
 
 > **One-line definition:** An **AI Solution Architect** turns a business problem into a secure, scalable, measurable and production-ready AI solution.
 >
-> 🎨 **Diagram style:** GitHub-rendered Mermaid diagrams use high-contrast colors, compact layouts and clear role-based visual grouping. Mermaid animations are not used because GitHub Markdown does not reliably support animated diagrams.
+> 🎨 **Diagram style:** GitHub-rendered Mermaid diagrams use high-contrast colors, compact layouts and clear role-based visual grouping. The diagrams use color-coded visual grouping and compact flow layouts for fast scanning. GitHub does not reliably support animated Mermaid diagrams, so the design prioritizes clarity and readability instead.
 
 > **Core idea:** Do not start with “Which AI model should we use?” Start with “What problem are we solving, how will we measure success, and what is the simplest safe architecture that can solve it?”
 
@@ -89,35 +89,17 @@ An AI Solution Architect sits between **business**, **software**, **cloud**, **d
 
 The role is bigger than selecting an LLM. It is about making good decisions across the complete system.
 
-```text
-Business Problem
-      │
-      ▼
-Customer Discovery
-      │
-      ▼
-Requirements
-      │
-      ▼
-AI Feasibility
-      │
-      ▼
-Architecture
-      │
-      ▼
-POC (Proof of Concept)
-      │
-      ▼
-Evaluation
-      │
-      ▼
-Security + Cost + Scale
-      │
-      ▼
-Production
-      │
-      ▼
-Monitoring + Improvement
+```mermaid
+flowchart TD
+A["🎯 Business Problem"]-->B["🔎 Customer Discovery"]-->C["📋 Requirements"]-->D["🧠 AI Feasibility"]-->E["🏗️ Architecture"]-->F["🧪 POC"]-->G["📏 Evaluation"]-->H["🔐 Security + Cost + Scale"]-->I["🚀 Production"]-->J["📊 Monitoring + Improvement"]
+classDef start fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef control fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef prod fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class A,B,C start
+class D,E,F,G ai
+class H control
+class I,J prod
 ```
 
 ### The architect should be able to answer
@@ -259,25 +241,15 @@ Do not start by presenting architecture.
 
 Start by listening.
 
-```text
-Customer says:
-"Build an AI assistant."
-        │
-        ▼
-Ask:
-"What task should it improve?"
-        │
-        ▼
-Identify:
-User + Data + Workflow + KPI
-        │
-        ▼
-Define:
-Constraints + Risks
-        │
-        ▼
-Design:
-Smallest useful solution
+```mermaid
+flowchart TD
+A["🎯 Business Problem"]-->B["❓ Ask Why?"]-->C["📏 Success KPI"]-->D["💡 Explore Options"]-->E["⚖️ Trade-offs"]-->F["🧪 Prove Risk"]-->G["🚀 Production Design"]
+classDef business fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef decision fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef delivery fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class A business
+class B,C,D,E decision
+class F,G delivery
 ```
 
 ### Example
@@ -504,10 +476,17 @@ Use RAG when the knowledge base is large, changes often, access control matters,
 
 ## Workflow vs Agent
 
-```text
-Known path       → Workflow
-Open-ended path  → Agent
-Mixed system     → Workflow + Agent
+```mermaid
+flowchart LR
+B["💼 Business"]-->D["🔎 Discovery"]-->R["📋 Requirements"]-->F["🧠 AI Feasibility"]-->A["🏗️ Architecture"]-->P["🧪 POC"]-->E["📏 Evaluation"]-->S["🔐 Security"]-->C["💰 Cost"]-->PR["🚀 Production"]-->O["📊 Operations"]
+classDef business fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef control fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef prod fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class B,D,R business
+class F,A,P,E ai
+class S,C control
+class PR,O prod
 ```
 
 ## Single Agent vs Multi-Agent
@@ -551,22 +530,26 @@ Consider data residency, control, model choice, GPU cost, scale and operations.
 
 Use layers when drawing an architecture.
 
-```text
-┌──────────────────────────────┐
-│ 1. User / Experience         │
-├──────────────────────────────┤
-│ 2. API / Application         │
-├──────────────────────────────┤
-│ 3. AI Orchestration          │
-├──────────────────────────────┤
-│ 4. Data / Retrieval          │
-├──────────────────────────────┤
-│ 5. Model / Inference         │
-├──────────────────────────────┤
-│ 6. Security / Governance     │
-├──────────────────────────────┤
-│ 7. Observability / Operations│
-└──────────────────────────────┘
+```mermaid
+flowchart LR
+C["👤 Customer Need"]-->D["🔎 Discovery"]
+D-->U["👥 User"]
+D-->DATA["🗄️ Data"]
+D-->W["🔄 Workflow"]
+D-->K["📏 KPI"]
+U-->R["⚠️ Constraints + Risks"]
+DATA-->R
+W-->R
+K-->R
+R-->S["🏗️ Smallest Useful Solution"]
+classDef customer fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef discovery fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef risk fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef solution fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class C customer
+class D,U,DATA,W,K discovery
+class R risk
+class S solution
 ```
 
 ### For every component ask
@@ -586,51 +569,19 @@ Use layers when drawing an architecture.
 
 # ☁️ 12. Reference Enterprise AI Architecture
 
-```text
-┌──────────┐
-│   User   │
-└────┬─────┘
-     │
-     ▼
-┌──────────┐
-│ Web / API│
-└────┬─────┘
-     ▼
-┌───────────────┐
-│ Auth + Policy │
-└──────┬────────┘
-       ▼
-┌───────────────────┐
-│ AI Orchestration  │
-└──────┬─────┬──────┘
-       │     │
-       ▼     ▼
-┌────────────┐ ┌────────────┐
-│ Retrieval  │ │ Tools/APIs │
-└─────┬──────┘ └──────┬─────┘
-      │               │
-      ▼               ▼
-┌────────────┐  ┌────────────┐
-│ AI Search  │  │ Business   │
-│ / Vector DB│  │ Systems    │
-└─────┬──────┘  └────────────┘
-      │
-      ▼
-┌────────────┐
-│    LLM     │
-└─────┬──────┘
-      ▼
-┌────────────┐
-│ Guardrail  │
-│ + Validate │
-└─────┬──────┘
-      ▼
-┌────────────┐
-│   Answer   │
-└────────────┘
-
-Cross-cutting:
-Security • Monitoring • Audit • Cost • Governance
+```mermaid
+flowchart TB
+U["👤 User / Experience"]-->API["🌐 API / Application"]-->AI["🧠 AI Orchestration"]-->DATA["🔎 Data / Retrieval"]-->MODEL["🤖 Model / Inference"]-->SEC["🔐 Security / Governance"]-->OPS["📊 Observability / Operations"]
+classDef exp fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef data fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ops fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class U,API exp
+class AI,MODEL ai
+class DATA data
+class SEC sec
+class OPS ops
 ```
 
 ---
@@ -643,18 +594,26 @@ Security • Monitoring • Audit • Cost • Governance
 
 ### Ingestion
 
-```text
-Documents
-   ↓
-Parse
-   ↓
-Clean
-   ↓
-Chunk
-   ↓
-Embed
-   ↓
-Index
+```mermaid
+flowchart LR
+U["👤 User"]-->API["🌐 Web / API"]-->AUTH["🔐 Auth + Policy"]-->ORCH["🧠 AI Orchestration"]
+ORCH-->RET["🔎 Retrieval"]-->SEARCH["📚 Search / Vector DB"]-->LLM["🤖 LLM"]
+ORCH-->TOOLS["🛠️ Tools / APIs"]-->SYS["🏢 Business Systems"]-->LLM
+LLM-->G["🛡️ Guardrail + Validation"]-->OUT["💬 Answer"]
+SEC["🔒 Security + Audit"]-.->ORCH
+OBS["📊 Monitoring + Cost"]-.->LLM
+classDef user fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef data fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef tools fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ops fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class U,API user
+class AUTH,G,SEC sec
+class ORCH,LLM ai
+class RET,SEARCH data
+class TOOLS,SYS tools
+class OBS ops
 ```
 
 **Chunking** means splitting large documents into smaller pieces.
@@ -663,22 +622,21 @@ Index
 
 ### Query flow
 
-```text
-User Question
-     ↓
-Query Understanding
-     ↓
-Hybrid / Vector Search
-     ↓
-Metadata + ACL Filter
-     ↓
-Reranking
-     ↓
-Top Context
-     ↓
-LLM
-     ↓
-Answer + Citations
+```mermaid
+flowchart LR
+DOC["📄 Documents"]-->PARSE["⚙️ Parse"]-->CHUNK["✂️ Chunk"]-->EMB["🧬 Embeddings"]-->IDX["🔎 Index"]
+Q["❓ User Question"]-->RET["🔍 Hybrid / Vector Search"]-->ACL["🔐 ACL Filter"]-->RR["🎯 Reranking"]-->CTX["📚 Top Context"]-->LLM["🤖 LLM"]-->ANS["💬 Answer + Citations"]
+IDX-->RET
+classDef ingest fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef search fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef out fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class DOC,PARSE,CHUNK,EMB,IDX ingest
+class Q,RET,RR,CTX search
+class ACL sec
+class LLM ai
+class ANS out
 ```
 
 **Reranking** means taking initial search results and sorting them again using a stronger relevance method.
@@ -693,20 +651,27 @@ Answer + Citations
 
 **Agentic AI** means an AI system can choose among actions or tools to accomplish a goal.
 
-```text
-User Goal
-   ↓
-Agent
-   ↓
-Decide
-   ↓
-Tool / Retrieval / API
-   ↓
-Observe Result
-   ↓
-Decide Again
-   ↓
-Complete
+```mermaid
+flowchart TD
+GOAL["🎯 User Goal"]-->POLICY["🔐 Auth + Policy"]-->AGENT["🧠 Agent Runtime"]
+AGENT-->RAG["📚 RAG / Knowledge"]
+AGENT-->TOOL["🛠️ Tools / APIs"]
+AGENT-->HUMAN["👤 Human Approval"]
+RAG-->OBS["👁️ Observe Result"]
+TOOL-->OBS
+HUMAN-->OBS
+OBS-->AGENT
+AGENT-->DONE["✅ Complete"]
+classDef goal fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef tools fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef out fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class GOAL goal
+class POLICY sec
+class AGENT ai
+class RAG,TOOL,HUMAN tools
+class OBS,DONE out
 ```
 
 ### Production pattern
@@ -739,18 +704,22 @@ Example:
 
 > Insurance claim = accident photo + PDF + customer text.
 
-```text
-Photo ─────┐
-PDF ───────┼──► Multimodal Processing
-Text ──────┘             │
-                          ▼
-                   Structured Data
-                          │
-                          ▼
-                   Rules / RAG / LLM
-                          │
-                          ▼
-                    Human Review
+```mermaid
+flowchart LR
+IMG["🖼️ Image"]-->PROC["🧠 Multimodal Processing"]
+PDF["📄 PDF"]-->PROC
+TXT["💬 Text"]-->PROC
+PROC-->STRUCT["📦 Structured Data"]-->AI["🤖 Rules / RAG / LLM"]-->HUMAN["👤 Human Review"]
+classDef input fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef process fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef data fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef ai fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef human fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class IMG,PDF,TXT input
+class PROC process
+class STRUCT data
+class AI ai
+class HUMAN human
 ```
 
 ### Architect questions
@@ -782,29 +751,22 @@ AI quality often depends more on data quality than on model choice.
 
 ### Enterprise knowledge architecture
 
-```text
-Source Systems
-  │
-  ├── SharePoint
-  ├── File Stores
-  ├── Databases
-  ├── SaaS APIs
-  └── Event Streams
-          │
-          ▼
-    Ingestion Layer
-          │
-          ▼
-       Processing
-          │
-          ▼
-      Metadata + ACL
-          │
-          ▼
-    Embeddings + Index
-          │
-          ▼
-       Retrieval
+```mermaid
+flowchart TB
+S["🗂️ Source Systems"]-->ING["📥 Ingestion"]-->P["⚙️ Processing"]-->META["🏷️ Metadata + ACL"]-->IDX["🔎 Embeddings + Index"]-->R["🎯 Retrieval"]
+S1["SharePoint"]-->S
+S2["File Stores"]-->S
+S3["Databases"]-->S
+S4["SaaS APIs"]-->S
+S5["Event Streams"]-->S
+classDef src fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef proc fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef data fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+class S,S1,S2,S3,S4,S5 src
+class ING,P proc
+class META sec
+class IDX,R data
 ```
 
 ---
@@ -813,24 +775,17 @@ Source Systems
 
 Treat AI security as application security plus AI-specific risks.
 
-```text
-Identity
-   ↓
-Authorization
-   ↓
-Network Controls
-   ↓
-Data Access Controls
-   ↓
-Prompt / Input Controls
-   ↓
-Model Safety
-   ↓
-Tool Authorization
-   ↓
-Output Validation
-   ↓
-Audit + Monitoring
+```mermaid
+flowchart TD
+ID["👤 Identity"]-->AUTH["🔑 Authorization"]-->NET["🌐 Network Controls"]-->DATA["🗄️ Data Access"]-->INPUT["🛡️ Prompt / Input Controls"]-->MODEL["🤖 Model Safety"]-->TOOL["🛠️ Tool Authorization"]-->OUT["✅ Output Validation"]-->AUDIT["📊 Audit + Monitoring"]
+classDef identity fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef out fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class ID identity
+class AUTH,NET,DATA,INPUT sec
+class MODEL,TOOL ai
+class OUT,AUDIT out
 ```
 
 ### Important threats
@@ -868,18 +823,17 @@ Consider:
 
 ### Risk-based design
 
-```text
-Low impact
-   ↓
-Automated response
-
-Medium impact
-   ↓
-Validation + monitoring
-
-High impact
-   ↓
-Human approval + strong controls
+```mermaid
+flowchart LR
+LOW["🟢 Low Impact"]-->AUTO["Automated Response"]
+MED["🟡 Medium Impact"]-->VALID["Validation + Monitoring"]
+HIGH["🔴 High Impact"]-->HUMAN["Human Approval + Strong Controls"]
+classDef low fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+classDef med fill:#FFF8E1,stroke:#F9A825,color:#6D4C00,stroke-width:2px
+classDef high fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+class LOW,AUTO low
+class MED,VALID med
+class HIGH,HUMAN high
 ```
 
 ---
@@ -914,20 +868,17 @@ Create a representative test set containing:
 
 ### RAG evaluation
 
-```text
-Question
-  ↓
-Expected Evidence
-  ↓
-Retriever
-  ↓
-Retrieved Chunks
-  ↓
-Generation
-  ↓
-Expected Answer
-  ↓
-Human / Automated Evaluation
+```mermaid
+flowchart LR
+Q["❓ Question"]-->E["📚 Expected Evidence"]-->RET["🔎 Retriever"]-->CH["📄 Retrieved Chunks"]-->GEN["🤖 Generation"]-->ANS["🎯 Expected Answer"]-->EVAL["📏 Evaluation"]
+classDef input fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef retrieval fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef eval fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class Q,E input
+class RET,CH retrieval
+class GEN ai
+class ANS,EVAL eval
 ```
 
 ---
@@ -1025,18 +976,23 @@ Always discuss:
 
 ### Request trace
 
-```text
-Request ID
-  │
-  ├── Prompt version
-  ├── Model
-  ├── Retrieval query
-  ├── Retrieved documents
-  ├── Tool calls
-  ├── Token usage
-  ├── Latency
-  ├── Errors
-  └── Final outcome
+```mermaid
+flowchart TB
+REQ["🆔 Request ID"]-->TRACE["🔭 AI Trace"]
+TRACE-->P["Prompt Version"]
+TRACE-->M["Model"]
+TRACE-->R["Retrieval"]
+TRACE-->T["Tool Calls"]
+TRACE-->TOK["Token Usage"]
+TRACE-->LAT["Latency"]
+TRACE-->ERR["Errors"]
+TRACE-->OUT["Final Outcome"]
+classDef trace fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef signal fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef out fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class REQ,TRACE trace
+class P,M,R,T,TOK,LAT,ERR signal
+class OUT out
 ```
 
 ### Production dashboard
@@ -1088,14 +1044,21 @@ Measure:
 
 ### Step 4 — Decide
 
-```text
-Evidence good?
-   │
- ┌─┴─┐
-Yes  No
- │    │
- ▼    ▼
-Scale  Change approach
+```mermaid
+flowchart LR
+RISK["⚠️ Biggest Risk"]-->EXP["🧪 Small Experiment"]-->MEASURE["📏 Measure"]-->DECIDE{"Evidence Good?"}
+DECIDE-->|Yes|SCALE["🚀 Pilot / Production"]
+DECIDE-->|No|CHANGE["🔄 Change Approach"]
+CHANGE-->EXP
+classDef risk fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef exp fill:#FFF3E0,stroke:#EF6C00,color:#E65100,stroke-width:2px
+classDef measure fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef success fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class RISK risk
+class EXP exp
+class MEASURE,DECIDE measure
+class SCALE success
+class CHANGE risk
 ```
 
 ### POC exit criteria
@@ -1847,24 +1810,15 @@ When whiteboarding, draw left to right.
 
 ### Enterprise RAG
 
-```text
-User
- ↓
-API
- ↓
-Identity
- ↓
-Query
- ↓
-Search
- ↓
-ACL
- ↓
-Rerank
- ↓
-LLM
- ↓
-Answer
+```mermaid
+flowchart LR
+U["👤 User"]-->API["🌐 API"]-->ID["🔐 Identity"]-->Q["❓ Query"]-->S["🔎 Search"]-->ACL["🛡️ ACL"]-->RR["🎯 Rerank"]-->LLM["🤖 LLM"]-->A["💬 Answer"]
+classDef app fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+class U,API,Q,S,RR,A app
+class ID,ACL sec
+class LLM ai
 ```
 
 ### Agent
@@ -2047,20 +2001,19 @@ Remember five layers.
 
 > How do we secure, monitor, scale and improve it?
 
-```text
-                 BUSINESS VALUE
-                       ▲
-                       │
-              USER EXPERIENCE
-                       ▲
-                       │
-                  AI CAPABILITY
-                       ▲
-                       │
-             SOFTWARE + DATA
-                       ▲
-                       │
-      SECURITY + COST + OPERATIONS
+```mermaid
+flowchart BT
+OPS["🔐 Security + Cost + Operations"]-->ENG["💻 Software + Data"]-->AI["🤖 AI Capability"]-->UX["👥 User Experience"]-->BUS["💼 Business Value"]
+classDef bus fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ux fill:#E8EAF6,stroke:#3949AB,color:#1A237E,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef eng fill:#E0F7FA,stroke:#00838F,color:#004D40,stroke-width:2px
+classDef ops fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+class BUS bus
+class UX ux
+class AI ai
+class ENG eng
+class OPS ops
 ```
 
 > **An architect designs the system around the problem, not the problem around the technology.**
@@ -2071,34 +2024,17 @@ Remember five layers.
 
 ## AI Solution Architect Formula
 
-```text
-Business Problem
-       ↓
-Discovery
-       ↓
-Requirements
-       ↓
-AI Feasibility
-       ↓
-Architecture
-       ↓
-Trade-offs
-       ↓
-POC
-       ↓
-Evaluation
-       ↓
-Security
-       ↓
-Cost
-       ↓
-Scale
-       ↓
-Production
-       ↓
-Observability
-       ↓
-Continuous Improvement
+```mermaid
+flowchart TD
+A["🎯 Business Problem"]-->B["🔎 Discovery"]-->C["📋 Requirements"]-->D["🧠 AI Feasibility"]-->E["🏗️ Architecture"]-->F["⚖️ Trade-offs"]-->G["🧪 POC"]-->H["📏 Evaluation"]-->I["🔐 Security"]-->J["💰 Cost"]-->K["📈 Scale"]-->L["🚀 Production"]-->M["📊 Observability"]-->N["🔄 Improve"]
+classDef start fill:#E3F2FD,stroke:#1565C0,color:#0D47A1,stroke-width:2px
+classDef ai fill:#F3E5F5,stroke:#7B1FA2,color:#4A148C,stroke-width:2px
+classDef sec fill:#FFEBEE,stroke:#C62828,color:#B71C1C,stroke-width:2px
+classDef prod fill:#E8F5E9,stroke:#2E7D32,color:#1B5E20,stroke-width:2px
+class A,B,C start
+class D,E,F,G,H ai
+class I,J,K sec
+class L,M,N prod
 ```
 
 ## AI decision rules
