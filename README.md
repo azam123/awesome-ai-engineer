@@ -1373,6 +1373,8 @@ Every AI Engineer should read these landmark papers.
 
 # 🤖 Featured Agent Engineering Guides
 
+- [🧩 Agentic AI Open-Source Tools Explained](./Agentic-AI-Open-Source-Tools-Explained.md) — colorful, analogy-driven guide to LangChain, LangGraph, LlamaIndex, CrewAI, MCP, A2A, RAG and the modern agentic AI stack.
+
 - [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md) — beginner-friendly guide to agent frameworks, MCP, A2A, orchestration and interview Q&A.
 
 ---
