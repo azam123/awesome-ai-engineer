@@ -10,15 +10,23 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 ⭐ Learn from the world's best universities, AI companies, researchers, books, blogs, GitHub repositories, YouTube channels, documentation, and research papers.
 
-
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-Agents-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Workflows-1C3C3C?style=for-the-badge)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Production-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![RAG](https://img.shields.io/badge/RAG-Enabled-FF6F00?style=for-the-badge)
+![Agentic AI](https://img.shields.io/badge/Agentic-AI-8A2BE2?style=for-the-badge)
+![MCP](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-00A67E?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-production--ready-brightgreen?style=for-the-badge)
 
+<br/>
+
+[⭐ Star this repository](https://github.com/azam123/awesome-ai-engineer)
+&nbsp;&nbsp;•&nbsp;&nbsp;
+[🤝 Contribute](https://github.com/azam123/awesome-ai-engineer/pulls)
+&nbsp;&nbsp;•&nbsp;&nbsp;
+[💖 Sponsor](https://github.com/sponsors/azam123)
 
 </div>
 
@@ -33,39 +41,86 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 | 🥇 | [🧠 AI Engineer Interview Questions 2026](./AI-Engineer-Interview-Questions-2026.md) | Senior/Staff/Principal AI Engineer interview preparation — RAG, LLMs, Agents, security, evaluation, system design and advanced Q&A |
 | 🥈 | [🏗️ AI Solution Architect Interview & Daily Working Playbook](./AI-Solution-Architect-Interview-and-Daily-Working-Playbook.md) | AI Solution Architects — discovery, architecture, POC, production, modernization, performance, cost, security and interview readiness |
 | 🥉 | [🤖 Agentic AI System Design — Complete Engineering & Interview Handbook](./Agentic-AI-System-Design.md) | End-to-end Agentic AI system design, scaling, capacity planning, databases, reliability, security and interview scenarios |
-| ⭐ | [🧩 Agentic AI Open-Source Stack: LangChain, LangGraph & Tools](./Agentic-AI-Open-Source-Tools-Explained.md) | Understand LangChain, LangGraph, LlamaIndex, CrewAI, Pydantic AI, MCP, A2A, RAG, memory and orchestration with practical analogies |
+| ⭐ | [🧩 Agentic AI Open-Source Stack: LangChain, LangGraph & Tools](./Agentic-AI-Open-Source-Tools-Explained.md) | LangChain, LangGraph, LlamaIndex, CrewAI, Pydantic AI, MCP, A2A, RAG, memory and orchestration |
 | ⭐ | [🧠 GenAI → Agentic AI → Multi-Agent → RAG → Agent Harness](./GenAI-AgenticAI-MultiAgent-RAG-AgentHarness.md) | Build the mental model from GenAI fundamentals to production agent harnesses |
-| ⭐ | [📚 RAG Explained In-Depth — From Fundamentals to Production](./RAG-explained-in-depth.md) | Deep RAG learning — ingestion, chunking, embeddings, search, reranking, grounding, guardrails and evaluation |
-| ⭐ | [🔐 Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) | Prompt design, few-shot prompting, structured output, prompt injection, jailbreaks and RAG/agent security |
-| ⭐ | [📐 Embeddings Deep Dive](./Embeddings-Deep-Dive.md) | Embeddings, vector databases, semantic search, ANN/HNSW, hybrid retrieval, reranking and production RAG |
-| ⭐ | [🛡️ AI Guardrails Explained](./ai-guardrails-explained.md) | Enterprise AI safety, prompt injection, PII, hallucinations, governance, privacy and responsible AI |
-| ⭐ | [🚀 Building a Production-Ready Generative AI & Agentic AI System](./production-genai-agentic-ai-guide.md) | Code-first production architecture across LLMs, prompts, RAG, agents, deployment, monitoring and reliability |
-| ⭐ | [🔎 Retrieval Engineering for AI Systems](./retrieval_engineering-ai.md) | Keyword, semantic, hybrid retrieval and practical search engineering for AI applications |
+| ⭐ | [📚 RAG Explained In-Depth](./RAG-explained-in-depth.md) | Ingestion, chunking, embeddings, search, reranking, grounding, guardrails and evaluation |
+| ⭐ | [🔐 Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) | Prompt design, few-shot prompting, structured output, prompt injection and jailbreak security |
+| ⭐ | [📐 Embeddings Deep Dive](./Embeddings-Deep-Dive.md) | Embeddings, vector databases, semantic search, ANN/HNSW, hybrid retrieval and reranking |
+| ⭐ | [🛡️ AI Guardrails Explained](./ai-guardrails-explained.md) | AI safety, prompt injection, PII, hallucinations, governance, privacy and responsible AI |
+| ⭐ | [🚀 Production GenAI & Agentic AI Guide](./production-genai-agentic-ai-guide.md) | Production architecture, deployment, monitoring, reliability and operational best practices |
+| ⭐ | [🔎 Retrieval Engineering for AI Systems](./retrieval_engineering-ai.md) | Keyword, semantic and hybrid retrieval engineering |
 
 ---
 
-## 🔥 Topics Covered
+# 💖 Support This Open-Source Project
 
-`Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `A2A` • `Agent Frameworks` • `Agent Protocols` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
+> **`awesome-ai-engineer` is free and open source.**
+>
+> If this repository helps you learn **AI Engineering, RAG, Agentic AI, System Design, LLMs or interview preparation**, you can support its continued development through **GitHub Sponsors**.
+
+## 💎 GitHub Sponsor Tiers
+
+| Tier | Monthly | What Your Support Helps Fund |
+|---|---:|---|
+| ☕ **Supporter** | **$3/month** | Repository maintenance, fixes and new resources |
+| ⭐ **AI Learner** | **$5/month** | Tutorials, interview Q&A and learning guides |
+| 🚀 **AI Engineer** | **$10/month** | Advanced RAG, Agentic AI and production architecture content |
+| 🏗️ **AI Architect** | **$25/month** | System-design guides, architecture templates and engineering checklists |
+| 💎 **Project Sponsor** | **$100/month** | Major new content, open-source examples and long-term project development |
+
+### 🎁 Sponsor Benefits
+
+Depending on the sponsorship tier, supporters may receive:
+
+- 📚 Early access to selected advanced guides
+- 🏗️ AI architecture and production-readiness templates
+- 🧠 Advanced AI/RAG/Agentic AI interview resources
+- ⭐ Sponsor recognition in the repository
+- 🚀 Early access to selected examples and checklists
+- 💬 Sponsor-only project updates
+
+### ❤️ Become a Sponsor
+
+<div align="center">
+
+## ⭐ Help Keep AI Engineering Knowledge Free
+
+Your sponsorship helps me continuously build and maintain:
+
+**🤖 Agentic AI Resources**  
+**🧠 RAG & LLM Guides**  
+**🏗️ AI System Design**  
+**🔐 AI Security & Guardrails**  
+**📚 Interview Preparation**  
+**🚀 Production AI Architecture**
+
+### 👉 [💖 Become a GitHub Sponsor](https://github.com/sponsors/azam123)
+
+</div>
+
+---
+
+# 🔥 Topics Covered
+
+`Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `A2A` • `Agent Frameworks` • `Agent Protocols` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `AWS AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
 
 ---
 
 # 📚 Table of Contents
 
-* ⭐ [Top AI Engineering Articles](#-top-ai-engineering-articles)
-* 🎓 Free University Courses
-* 🏢 AI Companies
-* 🎯 Learning Platforms
-* 👨‍💻 AI Experts
-* 📺 YouTube Channels
-* 📖 Official Documentation
-* 💻 GitHub Repositories
-* 📚 Books
-* ✍️ Blogs
-* 📄 Research Papers
-* 🗺️ AI Engineer Roadmap
-* 🤖 [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md)
-* 🧠 [Embeddings Deep Dive](./Embeddings-Deep-Dive.md)
+- ⭐ [Top AI Engineering Articles](#-top-ai-engineering-articles)
+- 💖 [Support This Open-Source Project](#-support-this-open-source-project)
+- 🔥 [Topics Covered](#-topics-covered)
+- 🎓 [Free University Courses](#-free-university-courses)
+- 🏢 [AI Companies](#-ai-companies)
+- 🎯 [Learning Platforms](#-learning-platforms)
+- 👨‍💻 [AI Experts](#-ai-experts)
+- 💻 [GitHub Repositories](#-github-repositories)
+- 📚 [Books](#-books)
+- ✍️ [Blogs](#-blogs)
+- 📄 [Research Papers](#-research-papers)
+- 🗺️ [AI Engineer Roadmap](#️-ai-engineer-roadmap)
+- 🤝 [Contributing](#-contributing)
 
 ---
 
@@ -79,15 +134,7 @@ Learn Artificial Intelligence, Machine Learning, Deep Learning, Computer Vision,
 
 **Tags**
 
-`Python`
-`Algorithms`
-`Computer Science`
-`Artificial Intelligence`
-`Machine Learning`
-`Linear Algebra`
-`Mathematics`
-`Probability`
-`Statistics`
+`Python` `Algorithms` `Computer Science` `Artificial Intelligence` `Machine Learning` `Linear Algebra` `Mathematics` `Probability` `Statistics`
 
 ### 🌐 Website
 
@@ -99,12 +146,12 @@ https://www.youtube.com/@mitocw
 
 ### 📚 Recommended Courses
 
-* Introduction to Computer Science (6.0001)
-* Introduction to Algorithms
-* Mathematics for Computer Science
-* Linear Algebra
-* Probability & Statistics
-* Artificial Intelligence
+- Introduction to Computer Science
+- Introduction to Algorithms
+- Mathematics for Computer Science
+- Linear Algebra
+- Probability & Statistics
+- Artificial Intelligence
 
 ---
 
@@ -112,13 +159,7 @@ https://www.youtube.com/@mitocw
 
 **Tags**
 
-`Machine Learning`
-`Deep Learning`
-`Computer Vision`
-`NLP`
-`Transformers`
-`LLMs`
-`AI`
+`Machine Learning` `Deep Learning` `Artificial Intelligence` `Computer Vision` `NLP` `Transformers` `LLMs`
 
 ### 🌐 Website
 
@@ -130,39 +171,31 @@ https://www.youtube.com/@stanford
 
 ### 📚 Recommended Courses
 
-* CS229 — Machine Learning
-* CS231n — Deep Learning for Computer Vision
-* CS224N — Natural Language Processing with Deep Learning
-* CS25 — Transformers United
-* CS221 — Artificial Intelligence
+- CS229 — Machine Learning
+- CS231n — Deep Learning for Computer Vision
+- CS224N — Natural Language Processing
+- CS25 — Transformers United
+- CS221 — Artificial Intelligence
 
 ---
 
-# 🧠 Carnegie Mellon University (CMU)
+# 🧠 Carnegie Mellon University
 
 **Tags**
 
-`Artificial Intelligence`
-`Machine Learning`
-`Deep Learning`
-`NLP`
-`Computer Vision`
-`Robotics`
+`Artificial Intelligence` `Machine Learning` `Deep Learning` `NLP` `Computer Vision` `Robotics`
 
 ### 🌐 Website
 
 https://www.cmu.edu
 
-### ▶️ YouTube
-
-https://www.youtube.com/@CarnegieMellonUniversity
-
 ### 📚 Recommended Courses
 
-* Machine Learning
-* Deep Learning
-* Natural Language Processing
-* Artificial Intelligence
+- Machine Learning
+- Deep Learning
+- Natural Language Processing
+- Artificial Intelligence
+- Robotics
 
 ---
 
@@ -170,26 +203,18 @@ https://www.youtube.com/@CarnegieMellonUniversity
 
 **Tags**
 
-`Machine Learning`
-`Deep Learning`
-`Artificial Intelligence`
-`Reinforcement Learning`
-`Data Science`
+`Machine Learning` `Deep Learning` `Artificial Intelligence` `Reinforcement Learning` `Data Science`
 
 ### 🌐 Website
 
 https://www.berkeley.edu/
 
-### ▶️ YouTube
-
-https://www.youtube.com/@UCBerkeley
-
 ### 📚 Recommended Courses
 
-* CS188 — Artificial Intelligence
-* CS285 — Deep Reinforcement Learning
-* Data100 — Principles of Data Science
-* CS189 — Machine Learning
+- CS188 — Artificial Intelligence
+- CS285 — Deep Reinforcement Learning
+- Data100 — Principles of Data Science
+- CS189 — Machine Learning
 
 ---
 
@@ -197,825 +222,306 @@ https://www.youtube.com/@UCBerkeley
 
 **Tags**
 
-`Python`
-`Computer Science`
-`Artificial Intelligence`
-`Machine Learning`
-`Data Science`
+`Python` `Computer Science` `Artificial Intelligence` `Machine Learning` `Data Science`
 
 ### 🌐 Website
 
 https://pll.harvard.edu
 
-### ▶️ YouTube
-
-https://www.youtube.com/@Harvard
-
 ### 📚 Recommended Courses
 
-* CS50
-* CS50 AI
-* Data Science
+- CS50
+- CS50 AI
+- Data Science
 
 ---
 
-## 🎯 Why Learn from Universities?
-
-These universities publish world-class AI and Computer Science courses completely free. They provide strong foundations in:
-
-* ✅ Python Programming
-* ✅ Data Structures & Algorithms
-* ✅ Mathematics for AI
-* ✅ Probability & Statistics
-* ✅ Machine Learning
-* ✅ Deep Learning
-* ✅ Computer Vision
-* ✅ Natural Language Processing
-* ✅ Reinforcement Learning
-* ✅ Large Language Models (LLMs)
-* ✅ Artificial Intelligence Research
-
----
 # 🏢 AI Companies
 
-Learn directly from the companies building today's most advanced **Large Language Models (LLMs)**, **Generative AI**, **AI Infrastructure**, **Foundation Models**, **Developer Platforms**, and **AI APIs**.
+Learn directly from organizations building today's most advanced **LLMs, Foundation Models, Generative AI systems, AI Infrastructure and Developer Platforms**.
 
 ---
 
 # 🤖 OpenAI
 
-> Creator of **ChatGPT**, **GPT-4o**, **Codex**, **Embeddings API**, **Assistants API**, and the **OpenAI API**.
+**Tags**
 
-### 🏷️ Tags
-
-`ChatGPT` • `GPT-4o` • `Codex` • `OpenAI API` • `Embeddings` • `Function Calling` • `Structured Outputs` • `Agents SDK` • `Prompt Engineering` • `RAG` • `Fine-tuning`
+`ChatGPT` `GPT` `OpenAI API` `Embeddings` `Function Calling` `Structured Outputs` `Agents` `RAG`
 
 ### 🌐 Official Resources
 
-| Resource          | Link                                      |
-| ----------------- | ----------------------------------------- |
-| Website           | https://openai.com                        |
-| API Documentation | https://platform.openai.com/docs          |
-| Cookbook          | https://github.com/openai/openai-cookbook |
-| GitHub            | https://github.com/openai                 |
-| Blog              | https://openai.com/news                   |
-| Platform          | https://platform.openai.com               |
+- https://openai.com
+- https://platform.openai.com/docs
+- https://github.com/openai
+- https://github.com/openai/openai-cookbook
 
 ### 📖 Learn
 
-* OpenAI API
-* Chat Completions
-* Responses API
-* Function Calling
-* Structured Outputs
-* Embeddings
-* Image Generation
-* Audio APIs
-* Fine-tuning
-* Retrieval-Augmented Generation (RAG)
-* AI Agents
+- OpenAI API
+- Responses API
+- Function Calling
+- Structured Outputs
+- Embeddings
+- Multimodal AI
+- Fine-tuning
+- RAG
+- AI Agents
 
 ---
 
 # 🧠 Anthropic
 
-> Creator of **Claude**, **Model Context Protocol (MCP)**, and AI systems focused on safety, reasoning, and long-context capabilities.
+**Tags**
 
-### 🏷️ Tags
-
-`Claude` • `MCP` • `Constitutional AI` • `Long Context` • `Prompt Engineering` • `AI Safety` • `Tool Use` • `Reasoning`
+`Claude` `MCP` `Constitutional AI` `Long Context` `Prompt Engineering` `AI Safety` `Tool Use`
 
 ### 🌐 Official Resources
 
-| Resource      | Link                           |
-| ------------- | ------------------------------ |
-| Website       | https://www.anthropic.com      |
-| Documentation | https://docs.anthropic.com     |
-| GitHub        | https://github.com/anthropics  |
-| Blog          | https://www.anthropic.com/news |
+- https://www.anthropic.com
+- https://docs.anthropic.com
+- https://github.com/anthropics
 
 ### 📖 Learn
 
-* Claude API
-* Prompt Engineering
-* Tool Use
-* MCP (Model Context Protocol)
-* Long Context Windows
-* AI Safety
-* Reasoning Models
+- Claude API
+- Prompt Engineering
+- Tool Use
+- Model Context Protocol
+- Long Context
+- AI Safety
+- Reasoning Models
 
 ---
 
 # 🌟 Google AI
 
-> Explore **Gemini**, **Vertex AI**, **Google AI Studio**, **TensorFlow**, and Google's cutting-edge AI research.
+**Tags**
 
-### 🏷️ Tags
-
-`Gemini` • `Vertex AI` • `Google AI Studio` • `TensorFlow` • `TPU` • `Multimodal AI` • `Agents`
+`Gemini` `Vertex AI` `Google AI Studio` `TensorFlow` `TPU` `Multimodal AI` `Agents`
 
 ### 🌐 Official Resources
 
-| Resource        | Link                               |
-| --------------- | ---------------------------------- |
-| Website         | https://ai.google                  |
-| Gemini API      | https://ai.google.dev              |
-| Vertex AI       | https://cloud.google.com/vertex-ai |
-| Google AI Blog  | https://blog.google/technology/ai  |
-| Google Research | https://research.google            |
-| GitHub          | https://github.com/google          |
+- https://ai.google
+- https://ai.google.dev
+- https://cloud.google.com/vertex-ai
+- https://research.google
+- https://github.com/google
 
 ### 📖 Learn
 
-* Gemini API
-* Prompt Design
-* Vertex AI
-* TensorFlow
-* AI Studio
-* Responsible AI
-* Agent Development
+- Gemini API
+- Vertex AI
+- TensorFlow
+- Google AI Studio
+- Responsible AI
+- Agent Development
 
 ---
 
 # ☁️ Microsoft AI
 
-> Build enterprise AI applications with **Azure AI**, **Azure OpenAI Service**, **Copilot**, and **Azure AI Foundry**.
+**Tags**
 
-### 🏷️ Tags
-
-`Azure AI` • `Azure OpenAI` • `Copilot` • `Azure AI Foundry` • `Semantic Kernel` • `Azure ML`
+`Azure AI` `Azure OpenAI` `Copilot` `Azure AI Foundry` `Semantic Kernel` `Azure ML`
 
 ### 🌐 Official Resources
 
-| Resource         | Link                                           |
-| ---------------- | ---------------------------------------------- |
-| Microsoft AI     | https://www.microsoft.com/ai                   |
-| Azure AI         | https://learn.microsoft.com/azure/ai-services/ |
-| Azure AI Foundry | https://learn.microsoft.com/azure/ai-foundry/  |
-| Semantic Kernel  | https://learn.microsoft.com/semantic-kernel    |
-| GitHub            | https://github.com/microsoft                   |
-| Microsoft Learn  | https://learn.microsoft.com                    |
+- https://www.microsoft.com/ai
+- https://learn.microsoft.com/azure/ai-services/
+- https://learn.microsoft.com/azure/ai-foundry/
+- https://learn.microsoft.com/semantic-kernel
+- https://github.com/microsoft
 
 ### 📖 Learn
 
-* Azure OpenAI
-* Azure AI Search
-* Azure AI Foundry
-* Semantic Kernel
-* Copilot Development
-* Prompt Flow
-* Enterprise AI Solutions
+- Azure OpenAI
+- Azure AI Search
+- Azure AI Foundry
+- Semantic Kernel
+- Copilot Development
+- Enterprise AI Architecture
 
 ---
 
 # 🚀 NVIDIA AI
 
-> Learn GPU computing, accelerated AI, inference optimization, and production deployment with NVIDIA's AI ecosystem.
+**Tags**
 
-### 🏷️ Tags
+`CUDA` `TensorRT` `NeMo` `NIM` `Triton` `Inference` `GPU` `AI Infrastructure`
 
-`CUDA` • `TensorRT` • `NeMo` • `NIM` • `Triton` • `Inference` • `GPU` • `AI Infrastructure`
+### 🌐 Resources
 
-### 🌐 Official Resources
-
-| Resource    | Link                                   |
-| ----------- | -------------------------------------- |
-| Website     | https://developer.nvidia.com/ai        |
-| NVIDIA DLI  | https://www.nvidia.com/en-us/training/ |
-| NVIDIA Blog | https://developer.nvidia.com/blog      |
-| GitHub      | https://github.com/NVIDIA              |
-| CUDA        | https://developer.nvidia.com/cuda-zone |
+- https://developer.nvidia.com/ai
+- https://www.nvidia.com/en-us/training/
+- https://developer.nvidia.com/blog
+- https://github.com/NVIDIA
 
 ### 📖 Learn
 
-* CUDA Programming
-* GPU Computing
-* TensorRT
-* Triton Inference Server
-* [NVIDIA AI Engineer & Solutions Architect Skillset](./NVIDIA-AI-ENGINEER-SKILLSET.md)
-* NVIDIA NeMo
-* AI Infrastructure
-* Model Optimization
+- CUDA
+- GPU Computing
+- TensorRT
+- Triton Inference Server
+- NVIDIA NeMo
+- AI Infrastructure
+- Model Optimization
+- [NVIDIA AI Engineer & Solutions Architect Skillset](./NVIDIA-AI-ENGINEER-SKILLSET.md)
 
 ---
 
 # 🔵 Meta AI
 
-> Home of **Llama**, **PyTorch**, **FAIR**, and open research in generative AI and multimodal models.
+**Tags**
 
-### 🏷️ Tags
+`Llama` `PyTorch` `FAIR` `Computer Vision` `Open Source AI` `Multimodal`
 
-`Llama` • `PyTorch` • `FAIR` • `Computer Vision` • `Open Source AI` • `Multimodal`
+### 🌐 Resources
 
-### 🌐 Official Resources
-
-| Resource | Link                                |
-| -------- | ----------------------------------- |
-| Meta AI  | https://ai.meta.com                 |
-| Llama    | https://ai.meta.com/llama/          |
-| PyTorch  | https://pytorch.org                 |
-| FAIR     | https://ai.meta.com/research        |
-| GitHub   | https://github.com/facebookresearch |
+- https://ai.meta.com
+- https://ai.meta.com/llama/
+- https://pytorch.org
+- https://ai.meta.com/research
+- https://github.com/facebookresearch
 
 ### 📖 Learn
 
-* Llama Models
-* PyTorch
-* Computer Vision
-* Multimodal AI
-* Open Source Foundation Models
+- Llama
+- PyTorch
+- Computer Vision
+- Multimodal AI
+- Open Source Foundation Models
 
 ---
 
 # 🤗 Hugging Face
 
-> The largest open-source AI ecosystem for models, datasets, inference, evaluation, and AI collaboration.
+**Tags**
 
-### 🏷️ Tags
+`Transformers` `Datasets` `Spaces` `Diffusers` `Inference` `Sentence Transformers` `PEFT` `TRL`
 
-`Transformers` • `Datasets` • `Spaces` • `Diffusers` • `Inference API` • `Sentence Transformers` • `PEFT` • `TRL`
+### 🌐 Resources
 
-### 🌐 Official Resources
-
-| Resource      | Link                            |
-| ------------- | ------------------------------- |
-| Website       | https://huggingface.co          |
-| Documentation | https://huggingface.co/docs     |
-| Courses       | https://huggingface.co/learn    |
-| Models        | https://huggingface.co/models   |
-| Datasets      | https://huggingface.co/datasets |
-| Spaces        | https://huggingface.co/spaces   |
-| GitHub        | https://github.com/huggingface  |
-| Blog          | https://huggingface.co/blog     |
+- https://huggingface.co
+- https://huggingface.co/docs
+- https://huggingface.co/learn
+- https://huggingface.co/models
+- https://github.com/huggingface
 
 ### 📖 Learn
 
-* Transformers
-* Tokenizers
-* Diffusers
-* PEFT
-* TRL
-* Sentence Transformers
-* Hugging Face Hub
-* Inference API
-* Model Fine-tuning
-* Dataset Management
+- Transformers
+- Tokenizers
+- Diffusers
+- PEFT
+- TRL
+- Sentence Transformers
+- Hugging Face Hub
+- Model Fine-tuning
 
 ---
 
-# 📌 Why Learn from AI Companies?
-
-These organizations are shaping the future of Artificial Intelligence. Their official documentation, SDKs, APIs, open-source projects, blogs, and research papers are some of the best free learning resources available.
-
-By learning directly from these companies, you'll gain practical experience with:
-
-* ✅ Foundation Models (GPT, Claude, Gemini, Llama)
-* ✅ AI APIs & SDKs
-* ✅ Prompt Engineering
-* ✅ Retrieval-Augmented Generation (RAG)
-* ✅ AI Agents & Tool Calling
-* ✅ Model Context Protocol (MCP)
-* ✅ Embeddings & Vector Search
-* ✅ Fine-tuning
-* ✅ Multimodal AI
-* ✅ Production AI Systems
-* ✅ Enterprise AI Architecture
-* ✅ AI Infrastructure & Deployment
-
----
-
-# 🎯 Learning Platforms & 👨‍💻 AI Experts
-
-Learn Artificial Intelligence, Machine Learning, Deep Learning, Large Language Models (LLMs), Generative AI, Prompt Engineering, RAG, AI Agents, and MLOps from world-renowned educators, researchers, and practitioners.
-
----
-
-# 🎓 Learning Platforms
-
-These platforms provide **free courses**, **hands-on projects**, **coding notebooks**, **workshops**, and **industry best practices**.
+# 🎯 Learning Platforms
 
 ---
 
 # 🧠 DeepLearning.AI
 
-> Founded by **Andrew Ng**, DeepLearning.AI offers some of the world's most popular AI and Generative AI courses.
+> Founded by **Andrew Ng**, DeepLearning.AI provides courses covering Machine Learning, Deep Learning, LLMs and Generative AI.
 
-### 🏷️ Tags
+**Tags**
 
-`Machine Learning` • `Deep Learning` • `LLMs` • `Generative AI` • `Prompt Engineering` • `RAG` • `AI Agents` • `MLOps`
+`Machine Learning` `Deep Learning` `LLMs` `Generative AI` `Prompt Engineering` `RAG` `AI Agents` `MLOps`
 
-### 🌐 Official Resources
+### 🌐 Resources
 
-| Resource           | Link                                      |
-| ------------------ | ----------------------------------------- |
-| Website            | https://www.deeplearning.ai               |
-| Free Short Courses | https://www.deeplearning.ai/short-courses |
-| YouTube            | https://www.youtube.com/@Deeplearningai   |
-| Newsletter         | https://www.deeplearning.ai/the-batch     |
+- https://www.deeplearning.ai
+- https://www.deeplearning.ai/short-courses
+- https://www.deeplearning.ai/the-batch
 
-### 📖 Recommended Courses
+### 📚 Recommended
 
-* AI Python for Beginners
-* ChatGPT Prompt Engineering
-* Building Systems with ChatGPT
-* LangChain for LLM Application Development
-* LangGraph for Agentic AI
-* Building Agentic RAG
-* AI Agents in LangGraph
-* Building AI Products
-* Vector Databases
-* Generative AI with LLMs
-
-### 💡 Why Learn Here?
-
-* Industry-recognized instructors
-* Hands-on notebooks
-* Free short courses
-* Latest Generative AI content
-* Practical LLM applications
+- Machine Learning Specialization
+- Generative AI
+- Prompt Engineering
+- LangChain
+- LangGraph
+- Agentic RAG
+- AI Agents
+- Vector Databases
 
 ---
 
 # ⚡ fast.ai
 
-> Practical Deep Learning for Coders by **Jeremy Howard**.
+> Practical Deep Learning for Coders.
 
-### 🏷️ Tags
+**Tags**
 
-`PyTorch` • `Deep Learning` • `Computer Vision` • `NLP` • `Tabular Data` • `Production AI`
+`PyTorch` `Deep Learning` `Computer Vision` `NLP` `Production AI`
 
-### 🌐 Official Resources
+### 🌐 Resources
 
-| Resource    | Link                               |
-| ----------- | ---------------------------------- |
-| Website     | https://www.fast.ai                |
-| Free Course | https://course.fast.ai             |
-| GitHub      | https://github.com/fastai          |
-| YouTube     | https://www.youtube.com/@fastdotai |
-
-### 📖 Recommended Courses
-
-* Practical Deep Learning for Coders
-* From Deep Learning Foundations to Stable Diffusion
-* Neural Networks
-* Computer Vision
-* NLP
-* Recommendation Systems
-
-### 💡 Why Learn Here?
-
-* Project-first approach
-* PyTorch focused
-* Production-ready examples
-* Excellent for practitioners
+- https://www.fast.ai
+- https://course.fast.ai
+- https://github.com/fastai
 
 ---
 
 # 👨‍💻 AI Experts
 
-Learn directly from researchers, engineers, and educators who have shaped modern Artificial Intelligence.
-
 ---
 
 # 🧑‍🏫 Andrew Ng
 
-> AI Pioneer, Founder of DeepLearning.AI, Co-founder of Coursera, Former Head of Google Brain.
+**Tags**
 
-### 🏷️ Tags
+`Machine Learning` `Deep Learning` `AI Strategy` `Generative AI` `LLMs`
 
-`Machine Learning` • `Deep Learning` • `AI Strategy` • `Generative AI` • `LLMs`
+### 🌐 Resources
 
-### 🌐 Official Resources
-
-| Resource        | Link                                  |
-| --------------- | ------------------------------------- |
-| Website         | https://www.andrewng.org              |
-| DeepLearning.AI | https://www.deeplearning.ai           |
-| YouTube         | https://www.youtube.com/@AndrewNgAI   |
-| LinkedIn        | https://www.linkedin.com/in/andrewyng |
-
-### 📚 Recommended Learning
-
-* Machine Learning Specialization
-* AI for Everyone
-* Generative AI for Everyone
-* Deep Learning Specialization
-* AI Leadership
+- https://www.andrewng.org
+- https://www.deeplearning.ai
+- https://www.youtube.com/@AndrewNgAI
 
 ### ⭐ Best For
 
-* Beginners
-* Machine Learning
-* AI Fundamentals
-* AI Career Guidance
+- AI fundamentals
+- Machine Learning
+- Generative AI
+- AI career guidance
 
 ---
 
 # 🤖 Andrej Karpathy
 
-> Former Director of AI at Tesla and Founding Member at OpenAI.
+**Tags**
 
-### 🏷️ Tags
-
-`LLMs` • `Transformers` • `GPT` • `Neural Networks` • `Tokenization`
-
-### 🌐 Official Resources
-
-| Resource    | Link                                    |
-| ----------- | --------------------------------------- |
-| Website     | https://karpathy.ai                     |
-| GitHub      | https://github.com/karpathy             |
-| YouTube     | https://www.youtube.com/@AndrejKarpathy |
-| X (Twitter) | https://x.com/karpathy                  |
-
-### 📚 Must-Watch Videos
-
-* Neural Networks: Zero to Hero
-* Let's Build GPT
-* Let's Build GPT Tokenizer
-* Let's Reproduce GPT-2
-* State of GPT
-
-### ⭐ Best For
-
-* Transformers
-* LLM Internals
-* Tokenization
-* Neural Networks
-* Building GPT from Scratch
-
----
-
-# 🚀 Jeremy Howard
-
-> Founder of fast.ai and one of the world's leading educators in practical Deep Learning.
-
-### 🏷️ Tags
-
-`Deep Learning` • `PyTorch` • `Computer Vision` • `NLP` • `AI`
-
-### 🌐 Official Resources
-
-| Resource | Link                               |
-| -------- | ---------------------------------- |
-| Website  | https://www.fast.ai                |
-| GitHub   | https://github.com/jph00           |
-| YouTube  | https://www.youtube.com/@fastdotai |
-
-### 📚 Recommended Content
-
-* Practical Deep Learning for Coders
-* Stable Diffusion
-* Diffusion Models
-* Deep Learning Foundations
-
-### ⭐ Best For
-
-* Practical AI
-* Deep Learning
-* PyTorch
-* Production ML
-
----
-
-# 🧠 Yann LeCun
-
-> Chief AI Scientist at Meta and Turing Award Winner.
-
-### 🏷️ Tags
-
-`Deep Learning` • `Computer Vision` • `Self-Supervised Learning` • `AI Research`
-
-### 🌐 Official Resources
-
-| Resource | Link                                |
-| -------- | ----------------------------------- |
-| Website  | https://yann.lecun.com              |
-| Meta AI  | https://ai.meta.com                 |
-| Facebook | https://www.facebook.com/yann.lecun |
-
-### 📚 Recommended Topics
-
-* Deep Learning
-* Self-Supervised Learning
-* Computer Vision
-* AI Research
-* Future of AI
-
-### ⭐ Best For
-
-* AI Research
-* Advanced Deep Learning
-* Computer Vision
-
----
-
-# 📖 Sebastian Raschka
-
-> AI Researcher, Educator, Author of **LLMs From Scratch**.
-
-### 🏷️ Tags
-
-`LLMs` • `PyTorch` • `Machine Learning` • `Transformers`
-
-### 🌐 Official Resources
-
-| Resource        | Link                                       |
-| --------------- | ------------------------------------------ |
-| Website         | https://sebastianraschka.com               |
-| GitHub          | https://github.com/rasbt                   |
-| YouTube         | https://www.youtube.com/@SebastianRaschka  |
-| Book Repository | https://github.com/rasbt/LLMs-from-scratch |
-
-### 📚 Recommended Content
-
-* LLMs From Scratch
-* Machine Learning Q&A
-* PyTorch Tutorials
-* Transformer Architecture
-* Fine-tuning LLMs
-
-### ⭐ Best For
-
-* LLM Engineering
-* PyTorch
-* Transformers
-* Hands-on AI
-
----
-
-# 🎯 Learning Strategy
-
-For the best learning experience, follow this order:
-
-1. **Andrew Ng** — Build strong AI and Machine Learning fundamentals.
-2. **fast.ai** — Learn practical Deep Learning with real projects.
-3. **Andrej Karpathy** — Understand how GPTs and Transformers work.
-4. **Sebastian Raschka** — Learn LLM internals and implementation.
-5. **Official Documentation** — Learn how production AI platforms are actually built.
-
----
-
-# 📺 YouTube Channels
-
-* Andrej Karpathy
-* DeepLearning.AI
-* fast.ai
-* Stanford Online
-* MIT OpenCourseWare
-* Google for Developers
-* Microsoft Developer
-* NVIDIA Developer
-
----
-
-# 📖 Official Documentation
-
-The following official documentation is highly recommended.
-
----
-
-# 🦜 LangChain
-
-> Framework for building applications powered by Large Language Models.
-
-### 🏷️ Tags
-
-`LangChain` • `LLM` • `RAG` • `Agents`
+`LLMs` `Transformers` `GPT` `Neural Networks` `Tokenization`
 
 ### 🌐 Resources
 
-| Resource       | Link                                  |
-| -------------- | ------------------------------------- |
-| Documentation  | https://python.langchain.com/docs     |
-| GitHub         | https://github.com/langchain-ai/langchain |
-| Blog           | https://blog.langchain.dev             |
+- https://karpathy.ai
+- https://github.com/karpathy
+- https://www.youtube.com/@AndrejKarpathy
 
-### 📚 Learn
+### 📚 Recommended
 
-* Chains
-* Prompts
-* Retrievers
-* Agents
-* Tools
-* Memory
-* RAG
-
----
-
-# 🕸️ LangGraph
-
-> Framework for building stateful agent workflows.
-
-### 🏷️ Tags
-
-`LangGraph` • `Agents` • `Workflows` • `State Machines`
-
-### 🌐 Resources
-
-| Resource       | Link                                   |
-| -------------- | -------------------------------------- |
-| Documentation  | https://langchain-ai.github.io/langgraph/ |
-| GitHub         | https://github.com/langchain-ai/langgraph |
-
-### 📚 Learn
-
-* State Management
-* Agent Workflows
-* Tool Calling
-* Human-in-the-loop
-* Multi-Agent Systems
-
----
-
-# 🦙 LlamaIndex
-
-> Framework focused on connecting LLMs with external data.
-
-### 🏷️ Tags
-
-`LlamaIndex` • `RAG` • `Data Connectors` • `Indexes` • `Agents`
-
-### 🌐 Resources
-
-| Resource       | Link                                      |
-| -------------- | ----------------------------------------- |
-| Documentation  | https://docs.llamaindex.ai               |
-| GitHub         | https://github.com/run-llama/llama_index |
-
-### 📚 Learn
-
-* Data Connectors
-* Indexes
-* Query Engines
-* Retrieval Pipelines
-* RAG
-* Chat Engines
-* Agents
-
----
-
-# 🦜 Hugging Face Transformers
-
-> The most widely used open-source library for working with Transformer models.
-
-### 🏷️ Tags
-
-`Transformers` • `BERT` • `GPT` • `Llama` • `Tokenizer` • `Fine-tuning`
-
-### 🌐 Resources
-
-| Resource      | Link                                        |
-| ------------- | ------------------------------------------- |
-| Documentation | https://huggingface.co/docs/transformers    |
-| GitHub        | https://github.com/huggingface/transformers |
-| Models        | https://huggingface.co/models               |
-
-### 📚 Learn
-
-* Pipelines
-* Tokenizers
-* AutoModel
-* AutoTokenizer
-* Fine-tuning
-* Inference
-* Quantization
-
----
-
-# ⚡ PyTorch
-
-> The leading deep learning framework used in research and production.
-
-### 🏷️ Tags
-
-`Deep Learning` • `Neural Networks` • `CUDA` • `Autograd`
-
-### 🌐 Resources
-
-| Resource      | Link                               |
-| ------------- | ---------------------------------- |
-| Website       | https://pytorch.org                |
-| Tutorials     | https://pytorch.org/tutorials      |
-| Documentation | https://pytorch.org/docs           |
-| GitHub        | https://github.com/pytorch/pytorch |
-
-### 📚 Learn
-
-* Tensor Operations
-* Autograd
-* Neural Networks
-* Data Loaders
-* Model Training
-* Distributed Training
-
----
-
-# ☁️ Azure AI Documentation
-
-> Official Microsoft documentation for building enterprise AI applications.
-
-### 🏷️ Tags
-
-`Azure OpenAI` • `Azure AI Search` • `Azure AI Foundry` • `Semantic Kernel`
-
-### 🌐 Resources
-
-| Resource         | Link                                          |
-| ---------------- | --------------------------------------------- |
-| Azure AI         | https://learn.microsoft.com/azure/ai-services |
-| Azure AI Foundry | https://learn.microsoft.com/azure/ai-foundry  |
-| Semantic Kernel  | https://learn.microsoft.com/semantic-kernel   |
-
-### 📚 Learn
-
-* Azure OpenAI
-* AI Search
-* Document Intelligence
-* Prompt Flow
-* AI Foundry
-* Enterprise AI
-
----
-
-# 🤖 OpenAI Documentation
-
-> Official guides for building AI applications using OpenAI models and APIs.
-
-### 🏷️ Tags
-
-`GPT` • `Responses API` • `Embeddings` • `Agents SDK` • `Function Calling`
-
-### 🌐 Resources
-
-| Resource      | Link                                      |
-| ------------- | ----------------------------------------- |
-| Platform      | https://platform.openai.com               |
-| Documentation | https://platform.openai.com/docs          |
-| Cookbook      | https://github.com/openai/openai-cookbook |
-
-### 📚 Learn
-
-* Responses API
-* Structured Outputs
-* Function Calling
-* Embeddings
-* Image Generation
-* Audio APIs
-* Agents SDK
-* Fine-tuning
-
----
-
-## 💡 Documentation Learning Order
-
-1. Python Documentation
-2. PyTorch Documentation
-3. Hugging Face Transformers
-4. OpenAI Documentation
-5. LangChain
-6. LangGraph
-7. LlamaIndex
-8. Azure AI Documentation
-
----
-
-## 🎯 Skills You'll Build
-
-By mastering these channels and official documentation, you'll gain expertise in:
-
-* ✅ Python Programming
-* ✅ AI Mathematics
-* ✅ Machine Learning
-* ✅ Deep Learning
-* ✅ Transformer Architecture
-* ✅ Large Language Models (LLMs)
-* ✅ Prompt Engineering
-* ✅ Embeddings & Vector Databases
-* ✅ Retrieval-Augmented Generation (RAG)
-* ✅ AI Agents & Multi-Agent Systems
-* ✅ LangChain & LangGraph
-* ✅ Enterprise AI Development
-* ✅ Production AI Systems
-* ✅ AI Deployment & MLOps
+- Neural Networks: Zero to Hero
+- Let's Build GPT
+- Tokenization
+- LLM Fundamentals
 
 ---
 
 # 💻 GitHub Repositories
 
-Discover the best open-source repositories for **Machine Learning**, **Deep Learning**, **Large Language Models (LLMs)**, **Generative AI**, **RAG**, **AI Agents**, **MLOps**, and **Production AI**.
+Discover open-source repositories for **Machine Learning, Deep Learning, LLMs, Generative AI, RAG, AI Agents, MLOps and Production AI**.
 
----
-
-# ⭐ Awesome AI Collections
-
-## 🚀 Awesome Machine Learning
+## ⭐ Awesome Machine Learning
 
 **Tags**
 
-`Machine Learning` • `Deep Learning` • `AI` • `Data Science`
-
-**Repository**
+`Machine Learning` `Deep Learning` `AI` `Data Science`
 
 https://github.com/josephmisiti/awesome-machine-learning
 
@@ -1025,9 +531,7 @@ https://github.com/josephmisiti/awesome-machine-learning
 
 **Tags**
 
-`Generative AI` • `LLMs` • `GPT` • `Diffusion Models`
-
-**Repository**
+`Generative AI` `LLMs` `GPT` `Diffusion Models`
 
 https://github.com/steven2358/awesome-generative-ai
 
@@ -1037,9 +541,7 @@ https://github.com/steven2358/awesome-generative-ai
 
 **Tags**
 
-`AI Apps` • `LLM Applications` • `Projects`
-
-**Repository**
+`AI Apps` `LLM Applications` `Projects`
 
 https://github.com/Arindam200/awesome-ai-apps
 
@@ -1051,49 +553,47 @@ https://github.com/Arindam200/awesome-ai-apps
 
 **Tags**
 
-`GPT` • `Embeddings` • `Function Calling` • `Agents SDK` • `RAG`
+`GPT` `Embeddings` `Function Calling` `Agents` `RAG`
 
 https://github.com/openai/openai-cookbook
 
 ---
 
-## Hugging Face Transformers
+## 🤗 Hugging Face Transformers
 
 **Tags**
 
-`Transformers` • `BERT` • `GPT` • `Llama`
+`Transformers` `BERT` `GPT` `Llama`
 
 https://github.com/huggingface/transformers
 
 ---
 
-## LLMs From Scratch
-
-**Author:** Sebastian Raschka
+## 📚 LLMs From Scratch
 
 **Tags**
 
-`PyTorch` • `Transformers` • `LLMs`
+`PyTorch` `Transformers` `LLMs`
 
 https://github.com/rasbt/LLMs-from-scratch
 
 ---
 
-## Ollama
+## 🦙 Ollama
 
 **Tags**
 
-`Local LLMs` • `Inference`
+`Local LLMs` `Inference`
 
 https://github.com/ollama/ollama
 
 ---
 
-## vLLM
+## ⚡ vLLM
 
 **Tags**
 
-`Serving` • `Inference` • `GPU`
+`Serving` `Inference` `GPU`
 
 https://github.com/vllm-project/vllm
 
@@ -1105,13 +605,9 @@ https://github.com/vllm-project/vllm
 
 https://github.com/langchain-ai/langchain
 
----
-
 ## LangGraph
 
 https://github.com/langchain-ai/langgraph
-
----
 
 ## LlamaIndex
 
@@ -1121,116 +617,84 @@ https://github.com/run-llama/llama_index
 
 # 📚 Books
 
-The following books are highly recommended for AI Engineers.
-
-| Book                                                            | Topics                |
-| --------------------------------------------------------------- | --------------------- |
-| Python Data Science Handbook                                    | Python, NumPy, Pandas |
-| Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow | Machine Learning      |
-| Deep Learning (Ian Goodfellow)                                  | Deep Learning         |
-| Practical Deep Learning for Coders                              | PyTorch               |
-| Natural Language Processing with Transformers                   | NLP, Transformers     |
-| LLMs From Scratch                                               | LLM Architecture      |
-| Designing Machine Learning Systems                              | MLOps                 |
-| AI Engineering                                                  | Production AI         |
-| Building LLM Powered Applications                               | Enterprise AI         |
-| Generative AI with LLMs                                         | LLM Applications      |
+| Book | Topics |
+|---|---|
+| Python Data Science Handbook | Python, NumPy, Pandas |
+| Hands-On Machine Learning | Machine Learning |
+| Deep Learning | Deep Learning |
+| Practical Deep Learning for Coders | PyTorch |
+| Natural Language Processing with Transformers | NLP, Transformers |
+| LLMs From Scratch | LLM Architecture |
+| Designing Machine Learning Systems | MLOps |
+| AI Engineering | Production AI |
+| Building LLM Powered Applications | Enterprise AI |
+| Generative AI with LLMs | LLM Applications |
 
 ---
 
 # ✍️ Blogs
 
-Follow these blogs to stay updated with the latest advancements.
-
-| Blog                   | Website                           |
-| ---------------------- | --------------------------------- |
-| OpenAI Blog            | https://openai.com/news           |
-| Anthropic Blog         | https://www.anthropic.com/news    |
-| Google AI Blog         | https://blog.google/technology/ai |
-| Microsoft AI Blog      | https://blogs.microsoft.com       |
-| NVIDIA Developer Blog  | https://developer.nvidia.com/blog |
-| Hugging Face Blog      | https://huggingface.co/blog       |
-| LangChain Blog         | https://blog.langchain.dev        |
-| Sebastian Raschka Blog | https://sebastianraschka.com/blog |
-| fast.ai Blog           | https://www.fast.ai/posts         |
+| Blog | Website |
+|---|---|
+| OpenAI Blog | https://openai.com/news |
+| Anthropic Blog | https://www.anthropic.com/news |
+| Google AI Blog | https://blog.google/technology/ai |
+| Microsoft AI Blog | https://blogs.microsoft.com |
+| NVIDIA Developer Blog | https://developer.nvidia.com/blog |
+| Hugging Face Blog | https://huggingface.co/blog |
+| LangChain Blog | https://blog.langchain.dev |
+| Sebastian Raschka | https://sebastianraschka.com/blog |
+| fast.ai | https://www.fast.ai/posts |
 
 ---
 
 # 📄 Research Papers
 
-Every AI Engineer should read these landmark papers.
+## 🧠 Foundation Models
 
-## Foundation Models
+- Attention Is All You Need
+- BERT
+- GPT
+- GPT-2
+- GPT-3
+- GPT-4 Technical Report
+- InstructGPT
 
-* Attention Is All You Need
-* BERT
-* GPT
-* GPT-2
-* GPT-3
-* GPT-4 Technical Report
-* InstructGPT
+## 🤖 Open Models
 
----
+- LLaMA
+- LLaMA 2
+- LLaMA 3
 
-## Open Models
+## ✨ Prompt Engineering
 
-* LLaMA
-* LLaMA 2
-* LLaMA 3
+- Chain of Thought
+- Self-Consistency
+- Tree of Thoughts
+- ReAct
 
----
+## 🔧 Tool Use & Agents
 
-## Prompt Engineering
+- Toolformer
+- Gorilla
+- Voyager
+- AutoGPT
+- SWE-Agent
 
-* Chain of Thought Prompting
-* Self-Consistency
-* Tree of Thoughts
-* ReAct
+## 🔎 Retrieval-Augmented Generation
 
----
+- Retrieval-Augmented Generation
+- Self-RAG
+- Corrective RAG
+- GraphRAG
+- RAPTOR
+- HyDE
 
-## Tool Use & Agents
+## 📐 Embeddings & Vector Search
 
-* Toolformer
-* Gorilla
-* Voyager
-* AutoGPT
-* SWE-Agent
-
----
-
-## Retrieval-Augmented Generation (RAG)
-
-* Retrieval-Augmented Generation
-* Self-RAG
-* Corrective RAG (CRAG)
-* GraphRAG
-* RAPTOR
-* HyDE
-
----
-
-## Embeddings & Vector Search
-
-* Sentence-BERT (SBERT)
-* Dense Passage Retrieval (DPR)
-* ColBERT
-
----
-
-# 🤖 Featured Agent Engineering Guides
-
-- [🧩 Agentic AI Open-Source Tools Explained](./Agentic-AI-Open-Source-Tools-Explained.md) — colorful, analogy-driven guide to LangChain, LangGraph, LlamaIndex, CrewAI, MCP, A2A, RAG and the modern agentic AI stack.
-
-- [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md) — beginner-friendly guide to agent frameworks, MCP, A2A, orchestration and interview Q&A.
-
----
-
-# 🎯 Featured AI Engineering Guides
-
-- [Agent: Frameworks & Protocols](./Agent-Frameworks-and-Protocols.md) — beginner-friendly guide to agent frameworks, MCP, A2A, orchestration and interview Q&A.
-- [Embeddings Deep Dive](./Embeddings-Deep-Dive.md) — beginner-to-production guide to embeddings, vector search, RAG, evaluation and interview Q&A.
-- [Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) — beginner-to-production guide to prompting, evaluation, prompt injection, RAG security, agent security and interview Q&A.
+- Sentence-BERT
+- Dense Passage Retrieval
+- ColBERT
 
 ---
 
@@ -1357,467 +821,10 @@ Deployment
 Cloud AI
 │
 ├── Azure AI
-├── AWS Bedrock
+├── AWS AI
 ├── Vertex AI
 └── Hugging Face
 
         ↓
 
 Production AI Systems
-```
-<img width="508" height="1965" alt="image" src="https://github.com/user-attachments/assets/b7170f60-8fba-4988-b011-5d3e24f86d57" />
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-
-You can contribute by:
-
-* 📚 Adding free AI resources
-* 🎥 Sharing YouTube playlists
-* 📖 Recommending books
-* 📝 Improving documentation
-* 💻 Adding open-source repositories
-* 🔬 Including research papers
-* 🚀 Suggesting AI projects
-* 🐛 Fixing broken links
-
-Please open an Issue or submit a Pull Request.
-
----
-
-# ⭐ Support
-
-If this repository helped you learn Artificial Intelligence, Machine Learning, Generative AI, or become a better AI Engineer:
-
-⭐ Star this repository
-
-🍴 Fork it
-
-📢 Share it with the community
-
-❤️ Happy Learning!
-
----
-
-## 🔖 License
-
-This repository is licensed under the **MIT License**.
-
-Feel free to use, modify, and share it with proper attribution.
-
----
-
-<div align="center">
-
-### 🚀 Keep Learning • Keep Building • Keep Sharing
-
-**Made with ❤️ for the AI Community**
-
-⭐ **If you found this repository useful, don't forget to Star it!**
-
-</div>
-
-# 💻 GitHub Repositories
-
-Discover the best open-source repositories for **Machine Learning**, **Deep Learning**, **Large Language Models (LLMs)**, **Generative AI**, **RAG**, **AI Agents**, **MLOps**, and **Production AI**.
-
----
-
-# ⭐ Awesome AI Collections
-
-## 🚀 Awesome Machine Learning
-
-**Tags**
-
-`Machine Learning` • `Deep Learning` • `AI` • `Data Science`
-
-**Repository**
-
-https://github.com/josephmisiti/awesome-machine-learning
-
----
-
-## 🤖 Awesome Generative AI
-
-**Tags**
-
-`Generative AI` • `LLMs` • `GPT` • `Diffusion Models`
-
-**Repository**
-
-https://github.com/steven2358/awesome-generative-ai
-
----
-
-## 💡 Awesome AI Apps
-
-**Tags**
-
-`AI Apps` • `LLM Applications` • `Projects`
-
-**Repository**
-
-https://github.com/Arindam200/awesome-ai-apps
-
----
-
-# 🧠 LLM Development
-
-## OpenAI Cookbook
-
-**Tags**
-
-`GPT` • `Embeddings` • `Function Calling` • `Agents SDK` • `RAG`
-
-https://github.com/openai/openai-cookbook
-
----
-
-## Hugging Face Transformers
-
-**Tags**
-
-`Transformers` • `BERT` • `GPT` • `Llama`
-
-https://github.com/huggingface/transformers
-
----
-
-## LLMs From Scratch
-
-**Author:** Sebastian Raschka
-
-**Tags**
-
-`PyTorch` • `Transformers` • `LLMs`
-
-https://github.com/rasbt/LLMs-from-scratch
-
----
-
-## Ollama
-
-**Tags**
-
-`Local LLMs` • `Inference`
-
-https://github.com/ollama/ollama
-
----
-
-## vLLM
-
-**Tags**
-
-`Serving` • `Inference` • `GPU`
-
-https://github.com/vllm-project/vllm
-
----
-
-# 🔗 AI Frameworks
-
-## LangChain
-
-https://github.com/langchain-ai/langchain
-
----
-
-## LangGraph
-
-https://github.com/langchain-ai/langgraph
-
----
-
-## LlamaIndex
-
-https://github.com/run-llama/llama_index
-
----
-
-# 📚 Books
-
-The following books are highly recommended for AI Engineers.
-
-| Book                                                            | Topics                |
-| --------------------------------------------------------------- | --------------------- |
-| Python Data Science Handbook                                    | Python, NumPy, Pandas |
-| Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow | Machine Learning      |
-| Deep Learning (Ian Goodfellow)                                  | Deep Learning         |
-| Practical Deep Learning for Coders                              | PyTorch               |
-| Natural Language Processing with Transformers                   | NLP, Transformers     |
-| LLMs From Scratch                                               | LLM Architecture      |
-| Designing Machine Learning Systems                              | MLOps                 |
-| AI Engineering                                                  | Production AI         |
-| Building LLM Powered Applications                               | Enterprise AI         |
-| Generative AI with LLMs                                         | LLM Applications      |
-
----
-
-# ✍️ Blogs
-
-Follow these blogs to stay updated with the latest advancements.
-
-| Blog                   | Website                           |
-| ---------------------- | --------------------------------- |
-| OpenAI Blog            | https://openai.com/news           |
-| Anthropic Blog         | https://www.anthropic.com/news    |
-| Google AI Blog         | https://blog.google/technology/ai |
-| Microsoft AI Blog      | https://blogs.microsoft.com       |
-| NVIDIA Developer Blog  | https://developer.nvidia.com/blog |
-| Hugging Face Blog      | https://huggingface.co/blog       |
-| LangChain Blog         | https://blog.langchain.dev        |
-| Sebastian Raschka Blog | https://sebastianraschka.com/blog |
-| fast.ai Blog           | https://www.fast.ai/posts         |
-
----
-
-# 📄 Research Papers
-
-Every AI Engineer should read these landmark papers.
-
-## Foundation Models
-
-* Attention Is All You Need
-* BERT
-* GPT
-* GPT-2
-* GPT-3
-* GPT-4 Technical Report
-* InstructGPT
-
----
-
-## Open Models
-
-* LLaMA
-* LLaMA 2
-* LLaMA 3
-
----
-
-## Prompt Engineering
-
-* Chain of Thought Prompting
-* Self-Consistency
-* Tree of Thoughts
-* ReAct
-
----
-
-## Tool Use & Agents
-
-* Toolformer
-* Gorilla
-* Voyager
-* AutoGPT
-* SWE-Agent
-
----
-
-## Retrieval-Augmented Generation (RAG)
-
-* Retrieval-Augmented Generation
-* Self-RAG
-* Corrective RAG (CRAG)
-* GraphRAG
-* RAPTOR
-* HyDE
-
----
-
-## Embeddings & Vector Search
-
-* Sentence-BERT (SBERT)
-* Dense Passage Retrieval (DPR)
-* ColBERT
-
----
-
-# 🗺️ AI Engineer Roadmap
-
-```text
-Programming
-│
-├── Python
-├── Git & GitHub
-├── Linux
-├── SQL
-└── Data Structures
-
-        ↓
-
-Mathematics
-│
-├── Linear Algebra
-├── Probability
-├── Statistics
-└── Calculus
-
-        ↓
-
-Data
-│
-├── NumPy
-├── Pandas
-├── Data Visualization
-└── Feature Engineering
-
-        ↓
-
-Machine Learning
-│
-├── Supervised Learning
-├── Unsupervised Learning
-├── Model Evaluation
-└── Scikit-Learn
-
-        ↓
-
-Deep Learning
-│
-├── Neural Networks
-├── CNN
-├── RNN
-├── LSTM
-├── Attention
-└── Transformers
-
-        ↓
-
-Natural Language Processing
-│
-├── Tokenization
-├── Embeddings
-├── Vector Search
-└── Text Generation
-
-        ↓
-
-Large Language Models
-│
-├── GPT
-├── Claude
-├── Gemini
-├── Llama
-└── Mistral
-
-        ↓
-
-Generative AI
-│
-├── Prompt Engineering
-├── Fine-tuning
-├── Function Calling
-├── Structured Outputs
-└── Multimodal AI
-
-        ↓
-
-RAG
-│
-├── Chunking
-├── Embeddings
-├── Vector Databases
-├── Hybrid Search
-└── Evaluation
-
-        ↓
-
-AI Agents
-│
-├── Tool Calling
-├── Planning
-├── Memory
-├── Multi-Agent Systems
-└── MCP
-
-        ↓
-
-Frameworks
-│
-├── LangChain
-├── LangGraph
-├── LlamaIndex
-├── Semantic Kernel
-└── AutoGen
-
-        ↓
-
-Deployment
-│
-├── FastAPI
-├── Docker
-├── Kubernetes
-├── CI/CD
-└── Monitoring
-
-        ↓
-
-Cloud AI
-│
-├── Azure AI
-├── AWS Bedrock
-├── Vertex AI
-└── Hugging Face
-
-        ↓
-
-Production AI Systems
-```
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-
-You can contribute by:
-
-* 📚 Adding free AI resources
-* 🎥 Sharing YouTube playlists
-* 📖 Recommending books
-* 📝 Improving documentation
-* 💻 Adding open-source repositories
-* 🔬 Including research papers
-* 🚀 Suggesting AI projects
-* 🐛 Fixing broken links
-
-Please open an Issue or submit a Pull Request.
-
----
-
-# ⭐ Support
-
-If this repository helped you learn Artificial Intelligence, Machine Learning, Generative AI, or become a better AI Engineer:
-
-⭐ Star this repository
-
-🍴 Fork it
-
-📢 Share it with the community
-
-❤️ Happy Learning!
-
----
-
-## 🔖 License
-
-This repository is licensed under the **MIT License**.
-
-Feel free to use, modify, and share it with proper attribution.
-
----
-
-<div align="center">
-
-### 🚀 Keep Learning • Keep Building • Keep Sharing
-
-**Made with ❤️ for the AI Community**
-
-⭐ **If you found this repository useful, don't forget to Star it!**
-
-</div>
