@@ -24,6 +24,26 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 ---
 
+# ⭐🔥 Top AI Engineering Articles
+
+> Start here: the most practical and in-depth guides in this repository for **AI Engineers, GenAI Engineers, Solution Architects, Staff/Principal Engineers, and interview preparation**.
+
+| 🔥 | Article | Best For |
+|---|---|---|
+| 🥇 | [🧠 AI Engineer Interview Questions 2026](./AI-Engineer-Interview-Questions-2026.md) | Senior/Staff/Principal AI Engineer interview preparation — RAG, LLMs, Agents, security, evaluation, system design and advanced Q&A |
+| 🥈 | [🏗️ AI Solution Architect Interview & Daily Working Playbook](./AI-Solution-Architect-Interview-and-Daily-Working-Playbook.md) | AI Solution Architects — discovery, architecture, POC, production, modernization, performance, cost, security and interview readiness |
+| 🥉 | [🤖 Agentic AI System Design — Complete Engineering & Interview Handbook](./Agentic-AI-System-Design.md) | End-to-end Agentic AI system design, scaling, capacity planning, databases, reliability, security and interview scenarios |
+| ⭐ | [🧩 Agentic AI Open-Source Stack: LangChain, LangGraph & Tools](./Agentic-AI-Open-Source-Tools-Explained.md) | Understand LangChain, LangGraph, LlamaIndex, CrewAI, Pydantic AI, MCP, A2A, RAG, memory and orchestration with practical analogies |
+| ⭐ | [🧠 GenAI → Agentic AI → Multi-Agent → RAG → Agent Harness](./GenAI-AgenticAI-MultiAgent-RAG-AgentHarness.md) | Build the mental model from GenAI fundamentals to production agent harnesses |
+| ⭐ | [📚 RAG Explained In-Depth — From Fundamentals to Production](./RAG-explained-in-depth.md) | Deep RAG learning — ingestion, chunking, embeddings, search, reranking, grounding, guardrails and evaluation |
+| ⭐ | [🔐 Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) | Prompt design, few-shot prompting, structured output, prompt injection, jailbreaks and RAG/agent security |
+| ⭐ | [📐 Embeddings Deep Dive](./Embeddings-Deep-Dive.md) | Embeddings, vector databases, semantic search, ANN/HNSW, hybrid retrieval, reranking and production RAG |
+| ⭐ | [🛡️ AI Guardrails Explained](./ai-guardrails-explained.md) | Enterprise AI safety, prompt injection, PII, hallucinations, governance, privacy and responsible AI |
+| ⭐ | [🚀 Building a Production-Ready Generative AI & Agentic AI System](./production-genai-agentic-ai-guide.md) | Code-first production architecture across LLMs, prompts, RAG, agents, deployment, monitoring and reliability |
+| ⭐ | [🔎 Retrieval Engineering for AI Systems](./retrieval_engineering-ai.md) | Keyword, semantic, hybrid retrieval and practical search engineering for AI applications |
+
+---
+
 ## 🔥 Topics Covered
 
 `Python` • `Machine Learning` • `Deep Learning` • `Artificial Intelligence` • `Data Science` • `Generative AI` • `LLMs` • `GPT` • `ChatGPT` • `Claude` • `Gemini` • `Prompt Engineering` • `Embeddings` • `Vector Databases` • `Semantic Search` • `RAG` • `AI Agents` • `Agentic AI` • `LangChain` • `LangGraph` • `MCP` • `A2A` • `Agent Frameworks` • `Agent Protocols` • `AI Engineering` • `System Design` • `MLOps` • `Azure AI` • `Google AI` • `OpenAI` • `Anthropic` • `Hugging Face`
@@ -32,6 +52,7 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 # 📚 Table of Contents
 
+* ⭐ [Top AI Engineering Articles](#-top-ai-engineering-articles)
 * 🎓 Free University Courses
 * 🏢 AI Companies
 * 🎯 Learning Platforms
@@ -332,7 +353,7 @@ Learn directly from the companies building today's most advanced **Large Languag
 | Azure AI         | https://learn.microsoft.com/azure/ai-services/ |
 | Azure AI Foundry | https://learn.microsoft.com/azure/ai-foundry/  |
 | Semantic Kernel  | https://learn.microsoft.com/semantic-kernel    |
-| GitHub           | https://github.com/microsoft                   |
+| GitHub            | https://github.com/microsoft                   |
 | Microsoft Learn  | https://learn.microsoft.com                    |
 
 ### 📖 Learn
@@ -729,272 +750,98 @@ For the best learning experience, follow this order:
 
 1. **Andrew Ng** — Build strong AI and Machine Learning fundamentals.
 2. **fast.ai** — Learn practical Deep Learning with real projects.
-3. **Andrej Karpathy** — Understand how GPTs and Transformers work internally.
-4. **Sebastian Raschka** — Learn to implement and fine-tune LLMs from scratch.
-5. **Yann LeCun** — Explore cutting-edge AI research and future directions.
+3. **Andrej Karpathy** — Understand how GPTs and Transformers work.
+4. **Sebastian Raschka** — Learn LLM internals and implementation.
+5. **Official Documentation** — Learn how production AI platforms are actually built.
 
 ---
 
-## 🚀 Skills You'll Gain
+# 📺 YouTube Channels
 
-After completing these resources, you'll have practical knowledge of:
-
-* ✅ Python for AI
-* ✅ Machine Learning
-* ✅ Deep Learning
-* ✅ Neural Networks
-* ✅ Transformers
-* ✅ Large Language Models (LLMs)
-* ✅ Prompt Engineering
-* ✅ Retrieval-Augmented Generation (RAG)
-* ✅ AI Agents
-* ✅ LangChain
-* ✅ LangGraph
-* ✅ Model Fine-tuning
-* ✅ Production AI Applications
-
----
-# 📺 YouTube Channels & 📖 Official Documentation
-
-Master **Artificial Intelligence**, **Machine Learning**, **Deep Learning**, **Generative AI**, **Large Language Models (LLMs)**, **RAG**, **AI Agents**, **Prompt Engineering**, **LangChain**, **LangGraph**, **MCP**, **Vector Databases**, **MLOps**, and **Production AI Systems** using the best free YouTube channels and official documentation.
-
----
-
-# 📺 Best YouTube Channels for AI Engineers
-
-These channels provide free, high-quality tutorials ranging from beginner to advanced.
-
----
-
-# 📊 StatQuest
-
-> The best YouTube channel to understand **Machine Learning**, **Statistics**, **Probability**, and **Mathematics** visually.
-
-### 🏷️ Tags
-
-`Statistics` • `Machine Learning` • `Probability` • `Data Science` • `Regression` • `Classification`
-
-### 🌐 Channel
-
-https://www.youtube.com/@statquest
-
-### 📚 Recommended Playlists
-
-* Statistics Fundamentals
-* Machine Learning
-* PCA
-* Decision Trees
-* Random Forest
-* XGBoost
-* Neural Networks
-* Gradient Descent
-
-### ⭐ Best For
-
-* Statistics
-* Mathematics
-* Machine Learning Theory
-
----
-
-# 📈 3Blue1Brown
-
-> Learn the mathematics behind AI using beautiful visual explanations.
-
-### 🏷️ Tags
-
-`Linear Algebra` • `Calculus` • `Neural Networks` • `Vectors` • `Transformers`
-
-### 🌐 Channel
-
-https://www.youtube.com/@3blue1brown
-
-### 📚 Recommended Playlists
-
-* Essence of Linear Algebra
-* Essence of Calculus
-* Neural Networks
-* Backpropagation
-* Probability
-
-### ⭐ Best For
-
-* AI Mathematics
-* Deep Learning Foundations
-
----
-
-# 💻 freeCodeCamp
-
-> Thousands of hours of free programming, AI, cloud, and software engineering tutorials.
-
-### 🏷️ Tags
-
-`Python` • `Machine Learning` • `Deep Learning` • `LangChain` • `Docker` • `Kubernetes` • `FastAPI`
-
-### 🌐 Channel
-
-https://www.youtube.com/@freecodecamp
-
-### 📚 Recommended Videos
-
-* Python Full Course
-* Machine Learning Course
-* Deep Learning with PyTorch
-* LangChain Course
-* Docker Course
-* Kubernetes Course
-* FastAPI Course
-* Hugging Face Transformers
-* LlamaIndex
-* RAG Tutorials
-
-### ⭐ Best For
-
-* End-to-end learning
-* Hands-on coding
-* AI projects
-
----
-
-# 🐍 Corey Schafer
-
-> One of the best instructors for learning Python and backend development.
-
-### 🏷️ Tags
-
-`Python` • `Flask` • `Django` • `Git` • `SQL`
-
-### 🌐 Channel
-
-https://www.youtube.com/@coreyms
-
-### 📚 Recommended Playlists
-
-* Python Programming
-* OOP
-* Virtual Environments
-* Flask
-* Django
-* Git
-* SQLAlchemy
-
-### ⭐ Best For
-
-* Python Fundamentals
-* Backend Development
-
----
-
-# 🚀 Tech With Tim
-
-> Excellent practical tutorials on Python, AI, and software development.
-
-### 🏷️ Tags
-
-`Python` • `AI` • `Projects` • `Automation`
-
-### 🌐 Channel
-
-https://www.youtube.com/@TechWithTim
-
-### 📚 Recommended Content
-
-* Python Projects
-* AI Projects
-* Automation
-* Machine Learning
-* Programming Tutorials
-
-### ⭐ Best For
-
-* Beginners
-* Project-based Learning
+* Andrej Karpathy
+* DeepLearning.AI
+* fast.ai
+* Stanford Online
+* MIT OpenCourseWare
+* Google for Developers
+* Microsoft Developer
+* NVIDIA Developer
 
 ---
 
 # 📖 Official Documentation
 
-Always prioritize official documentation. It is the most accurate, up-to-date, and production-ready source of information.
+The following official documentation is highly recommended.
 
 ---
 
-# 🔗 LangChain
+# 🦜 LangChain
 
-> The leading framework for building **LLM-powered applications**.
+> Framework for building applications powered by Large Language Models.
 
 ### 🏷️ Tags
 
-`Chains` • `Agents` • `Memory` • `Prompt Templates` • `LCEL` • `RAG`
+`LangChain` • `LLM` • `RAG` • `Agents`
 
 ### 🌐 Resources
 
-| Resource      | Link                                      |
-| ------------- | ----------------------------------------- |
-| Documentation | https://python.langchain.com              |
-| API Reference | https://python.langchain.com/docs         |
-| GitHub        | https://github.com/langchain-ai/langchain |
+| Resource       | Link                                  |
+| -------------- | ------------------------------------- |
+| Documentation  | https://python.langchain.com/docs     |
+| GitHub         | https://github.com/langchain-ai/langchain |
+| Blog           | https://blog.langchain.dev             |
 
 ### 📚 Learn
 
-* Prompt Templates
-* Chat Models
-* Output Parsers
 * Chains
-* LCEL
+* Prompts
+* Retrievers
 * Agents
 * Tools
 * Memory
-* Retrieval
 * RAG
-* Callbacks
-* LangSmith Integration
 
 ---
 
-# 🌐 LangGraph
+# 🕸️ LangGraph
 
-> Build stateful, multi-agent workflows using graph-based orchestration.
+> Framework for building stateful agent workflows.
 
 ### 🏷️ Tags
 
-`Agents` • `State Machines` • `Workflow` • `Memory` • `Human-in-the-Loop`
+`LangGraph` • `Agents` • `Workflows` • `State Machines`
 
 ### 🌐 Resources
 
-| Resource      | Link                                      |
-| ------------- | ----------------------------------------- |
-| Documentation | https://langchain-ai.github.io/langgraph  |
-| GitHub        | https://github.com/langchain-ai/langgraph |
+| Resource       | Link                                   |
+| -------------- | -------------------------------------- |
+| Documentation  | https://langchain-ai.github.io/langgraph/ |
+| GitHub         | https://github.com/langchain-ai/langgraph |
 
 ### 📚 Learn
 
-* Graph Nodes
-* Edges
-* Conditional Routing
-* Stateful Agents
-* Multi-Agent Systems
-* Memory
-* Human Approval
+* State Management
+* Agent Workflows
 * Tool Calling
+* Human-in-the-loop
+* Multi-Agent Systems
 
 ---
 
-# 📚 LlamaIndex
+# 🦙 LlamaIndex
 
-> Framework for connecting LLMs with private and enterprise data.
+> Framework focused on connecting LLMs with external data.
 
 ### 🏷️ Tags
 
-`RAG` • `Embeddings` • `Vector Stores` • `Retrieval` • `Knowledge Base`
+`LlamaIndex` • `RAG` • `Data Connectors` • `Indexes` • `Agents`
 
 ### 🌐 Resources
 
-| Resource      | Link                                     |
-| ------------- | ---------------------------------------- |
-| Website       | https://www.llamaindex.ai                |
-| Documentation | https://docs.llamaindex.ai               |
-| GitHub        | https://github.com/run-llama/llama_index |
+| Resource       | Link                                      |
+| -------------- | ----------------------------------------- |
+| Documentation  | https://docs.llamaindex.ai               |
+| GitHub         | https://github.com/run-llama/llama_index |
 
 ### 📚 Learn
 
