@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-Examples-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://github.com/azam123/awesome-ai-engineer)
 [![C%23](https://img.shields.io/badge/C%23-Examples-239120?style=for-the-badge&logo=csharp&logoColor=white)](https://github.com/azam123/awesome-ai-engineer)
 
-**Tags:** `AI Engineer` `GenAI` `RAG` `LLM` `Agentic AI` `Vector Database` `Embeddings` `Reranking` `Prompt Engineering` `AI Security` `FastAPI` `Azure AI` `System Design` `Interview Preparation`
+**Tags:** `AI Engineer` `GenAI` `RAG` `LLM` `Agentic AI` `Multimodal AI` `Vector Database` `Embeddings` `Reranking` `MMR` `Prompt Engineering` `Structured Output` `AI Security` `Guardrails` `PII` `FastAPI` `Azure AI` `System Design` `Interview Preparation`
 
 > 🎨 **Diagram convention:** Flow diagrams use **yellow** and **light-blue** boxes for quick visual navigation. Yellow highlights decisions/actions; light blue highlights data/services.
 
@@ -38,6 +38,8 @@
 15. [Design an Agentic AI system](#15-design-an-agentic-ai-system)
 16. [Agent memory and shared state](#16-agent-memory-and-shared-state)
 17. [ReAct and tool calling](#17-react-and-tool-calling)
+18. [🌟 Advanced AI Engineer Interview Q&A — Coverage Addendum](#-2026-advanced-ai-engineer-interview-qa--coverage-addendum)
+19. [🧭 Senior Interview Cheat Sheet](#-senior-interview-cheat-sheet--15-questions-to-practice)
 
 ### Evaluation, Security & Production
 18. [RAG evaluation](#18-rag-evaluation)
@@ -2386,6 +2388,758 @@ public static bool IsPrime(int number)
 ```
 
 Complexity of the prime check: **O(sqrt(n)) time** and **O(1) extra space**.
+
+---
+
+
+# 🌟 2026 Advanced AI Engineer Interview Q&A — Coverage Addendum
+
+> This addendum closes the remaining gaps identified against the attached 108-question GenAI, LLM and RAG interview notes: LLM internals, hallucination fundamentals, prompting patterns, structured output, long-context trade-offs, retrieval diversity, query understanding, freshness, multimodal AI, conversational memory, guardrails, PII and production inference choices.
+>
+> **Interview answer pattern:** **Short answer → Why → Flow → Production trade-off → Interview takeaway.**
+
+---
+
+## 31. What happens inside an LLM when you ask a question?
+
+### 🎤 Interview-ready answer
+
+**Short answer:** An LLM does not directly read raw text and look up an answer. The input is tokenized, represented numerically, processed through transformer layers using attention, and then the model predicts tokens sequentially until the response is complete.
+
+### 🌈 Bright flow diagram
+
+~~~mermaid
+flowchart LR
+    A["🧑 User Prompt"] --> B["🔤 Tokenization"]
+    B --> C["🔢 Token IDs"]
+    C --> D["🧠 Embeddings"]
+    D --> E["⚡ Transformer Layers"]
+    E --> F["🎯 Attention"]
+    F --> G["📊 Next-Token Probabilities"]
+    G --> H["🎲 Decoding / Sampling"]
+    H --> I["📝 Next Token"]
+    I --> G
+    I --> J["✅ Final Response"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A,B input;
+    class C,D,E,F process;
+    class G,H,I model;
+    class J output;
+~~~
+
+### 🔍 Better explanation
+
+1. The prompt is split into tokens.
+2. Tokens are converted into numerical representations.
+3. Transformer layers process relationships between tokens.
+4. Attention helps the model weigh contextual relationships.
+5. The model produces probabilities for the next token.
+6. A decoding strategy selects the next token.
+7. The process repeats until a stop condition is reached.
+
+**Interview takeaway:**  
+> "The model generates a response token-by-token based on learned representations and the supplied context; it does not inherently verify that every generated statement is true."
+
+---
+
+## 32. Why do LLMs hallucinate even when they sound confident?
+
+### 🎤 Interview-ready answer
+
+**Short answer:** LLMs optimize for plausible next-token generation, not factual truth. If information is missing, ambiguous, conflicting or outside the model's reliable knowledge, the model can produce a plausible completion.
+
+### 🌈 Bright flow diagram
+
+~~~mermaid
+flowchart TD
+    A["❓ User Question"] --> B{"📚 Reliable Evidence Available?"}
+    B -->|Yes| C["📖 Grounded Context"]
+    B -->|No / Weak| D["⚠️ Knowledge Gap"]
+    C --> E["🧠 LLM Generation"]
+    D --> E
+    E --> F{"🔎 Validate?"}
+    F -->|Supported| G["✅ Answer"]
+    F -->|Unsupported| H["🛑 Abstain / Say I Don't Know"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef good fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+    classDef warn fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+
+    class A input;
+    class B,F model;
+    class C,G good;
+    class D,H warn;
+    class E model;
+~~~
+
+### How to reduce hallucinations
+
+- Retrieve authoritative evidence.
+- Improve chunking and reranking.
+- Tell the model to answer only from supplied evidence.
+- Require citations where appropriate.
+- Validate important claims with deterministic logic or tools.
+- Introduce an explicit abstain / insufficient-evidence path.
+- Measure groundedness and citation correctness.
+
+**Interview takeaway:**  
+> "RAG reduces hallucination risk by grounding generation, but RAG itself does not guarantee truth."
+
+---
+
+## 33. Zero-shot vs One-shot vs Few-shot prompting
+
+### 🎤 Interview-ready answer
+
+| Technique | Meaning | Best use |
+|---|---|---|
+| **Zero-shot** | No example is supplied | Simple/general tasks |
+| **One-shot** | One example is supplied | Show the expected pattern |
+| **Few-shot** | Multiple examples are supplied | Classification, extraction and consistent formatting |
+
+### 🌈 Flow diagram
+
+~~~mermaid
+flowchart LR
+    A["🎯 Task"] --> B["0️⃣ Zero-shot"]
+    A --> C["1️⃣ One-shot"]
+    A --> D["🔢 Few-shot"]
+    B --> E["⚡ Fast / Simple"]
+    C --> F["🧭 Pattern Guidance"]
+    D --> G["🎯 Consistency"]
+
+    classDef task fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef method fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef result fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A task;
+    class B,C,D method;
+    class E,F,G result;
+~~~
+
+**Interview takeaway:**  
+> "I start with zero-shot, add examples only when they improve consistency, and evaluate the additional token cost against the quality gain."
+
+---
+
+## 34. What is the difference between a system prompt and a user prompt?
+
+### 🎤 Interview-ready answer
+
+**System-level instructions** establish application behavior, policies and constraints. **User input** provides the task or information requested by the user.
+
+### 🌈 Flow diagram
+
+~~~mermaid
+flowchart TD
+    A["🛡️ System / Application Rules"] --> C["🧩 Prompt Construction"]
+    B["👤 User Request"] --> C
+    C --> D["🤖 Model"]
+    D --> E["📤 Response"]
+    E --> F["🔒 Output Validation"]
+
+    classDef secure fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+    classDef user fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A secure;
+    class B user;
+    class C,D process;
+    class E,F output;
+~~~
+
+### ⚠️ Senior-level point
+
+Do not treat prompts as the only security boundary.
+
+Use:
+
+- authorization outside the model
+- tool permissions
+- tenant isolation
+- input/output validation
+- data access controls
+- audit logging
+
+**Interview takeaway:**  
+> "Prompt instructions influence model behavior; application authorization must enforce what the user is actually allowed to access."
+
+---
+
+## 35. How do you force an LLM to return valid structured JSON?
+
+### 🎤 Interview-ready answer
+
+Do not rely only on saying "return JSON." Prefer native structured-output/schema capabilities when available, then validate the response before application processing.
+
+### 🌈 Production flow
+
+~~~mermaid
+flowchart LR
+    A["📝 User Request"] --> B["📐 JSON Schema"]
+    B --> C["🤖 Structured Output"]
+    A --> C
+    C --> D["✅ Schema Validation"]
+    D -->|Valid| E["⚙️ Application Logic"]
+    D -->|Invalid| F["🔁 Repair / Retry"]
+    F --> C
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef valid fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+    classDef error fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+
+    class A,B input;
+    class C model;
+    class D,E valid;
+    class F error;
+~~~
+
+**Interview takeaway:**  
+> "Structured output is an application contract, not merely a prompt-formatting request."
+
+---
+
+## 36. RAG vs Long-Context LLM — which should you choose?
+
+### 🎤 Interview-ready answer
+
+Neither is universally better.
+
+| Requirement | RAG | Long Context |
+|---|---|---|
+| Very large knowledge base | 🟢 Strong | 🔴 Can be expensive/limited |
+| Frequently changing data | 🟢 Strong | 🟡 Requires refreshed context |
+| Permission filtering | 🟢 Strong | 🟡 Application-dependent |
+| Whole-document reasoning | 🟡 Depends on retrieval | 🟢 Strong |
+| Targeted context | 🟢 Strong | 🟡 May include noise |
+| Simple small corpus | 🟡 May be unnecessary | 🟢 Convenient |
+
+### 🌈 Decision flow
+
+~~~mermaid
+flowchart TD
+    A["📚 Knowledge Requirement"] --> B{"Corpus comfortably fits context?"}
+    B -->|Yes| C["🧠 Consider Long Context"]
+    B -->|No| D["🔎 Use RAG"]
+    C --> E{"Need selective retrieval / permissions?"}
+    E -->|Yes| D
+    E -->|No| F["⚡ Long-context workflow"]
+    D --> G["🔀 Hybrid RAG + Long Context"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef choice fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,E choice;
+    class C,D,F,G output;
+~~~
+
+**Interview takeaway:**  
+> "I choose based on corpus size, freshness, access control, latency, cost and whether the task needs broad document context. In many enterprise systems, retrieval narrows the evidence and a sufficiently large context window processes the selected evidence."
+
+---
+
+## 37. What are MMR and self-query retrieval?
+
+### 🎤 Interview-ready answer
+
+**MMR — Maximal Marginal Relevance** balances relevance and diversity so top-k results do not become near-duplicates.
+
+**Self-query retrieval** uses an LLM to turn a natural-language request into a semantic query plus structured metadata filters.
+
+### 🌈 Flow diagram
+
+~~~mermaid
+flowchart LR
+    A["👤 Query"] --> B["🧠 Query Understanding"]
+    B --> C["🔎 Vector Search"]
+    B --> D["🏷️ Metadata Filters"]
+    C --> E["📦 Candidates"]
+    D --> E
+    E --> F["🌈 MMR: Relevance + Diversity"]
+    F --> G["🎯 Final Context"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef selection fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,C,D process;
+    class E,F selection;
+    class G output;
+~~~
+
+Example:
+
+~~~text
+semantic_query = "finance policies"
+country = "India"
+freshness = "latest"
+~~~
+
+**Interview takeaway:**  
+> "MMR improves diversity among retrieved candidates; self-query retrieval turns natural language into retrieval plus metadata constraints."
+
+---
+
+## 38. How does query understanding improve RAG?
+
+### 🎤 Interview-ready answer
+
+A user's original question is not always retrieval-friendly. Query understanding can:
+
+- expand abbreviations
+- correct obvious wording problems
+- infer missing context
+- classify intent
+- rewrite the query
+- generate multiple retrieval queries
+- extract metadata filters
+- decompose complex questions
+
+### 🌈 Flow diagram
+
+~~~mermaid
+flowchart LR
+    A["👤 Raw Question"] --> B["🧠 Query Understanding"]
+    B --> C["✍️ Rewrite"]
+    B --> D["🔀 Multi-query"]
+    B --> E["🏷️ Metadata Filters"]
+    B --> F["🧩 Query Decomposition"]
+    C --> G["🔎 Retrieval"]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["📚 Better Evidence"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef brain fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef action fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B brain;
+    class C,D,E,F,G action;
+    class H output;
+~~~
+
+**Interview takeaway:**  
+> "Retrieval quality depends not only on the retriever but also on how well the user's intent is represented as a search query."
+
+---
+
+## 39. How do you keep RAG embeddings up to date?
+
+### 🎤 Interview-ready answer
+
+Use **incremental indexing**, not a full re-index for every document change.
+
+### 🌈 Bright update pipeline
+
+~~~mermaid
+flowchart LR
+    A["📄 Document Change"] --> B["🔍 Detect Version / Hash"]
+    B --> C{"Changed?"}
+    C -->|No| D["⏭️ Skip"]
+    C -->|Yes| E["✂️ Re-chunk Changed Content"]
+    E --> F["🧠 Re-embed"]
+    F --> G["🗂️ Update Index"]
+    G --> H["🧹 Invalidate Affected Cache"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef decision fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,E,F,G,H process;
+    class C decision;
+    class D output;
+~~~
+
+Track at least:
+
+- document version
+- chunk version
+- updated timestamp
+- source identifier
+- embedding model/version
+- indexing status
+
+**Interview takeaway:**  
+> "I update only changed content, version the indexable representation and invalidate affected cache entries."
+
+---
+
+## 40. What is multimodal AI and why does it matter for enterprise RAG?
+
+### 🎤 Interview-ready answer
+
+Multimodal AI can reason over multiple content types such as **text, images, tables, audio and video**.
+
+This matters when documents contain information that plain text extraction loses.
+
+### 🌈 Document intelligence flow
+
+~~~mermaid
+flowchart TD
+    A["📄 Enterprise Document"] --> B{"Content Type"}
+    B --> C["📝 Text"]
+    B --> D["📊 Tables"]
+    B --> E["🖼️ Images"]
+    B --> F["📷 Scanned Pages"]
+    C --> G["🧠 Unified Representation"]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["🔎 Retrieval"]
+    H --> I["🤖 Multimodal LLM"]
+    I --> J["✅ Grounded Answer + Citations"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef branch fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,C,D,E,F,G,H branch;
+    class I model;
+    class J output;
+~~~
+
+**Interview takeaway:**  
+> "For document intelligence, I choose the extraction strategy based on the information carried by each modality rather than assuming every PDF is just text."
+
+---
+
+## 41. How do you design conversational memory for an AI assistant?
+
+### 🎤 Interview-ready answer
+
+Separate **short-term conversation context** from **long-term useful memory**.
+
+### 🌈 Memory architecture
+
+~~~mermaid
+flowchart LR
+    A["👤 User"] --> B["💬 Current Conversation"]
+    B --> C["⚡ Short-term Context"]
+    B --> D["📝 Conversation Store"]
+    D --> E["🧠 Summarization"]
+    E --> F["📚 Long-term Useful Memory"]
+    C --> G["🤖 LLM / Agent"]
+    F --> G
+    G --> H["✅ Response"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef store fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef memory fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,C,D store;
+    class E,F,G memory;
+    class H output;
+~~~
+
+### Typical conversation record
+
+~~~text
+user_id
+session_id
+message_id
+role
+content
+timestamp
+metadata
+~~~
+
+### Production considerations
+
+- Keep active context within a token budget.
+- Summarize long conversations.
+- Avoid storing sensitive information unnecessarily.
+- Apply user/tenant authorization.
+- Use retention/expiration policies appropriate to the product.
+- Do not confuse conversation history with authoritative knowledge.
+
+**Interview takeaway:**  
+> "Memory is an application architecture concern; I do not blindly send the entire conversation to the model."
+
+---
+
+## 42. What are guardrails in GenAI systems?
+
+### 🎤 Interview-ready answer
+
+Guardrails are controls around an AI system that constrain unsafe, unauthorized, invalid or out-of-scope behavior.
+
+### 🌈 Defense-in-depth flow
+
+~~~mermaid
+flowchart LR
+    A["👤 Input"] --> B["🛡️ Input Guardrails"]
+    B --> C["🔐 Authorization"]
+    C --> D["🤖 LLM / Agent"]
+    D --> E["🔧 Tool Permission Check"]
+    E --> F["🛡️ Output Guardrails"]
+    F --> G["🔎 Grounding / Schema Validation"]
+    G --> H["✅ User Response"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef security fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B,C,E,F security;
+    class D model;
+    class G,H output;
+~~~
+
+### Guardrail categories
+
+**Input:** prompt injection detection, malicious content, oversized requests, PII detection.
+
+**Authorization:** user identity, tenant isolation, document permissions, tool permissions.
+
+**Output:** schema validation, policy checks, PII leakage detection, grounding/citation validation.
+
+**Interview takeaway:**  
+> "Guardrails should be defense-in-depth. A prompt alone is not an authorization mechanism."
+
+---
+
+## 43. How do you protect PII and sensitive data in RAG?
+
+### 🎤 Interview-ready answer
+
+Treat sensitive information as a **data-security problem first and an LLM problem second**.
+
+### 🌈 Secure data flow
+
+~~~mermaid
+flowchart LR
+    A["📄 Source Data"] --> B["🔎 Classify / Detect PII"]
+    B --> C["🎭 Mask / Minimize"]
+    C --> D["🔐 Encrypt + Access Control"]
+    D --> E["🗂️ Secure Index"]
+    E --> F["👤 Authorized Query"]
+    F --> G["🔎 Filter by Tenant / Permission"]
+    G --> H["🤖 Model"]
+    H --> I["📋 Audit + Validate"]
+
+    classDef source fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef security fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A source;
+    class B,C,D,F,G security;
+    class E,H process;
+    class I output;
+~~~
+
+### Controls
+
+- Data minimization.
+- PII detection/masking where appropriate.
+- Encryption at rest and in transit.
+- Tenant-aware metadata filters.
+- Least-privilege access.
+- Audit logging.
+- Controlled model/provider deployment.
+- Retention policies.
+- Secrets management.
+
+**Interview takeaway:**  
+> "The model should never receive data simply because the retriever found it; authorization must be enforced before sensitive context reaches generation."
+
+---
+
+## 44. Batch processing vs real-time inference
+
+### 🎤 Interview-ready answer
+
+| Dimension | Batch | Real-time |
+|---|---|---|
+| Goal | Throughput | Low latency |
+| Typical workload | Bulk embedding / document processing | Interactive question answering |
+| Cost | Often optimized for volume | Often optimized for responsiveness |
+| UX | Delayed | Immediate |
+| Example | Nightly document indexing | Chat request |
+
+### 🌈 Decision flow
+
+~~~mermaid
+flowchart TD
+    A["⚙️ AI Workload"] --> B{"⏱️ Must respond immediately?"}
+    B -->|Yes| C["⚡ Real-time Inference"]
+    B -->|No| D["📦 Batch Processing"]
+    C --> E["Low Latency + Autoscaling"]
+    D --> F["High Throughput + Queue/Workers"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef decision fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef realtime fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef batch fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B decision;
+    class C,E realtime;
+    class D,F batch;
+~~~
+
+**Interview takeaway:**  
+> "I select batch or real-time based on SLA, throughput, freshness and cost rather than technology preference."
+
+---
+
+## 45. How do you evaluate citation correctness in RAG?
+
+### 🎤 Interview-ready answer
+
+A citation is useful only when it actually supports the generated claim.
+
+### 🌈 Evaluation flow
+
+~~~mermaid
+flowchart LR
+    A["📚 Retrieved Evidence"] --> B["🤖 Generated Answer"]
+    B --> C["🔗 Claims + Citations"]
+    A --> D["📏 Evidence Matching"]
+    C --> D
+    D --> E["📊 Citation Correctness"]
+    E --> F["🧑 Human Evaluation"]
+    F --> G["📈 RAG Improvement"]
+
+    classDef evidence fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef model fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef eval fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A,D evidence;
+    class B,C model;
+    class E,F eval;
+    class G output;
+~~~
+
+Useful evaluation dimensions:
+
+- retrieval relevance
+- context recall
+- context precision
+- faithfulness/groundedness
+- answer relevance
+- citation correctness
+- human preference
+
+**Interview takeaway:**  
+> "I evaluate both whether the answer is correct and whether the cited evidence actually supports the claims."
+
+---
+
+## 46. What is attention sink and why should an AI engineer care?
+
+### 🎤 Interview-ready answer
+
+Attention sink refers to a phenomenon where attention can become disproportionately concentrated on particular early/special tokens, which can matter when processing very long contexts.
+
+### Why it matters
+
+Very long context does not automatically mean every token receives equally useful attention.
+
+Potential consequences include:
+
+- context-position sensitivity
+- long-context quality degradation
+- wasted context budget
+- unexpected context-order effects
+
+### 🌈 Practical mitigation
+
+~~~mermaid
+flowchart LR
+    A["📚 Huge Context"] --> B["⚠️ Attention / Context Limits"]
+    B --> C["✂️ Retrieval"]
+    B --> D["🗜️ Compression"]
+    B --> E["📝 Summarization"]
+    C --> F["🎯 Focused Context"]
+    D --> F
+    E --> F
+    F --> G["🤖 LLM"]
+
+    classDef input fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef warning fill:#FF6B6B,stroke:#C1121F,stroke-width:3px,color:#3B0000,font-weight:bold;
+    classDef process fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef output fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A input;
+    class B warning;
+    class C,D,E process;
+    class F,G output;
+~~~
+
+**Interview takeaway:**  
+> "I don't solve long-context problems by simply increasing context size; I reduce irrelevant context and measure quality with representative workloads."
+
+---
+
+## 🧭 Senior Interview Cheat Sheet — 15 Questions to Practice
+
+1. **What happens inside an LLM?**
+2. **Why do LLMs hallucinate?**
+3. **RAG vs fine-tuning vs prompt engineering?**
+4. **RAG vs long context?**
+5. **How do you choose chunk size?**
+6. **Why hybrid search?**
+7. **Bi-encoder vs cross-encoder?**
+8. **What are MMR and self-query retrieval?**
+9. **How do you debug a bad RAG system?**
+10. **How do you evaluate RAG quality?**
+11. **How do you secure enterprise RAG?**
+12. **Function calling vs workflow vs agent?**
+13. **How do you design memory for an AI assistant?**
+14. **How do you make an AI system production-ready?**
+15. **How do you reduce latency and cost without destroying quality?**
+
+### 🎯 Senior-level answer formula
+
+~~~mermaid
+flowchart LR
+    A["1️⃣ Clarify Business Goal"] --> B["2️⃣ Define Concept"]
+    B --> C["3️⃣ Draw Architecture"]
+    C --> D["4️⃣ Explain Data Flow"]
+    D --> E["5️⃣ Discuss Alternatives"]
+    E --> F["6️⃣ Trade-offs"]
+    F --> G["7️⃣ Failure Modes"]
+    G --> H["8️⃣ Security"]
+    H --> I["9️⃣ Evaluation"]
+    I --> J["🔟 Scale + Cost"]
+    J --> K["🏆 Production Recommendation"]
+
+    classDef step1 fill:#FFD166,stroke:#F59E0B,stroke-width:3px,color:#111827,font-weight:bold;
+    classDef step2 fill:#4CC9F0,stroke:#0077B6,stroke-width:3px,color:#001219,font-weight:bold;
+    classDef step3 fill:#C77DFF,stroke:#7B2CBF,stroke-width:3px,color:#17002B,font-weight:bold;
+    classDef step4 fill:#80ED99,stroke:#16A34A,stroke-width:3px,color:#052E16,font-weight:bold;
+
+    class A,B,C step1;
+    class D,E,F step2;
+    class G,H,I step3;
+    class J,K step4;
+~~~
+
+> **Golden rule:** A senior AI Engineer answer should not stop at **"what technology would you use?"** Explain **why, what can fail, how you will measure it, how you will secure it, and how the architecture changes as scale and requirements change.**
 
 ---
 
