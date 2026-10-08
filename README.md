@@ -62,11 +62,11 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 
 | Tier | Monthly | What Your Support Helps Fund |
 |---|---:|---|
-| ☕ **Supporter** | **$3/month** | Repository maintenance, fixes and new resources |
-| ⭐ **AI Learner** | **$5/month** | Tutorials, interview Q&A and learning guides |
-| 🚀 **AI Engineer** | **$10/month** | Advanced RAG, Agentic AI and production architecture content |
-| 🏗️ **AI Architect** | **$25/month** | System-design guides, architecture templates and engineering checklists |
-| 💎 **Project Sponsor** | **$100/month** | Major new content, open-source examples and long-term project development |
+| ☕ **Supporter** | **$3** | Repository maintenance, fixes and new resources |
+| ⭐ **AI Learner** | **$5** | Tutorials, interview Q&A and learning guides |
+| 🚀 **AI Engineer** | **$10** | Advanced RAG, Agentic AI and production architecture content |
+| 🏗️ **AI Architect** | **$15** | System-design guides, architecture templates and engineering checklists |
+| 💎 **Project Sponsor** | **$100** | Major new content, open-source examples and long-term project development |
 
 ### 🎁 Sponsor Benefits
 
