@@ -4,6 +4,58 @@
 
 [![GitHub profile](https://img.shields.io/badge/GitHub-azam123-181717?logo=github)](https://github.com/azam123) [![AI Engineering](https://img.shields.io/badge/Focus-AI%20Engineering-7B2CBF)](https://github.com/azam123/awesome-ai-engineer) [![.NET](https://img.shields.io/badge/Focus-.NET-512BD4?logo=dotnet)](https://github.com/azam123/awesome-ai-dotnet-engineer) [![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4?logo=microsoftazure)](https://github.com/azam123/enterprise-document-intelligence)
 
+## 👨‍💻 About Me
+
+**Mohammad Azam Shaikh** — Principal Software Engineer & Solution Architect focused on **AI Engineering, Generative AI, Azure, .NET, distributed systems, and enterprise architecture**.
+
+I build scalable enterprise applications and AI-powered systems, with hands-on experience across **RAG, Agentic AI, MCP, Azure AI, microservices, event-driven architecture, cloud-native applications, and developer productivity tools**.
+
+🔗 **LinkedIn:** [linkedin.com/in/mohammad-azam-shaikh](https://www.linkedin.com/in/mohammad-azam-shaikh/)  
+🔗 **GitHub:** [github.com/azam123](https://github.com/azam123)
+
+## 🧰 Tech Stack
+
+### Languages
+![C#](https://img.shields.io/badge/C%23-512BD4?logo=csharp&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-CC2927?logo=microsoftsqlserver&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?logo=openjdk&logoColor=white)
+
+### Backend & Frameworks
+![.NET](https://img.shields.io/badge/.NET-512BD4?logo=dotnet&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-02569B)
+
+### AI / GenAI
+![Azure AI](https://img.shields.io/badge/Azure%20AI-0078D4?logo=microsoftazure&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-Generative%20AI-7B2CBF)
+![Agentic AI](https://img.shields.io/badge/Agentic%20AI-Agents-7B2CBF)
+![MCP](https://img.shields.io/badge/MCP-Tooling-1565C0)
+![LLM](https://img.shields.io/badge/LLM-Engineering-FF6F00)
+![Vector DB](https://img.shields.io/badge/Vector%20Databases-00A98F)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?logo=langchain&logoColor=white)
+
+### Cloud & DevOps
+![Azure](https://img.shields.io/badge/Azure-0078D4?logo=microsoftazure&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
+![Azure DevOps](https://img.shields.io/badge/Azure%20DevOps-0078D7?logo=azuredevops&logoColor=white)
+
+### Architecture & Distributed Systems
+
+**Microservices · Distributed Systems · Event-Driven Architecture · Domain-Driven Design · CQRS · Saga · API Design · System Design · Clean Architecture · SOLID · OAuth/OIDC**
+
+### Data & Messaging
+
+**SQL Server · PostgreSQL · Cosmos DB · Redis · Kafka · RabbitMQ · Azure Service Bus · Amazon SQS · Data Lake · Databricks**
+
+### AI Engineering Focus
+
+**RAG Pipelines · Hybrid Search · Embeddings · Chunking · Vector Search · Prompt Engineering · Token Optimization · AI Agents · Multi-Agent Systems · Tool Calling · MCP · AI Evaluation · Enterprise AI Architecture**
+
 ## How to use this index
 
 - Select a repository name to open its GitHub page.
