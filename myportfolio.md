@@ -2,7 +2,49 @@
 
 > A navigable index of my public repositories and selected private projects. Projects are grouped by domain and include live GitHub star badges, purpose, keywords, and tags.
 
-[![GitHub profile](https://img.shields.io/badge/GitHub-azam123-181717?logo=github)](https://github.com/azam123) [![AI Engineering](https://img.shields.io/badge/Focus-AI%20Engineering-7B2CBF)](https://github.com/azam123/awesome-ai-engineer) [![.NET](https://img.shields.io/badge/Focus-.NET-512BD4?logo=dotnet)](https://github.com/azam123/awesome-ai-dotnet-engineer) [![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4?logo=microsoftazure)](https://github.com/azam123/enterprise-document-intelligence)
+[![GitHub profile](https://img.shields.io/badge/GitHub-azam123-181717?logo=github)](https://github.com/azam123) [![AI Engineering](https://img.shields.io/badge/Focus-AI%20Engineering-7B2CBF)](https://github.com/azam123/awesome-ai-engineer) [![.NET](https://img.shields.io/badge/Focus-.NET-512BD4?logo=dotnet)](https://github.com/azam123/awesome-ai-dotnet-engineer) [![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4?logo=microsoftazure)](https://github.com/azam123/enterprise-document-intelligence) [![LeetCode](https://img.shields.io/badge/LeetCode-azam1200-FFA116?logo=leetcode&logoColor=black)](https://leetcode.com/u/azam1200/)
+
+## 📊 GitHub & LeetCode Dashboard
+
+> Live profile cards inspired by a developer portfolio dashboard. The cards fetch public profile statistics dynamically, so counts and activity visuals can change as your profiles update.
+
+<p align="center">
+  <a href="https://github.com/azam123">
+    <img src="https://github-readme-stats.vercel.app/api?username=azam123&show_icons=true&include_all_commits=true&rank_icon=github&theme=tokyonight&hide_border=true&border_radius=12" alt="Mohammad Azam Shaikh's GitHub statistics" height="185" />
+  </a>
+  <a href="https://github.com/azam123">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=azam123&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&border_radius=12" alt="Most used programming languages on public repositories" height="185" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/azam123">
+    <img src="https://streak-stats.demolab.com?user=azam123&theme=tokyonight&hide_border=true&border_radius=12" alt="GitHub contribution streak" />
+  </a>
+</p>
+
+### 🧩 LeetCode Profile
+
+<p align="center">
+  <a href="https://leetcode.com/u/azam1200/">
+    <img src="https://leetcard.jacoblin.cool/azam1200?theme=dark&font=Baloo&ext=heatmap" alt="Azam1200 LeetCode profile, solved-problem breakdown, and submission heatmap" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://leetcode.com/u/azam1200/">
+    <img src="https://img.shields.io/badge/LeetCode-azam1200-FFA116?logo=leetcode&logoColor=black&style=for-the-badge" alt="Open LeetCode profile" />
+  </a>
+  <a href="https://github.com/azam123">
+    <img src="https://img.shields.io/badge/GitHub-azam123-181717?logo=github&style=for-the-badge" alt="Open GitHub profile" />
+  </a>
+</p>
+
+**Dashboard notes**
+- GitHub cards show public repository activity and language distribution; they may be cached by the card providers.
+- LeetCode card content depends on the public availability of the `azam1200` profile and the third-party card service.
+- Language percentages describe code present in public repositories, not a formal measure of proficiency.
+- If a card is temporarily unavailable, use the profile links above to view the source statistics directly.
 
 ## 👨‍💻 About Me
 
