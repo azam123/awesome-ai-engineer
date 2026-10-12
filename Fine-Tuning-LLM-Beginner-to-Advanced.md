@@ -221,11 +221,11 @@ flowchart LR
     classDef data fill:#D1FAE5,stroke:#047857,color:#064E3B,stroke-width:2px;
     classDef model fill:#DBEAFE,stroke:#1D4ED8,color:#1E3A8A,stroke-width:2px;
     classDef math fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
-    classDef end fill:#FCE7F3,stroke:#BE185D,color:#831843,stroke-width:2px;
+    classDef checkpoint fill:#FCE7F3,stroke:#BE185D,color:#831843,stroke-width:2px;
     class A,B,C data;
     class D model;
     class E,F,G,H math;
-    class I end;
+    class I checkpoint;
 ```
 
 A **batch** is a group of examples processed together. An **epoch** is one pass over the training dataset. A **checkpoint** is a saved model/training state.
@@ -511,11 +511,11 @@ flowchart TB
     E --> F["Train adapters / prompts<br/>or selected parameters"]
     D --> G["📦 Full model checkpoint"]
     F --> H["📦 Base model + adapter"]
-    classDef start fill:#E0E7FF,stroke:#4338CA,color:#1E1B4B,stroke-width:2px;
+    classDef decisionStart fill:#E0E7FF,stroke:#4338CA,color:#1E1B4B,stroke-width:2px;
     classDef full fill:#FCE7F3,stroke:#BE185D,color:#831843,stroke-width:2px;
     classDef peft fill:#D1FAE5,stroke:#047857,color:#064E3B,stroke-width:2px;
     classDef output fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
-    class A start;
+    class A decisionStart;
     class B,D full;
     class C,E,F peft;
     class G,H output;
@@ -1080,13 +1080,13 @@ flowchart TD
     I --> K
     J --> K
     K --> L["🚦 Ship only after quality,<br/>safety and operations checks"]
-    classDef start fill:#E0E7FF,stroke:#4338CA,color:#1E1B4B,stroke-width:2px;
+    classDef decisionStart fill:#E0E7FF,stroke:#4338CA,color:#1E1B4B,stroke-width:2px;
     classDef rag fill:#D1FAE5,stroke:#047857,color:#064E3B,stroke-width:2px;
     classDef simple fill:#FEF3C7,stroke:#B45309,color:#78350F,stroke-width:2px;
     classDef train fill:#EDE9FE,stroke:#6D28D9,color:#4C1D95,stroke-width:2px;
     classDef eval fill:#DBEAFE,stroke:#1D4ED8,color:#1E3A8A,stroke-width:2px;
     classDef ship fill:#FCE7F3,stroke:#BE185D,color:#831843,stroke-width:2px;
-    class A,B,D,F,H start;
+    class A,B,D,F,H decisionStart;
     class C rag;
     class E,G simple;
     class I,J train;
