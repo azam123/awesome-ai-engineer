@@ -43,6 +43,7 @@ From **Python** → **Machine Learning** → **Deep Learning** → **LLMs** → 
 | 🥉 | [🤖 Agentic AI System Design — Complete Engineering & Interview Handbook](./Agentic-AI-System-Design.md) | End-to-end Agentic AI system design, scaling, capacity planning, databases, reliability, security and interview scenarios |
 | ⭐ | [🧩 Agentic AI Open-Source Stack: LangChain, LangGraph & Tools](./Agentic-AI-Open-Source-Tools-Explained.md) | LangChain, LangGraph, LlamaIndex, CrewAI, Pydantic AI, MCP, A2A, RAG, memory and orchestration |
 | ⭐ | [🧠 GenAI → Agentic AI → Multi-Agent → RAG → Agent Harness](./GenAI-AgenticAI-MultiAgent-RAG-AgentHarness.md) | Build the mental model from GenAI fundamentals to production agent harnesses |
+| ⭐ | [🎯 Fine-Tuning LLMs: Beginner to Advanced — Complete Guide](./Fine-Tuning-LLM-Beginner-to-Advanced.md) | Fine-tuning fundamentals, colorful Mermaid diagrams, methods, Python/C# examples, libraries, evaluation, deployment and quizzes |
 | ⭐ | [📚 RAG Explained In-Depth](./RAG-explained-in-depth.md) | Ingestion, chunking, embeddings, search, reranking, grounding, guardrails and evaluation |
 | ⭐ | [🔐 Prompt Engineering: Introduction & Security](./Prompt-Engineering-Introduction-and-Security.md) | Prompt design, few-shot prompting, structured output, prompt injection and jailbreak security |
 | ⭐ | [📐 Embeddings Deep Dive](./Embeddings-Deep-Dive.md) | Embeddings, vector databases, semantic search, ANN/HNSW, hybrid retrieval and reranking |
